@@ -1,0 +1,15 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.khLogo{
+  height: 80px;
+  width: 80px;
+  cursor: pointer;
+}
+
+.navbar-collapse .navbar-nav .active{
+  color: navy;
+}
