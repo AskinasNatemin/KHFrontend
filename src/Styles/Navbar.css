@@ -11,5 +11,5 @@
 }
 
 .navbar-collapse .navbar-nav .active{
-  color: navy;
+  color: #008080; /* Teal */
 }
