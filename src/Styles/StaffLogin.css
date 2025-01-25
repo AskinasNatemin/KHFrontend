@@ -1,4 +1,4 @@
-.staffborder{
+.stafflogborder{
     margin:auto;
     margin-top: 100px;
     height:550px;
@@ -6,14 +6,14 @@
     border-radius: 10px;
     box-shadow: 5px 5px 15px 5px rgb(197, 191, 191)
 }
-.staffhead{
+.staffloghead{
    padding-top:50px ;
     text-align: center;
     margin-bottom: 40px;
     color: rgb(0, 81, 255);
    
 }
-.staffinput {
+.staffloginput {
  
     width: 350px;
     margin-top: 50px;
@@ -21,22 +21,22 @@
     
 
 }
-.staffinput input{
+.staffloginput input{
    margin-bottom: 25px;
    border-radius: 10px;
 }
-.staffbutton{
+.stafflogbutton{
     margin-top: 45px;
     
 }
-.staffbutton button{
+.stafflogbutton button{
     border-radius: 5px;
 }
 .form-control:focus{
     border-color: rgb(138, 138, 138);
     box-shadow: 1px 1px 10px 1px rgb(192, 190, 190)
 }
-.stafflink{
+.staffloglink{
     text-align: center;
     margin-top: 20px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

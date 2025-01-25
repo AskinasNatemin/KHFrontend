@@ -52,10 +52,10 @@ function StaffRegistration() {
                 placeholder="Username"
                 aria-label="Username"
                 aria-describedby="addon-wrapping"
-                id="Benin"
+                id="staffRegName"
                 name="Name"
                 value={state.Name}
-                required
+               
               />
             </div>
             <div className="mb-3">
@@ -67,7 +67,7 @@ function StaffRegistration() {
                 placeholder="Email"
                 name="Email"
                 value={state.Email}
-                required
+               
               />
             </div>
             <div className="mb-3">
@@ -79,7 +79,7 @@ function StaffRegistration() {
                 placeholder="Contact"
                 name="Contact"
                 value={state.Contact}
-                required
+                
               />
             </div>
             <div className="mb-3">
