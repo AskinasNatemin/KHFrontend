@@ -94,7 +94,7 @@ function StaffRegistration() {
               />
             </div>
             <div className="d-grid gap-2 col-6 mx-auto staffbutton">
-              <button className="btn btn-primary" type="Submit" onClick={()=>navigate("/")}>
+              <button className="btn btn-primary" type="Submit" onClick={()=>navigate('/',{replace:true})}>
                 CREATE ACCOUNT
               </button>
             </div>

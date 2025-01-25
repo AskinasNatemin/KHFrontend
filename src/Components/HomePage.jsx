@@ -97,7 +97,7 @@ const HomePage = () => {
                                 <button
                                   type="button"
                                   className="btn btn-outline-success"
-                                  onClick={navigate('StaffReg',{replace:true})}
+                                  onClick={user.userType=='Staff'?()=>{navigate('StaffReg')}:user.userType=='Student'?()=>{navigate('StudentReg')}:''}
                                 >
                                   {user.userType} SignUp
                                 </button>
