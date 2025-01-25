@@ -1,7 +1,9 @@
 import axios from "axios"
 import React, { useEffect, useState } from "react";
 import "../../Styles/StaffReg.css";
+import { useNavigate } from "react-router-dom";
 function StaffRegistration() {
+  const navigate = useNavigate();
   const[state,setState]=useState({
   Name:"",
   Email:"",
@@ -18,7 +20,7 @@ function StaffRegistration() {
   const addData = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:5002/staffRegistration",
+        "http://localhost:5001/staffRegistration",
         state
       );
       console.log("Response:", res.data);
@@ -29,13 +31,13 @@ function StaffRegistration() {
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent default form submission
     console.log("Form Data:", state);
-    // addData();
+    addData();
   };
 
   return (
     <div >
       <form onSubmit={handleSubmit}>
-      <div className="border">
+      <div className="staffborder">
         <span className="">
           <div className="staffinput">
             <div className="staffhead">
@@ -92,11 +94,11 @@ function StaffRegistration() {
               />
             </div>
             <div className="d-grid gap-2 col-6 mx-auto staffbutton">
-              <button className="btn btn-primary" type="Submit">
+              <button className="btn btn-primary" type="Submit" onClick={()=>navigate("/")}>
                 CREATE ACCOUNT
               </button>
             </div>
-            <div className="stafflink">
+            <div className="stafflink" >
               Already have an account? <a href="">Sign in</a>
             </div>
           </div>

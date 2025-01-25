@@ -1,4 +1,4 @@
-.border{
+.staffborder{
     margin:auto;
     margin-top: 100px;
     height:550px;
@@ -7,13 +7,14 @@
     box-shadow: 5px 5px 15px 5px rgb(197, 191, 191)
 }
 .staffhead{
+   padding-top:50px ;
     text-align: center;
     margin-bottom: 40px;
     color: rgb(0, 81, 255);
    
 }
 .staffinput {
-    
+ 
     width: 350px;
     margin-top: 50px;
     margin-left: 70px;
