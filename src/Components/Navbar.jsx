@@ -4,7 +4,7 @@ import logo from "../Assets/icon/logo.png";
 import "../Styles/Navbar.css";
 
 const Navbar = ({handleRegistration}) => {
-  
+
 
   return (
     <>
