@@ -2,8 +2,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import NoPageFound from "./Components/NoPageFound";
-import Navbar from "./Components/Navbar";
+
 import HomePage from "./Components/HomePage";
+import Navbar from "./Components/Navbar";
 import StaffRegistration from "./Components/Staff/StaffRegistration";
 
 function App() {

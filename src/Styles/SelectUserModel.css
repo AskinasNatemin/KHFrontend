@@ -1,2 +1,20 @@
+.selectUserContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  /* opacity: 0.95; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-
+.selectUser {
+  background-color: white;
+  color: black;
+  opacity: none;
+  min-height: 400px;
+  width: clamp(300px, 50vw, 850px);
+}
