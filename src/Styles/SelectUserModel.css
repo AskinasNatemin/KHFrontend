@@ -23,7 +23,7 @@
 
 .userCard .card-body button{
   width: clamp(90px,25vw,255px);
-  font-size: clamp(2px, 0.2vw, 10px); /* Minimum 12px, adjusts to a maximum of 18px */
+  font-size: clamp(2px, 2vw, 10px); /* Minimum 12px, adjusts to a maximum of 18px */
 }
 
 
