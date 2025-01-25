@@ -1,28 +1,74 @@
 import React from "react";
 import "../../Styles/AdminLogin.css";
 export const AdminLogin = () => {
-  return (
-  <div className='loginbackground'>
-      <form>
-        <div className='loginpage'>
-          <h2 className='adminlogin'>Admin Login</h2>
-          <div className='adminusername'>
-           <input type="text"  placeholder='Username'/>
+  return ( <div >
+    <form >
+    <div className="adminborder">
+      <span className="">
+        <div className="admininput">
+          <div className="adminhead">
+            <h2>Admin Login</h2>
           </div>
-          <div className='adminemail'>
-            <input type="email" placeholder='Email'   />
-          </div>
-          <div className='adminpassword'>
-            <input type="password" placeholder='Password'   />
-          </div>
-          <div className='adminbut'>
-            <button type='button' className="btn btn-primary" >Login</button>
-          </div>
-          
 
-
-
+          <div className="input-group flex-nowrap ">
+            <input
+                
+              type="text"
+              className="form-control"
+              placeholder="Admin name"
+              aria-label="Username"
+              aria-describedby="addon-wrapping"
+              id=""
+              name=""
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <input
+              
+              type="email"
+              className="form-control"
+              id="exampleFormControlInput1"
+              placeholder="Email"
+              name="Email"
+              
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <input
+              
+              type="number"
+              className="form-control"
+              id="exampleFormControlInput2"
+              placeholder="Contact"
+              name="Contact"
+              
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <input
+              
+              type="password"
+              className="form-control"
+              id="exampleFormControlInput3"
+              placeholder="Password"
+              name="Password"
+              
+            />
+          </div>
+          <div className="d-grid gap-2 col-6 mx-auto adminbutton">
+            <button className="btn btn-primary" type="Submit">
+              Login
+            </button>
+          </div>
+        
         </div>
-      </form>
-    </div>)
-};export default AdminLogin;
+      </span>
+    </div>
+    </form>
+  </div>
+);
+}
+;export default AdminLogin;

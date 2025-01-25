@@ -1,132 +1,34 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+.adminborder {
+  margin: auto;
+  margin-top: 100px;
+  height: 450px;
+  width: 450px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px 5px rgb(197, 191, 191);
 }
-.loginbackground{
-    background-color:whitesmoke;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    
+.adminhead {
+  padding-top:30px;
+  text-align: center;
+  margin-bottom: 40px;
+  color: rgb(0, 81, 255);
 }
-.loginpage{
-    height: 375px;
-    width: 350px;
-    border-color: rgba(197,191,191);
-    border-radius: 7px;
-    box-shadow: 10px 10px 15px 5px rgba(197,191,191);
-    outline: none;
+.admininput {
+  width: 350px;
+  margin-top: 50px;
+  margin-left: 55px;
 }
-.adminlogin{
-    color: rgba(0, 0, 0, 0.423);
-    font-style: oblique;
-    text-align: center;
-    margin-top: 20px;
+.admininput input {
+  margin-bottom: 25px;
+  border-radius: 10px;
 }
-.adminusername input{
-    height: 30px;
-    width: 200px;
-    margin-top: 20px;
-    margin-left: 20%;
-    border: none;
-    outline:color rgb(50, 165, 242);
-    border-radius: 5px;
-    margin-bottom: 10px;
+.adminbutton {
+  margin-top: 45px;
+  width: 100px;
 }
-.adminusername input:focus {
-    outline: 2px solid rgb(50, 165, 242);
-    outline: 2px solid rgb(50, 165, 242) transparent; 
-  transition: outline 0.6s ease-in-out; 
-  }
-.adminemail input{
-    height: 30px;
-    width: 200px;
-    margin-top: 20px;
-    margin-left: 20%;
-    border: none;
-    outline:color rgb(50, 165, 242);
-    border-radius: 5px;
-    margin-bottom: 10px;
+.adminbutton button {
+  border-radius: 50px;
 }
-.adminemail input:focus {
-    outline: 2px solid rgb(50, 165, 242);
-    outline: 2px solid rgb(50, 165, 242) transparent; 
-  transition: outline 0.6s ease-in-out; 
+.form-control:focus {
+  border-color: rgb(138, 138, 138);
+  box-shadow: 1px 1px 10px 1px rgb(192, 190, 190);
 }
-.adminpassword input{
-    height: 30px;
-    width: 200px;
-    margin-top: 20px;
-    margin-left: 20%;
-    border: none;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-.adminpassword input:focus{
-    outline: 2px solid rgb(50, 165, 242);
-    outline: 2px solid rgb(50, 165, 242) transparent; 
-  transition: outline 0.6s ease-in-out; 
-}
-.adminbut button{
-    height: 40px;
-    width: 100px;
-    border: none;
-    border-radius: 20px;
-    margin-left: 35%;
-    margin-top: 19px; 
-}
-
-
-/* Media Queries for Responsiveness */
-/* @media (max-width: 600px) {
-    .loginpage {
-        width: 80%; 
-        padding: 15px;
-    }
-
-    .adminlogin {
-        font-size: 20px;
-    }
-
-    input {
-        font-size: 16px;
-    }
-
-    .adminbut button {
-        width: 50%; 
-    }
-}
-
-@media (max-width: 400px) {
-    .loginpage {
-        width: 90%; 
-    }
-
-    .adminlogin {
-        font-size: 18px;
-    }
-
-    input {
-        font-size: 14px;
-        width: 20%;
-    }
-}
-
-@media (max-width:576px) {
-    .loginpage {
-        width:50%; 
-    }
-
-    .adminlogin {
-        font-size: 10px;
-    }
-
-   .adminusername  input {
-        font-size: 14px;
-        width:10%;
-    }
-} */
-
