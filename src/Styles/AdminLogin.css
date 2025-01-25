@@ -1,0 +1,121 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.loginbackground{
+    background-color:whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    
+}
+.loginpage{
+    height: 350px;
+    width: 350px;
+    border: solid 1px black;
+    border-radius: 7px;
+    box-shadow: 10px 10px 15px 5px rgba(0, 0, 0, 0.456);
+    
+}
+.adminlogin{
+    color: rgba(0, 0, 0, 0.423);
+    font-style: oblique;
+    text-align: center;
+}
+.adminusername input{
+    height: 30px;
+    width: 200px;
+    margin-top: 20px;
+    margin-left: 20%;
+    border: none;
+    outline: none;
+    box-shadow: 10px 10px 15px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    
+}
+.adminemail input{
+    height: 30px;
+    width: 200px;
+    margin-top: 20px;
+    margin-left: 20%;
+    border: none;
+    outline: none;
+    box-shadow: 10px 10px 15px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.adminpassword input{
+    height: 30px;
+    width: 200px;
+    margin-top: 20px;
+    margin-left: 20%;
+    border: none;
+    outline: none;
+    box-shadow: 10px 10px 15px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.adminbut button{
+    height: 40px;
+    width: 100px;
+    border: none;
+    border-radius: 20px;
+    margin-left: 35%;
+    margin-top: 19px; 
+}
+
+
+/* Media Queries for Responsiveness */
+/* @media (max-width: 600px) {
+    .loginpage {
+        width: 80%; 
+        padding: 15px;
+    }
+
+    .adminlogin {
+        font-size: 20px;
+    }
+
+    input {
+        font-size: 16px;
+    }
+
+    .adminbut button {
+        width: 50%; 
+    }
+}
+
+@media (max-width: 400px) {
+    .loginpage {
+        width: 90%; 
+    }
+
+    .adminlogin {
+        font-size: 18px;
+    }
+
+    input {
+        font-size: 14px;
+        width: 20%;
+    }
+}
+
+@media (max-width:576px) {
+    .loginpage {
+        width:50%; 
+    }
+
+    .adminlogin {
+        font-size: 10px;
+    }
+
+   .adminusername  input {
+        font-size: 14px;
+        width:10%;
+    }
+} */
+
