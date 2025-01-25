@@ -4,17 +4,41 @@
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: white;
-  /* opacity: 0.95; */
+  background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+
+.selectUserContainer .goBackIcon{
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.userCard{
+  width: clamp(230px,35vw,290px);
+}
+
+.userCard .card-body button{
+  width: clamp(90px,25vw,255px);
+  font-size: clamp(2px, 0.2vw, 10px); /* Minimum 12px, adjusts to a maximum of 18px */
+}
+
+
 .selectUser {
   background-color: white;
   color: black;
-  opacity: none;
   min-height: 400px;
   width: clamp(300px, 50vw, 850px);
+  border-radius: 10px; 
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2), 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.selectUser:hover {
+  transform: translateY(-5px); 
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3), 0px 6px 8px rgba(0, 0, 0, 0.15); 
 }
