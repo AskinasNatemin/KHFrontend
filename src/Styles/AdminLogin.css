@@ -13,17 +13,18 @@
     
 }
 .loginpage{
-    height: 350px;
+    height: 375px;
     width: 350px;
-    border: solid 1px black;
+    border-color: rgba(197,191,191);
     border-radius: 7px;
-    box-shadow: 10px 10px 15px 5px rgba(0, 0, 0, 0.456);
-    
+    box-shadow: 10px 10px 15px 5px rgba(197,191,191);
+    outline: none;
 }
 .adminlogin{
     color: rgba(0, 0, 0, 0.423);
     font-style: oblique;
     text-align: center;
+    margin-top: 20px;
 }
 .adminusername input{
     height: 30px;
@@ -31,22 +32,29 @@
     margin-top: 20px;
     margin-left: 20%;
     border: none;
-    outline: none;
-    box-shadow: 10px 10px 15px 5px rgba(0, 0, 0, 0.3);
+    outline:color rgb(50, 165, 242);
     border-radius: 5px;
     margin-bottom: 10px;
-    
 }
+.adminusername input:focus {
+    outline: 2px solid rgb(50, 165, 242);
+    outline: 2px solid rgb(50, 165, 242) transparent; 
+  transition: outline 0.6s ease-in-out; 
+  }
 .adminemail input{
     height: 30px;
     width: 200px;
     margin-top: 20px;
     margin-left: 20%;
     border: none;
-    outline: none;
-    box-shadow: 10px 10px 15px 5px rgba(0, 0, 0, 0.3);
+    outline:color rgb(50, 165, 242);
     border-radius: 5px;
     margin-bottom: 10px;
+}
+.adminemail input:focus {
+    outline: 2px solid rgb(50, 165, 242);
+    outline: 2px solid rgb(50, 165, 242) transparent; 
+  transition: outline 0.6s ease-in-out; 
 }
 .adminpassword input{
     height: 30px;
@@ -54,10 +62,13 @@
     margin-top: 20px;
     margin-left: 20%;
     border: none;
-    outline: none;
-    box-shadow: 10px 10px 15px 5px rgba(0, 0, 0, 0.3);
     border-radius: 5px;
     margin-bottom: 10px;
+}
+.adminpassword input:focus{
+    outline: 2px solid rgb(50, 165, 242);
+    outline: 2px solid rgb(50, 165, 242) transparent; 
+  transition: outline 0.6s ease-in-out; 
 }
 .adminbut button{
     height: 40px;

@@ -6,6 +6,7 @@ import NoPageFound from "./Components/NoPageFound";
 import HomePage from "./Components/HomePage";
 import Navbar from "./Components/Navbar";
 import StaffRegistration from "./Components/Staff/StaffRegistration";
+import AdminLogin from "./Components/Admin/AdminLogin";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/Navbar" element={<Navbar/>}/>
           <Route path="/" element={<HomePage/>}/>
           <Route path='StaffReg' element={<StaffRegistration/>}/>
+          <Route path='/AdminLogin' element={<AdminLogin/>}/>
         </Routes>
       </BrowserRouter>
     </div>
