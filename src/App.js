@@ -10,6 +10,7 @@ import StaffRegistration from "./Components/Staff/StaffRegistration";
 function App() {
   return (
     <div className="App">
+      {/* //hai */}
       <BrowserRouter>
         <Routes>
           <Route path='*' element={<NoPageFound/>}/>
