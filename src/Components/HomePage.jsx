@@ -7,6 +7,7 @@ import { TbXboxX } from "react-icons/tb";
 import student from "../Assets/icon/SelectIcons/student.png";
 import staff from "../Assets/icon/SelectIcons/staff.png";
 import admin from "../Assets/icon/SelectIcons/admin.png";
+import { replace, useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   const [openUserSelectionModel, setOpenUserSelectionModel] = useState(false);
@@ -16,6 +17,8 @@ const HomePage = () => {
     { userType: "Staff", type: "", image: staff },
     { userType: "Admin", type: "", image: admin },
   ]);
+
+  const navigate=useNavigate()
 
   const handleRegistration = (type) => {
     setLogOrSignUp(type);
@@ -94,6 +97,7 @@ const HomePage = () => {
                                 <button
                                   type="button"
                                   className="btn btn-outline-success"
+                                  onClick={navigate('StaffReg',{replace:true})}
                                 >
                                   {user.userType} SignUp
                                 </button>
