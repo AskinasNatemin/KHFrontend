@@ -1,5 +1,6 @@
 import axios from "axios"
 import React, { useEffect, useState } from "react";
+import {Link} from "react-router-dom"
 import "../../Styles/StaffReg.css";
 import { useNavigate } from "react-router-dom";
 function StaffRegistration() {
@@ -52,10 +53,10 @@ function StaffRegistration() {
                 placeholder="Username"
                 aria-label="Username"
                 aria-describedby="addon-wrapping"
-                id="Benin"
+                id="staffRegName"
                 name="Name"
                 value={state.Name}
-                required
+               
               />
             </div>
             <div className="mb-3">
@@ -67,7 +68,7 @@ function StaffRegistration() {
                 placeholder="Email"
                 name="Email"
                 value={state.Email}
-                required
+               
               />
             </div>
             <div className="mb-3">
@@ -79,7 +80,7 @@ function StaffRegistration() {
                 placeholder="Contact"
                 name="Contact"
                 value={state.Contact}
-                required
+                
               />
             </div>
             <div className="mb-3">
@@ -99,7 +100,7 @@ function StaffRegistration() {
               </button>
             </div>
             <div className="stafflink" >
-              Already have an account? <a href="">Sign in</a>
+              Already have an account? <Link to="/StaffLog">Sign in</Link>
             </div>
           </div>
         </span>
