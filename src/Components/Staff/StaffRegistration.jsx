@@ -100,7 +100,7 @@ function StaffRegistration() {
               </button>
             </div>
             <div className="stafflink" >
-              Already have an account? <Link to="/StaffLog">Sign in</Link>
+              Already have an account? <Link to="/StaffLogin">Sign in</Link>
             </div>
           </div>
         </span>

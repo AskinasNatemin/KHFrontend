@@ -2,12 +2,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import NoPageFound from "./Components/NoPageFound";
-
 import HomePage from "./Components/HomePage";
 import Navbar from "./Components/Navbar";
 import StaffRegistration from "./Components/Staff/StaffRegistration";
 import AdminLogin from "./Components/Admin/AdminLogin";
 import StaffLogin from "./Components/Staff/StaffLogin";
+import StudentLogin from "./Components/Student/StudentLogin";
+import ViewBooks from "./Components/ViewBooks";
 import StudentRegistration from "./Components/Student/StudentRegistration";
 
 function App() {
@@ -19,9 +20,11 @@ function App() {
           <Route path="/Navbar" element={<Navbar/>}/>
           <Route path="/" element={<HomePage/>}/>
           <Route path='StaffRegistration' element={<StaffRegistration/>}/>
-          <Route path='StaffLog' element={<StaffLogin/>}/>
           <Route path='AdminLogin' element={<AdminLogin/>}/>
           <Route path='StudentRegistration' element={<StudentRegistration/>}/>
+          <Route path='StaffLogin' element={<StaffLogin/>}/>
+          <Route path="studentlogin" element={<StudentLogin/>}/>
+          <Route path="ViewBooks" element={<ViewBooks/>}/>
         </Routes>
       </BrowserRouter>
     </div>

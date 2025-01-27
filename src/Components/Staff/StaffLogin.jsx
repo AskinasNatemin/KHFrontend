@@ -30,6 +30,9 @@ const StaffLogin = () => {
                 name="Password"
               />
             </div>
+            <div className="d-flex justify-content-end">
+              <Link to={"/StaffForgotPassword"}>forgot password</Link>
+            </div>
             <div className="d-grid gap-2 col-6 mx-auto stafflogbutton">
               <button
                 className="btn btn-primary"
