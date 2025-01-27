@@ -1,10 +1,10 @@
 .StudentRegborder{
     margin:auto;
     margin-top: 100px;
-    height:550px;
     width:500px;
     border-radius: 10px;
-    box-shadow: 5px 5px 15px 5px rgb(197, 191, 191)
+    box-shadow: 5px 5px 15px 5px rgb(197, 191, 191);
+    padding-bottom: 60px;
 }
 .StudentReghead{
    padding-top:50px ;
@@ -14,12 +14,9 @@
    
 }
 .StudentReginput {
- 
     width: 350px;
     margin-top: 50px;
     margin-left: 70px;
-    
-
 }
 .StudentReginput input{
    margin-bottom: 25px;
