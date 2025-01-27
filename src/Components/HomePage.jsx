@@ -18,7 +18,7 @@ const HomePage = () => {
     { userType: "Admin", type: "", image: admin },
   ]);
 
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   const handleRegistration = (type) => {
     setLogOrSignUp(type);
@@ -85,34 +85,41 @@ const HomePage = () => {
                     })
                     .map((user, i) => {
                       return (
-                        
-                          <div className="col-md-6 col-sm-12 col-lg-4 d-flex justify-content-center">
-                            <div className="card userCard m-2" key={i}>
-                              <img
-                                src={user.image}
-                                className="card-img-top rounded-circle"
-                                alt={user.userType}
-                              />
-                              <div className="card-body d-flex justify-content-center">
-                                <button
-                                  type="button"
-                                  className="btn btn-outline-success"
-                                  onClick={user.userType=='Staff'?()=>{navigate('StaffReg')}:user.userType=='Student'?()=>{navigate('StudentReg')}:''}
-                                >
-                                  {user.userType} SignUp
-                                </button>
-                              </div>
+                        <div className="col-md-6 col-sm-12 col-lg-4 d-flex justify-content-center">
+                          <div className="card userCard m-2" key={i}>
+                            <img
+                              src={user.image}
+                              className="card-img-top rounded-circle"
+                              alt={user.userType}
+                            />
+                            <div className="card-body d-flex justify-content-center">
+                              <button
+                                type="button"
+                                className="btn btn-outline-success"
+                                onClick={
+                                  user.userType == "Staff"
+                                    ? () => {
+                                        navigate("StaffReg");
+                                      }
+                                    : user.userType == "Student"
+                                    ? () => {
+                                        navigate("StudentReg");
+                                      }
+                                    : ""
+                                }
+                              >
+                                {user.userType} SignUp
+                              </button>
                             </div>
                           </div>
-                        
+                        </div>
                       );
                     })
-                : (
-                  selectionData.map((user,i)=>{
+                : selectionData.map((user, i) => {
                     return (
-                        
                       <div className="col-md-6 col-sm-12 col-lg-4 d-flex justify-content-center">
                         <div className="card userCard m-2" key={i}>
+
                           <img
                             src={user.image}
                             className="card-img-top rounded-circle"
@@ -122,18 +129,16 @@ const HomePage = () => {
                             <button
                               type="button"
                               className="btn btn-outline-success"
+                              onClick={user.userType== 'Admin'?()=>{navigate('/AdminLogin')}:user.userType == 'Staff'?()=>{navigate('/StaffLogin')}:user.userType == 'Student'?()=>{navigate('/StudentLogin')}:''}
                             >
                               {user.userType} Login
                             </button>
                           </div>
                         </div>
                       </div>
-                    
-                  );
-                  })
-                )}
+                    );
+                  })}
             </div>
-            
           </div>
         </div>
       )}

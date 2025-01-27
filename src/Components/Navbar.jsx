@@ -4,8 +4,6 @@ import logo from "../Assets/icon/logo.png";
 import "../Styles/Navbar.css";
 
 const Navbar = ({handleRegistration}) => {
-
-
   return (
     <>
       <nav className="navbar navbar-expand-md NAVBAR container">
@@ -33,7 +31,7 @@ const Navbar = ({handleRegistration}) => {
               <NavLink className="nav-link" to="/">
                 Home
               </NavLink>
-              <NavLink className="nav-link" to="/Books">
+              <NavLink className="nav-link" to="/ViewBooks">
                 Books
               </NavLink>
 
