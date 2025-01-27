@@ -1,8 +1,8 @@
 .adminborder {
   margin: auto;
-  margin-top: 100px;
-  height: 450px;
-  width: 450px;
+  margin-top: 150px;
+  height: 310px;
+  width: 425px;
   border-radius: 10px;
   box-shadow: 5px 5px 15px 5px rgb(197, 191, 191);
 }
@@ -14,16 +14,14 @@
 }
 .admininput {
   width: 350px;
-  margin-top: 50px;
-  margin-left: 55px;
+  margin-left: 35px;
 }
 .admininput input {
   margin-bottom: 25px;
   border-radius: 10px;
 }
 .adminbutton {
-  margin-top: 45px;
-  width: 100px;
+  justify-content: center;
 }
 .adminbutton button {
   border-radius: 50px;
