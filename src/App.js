@@ -7,17 +7,18 @@ import HomePage from "./Components/HomePage";
 import Navbar from "./Components/Navbar";
 import StaffRegistration from "./Components/Staff/StaffRegistration";
 import AdminLogin from "./Components/Admin/AdminLogin";
+import StaffLogin from "./Components/Staff/StaffLogin";
 
 function App() {
   return (
     <div className="App">
-      {/* //hai */}
       <BrowserRouter>
         <Routes>
           <Route path='*' element={<NoPageFound/>}/>
           <Route path="/Navbar" element={<Navbar/>}/>
           <Route path="/" element={<HomePage/>}/>
           <Route path='StaffReg' element={<StaffRegistration/>}/>
+          <Route path='StaffLog' element={<StaffLogin/>}/>
           <Route path='/AdminLogin' element={<AdminLogin/>}/>
         </Routes>
       </BrowserRouter>

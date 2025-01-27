@@ -1,5 +1,6 @@
 import axios from "axios"
 import React, { useEffect, useState } from "react";
+import {Link} from "react-router-dom"
 import "../../Styles/StaffReg.css";
 import { useNavigate } from "react-router-dom";
 function StaffRegistration() {
@@ -99,7 +100,7 @@ function StaffRegistration() {
               </button>
             </div>
             <div className="stafflink" >
-              Already have an account? <a href="">Sign in</a>
+              Already have an account? <Link to="/StaffLog">Sign in</Link>
             </div>
           </div>
         </span>

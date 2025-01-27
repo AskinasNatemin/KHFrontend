@@ -1,6 +1,9 @@
 import React from "react";
 import "../../Styles/StaffLogin.css";
+import {Link} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 const StaffLogin = () => {
+    const navigate = useNavigate();
   return (
     
       <div>
@@ -8,12 +11,11 @@ const StaffLogin = () => {
           <span className="">
             <div className="staffloginput">
               <div className="staffloghead">
-                <h2>Registeration Form</h2>
+                <h2> LOGIN</h2>
               </div>
 
-              <div className="input-group flex-nowrap ">
+              {/* <div className="input-group flex-nowrap ">
                 <input
-                  onChange={change}
                   type="text"
                   className="form-control"
                   placeholder="Username"
@@ -22,10 +24,10 @@ const StaffLogin = () => {
                   id="Benin"
                   name="Name"
                 />
-              </div>
+              </div> */}
               <div className="mb-3">
                 <input
-                  onChange={change}
+                 
                   type="email"
                   className="form-control"
                   id="exampleFormControlInput1"
@@ -35,7 +37,7 @@ const StaffLogin = () => {
               </div>
               <div className="mb-3">
                 <input
-                  onChange={change}
+                  
                   type="password"
                   className="form-control"
                   id="exampleFormControlInput3"
@@ -44,12 +46,12 @@ const StaffLogin = () => {
                 />
               </div>
               <div className="d-grid gap-2 col-6 mx-auto stafflogbutton">
-                <button className="btn btn-primary" type="Submit">
+                <button className="btn btn-primary" type="Submit"  onClick={()=>navigate('/',{replace:true})}>
                   LOGIN
                 </button>
               </div>
               <div className="staffloglink">
-                Create new account <a href="">Sign up</a>
+                Create new account <Link to="/StaffReg">Sign up</Link>
               </div>
             </div>
           </span>
