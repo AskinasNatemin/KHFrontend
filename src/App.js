@@ -7,6 +7,7 @@ import HomePage from "./Components/HomePage";
 import Navbar from "./Components/Navbar";
 import StaffRegistration from "./Components/Staff/StaffRegistration";
 import AdminLogin from "./Components/Admin/AdminLogin";
+import StudentLogin from "./Components/Student/StudentLogin";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<HomePage/>}/>
           <Route path='StaffReg' element={<StaffRegistration/>}/>
           <Route path='/AdminLogin' element={<AdminLogin/>}/>
+          <Route path="studentlogin" element={<StudentLogin/>}/>
         </Routes>
       </BrowserRouter>
     </div>
