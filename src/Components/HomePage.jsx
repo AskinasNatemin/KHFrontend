@@ -99,11 +99,11 @@ const HomePage = () => {
                                 onClick={
                                   user.userType == "Staff"
                                     ? () => {
-                                        navigate("StaffReg");
+                                        navigate("StaffRegistration");
                                       }
                                     : user.userType == "Student"
                                     ? () => {
-                                        navigate("StudentReg");
+                                        navigate("StudentRegistration");
                                       }
                                     : ""
                                 }
