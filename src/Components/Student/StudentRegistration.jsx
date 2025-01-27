@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../Styles/StudentReg.css";
 import { useState } from "react";
 import axios from "axios";
 
 function StudentRegistration() {
+
+  const navigate=useNavigate()
   const [studentRegister, setStudentRegister] = useState({
     userName: "",
     email: "",
@@ -43,7 +45,6 @@ function StudentRegistration() {
 
   const addUserToServer = async () => {
     if (!validateForm()) return;
-
     try {
       const response = await axios.post(
         "http://localhost:5001/studentRegistration",
@@ -51,6 +52,7 @@ function StudentRegistration() {
       );
       setSuccessMessage("Registration successful!");
       setStudentRegister({ userName: "", email: "", phoneNumber: "", password: "" }); // Clear form
+      navigate('/',{replace:true})
     } catch (err) {
       console.log('err',err.message);
       setError("Registration failed. Please try again.");
