@@ -2,16 +2,15 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import NoPageFound from "./Components/NoPageFound";
-
 import HomePage from "./Components/HomePage";
 import Navbar from "./Components/Navbar";
 import StaffRegistration from "./Components/Staff/StaffRegistration";
 import AdminLogin from "./Components/Admin/AdminLogin";
+import ViewBooks from "./Components/ViewBooks";
 
 function App() {
   return (
     <div className="App">
-      {/* //hai */}
       <BrowserRouter>
         <Routes>
           <Route path='*' element={<NoPageFound/>}/>
@@ -19,6 +18,7 @@ function App() {
           <Route path="/" element={<HomePage/>}/>
           <Route path='StaffReg' element={<StaffRegistration/>}/>
           <Route path='/AdminLogin' element={<AdminLogin/>}/>
+          <Route path="ViewBooks" element={<ViewBooks/>}/>
         </Routes>
       </BrowserRouter>
     </div>
