@@ -43,7 +43,7 @@ const StaffLogin = () => {
               </button>
             </div>
             <div className="staffloglink">
-              Create new account <Link to="/StaffReg">Sign up</Link>
+              Create new account <Link to="/StaffRegistration">Sign up</Link>
             </div>
           </div>
         </span>
