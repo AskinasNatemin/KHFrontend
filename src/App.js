@@ -6,6 +6,8 @@ import HomePage from "./Components/HomePage";
 import Navbar from "./Components/Navbar";
 import StaffRegistration from "./Components/Staff/StaffRegistration";
 import AdminLogin from "./Components/Admin/AdminLogin";
+import StaffLogin from "./Components/Staff/StaffLogin";
+import StudentLogin from "./Components/Student/StudentLogin";
 import ViewBooks from "./Components/ViewBooks";
 
 function App() {
@@ -17,7 +19,9 @@ function App() {
           <Route path="/Navbar" element={<Navbar/>}/>
           <Route path="/" element={<HomePage/>}/>
           <Route path='StaffReg' element={<StaffRegistration/>}/>
-          <Route path='/AdminLogin' element={<AdminLogin/>}/>
+          <Route path='StaffLogin' element={<StaffLogin/>}/>
+          <Route path='AdminLogin' element={<AdminLogin/>}/>
+          <Route path="studentlogin" element={<StudentLogin/>}/>
           <Route path="ViewBooks" element={<ViewBooks/>}/>
         </Routes>
       </BrowserRouter>

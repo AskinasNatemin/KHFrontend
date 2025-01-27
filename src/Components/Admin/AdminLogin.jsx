@@ -10,19 +10,7 @@ export const AdminLogin = () => {
             <h2>Admin Login</h2>
           </div>
 
-          <div className="input-group flex-nowrap ">
-            <input
-                
-              type="text"
-              className="form-control"
-              placeholder="Admin name"
-              aria-label="Username"
-              aria-describedby="addon-wrapping"
-              id=""
-              name=""
-              required
-            />
-          </div>
+        
           <div className="mb-3">
             <input
               
@@ -31,18 +19,6 @@ export const AdminLogin = () => {
               id="exampleFormControlInput1"
               placeholder="Email"
               name="Email"
-              
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <input
-              
-              type="number"
-              className="form-control"
-              id="exampleFormControlInput2"
-              placeholder="Contact"
-              name="Contact"
               
               required
             />
