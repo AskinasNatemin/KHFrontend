@@ -1,0 +1,34 @@
+.adminborder {
+  margin: auto;
+  margin-top: 100px;
+  height: 450px;
+  width: 450px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px 5px rgb(197, 191, 191);
+}
+.adminhead {
+  padding-top:30px;
+  text-align: center;
+  margin-bottom: 40px;
+  color: rgb(0, 81, 255);
+}
+.admininput {
+  width: 350px;
+  margin-top: 50px;
+  margin-left: 55px;
+}
+.admininput input {
+  margin-bottom: 25px;
+  border-radius: 10px;
+}
+.adminbutton {
+  margin-top: 45px;
+  width: 100px;
+}
+.adminbutton button {
+  border-radius: 50px;
+}
+.form-control:focus {
+  border-color: rgb(138, 138, 138);
+  box-shadow: 1px 1px 10px 1px rgb(192, 190, 190);
+}
