@@ -1,45 +1,45 @@
-/* src/App.css */
-.App {
-    font-family: Arial, sans-serif;
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.container-fluid{
+    height: 490px;
+    width: 450px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px 5px rgb(197, 191, 191);
+    margin-top:75px;
+}
+.addbookshead{
     text-align: center;
-  }
-  
-  .add-book-container {
-    width: 50%;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-  }
-  
-  form {
+   padding-top: 20px;
+   color: rgb(0, 81, 255);
+}
+.addbookinputs {
     display: flex;
     flex-direction: column;
+    gap: 30px; 
+    align-items: center; 
+    margin-top: 35px;
   }
-  
-  form label {
-    text-align: left;
-    margin: 5px 0;
+  .addbookinputs input {
+    width: 300px; 
+    height: 40px;
   }
-  
-  form input, form textarea {
-    padding: 8px;
-    margin: 5px 0 15px 0;
-    border-radius: 5px;
-    border: 1px solid #ddd;
+  .addbookfile{
+    display: flex;
+    margin-left:15%;
+    margin-top:30px; 
   }
-  
-  button {
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  .addbookfile input{
+    width:300px;
   }
-  
-  button:hover {
-    background-color: #0056b3;
+  .addbookbut{
+    margin-left:15%;
+    margin-top:30px;
+    gap: 20px;
   }
-  
+  .form-control:focus {
+    border-color: rgb(138, 138, 138);
+    box-shadow: 1px 1px 10px 1px rgb(192, 190, 190);
+  }
