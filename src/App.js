@@ -10,6 +10,7 @@ import StaffLogin from "./Components/Staff/StaffLogin";
 import StudentLogin from "./Components/Student/StudentLogin";
 import ViewBooks from "./Components/ViewBooks";
 import { AdminAddingBooks } from "./Components/Admin/AdminAddingBooks";
+import StudentRegistration from "./Components/Student/StudentRegistration";
 
 function App() {
   return (
@@ -19,9 +20,10 @@ function App() {
           <Route path='*' element={<NoPageFound/>}/>
           <Route path="/Navbar" element={<Navbar/>}/>
           <Route path="/" element={<HomePage/>}/>
-          <Route path='StaffReg' element={<StaffRegistration/>}/>
-          <Route path='StaffLogin' element={<StaffLogin/>}/>
+          <Route path='StaffRegistration' element={<StaffRegistration/>}/>
           <Route path='AdminLogin' element={<AdminLogin/>}/>
+          <Route path='StudentRegistration' element={<StudentRegistration/>}/>
+          <Route path='StaffLogin' element={<StaffLogin/>}/>
           <Route path="studentlogin" element={<StudentLogin/>}/>
           <Route path="ViewBooks" element={<ViewBooks/>}/>
           <Route path="AdminAddingBooks" element={<AdminAddingBooks/>}/>
