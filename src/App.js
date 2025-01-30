@@ -9,6 +9,7 @@ import AdminLogin from "./Components/Admin/AdminLogin";
 import StaffLogin from "./Components/Staff/StaffLogin";
 import StudentLogin from "./Components/Student/StudentLogin";
 import ViewBooks from "./Components/ViewBooks";
+import { AdminAddingBooks } from "./Components/Admin/AdminAddingBooks";
 import StudentRegistration from "./Components/Student/StudentRegistration";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path='StaffLogin' element={<StaffLogin/>}/>
           <Route path="studentlogin" element={<StudentLogin/>}/>
           <Route path="ViewBooks" element={<ViewBooks/>}/>
+          <Route path="AdminAddingBooks" element={<AdminAddingBooks/>}/>
         </Routes>
       </BrowserRouter>
     </div>
