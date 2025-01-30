@@ -2,7 +2,7 @@ import React from "react";
 import "../../Styles/AdminAddingBooks.css";
 export const AdminAddingBooks = () => {
   return (
-    <div className="container-fluid">
+    <div className="AdminAddingBookscontainer">
       <h2 className="addbookshead mt-5">Add Books</h2>
       <div className="addbookinputs">
         <input className="form-control" type="text" placeholder="Book Name" />

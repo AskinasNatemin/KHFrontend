@@ -3,7 +3,7 @@
     margin: 0;
     box-sizing: border-box;
 }
-.container-fluid{
+.AdminAddingBookscontainer{
     height: 490px;
     width: 450px;
     border-radius: 10px;
