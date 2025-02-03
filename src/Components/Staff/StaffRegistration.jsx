@@ -54,8 +54,16 @@ function StaffRegistration() {
       setStaffRegister({ Name: "", Email: "", Password: "", Contact: "" }); // Clear form
       navigate("/", { replace: true });
     } catch (err) {
-      console.log("err", err.message);
-      setError("Registration failed. Please try again.");
+      console.log("err", err.response?.data?.message || err.message);
+      if (
+        err.response &&
+        err.response.data.message === "Email is already registered."
+      ) {
+        setError("This email is already registered.");
+      } else {
+        setError("Registration failed. Please try again.");
+      }
+
     }
   };
   const handleKeyDown = (e) => {
