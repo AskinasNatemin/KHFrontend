@@ -1,13 +1,18 @@
 .staffborder{
     margin:auto;
-    margin-top: 100px;
-    height:550px;
+    padding-bottom: 30px;
     width:500px;
     border-radius: 10px;
     box-shadow: 5px 5px 15px 5px rgb(197, 191, 191)
 }
+
+.staffContaine{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
 .staffhead{
-   padding-top:50px ;
     text-align: center;
     margin-bottom: 40px;
     color: rgb(0, 81, 255); 
@@ -23,7 +28,7 @@
    border-radius: 10px;
 }
 .staffbutton{
-    margin-top: 45px;
+    margin-top: 20px;
     
 }
 .staffbutton button{

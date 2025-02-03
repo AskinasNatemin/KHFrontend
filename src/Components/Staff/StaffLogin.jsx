@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../Styles/StaffLogin.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 const StaffLogin = () => {
   const navigate = useNavigate();
+  const[state,setState]=useState({
+    Email:"",
+    Password:'',
+    });
+  
+    
   return (
     <div>
       <div className="stafflogborder">
