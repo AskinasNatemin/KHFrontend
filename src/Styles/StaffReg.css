@@ -15,16 +15,13 @@
 .staffhead{
     text-align: center;
     margin-bottom: 40px;
-    color: rgb(0, 81, 255);
-   
+    color: rgb(0, 81, 255); 
 }
+
 .staffinput {
- 
     width: 350px;
     margin-top: 50px;
     margin-left: 70px;
-    
-
 }
 .staffinput input{
    margin-bottom: 25px;

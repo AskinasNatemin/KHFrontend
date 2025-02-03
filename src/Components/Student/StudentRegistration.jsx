@@ -2,10 +2,10 @@ import { Link, useNavigate } from "react-router-dom";
 import "../../Styles/StudentReg.css";
 import { useState } from "react";
 import axios from "axios";
+import { IoArrowBackCircleSharp } from "react-icons/io5";
 
 function StudentRegistration() {
-
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const [studentRegister, setStudentRegister] = useState({
     userName: "",
     email: "",
@@ -14,6 +14,7 @@ function StudentRegistration() {
   });
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+
 
   const handleChange = (e) => {
     setStudentRegister((prev) => ({
@@ -26,20 +27,20 @@ function StudentRegistration() {
     const { userName, email, phoneNumber, password } = studentRegister;
     if (!userName || !email || !phoneNumber || !password) {
       setError("All fields are required.");
-      setSuccessMessage('')
+      setSuccessMessage("");
       return false;
     }
     if (!/^\S+@\S+\.\S+$/.test(email)) {
       setError("Please enter a valid email address.");
-      setSuccessMessage('')
+      setSuccessMessage("");
       return false;
     }
     if (password.length < 6) {
       setError("Password must be at least 6 characters.");
-      setSuccessMessage('')
+      setSuccessMessage("");
       return false;
     }
-    setError(""); // Clear errors if validation passes
+    setError(""); 
     return true;
   };
 
@@ -51,11 +52,23 @@ function StudentRegistration() {
         studentRegister
       );
       setSuccessMessage("Registration successful!");
-      setStudentRegister({ userName: "", email: "", phoneNumber: "", password: "" }); // Clear form
-      navigate('/',{replace:true})
+      setStudentRegister({
+        userName: "",
+        email: "",
+        phoneNumber: "",
+        password: "",
+      }); 
+      navigate("/", { replace: true });
     } catch (err) {
-      console.log('err',err.message);
-      setError("Registration failed. Please try again.");
+      console.log("err", err.response?.data?.message || err.message);
+      if (
+        err.response &&
+        err.response.data.message === "Email is already registered."
+      ) {
+        setError("This email is already registered.");
+      } else {
+        setError("Registration failed. Please try again.");
+      }
     }
   };
 
@@ -66,15 +79,21 @@ function StudentRegistration() {
   };
 
   return (
-    <div>
+    <div className="StudentContainer">
       <div className="StudentRegborder">
+        <div className="goBack  p-3" >
+        <IoArrowBackCircleSharp onClick={()=>{navigate('/')}}  className="goBackIcon"/>
+
+        </div>
         <div className="StudentReginput">
           <div className="StudentReghead">
             <h2>Registration Form</h2>
           </div>
 
           {error && <div className="alert alert-danger">{error}</div>}
-          {successMessage && <div className="alert alert-success">{successMessage}</div>}
+          {successMessage && (
+            <div className="alert alert-success">{successMessage}</div>
+          )}
 
           <div className="input-group flex-nowrap">
             <input
