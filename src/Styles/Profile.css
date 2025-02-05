@@ -1,0 +1,45 @@
+/* Profile Popup Container */
+.profilePopupContainer {
+    position: absolute;
+    top: 74px; /* Position below the profile icon */
+    right: -1060px;
+   
+    width: 270px;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+  }
+  
+  /* Triangle pointing downwards */
+  .profilePopupContainer::before {
+    content: "";
+    position: absolute;
+    top: -10px; 
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #fff; 
+  }
+  
+  /* Style for the logout button */
+  .logoutBtn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .logoutBtn:hover {
+    background-color: #0056b3;
+  }
+  

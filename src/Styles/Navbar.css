@@ -13,3 +13,12 @@
 .navbar-collapse .navbar-nav .active{
   color: #008080; /* Teal */
 }
+
+.profileContainer{
+  position: absolute;
+}
+
+.cgProfile{
+  height: 30px;
+  width: 30px;
+}

@@ -19,7 +19,7 @@
     color: rgb(0, 81, 255);
 }
 
-.goBackIcon{
+.staffRegGoBackIcon{
     height: 30px;
     width: 30px;
     cursor: pointer;
@@ -36,7 +36,6 @@
 }
 .StudentRegbutton{
     margin-top: 45px;
-    
 }
 .StudentRegbutton button{
     border-radius: 5px;

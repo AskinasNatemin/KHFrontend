@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import "../Styles/HomePage.css";
 import "../Styles/SelectUserModel.css";
@@ -7,7 +7,8 @@ import { TbXboxX } from "react-icons/tb";
 import student from "../Assets/icon/SelectIcons/student.png";
 import staff from "../Assets/icon/SelectIcons/staff.png";
 import admin from "../Assets/icon/SelectIcons/admin.png";
-import { replace, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import Profile from "./Profile";
 
 const HomePage = () => {
   const [openUserSelectionModel, setOpenUserSelectionModel] = useState(false);
@@ -19,6 +20,10 @@ const HomePage = () => {
   ]);
 
   const navigate = useNavigate();
+  const location = useLocation();
+  useEffect(() => {
+    setOpenUserSelectionModel(location?.state?.truthyState || false);
+  }, [location]);
 
   const handleRegistration = (type) => {
     setLogOrSignUp(type);
@@ -119,7 +124,6 @@ const HomePage = () => {
                     return (
                       <div className="col-md-6 col-sm-12 col-lg-4 d-flex justify-content-center">
                         <div className="card userCard m-2" key={i}>
-
                           <img
                             src={user.image}
                             className="card-img-top rounded-circle"
@@ -129,7 +133,21 @@ const HomePage = () => {
                             <button
                               type="button"
                               className="btn btn-outline-success"
-                              onClick={user.userType== 'Admin'?()=>{navigate('/AdminLogin')}:user.userType == 'Staff'?()=>{navigate('/StaffLogin')}:user.userType == 'Student'?()=>{navigate('/StudentLogin')}:''}
+                              onClick={
+                                user.userType == "Admin"
+                                  ? () => {
+                                      navigate("/AdminLogin");
+                                    }
+                                  : user.userType == "Staff"
+                                  ? () => {
+                                      navigate("/StaffLogin");
+                                    }
+                                  : user.userType == "Student"
+                                  ? () => {
+                                      navigate("/StudentLogin");
+                                    }
+                                  : ""
+                              }
                             >
                               {user.userType} Login
                             </button>
