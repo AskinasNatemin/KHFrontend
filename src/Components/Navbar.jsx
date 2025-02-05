@@ -1,11 +1,22 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../Assets/icon/logo.png";
 import { CgProfile } from "react-icons/cg";
 import "../Styles/Navbar.css";
+import { loggData, Logged } from "./Context/AppContext";
+import Profile from "./Profile";
 
 const Navbar = ({ handleRegistration }) => {
-  const [isLogged, setIsLogged] = useState(false);
+  const { isLogged, setIsLogged } = useContext(Logged);
+  const { loggedData } = useContext(loggData);
+  const [profileShower, setProfileShower] = useState(false);
+
+  useEffect(() => {
+    if (loggedData) {
+      setIsLogged(true);
+    }
+  }, []);
+
   return (
     <>
       <nav className="navbar navbar-expand-md NAVBAR container">
@@ -43,8 +54,13 @@ const Navbar = ({ handleRegistration }) => {
           </div>
 
           <div className="buttons me-4 gap-3 d-flex">
-            { isLogged ? (
-              <CgProfile />
+            {isLogged ? (
+              <CgProfile
+              className="cgProfile"
+                onClick={() => {
+                  setProfileShower(!profileShower);
+                }}
+              />
             ) : (
               <>
                 <button
@@ -66,6 +82,14 @@ const Navbar = ({ handleRegistration }) => {
           </div>
         </div>
       </nav>
+      {profileShower && (
+        <div className="profileContainer">
+          <Profile
+            setIsLogged={setIsLogged}
+            setProfileShower={setProfileShower}
+          />
+        </div>
+      )}
     </>
   );
 };

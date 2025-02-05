@@ -7,15 +7,20 @@ export const AdminAddingBooks = () => {
       <div className="addbookinputs">
         <input className="form-control" type="text" placeholder="Book Name" />
 
-        <input className="form-control" type="text"  placeholder="Author Name"/>
+        <input className="form-control" type="text" placeholder="Author Name" />
 
-        <input className="form-control" type="text" placeholder="Book Category" />
+        <input
+          className="form-control"
+          type="text"
+          placeholder="Book Category"
+        />
       </div>
       <div className="addbookfile">
-    <input className="form-control" type="file" />
+        <input className="form-control" type="file" />
       </div>
       <div className="addbookbut">
-       <button className="resetbut btn btn-secondary">Reset</button> <button className="savebut btn btn-primary">Save</button>
+        <button className="resetbut btn btn-secondary">Reset</button>{" "}
+        <button className="savebut btn btn-primary">Save</button>
       </div>
     </div>
   );
