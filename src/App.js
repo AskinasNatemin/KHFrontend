@@ -11,6 +11,7 @@ import StudentLogin from "./Components/Student/StudentLogin";
 import ViewBooks from "./Components/ViewBooks";
 import { AdminAddingBooks } from "./Components/Admin/AdminAddingBooks";
 import StudentRegistration from "./Components/Student/StudentRegistration";
+import StaffForgotPassword from "./Components/Staff/StaffForgetPassword";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="studentlogin" element={<StudentLogin/>}/>
           <Route path="ViewBooks" element={<ViewBooks/>}/>
           <Route path="AdminAddingBooks" element={<AdminAddingBooks/>}/>
+          <Route path="StaffForgetPassword" element={<StaffForgotPassword/>}/>
         </Routes>
       </BrowserRouter>
     </div>

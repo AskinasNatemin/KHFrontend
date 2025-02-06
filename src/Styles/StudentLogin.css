@@ -32,7 +32,6 @@
 .student-box input{
   height: 40px;
   width: 300px; 
-  /* border-color: rgb(138,138,138); */
   border :0.5px solid rgb(191, 187, 187);
   outline: none;
   border-radius: 10px;
