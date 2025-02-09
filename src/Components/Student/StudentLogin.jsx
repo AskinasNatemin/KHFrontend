@@ -6,6 +6,7 @@ import axios from "axios";
 import { loggData } from "../Context/AppContext";
 
 function StudentLogin() {
+  
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -34,6 +35,8 @@ function StudentLogin() {
     axios
       .post("http://localhost:5001/studentLogin", data)
       .then((res) => {
+        console.log(res.data.data._id);
+       localStorage.setItem("user",res.data.data._id)       
         setErrorMsg("");
         setSuccessMsg(res.data.message);
         setLoggedData(res.data.data);
@@ -44,6 +47,12 @@ function StudentLogin() {
         setErrorMsg(err.response?.data?.message);
       });
   };
+
+  const handleOnKeyDown=(e)=>{
+    if(e.key==='Enter'){
+      handleLogin()
+    }
+  }
 
   const handleGoBack=()=>{
     navigate('/', { replace: true, state: { truthyState } });      
@@ -76,6 +85,7 @@ function StudentLogin() {
               placeholder="E-Mail"
               onChange={handleInputs}
               value={data.email}
+              onKeyDown={handleOnKeyDown}
             />
           </div>
           <div className="student-box">
@@ -85,6 +95,8 @@ function StudentLogin() {
               name="password"
               onChange={handleInputs}
               value={data.password}
+              onKeyDown={handleOnKeyDown}
+
             />
           </div>
           <div className="student-forgot">
