@@ -24,6 +24,7 @@ function StudentLogin() {
   }, []);
 
   const handleInputs = (e) => {
+    setErrorMsg("");
     setData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
