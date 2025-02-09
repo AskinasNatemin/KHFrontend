@@ -17,7 +17,6 @@ const Profile = () => {
     axios
       .post("http://localhost:5001/student", { _id: studentId })
       .then((response) => { 
-        console.log(response.data.data);  
         setStudent(response.data.data)
       })
       .catch((err) => {
@@ -26,12 +25,12 @@ const Profile = () => {
   }, []);
 
   return (
-    <div className="profilePopupContainer p-4">
-      <div className="profilePopupHeader ">
+    <div className="profilePopupContainer p-4 ">
+      <div className="profilePopupHeader">
         <p>{student?.studentName }</p>
         <p>{student?.email}</p>
       </div>
-      <button onClick={handleLogout} type="button" className="logoutBtn">
+      <button onClick={handleLogout}  type="button" className="logoutBtn">
         Log Out
       </button>
     </div>
