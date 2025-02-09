@@ -3,23 +3,27 @@ import { NavLink } from "react-router-dom";
 import logo from "../Assets/icon/logo.png";
 import { CgProfile } from "react-icons/cg";
 import "../Styles/Navbar.css";
-import { loggData, Logged } from "./Context/AppContext";
+import '../Styles/Profile.css'
+import { Logged } from "./Context/AppContext";
 import Profile from "./Profile";
 
 const Navbar = ({ handleRegistration }) => {
   const { isLogged, setIsLogged } = useContext(Logged);
-  const { loggedData } = useContext(loggData);
   const [profileShower, setProfileShower] = useState(false);
+  const user=localStorage.getItem('user')
 
-  useEffect(() => {
-    if (loggedData) {
-      setIsLogged(true);
+  useEffect(()=>{
+    if(user){
+      setIsLogged(true)
+    }else{
+      setIsLogged(false)
+      setProfileShower(false)
     }
-  }, []);
+  },[user])
 
   return (
     <>
-      <nav className="navbar navbar-expand-md NAVBAR container">
+      <nav className="navbar navbar-expand-md NAVBAR container khNavbar">
         <div className="ms-4 khLogo">
           <img className="navbar-brand w-100 h-100" src={logo} alt="logo" />
         </div>
@@ -82,14 +86,10 @@ const Navbar = ({ handleRegistration }) => {
           </div>
         </div>
       </nav>
-      {profileShower && (
-        <div className="profileContainer">
-          <Profile
-            setIsLogged={setIsLogged}
-            setProfileShower={setProfileShower}
-          />
-        </div>
-      )}
+      {
+        profileShower &&
+        <Profile/>
+      }
     </>
   );
 };

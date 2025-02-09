@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { HiOutlineEye } from "react-icons/hi";
 import { HiOutlineEyeOff } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
+
 const StaffLogin = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);

@@ -14,11 +14,18 @@
   color: #008080; /* Teal */
 }
 
-.profileContainer{
-  position: absolute;
-}
-
 .cgProfile{
   height: 30px;
   width: 30px;
+}
+
+.profilePopupContainer{
+  position: absolute;
+  right: 60px;
+  top: 80px;
+}
+
+
+.khNavbar{
+  position: relative;
 }

@@ -7,6 +7,7 @@ import { loggData } from "../Context/AppContext";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 
 function StudentLogin() {
+  
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -35,6 +36,8 @@ function StudentLogin() {
     axios
       .post("http://localhost:5001/studentLogin", data)
       .then((res) => {
+        console.log(res.data.data._id);
+       localStorage.setItem("user",res.data.data._id)       
         setErrorMsg("");
         setSuccessMsg(res.data.message);
         setLoggedData(res.data.data);
@@ -46,9 +49,16 @@ function StudentLogin() {
       });
   };
 
-  const handleGoBack = () => {
-    navigate("/", { replace: true, state: { truthyState } });
-  };
+
+  const handleOnKeyDown=(e)=>{
+    if(e.key==='Enter'){
+      handleLogin()
+    }
+  }
+
+  const handleGoBack=()=>{
+    navigate('/', { replace: true, state: { truthyState } });      
+  }
 
   return (
     <div className="student-login">
@@ -80,6 +90,7 @@ function StudentLogin() {
               placeholder="E-Mail"
               onChange={handleInputs}
               value={data.email}
+              onKeyDown={handleOnKeyDown}
             />
           </div>
           <div className="student-box position-relative">
@@ -90,6 +101,7 @@ function StudentLogin() {
               onChange={handleInputs}
               value={data.password}
               className="pe-5" // Add padding to make space for the icon
+              onKeyDown={handleOnKeyDown}
             />
             {data.password && (
               <span
