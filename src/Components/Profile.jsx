@@ -1,21 +1,37 @@
-import React, { useContext } from "react";
-import '../Styles/Profile.css'
-import { loggData } from "./Context/AppContext";
+import React, { useEffect, useState } from "react";
+import "../Styles/Profile.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const Profile = ({setIsLogged,setProfileShower}) => {
-    const{loggedData,setLoggedData}=useContext(loggData)
-   
-    
+const Profile = () => {
+  const [student, setStudent] = useState();
+  const [studentId, setStudentId] = useState(localStorage.getItem("user"));
+  const navigate=useNavigate()
+  
+  const handleLogout=()=>{
+    localStorage.removeItem("user")
+    navigate('/')
+  }
+
+  useEffect(() => {
+    axios
+      .post("http://localhost:5001/student", { _id: studentId })
+      .then((response) => { 
+        console.log(response.data.data);  
+        setStudent(response.data.data)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
-    <div className="profilePopupContainer">
-      <div className="profilePopupHeader">
-        <p>{loggedData.studentName}</p>
-        <p>{loggedData.email}</p>
+    <div className="profilePopupContainer p-4">
+      <div className="profilePopupHeader ">
+        <p>{student?.studentName }</p>
+        <p>{student?.email}</p>
       </div>
-      <button type="button" className="logoutBtn" onClick={()=>{setLoggedData('')
-        setIsLogged(false)
-        setProfileShower(false)
-      }}>
+      <button onClick={handleLogout} type="button" className="logoutBtn">
         Log Out
       </button>
     </div>
