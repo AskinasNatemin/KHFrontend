@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import axios from "axios";
 import { loggData } from "../Context/AppContext";
+import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 
 function StudentLogin() {
   
@@ -12,11 +13,12 @@ function StudentLogin() {
     password: "",
   });
 
+  const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const { loggedData, setLoggedData } = useContext(loggData);
-  const[truthyState]=useState(true)
-  const navigate=useNavigate()
+  const [truthyState] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setErrorMsg("");
@@ -30,7 +32,6 @@ function StudentLogin() {
     }));
   };
 
-  
   const handleLogin = () => {
     axios
       .post("http://localhost:5001/studentLogin", data)
@@ -40,13 +41,14 @@ function StudentLogin() {
         setErrorMsg("");
         setSuccessMsg(res.data.message);
         setLoggedData(res.data.data);
-        navigate('/', { replace: true});      
+        navigate("/", { replace: true });
       })
       .catch((err) => {
         console.log(err.response);
         setErrorMsg(err.response?.data?.message);
       });
   };
+
 
   const handleOnKeyDown=(e)=>{
     if(e.key==='Enter'){
@@ -62,7 +64,10 @@ function StudentLogin() {
     <div className="student-login">
       <div className="student-frame">
         <div className="w-100 studentLoginGoBackContainer p-2 d-flex align-items-center">
-          <IoArrowBackCircleOutline  className="studentLoginGoBackIcon float-start" onClick={handleGoBack}/>
+          <IoArrowBackCircleOutline
+            className="studentLoginGoBackIcon float-start"
+            onClick={handleGoBack}
+          />
         </div>
 
         <form>
@@ -88,16 +93,26 @@ function StudentLogin() {
               onKeyDown={handleOnKeyDown}
             />
           </div>
-          <div className="student-box">
+          <div className="student-box position-relative">
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="Password"
               name="password"
               onChange={handleInputs}
               value={data.password}
+              className="pe-5" // Add padding to make space for the icon
               onKeyDown={handleOnKeyDown}
-
             />
+            {data.password && (
+              <span
+                onClick={() => setShowPassword(!showPassword)}
+                className="position-absolute top-50  translate-middle-y pe-3"
+                
+                style={{ cursor: "pointer", color: "#6c757d",right:"50px" }}
+              >
+                {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
+              </span>
+            )}
           </div>
           <div className="student-forgot">
             <Link to={"/StudentForgotPassword"}>forgot password</Link>
