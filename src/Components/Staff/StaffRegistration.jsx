@@ -2,9 +2,12 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../Styles/StaffReg.css";
+import { HiOutlineEye } from "react-icons/hi";
+import { HiOutlineEyeOff } from "react-icons/hi";
 
 function StaffRegistration() {
-
+  const [showPassword, setShowPassword] = useState(false);
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [staffRegister, setStaffRegister] = useState({
     Name: "",
@@ -122,17 +125,25 @@ function StaffRegistration() {
                 onKeyDown={handleKeyDown}
               />
             </div>
-            <div className="mb-3">
+            <div className="mb-3 position-relative">
               <input
-                type="password"
-                className="form-control"
+                type={showPassword ? "text" : "password"}
+                className="form-control pe-5"
                 id="exampleFormControlInput3"
                 placeholder="Password"
                 name="Password"
-                value={staffRegister.Password}
-                onChange={handleChange}
-                onKeyDown={handleKeyDown}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
+              {password && (
+                <span
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="position-absolute top-50 end-0 translate-middle-y pe-3"
+                  style={{ cursor: "pointer", color: "#6c757d" }}
+                >
+                  {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
+                </span>
+              )}
             </div>
             <div className="d-grid gap-2 col-6 mx-auto staffbutton">
               <button className="btn btn-primary" onClick={addUserToServer}>

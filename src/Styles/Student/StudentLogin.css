@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.student-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: white;
+}
+
+.student-frame {
+  width: 400px;
+  text-align: center;
+  box-shadow: 1px 1px 25px 1px rgb(214, 211, 211);
+  border-radius: 10px;
+  padding-bottom: 25px;
+  padding-top: 2px;
+}
+
+.student-frame h1 {
+  color: rgb(0, 81, 255);
+}
+
+.student-box {
+  margin-top: 15px;
+}
+
+.student-box input {
+  height: 40px;
+  width: 300px;
+  border: 0.5px solid rgb(191, 187, 187);
+  outline: none;
+  border-radius: 10px;
+  padding-left: 10px;
+}
+
+.errorContainer,.successContainer{
+  height: 60px;
+  width: 300px;
+  margin: auto;
+}
+
+.student-box input:focus {
+  box-shadow: 1px 1px 10px 1px rgb(192, 190, 190);
+}
+
+.student-forgot {
+  margin-top: 10px;
+  margin-left: 170px;
+}
+
+.student-forgot a {
+  font-weight: 400;
+}
+
+.student-but {
+  margin-top: 20px;
+}
+
+.student-but button {
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  background-color: rgb(0, 81, 255);
+}
+
+.student-reg {
+  margin-top: 20px;
+}
+
+.student-reg p {
+  font-weight: 500;
+}
+
+.studentLoginGoBackIcon{
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}

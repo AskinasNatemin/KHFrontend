@@ -29,14 +29,14 @@
   }
   .addbookfile{
     display: flex;
-    margin-left:15%;
+    margin-left:17%;
     margin-top:30px; 
   }
   .addbookfile input{
     width:300px;
   }
   .addbookbut{
-    margin-left:15%;
+    margin-left:17%;
     margin-top:30px;
     gap: 20px;
   }

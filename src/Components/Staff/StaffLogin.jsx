@@ -8,12 +8,11 @@ const StaffLogin = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
-  const[state,setState]=useState({
-    Email:"",
-    Password:'',
-    });
-  
-    
+  const [state, setState] = useState({
+    Email: "",
+    Password: "",
+  });
+
   return (
     <div>
       <div className="stafflogborder">
@@ -32,26 +31,26 @@ const StaffLogin = () => {
               />
             </div>
             <div className="mb-3 position-relative">
-      <input
-        type={showPassword ? "text" : "password"}
-        className="form-control pe-5"
-        id="exampleFormControlInput3"
-        placeholder="Password"
-        name="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      {password && (
-        <span
-          onClick={() => setShowPassword(!showPassword)}
-          className="position-absolute top-50 end-0 translate-middle-y pe-3"
-          style={{ cursor: "pointer", color: "#6c757d" }}
-        >
-          {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
-        </span>
-      )}
-    </div>
-            
+              <input
+                type={showPassword ? "text" : "password"}
+                className="form-control pe-5"
+                id="exampleFormControlInput3"
+                placeholder="Password"
+                name="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              {password && (
+                <span
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="position-absolute top-50 end-0 translate-middle-y pe-3"
+                  style={{ cursor: "pointer", color: "#6c757d" }}
+                >
+                  {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
+                </span>
+              )}
+            </div>
+
             <div className="d-flex justify-content-end">
               <Link to={"/StaffForgetPassword"}>forgot password</Link>
             </div>
@@ -70,7 +69,6 @@ const StaffLogin = () => {
           </div>
         </span>
       </div>
-      
     </div>
   );
 };
