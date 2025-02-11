@@ -39,7 +39,15 @@ function StudentLogin() {
         setErrorMsg("");
         setSuccessMsg(res.data.message);
         setLoggedData(res.data.data);
+        return res
+      })
+      .then((res)=>{
+        if(res){
+          setTimeout(()=>{
         navigate("/", { replace: true });
+
+          },500)
+        }
       })
       .catch((err) => {
         console.log(err.response);

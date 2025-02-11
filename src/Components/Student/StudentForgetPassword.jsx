@@ -1,7 +1,7 @@
 import axios from "axios";
 import "../../Styles/Student/StudentForgetPassword.css";
 import React, { useReducer, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const initialState = {
   email: "",
@@ -9,7 +9,8 @@ const initialState = {
   isEmailValid: false,
   showPasswordField: false,
   error: "",
-  readOnlyEmail:false
+  readOnlyEmail:false,
+  success:''
 };
 
 function reducer(state, action) {
@@ -24,6 +25,8 @@ function reducer(state, action) {
       return { ...state, isEmailValid: action.payload };
     case "SET_ERROR": 
       return { ...state, error: action.payload };
+    case "SET_SUCCESS": 
+      return { ...state, success: action.payload };
     case 'SET_READ_ONLY_EMAIL':
       return{...state,readOnlyEmail:action.payload}
     default:
@@ -33,6 +36,7 @@ function reducer(state, action) {
 
 function StudentForgetPassword() {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const navigate=useNavigate()
 
   const handleEmailChange = (e) => {
     dispatch({type:"SET_ERROR",payload:''})
@@ -71,7 +75,15 @@ function StudentForgetPassword() {
     axios
       .post("http://localhost:5001/changePassword", { email ,password })
       .then((res)=>{
-        console.log(res);  
+        dispatch({type:"SET_SUCCESS",payload:res.data.message})
+        return res
+      })
+      .then((res)=>{
+        if(res){
+          setTimeout(()=>{
+            navigate('/StudentLogin')
+          },500)
+        }
       })
       .catch((err)=>{
         console.log(err.response.data);
@@ -88,6 +100,9 @@ function StudentForgetPassword() {
 
         {
           state.error && <span className="alert alert-danger mb-2 d-block">{state.error}</span>
+        }
+        {
+          state.success && <span className="alert alert-success mb-2 d-block">{state.success}</span>
         }
 
         <div className="mb-3">
