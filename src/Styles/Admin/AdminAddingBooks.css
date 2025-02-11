@@ -16,7 +16,7 @@
    padding-top: 20px;
    color: rgb(0, 81, 255);
 }
-.addbookinputs {
+.addbookinputs{
     display: flex;
     flex-direction: column;
     gap: 30px; 
