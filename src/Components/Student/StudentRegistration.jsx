@@ -59,7 +59,9 @@ function StudentRegistration() {
         phoneNumber: "",
         password: "",
       }); 
-      navigate("/", { replace: true });
+      setTimeout(()=>{
+        navigate("/", { replace: true });
+      },500)
     } catch (err) {
       console.log("err", err.response?.data?.message || err.message);
       if (
