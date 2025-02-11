@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import "../../Styles/StaffForgetPassword.css";
+import "../../Styles/Staff/StaffForgetPassword.css";
 
 function StaffForgetPassword() {
   const [Email, setEmail] = useState("");

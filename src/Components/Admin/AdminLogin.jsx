@@ -1,24 +1,50 @@
 import React, { useState } from "react";
-import "../../Styles/AdminLogin.css";
-export const AdminLogin = () => {
+import "../../Styles/Admin/AdminLogin.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+const AdminLogin = () => {
   const [state, setState] = useState({
-    Email: "",
-    Password: "",
+    email: "", // Change to lowercase
+    password: "", // Change to lowercase
   });
+
+  const navigate = useNavigate();
 
   const change = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
-    // console.log(state);
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent default form submission
-    console.log("Form Data:", state);
   };
 
-   
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      // Send login request to backend
+      const response = await axios.post("http://localhost:5001/AdminLogin", {
+        email: state.email,
+        password: state.password,
+      });
+      // On successful login, handle the response (you can store token, admin info, etc.)
+      alert(response.data.message); // You can show success messages or redirect
+
+      // You could store the admin info in localStorage or context, if needed
+      // localStorage.setItem("adminEmail", response.data.adminEmail);
+
+      navigate('/')
+    } catch (error) {
+      // Handle errors (incorrect login)
+      if (error.response && error.response.data) {
+        alert(error.response.data.message);
+      }
+    
+       else {
+        alert("An error occurred. Please try again.");
+      }
+    }
+  };
+
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleLogin}>
         <div className="adminborder">
           <span className="">
             <div className="admininput">
@@ -33,9 +59,9 @@ export const AdminLogin = () => {
                   className="form-control"
                   id="exampleFormControlInput1"
                   placeholder="Email"
-                  name="Email"
+                  name="email" // Change to lowercase
                   required
-                  value={state.Email}
+                  value={state.email} // Change to lowercase
                 />
               </div>
               <div className="mb-3">
@@ -45,8 +71,9 @@ export const AdminLogin = () => {
                   className="form-control"
                   id="exampleFormControlInput3"
                   placeholder="Password"
-                  name="Password"
-                  value={state.Password}
+                  name="password" // Change to lowercase
+                  required
+                  value={state.password} // Change to lowercase
                 />
               </div>
               <div className="d-grid gap-2 col-6 mx-auto adminbutton">
@@ -61,4 +88,5 @@ export const AdminLogin = () => {
     </div>
   );
 };
+
 export default AdminLogin;
