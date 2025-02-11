@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
-import "../../Styles/StudentReg.css";
-import { useState } from "react";
+import "../../Styles/Student/StudentReg.css";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { IoArrowBackCircleSharp } from "react-icons/io5";
 
@@ -78,11 +78,16 @@ function StudentRegistration() {
     }
   };
 
+  useEffect(()=>{
+    setError('')
+    setSuccessMessage('')
+  },[])
+
   return (
     <div className="StudentContainer">
       <div className="StudentRegborder">
-        <div className="goBack  p-3" >
-        <IoArrowBackCircleSharp onClick={()=>{navigate('/')}}  className="goBackIcon"/>
+        <div className="studentRegGoBackContainer p-3" >
+        <IoArrowBackCircleSharp onClick={()=>{navigate('/')}}  className="staffRegGoBackIcon"/>
 
         </div>
         <div className="StudentReginput">
