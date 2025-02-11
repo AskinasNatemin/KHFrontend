@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../Styles/StaffLogin.css";
+import "../../Styles/Staff/StaffLogin.css";
 import { Link } from "react-router-dom";
 import { HiOutlineEye } from "react-icons/hi";
 import { HiOutlineEyeOff } from "react-icons/hi";
