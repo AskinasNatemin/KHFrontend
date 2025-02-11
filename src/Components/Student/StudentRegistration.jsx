@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../../Styles/Student/StudentReg.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { IoArrowBackCircleSharp } from "react-icons/io5";
+import { IoArrowBackCircleOutline } from "react-icons/io5";
 
 function StudentRegistration() {
   const navigate = useNavigate();
@@ -14,7 +14,6 @@ function StudentRegistration() {
   });
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-
 
   const handleChange = (e) => {
     setStudentRegister((prev) => ({
@@ -51,6 +50,8 @@ function StudentRegistration() {
         "http://localhost:5001/studentRegistration",
         studentRegister
       );
+      localStorage.setItem("user",response.data.data._id);
+      
       setSuccessMessage("Registration successful!");
       setStudentRegister({
         userName: "",
@@ -72,6 +73,10 @@ function StudentRegistration() {
     }
   };
 
+  const handleGoBack = () => {
+    navigate("/");
+  };
+
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       addUserToServer();
@@ -87,7 +92,7 @@ function StudentRegistration() {
     <div className="StudentContainer">
       <div className="StudentRegborder">
         <div className="studentRegGoBackContainer p-3" >
-        <IoArrowBackCircleSharp onClick={()=>{navigate('/')}}  className="staffRegGoBackIcon"/>
+        <IoArrowBackCircleOutline onClick={handleGoBack} className="staffRegGoBackIcon"/>
 
         </div>
         <div className="StudentReginput">
