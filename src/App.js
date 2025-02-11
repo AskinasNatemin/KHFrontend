@@ -11,7 +11,8 @@ import StudentLogin from "./Components/Student/StudentLogin";
 import ViewBooks from "./Components/ViewBooks";
 import { AdminAddingBooks } from "./Components/Admin/AdminAddingBooks";
 import StudentRegistration from "./Components/Student/StudentRegistration";
-import StaffForgetPassword from"./Components/Staff/StaffForgetPassword"
+import StaffForgetPassword from "./Components/Staff/StaffForgetPassword";
+import StudentForgetPassword from "./Components/Student/StudentForgetPassword";
 
 function App() {
   return (
@@ -25,10 +26,11 @@ function App() {
           <Route path='AdminLogin' element={<AdminLogin/>}/>
           <Route path='StudentRegistration' element={<StudentRegistration/>}/>
           <Route path='StaffLogin' element={<StaffLogin/>}/>
-          <Route path="studentlogin" element={<StudentLogin/>}/>
+          <Route path="StudentLogin" element={<StudentLogin/>}/>
           <Route path="ViewBooks" element={<ViewBooks/>}/>
           <Route path="AdminAddingBooks" element={<AdminAddingBooks/>}/>
           <Route path="StaffForgetPassword" element={<StaffForgetPassword/>}/>
+          <Route path="StudentForgetPassword" element={<StudentForgetPassword/>}/>
         </Routes>
       </BrowserRouter>
     </div>

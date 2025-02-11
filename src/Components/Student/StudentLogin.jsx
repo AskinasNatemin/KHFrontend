@@ -7,7 +7,6 @@ import { loggData } from "../Context/AppContext";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 
 function StudentLogin() {
-  
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -17,7 +16,6 @@ function StudentLogin() {
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const { loggedData, setLoggedData } = useContext(loggData);
-  const [truthyState] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -37,8 +35,7 @@ function StudentLogin() {
     axios
       .post("http://localhost:5001/studentLogin", data)
       .then((res) => {
-        console.log(res.data.data._id);
-       localStorage.setItem("user",res.data.data._id)       
+        localStorage.setItem("user", res.data.data._id);
         setErrorMsg("");
         setSuccessMsg(res.data.message);
         setLoggedData(res.data.data);
@@ -50,16 +47,15 @@ function StudentLogin() {
       });
   };
 
-
-  const handleOnKeyDown=(e)=>{
-    if(e.key==='Enter'){
-      handleLogin()
+  const handleOnKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleLogin();
     }
-  }
+  };
 
-  const handleGoBack=()=>{
-    navigate('/', { replace: true, state: { truthyState } });      
-  }
+  const handleGoBack = () => {
+    navigate("/",);
+  };
 
   return (
     <div className="student-login">
@@ -101,22 +97,21 @@ function StudentLogin() {
               name="password"
               onChange={handleInputs}
               value={data.password}
-              className="pe-5" // Add padding to make space for the icon
+              className="pe-5"
               onKeyDown={handleOnKeyDown}
             />
             {data.password && (
               <span
                 onClick={() => setShowPassword(!showPassword)}
                 className="position-absolute top-50  translate-middle-y pe-3"
-                
-                style={{ cursor: "pointer", color: "#6c757d",right:"50px" }}
+                style={{ cursor: "pointer", color: "#6c757d", right: "50px" }}
               >
                 {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
               </span>
             )}
           </div>
           <div className="student-forgot">
-            <Link to={"/StudentForgotPassword"}>forgot password</Link>
+            <Link to={"/StudentForgetPassword"}>forgot password</Link>
           </div>
           <div className="student-but">
             <button type="button" onClick={handleLogin}>

@@ -19,11 +19,7 @@ const HomePage = () => {
     { userType: "Admin", type: "", image: admin },
   ]);
 
-  const navigate = useNavigate();
-  const location = useLocation();
-  useEffect(() => {
-    setOpenUserSelectionModel(location?.state?.truthyState || false);
-  }, [location]);
+  const navigate = useNavigate();  
 
   const handleRegistration = (type) => {
     setLogOrSignUp(type);
