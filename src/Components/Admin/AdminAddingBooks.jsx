@@ -1,5 +1,5 @@
 import React from "react";
-import "../../Styles/AdminAddingBooks.css";
+import "../../Styles/Admin/AdminAddingBooks.css";
 export const AdminAddingBooks = () => {
   return (
     <div className="AdminAddingBookscontainer">

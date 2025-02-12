@@ -1,15 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
-.StudentRegborder{
-
+.staffborder{
+    /* margin:auto; */
+    padding-bottom: 30px;
     width:500px;
-    padding-bottom: 60px;
-    margin-left: 210px;
+    margin-right: 150px;
     margin-top: 50px;
+    margin-left: 210px;
 }
 
-.StudentContainer{
-    background-image:url(../../Assets/images/RegistrationImage/Regbackgroundimg.png);
+.staffContaine{
+    background-image:url(../../Assets/images/RegistrationImage/StaffRegBackgroundImg.png);
     height: 100vh;
     display: flex;
     align-items: center;
@@ -19,57 +20,56 @@
     background-repeat: no-repeat;
 }
 
-.StudentReghead h3{
+.staffhead h3{
     font-weight: 400;
-   padding-top:5px ;
-    text-align: center;
-    margin-bottom: 40px;
-    font-family: "Righteous", serif;
-    color: rgb(159, 71, 71);
+    padding-top:5px ;
+     text-align: center;
+     margin-bottom: 40px;
+     font-family: "Righteous", serif;
+     color: rgb(159, 71, 71);
 }
-
-.StudentRegGoBackIcon{
+.staffRegGoBackIcon{
     height: 30px;
     width: 35px;
     cursor: pointer;
     color: rgb(159, 71, 71);   
 }
 
-.StudentReginput {
+.staffinput {
     width: 350px;
-    
+   
 }
-.StudentReginput input{
+.staffinput input{
    margin-bottom: 25px;
    border-radius: 10px;
+   padding-left: 30PX;
 }
-.StudentRegbutton{
+.staffbutton{
     margin-top: 45px;
     
 }
-.StudentRegbutton button{
+.staffbutton button{
     border-radius: 5px;
-     background-color:  rgb(159, 71, 71);
-     border:rgb(159, 71, 71);
+    background-color:  rgb(159, 71, 71);
+    border:rgb(159, 71, 71);
 }
-.StudentRegbutton button:hover{
+.staffbutton button:hover{
     background-color:rgb(180, 85, 85);
 }
 .form-control:focus{
     border-color: rgb(245, 245, 245);
-    box-shadow: 1px 1px 10px 1px rgb(214, 214, 214)
+    box-shadow:1px 1px 10px 1px rgb(214, 214, 214)
 }
-.StudentReglink{
+.stafflink{
     text-align: center;
     margin-top: 20px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.StudentReglink a{
-   color:#f04242;
-   text-decoration: none;
-}
- 
+.stafflink a{
+    color:#f04242;
+    text-decoration: none;
+ }
 .custom-btn:active {
     background-color: #e38585 !important; /* Green color */
     
-  }
+  } 

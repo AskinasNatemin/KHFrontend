@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import "../../Styles/StaffForgetPassword.css";
+import "../../Styles/Staff/StaffForgetPassword.css";
 
 function StaffForgetPassword() {
   const [Email, setEmail] = useState("");
@@ -9,37 +9,36 @@ function StaffForgetPassword() {
   const [newPassword, setNewPassword] = useState("");
   const [showPasswordField, setShowPasswordField] = useState(false);
 
-  const handleEmailSubmit = async () => {
-    try {
-      const response = await axios.post("http://localhost:5001/", {Email });
+  // const handleEmailSubmit = async () => {
+  //   try {
+  //     const response = await axios.post("http://localhost:5001/", {Email });
 
-      if (response.data.valid) {
-        setIsEmailValid(true);
-        setShowPasswordField(true);
-      } else {
-        alert("Email not found. Please enter a registered email.");
-      }
-    } catch (error) {
-      alert("Error validating email. Please try again.");
-    }
-  };
+  //     if (response.data.valid) {
+  //       setIsEmailValid(true);
+  //       setShowPasswordField(true);
+  //     } else {
+  //       alert("Email not found. Please enter a registered email.");
+  //     }
+  //   } catch (error) {
+  //     alert("Error validating email. Please try again.");
+  //   }
+  // };
 
-  const handlePasswordSubmit = async () => {
-    try {
-      if (!newPassword) {
-        alert("Please enter a new password.");
-        return;
-      }
-
-      await axios.post("http://localhost:5001/resetPassword", { email: Email, newPassword });
-      alert("Password changed successfully. You can now log in.");
-    } catch (error) {
-      alert("Error resetting password. Please try again.");
-    }
-  };
+  // const handlePasswordSubmit = async () => {
+  //   try {
+  //     if (!newPassword) {
+  //       alert("Please enter a new password.");
+  //       return;
+  //     }
+  //     await axios.post("http://localhost:5001/resetPassword", { email: Email, newPassword });
+  //     alert("Password changed successfully. You can now log in.");
+  //   } catch (error) {
+  //     alert("Error resetting password. Please try again.");
+  //   }
+  // };
 
   return (
-    <div>
+    <>
       <div className="staffForgetborder">
         <span>
           <div className="staffForgetinput">
@@ -53,13 +52,12 @@ function StaffForgetPassword() {
                 className="form-control"
                 placeholder="Enter Email"
                 value={Email}
-                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
             {!showPasswordField && (
               <div className="d-grid gap-2 col-6 mx-auto staffForgetbutton">
-                <button className="btn btn-primary" onClick={handleEmailSubmit}>
+                <button className="btn btn-primary">
                   Enter
                 </button>
               </div>
@@ -73,12 +71,11 @@ function StaffForgetPassword() {
                     className="form-control"
                     placeholder="New Password"
                     value={newPassword}
-                    onChange={(e) => setNewPassword(e.target.value)}
                   />
                 </div>
 
                 <div className="d-grid gap-2 col-6 mx-auto staffForgetbutton">
-                  <button className="btn btn-primary" onClick={handlePasswordSubmit}>
+                  <button className="btn btn-primary">
                     Confirm
                   </button>
                 </div>
@@ -91,7 +88,7 @@ function StaffForgetPassword() {
           </div>
         </span>
       </div>
-    </div>
+    </>
   );
 }
 

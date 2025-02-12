@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "../../Styles/StaffReg.css";
+import "../../Styles/Staff/StaffReg.css";
 import { HiOutlineEye } from "react-icons/hi";
 import { HiOutlineEyeOff } from "react-icons/hi";
+import { BiSolidHome } from "react-icons/bi";
+import { FaUser } from "react-icons/fa";
 
 function StaffRegistration() {
   const [showPassword, setShowPassword] = useState(false);
@@ -66,8 +68,10 @@ function StaffRegistration() {
       } else {
         setError("Registration failed. Please try again.");
       }
-
     }
+  };
+  const handleGoBack = () => {
+    navigate("/");
   };
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -76,24 +80,30 @@ function StaffRegistration() {
   };
   return (
     <div className="staffContaine">
+      <div className="staffRegGoBackContainer p-3  w-100">
+        <BiSolidHome
+          onClick={handleGoBack}
+          className="staffRegGoBackIcon float-end"
+        />
+      </div>
       <div className="staffborder">
         <span className="">
           <div className="staffinput">
             <div className="staffhead">
-              <h2>Registeration Form</h2>
+              <h3>STAFF SIGNUP</h3>
             </div>
             {error && <div className="alert alert-danger">{error}</div>}
             {successMessage && (
               <div className="alert alert-success">{successMessage}</div>
             )}
 
-            <div className="input-group flex-nowrap ">
+            <div className="position-relative mb-3">
+              <FaUser className="position-absolute top-50 start-0 translate-middle-y ms-2 text-secondary " />
               <input
                 type="text"
-                className="form-control"
+                className="form-control " 
                 placeholder="Username"
                 aria-label="Username"
-                aria-describedby="addon-wrapping"
                 id="staffRegName"
                 name="Name"
                 value={staffRegister.Name}
@@ -101,6 +111,7 @@ function StaffRegistration() {
                 onKeyDown={handleKeyDown}
               />
             </div>
+
             <div className="mb-3">
               <input
                 type="email"
@@ -146,7 +157,10 @@ function StaffRegistration() {
               )}
             </div>
             <div className="d-grid gap-2 col-6 mx-auto staffbutton">
-              <button className="btn btn-primary" onClick={addUserToServer}>
+              <button
+                className="btn btn-primary custom-btn"
+                onClick={addUserToServer}
+              >
                 CREATE ACCOUNT
               </button>
             </div>

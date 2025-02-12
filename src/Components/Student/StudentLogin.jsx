@@ -7,12 +7,15 @@ import { loggData } from "../Context/AppContext";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 
 function StudentLogin() {
-  const [data, setData] = useState({ email: "", password: "" });
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+  });
+
   const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
-  const { setLoggedData } = useContext(loggData);
-  const [truthyState] = useState(true);
+  const { loggedData, setLoggedData } = useContext(loggData);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,7 +24,11 @@ function StudentLogin() {
   }, []);
 
   const handleInputs = (e) => {
-    setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setErrorMsg("");
+    setData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   const handleLogin = () => {
@@ -32,7 +39,14 @@ function StudentLogin() {
         setErrorMsg("");
         setSuccessMsg(res.data.message);
         setLoggedData(res.data.data);
-        navigate("/", { replace: true });
+        return res;
+      })
+      .then((res) => {
+        if (res) {
+          setTimeout(() => {
+            navigate("/", { replace: true });
+          }, 500);
+        }
       })
       .catch((err) => {
         setErrorMsg(err.response?.data?.message);
@@ -46,7 +60,7 @@ function StudentLogin() {
   };
 
   const handleGoBack = () => {
-    navigate("/", { replace: true, state: { truthyState } });
+    navigate("/");
   };
 
   return (
@@ -61,8 +75,14 @@ function StudentLogin() {
         </div>
         <form>
           <h1>LOGIN</h1>
-          {errorMsg && <div className="errorContainer alert alert-danger">{errorMsg}</div>}
-          {successMsg && <div className="successContainer alert alert-success">{successMsg}</div>}
+          {errorMsg && (
+            <div className="errorContainer alert alert-danger">{errorMsg}</div>
+          )}
+          {successMsg && (
+            <div className="successContainer alert alert-success">
+              {successMsg}
+            </div>
+          )}
           <div className="student-box">
             <input
               type="text"
@@ -86,7 +106,7 @@ function StudentLogin() {
             {data.password && (
               <span
                 onClick={() => setShowPassword(!showPassword)}
-                className="position-absolute top-50 translate-middle-y pe-3"
+                className="position-absolute top-50  translate-middle-y pe-3"
                 style={{ cursor: "pointer", color: "#6c757d", right: "50px" }}
               >
                 {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
@@ -94,7 +114,7 @@ function StudentLogin() {
             )}
           </div>
           <div className="student-forgot">
-            <Link to="/StudentForgotPassword">Forgot password?</Link>
+            <Link to={"/StudentForgetPassword"}>forgot password</Link>
           </div>
           <div className="student-but">
             <button type="button" onClick={handleLogin}>
