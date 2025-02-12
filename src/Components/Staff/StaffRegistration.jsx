@@ -5,6 +5,8 @@ import "../../Styles/Staff/StaffReg.css";
 import { HiOutlineEye } from "react-icons/hi";
 import { HiOutlineEyeOff } from "react-icons/hi";
 import StaffCodePage from "./StaffCodePage";
+import { BiSolidHome } from "react-icons/bi";
+import { FaUser } from "react-icons/fa";
 
 function StaffRegistration() {
   const [showPassword, setShowPassword] = useState(false);
@@ -17,8 +19,8 @@ function StaffRegistration() {
   });
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-  const [codeBox,setCodeBox]=useState(true);
-  const [staffAccess,setStaffAccess]=useState(false)
+  const [codeBox, setCodeBox] = useState(true);
+  const [staffAccess, setStaffAccess] = useState(false);
 
   const handleChange = (e) => {
     setError('')
@@ -46,44 +48,54 @@ function StaffRegistration() {
     }
   };
 
-  useEffect(()=>{
-    if(staffAccess){
-      setCodeBox(false)
+  useEffect(() => {
+    if (staffAccess) {
+      setCodeBox(false);
     }
-  },[staffAccess])
-
-
+  }, [staffAccess]);
 
   return (
     <div className="staffContaine">
-      {codeBox && 
-        <StaffCodePage className='StaffCodeContainer' setStaffAccess={setStaffAccess}/>
-      }
-      {staffAccess && <div className="staffborder">
-        <span className="">
-          <div className="staffinput">
-            <div className="staffhead">
-              <h2>Registeration Form</h2>
-            </div>
-            {error && <div className="alert alert-danger">{error}</div>}
-            {successMessage && (
-              <div className="alert alert-success">{successMessage}</div>
-            )}
+      {codeBox && (
+        <StaffCodePage
+          className="StaffCodeContainer"
+          setStaffAccess={setStaffAccess}
+        />
+      )}
+      {staffAccess && (
+        <>
+          <div className="staffRegGoBackContainer p-3  w-100 ">
+            <BiSolidHome
+              onClick={handleGoBack}
+              className="staffRegGoBackIcon float-end"
+            />
+          </div>
 
-            <div className="input-group flex-nowrap ">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Username"
-                aria-label="Username"
-                aria-describedby="addon-wrapping"
-                id="staffRegName"
-                name="Name"
-                value={staffRegister.Name}
-                onChange={handleChange}
-                onKeyDown={handleKeyDown}
-              />
-            </div>
+          <div className="staffborder">
+            <span className="">
+              <div className="staffinput">
+                <div className="staffhead">
+                  <h3>STAFF SIGNUP</h3>
+                </div>
+                {error && <div className="alert alert-danger">{error}</div>}
+                {successMessage && (
+                  <div className="alert alert-success">{successMessage}</div>
+                )}
+
+                <div className="position-relative mb-3">
+                  <FaUser className="position-absolute top-50 start-0 translate-middle-y ms-2 text-secondary " />
+                  <input
+                    type="text"
+                    className="form-control "
+                    placeholder="Username"
+                    aria-label="Username"
+                    id="staffRegName"
+                    name="Name"
+                    value={staffRegister.Name}
+                    onChange={handleChange}
+                    onKeyDown={handleKeyDown}
+                  />
+                </div>
             <div className="mb-3">
               <input
                 type="email"
@@ -136,9 +148,11 @@ function StaffRegistration() {
             <div className="stafflink">
               Already have an account? <Link to="/StaffLogin">Sign in</Link>
             </div>
+              </div>
+            </span>
           </div>
-        </span>
-      </div>}
+        </>
+      )}
     </div>
   );
 }
