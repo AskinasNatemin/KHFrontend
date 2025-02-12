@@ -1,9 +1,10 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../Styles/Staff/StaffReg.css";
 import { HiOutlineEye } from "react-icons/hi";
 import { HiOutlineEyeOff } from "react-icons/hi";
+import StaffCodePage from "./StaffCodePage";
 
 function StaffRegistration() {
   const [showPassword, setShowPassword] = useState(false);
@@ -17,6 +18,8 @@ function StaffRegistration() {
   });
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const [codeBox,setCodeBox]=useState(true);
+  const [staffAccess,setStaffAccess]=useState(false)
 
   const handleChange = (e) => {
     setStaffRegister((prev) => ({
@@ -74,9 +77,22 @@ function StaffRegistration() {
       addUserToServer();
     }
   };
+
+  useEffect(()=>{
+    // staffAccess?setCodeBox(false)
+    if(staffAccess){
+      setCodeBox(false)
+    }
+  },[staffAccess])
+
+
+
   return (
     <div className="staffContaine">
-      <div className="staffborder">
+      {codeBox && 
+        <StaffCodePage className='StaffCodeContainer' setStaffAccess={setStaffAccess}/>
+      }
+      {staffAccess && <div className="staffborder">
         <span className="">
           <div className="staffinput">
             <div className="staffhead">
@@ -155,7 +171,7 @@ function StaffRegistration() {
             </div>
           </div>
         </span>
-      </div>
+      </div>}
     </div>
   );
 }

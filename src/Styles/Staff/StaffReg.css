@@ -9,7 +9,9 @@
 .staffContaine{
     height: 100vh;
     display: flex;
+    justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .staffhead{
@@ -41,5 +43,8 @@
 .stafflink{
     text-align: center;
     margin-top: 20px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.StaffCodeContainer{
+    position: absolute;
 }

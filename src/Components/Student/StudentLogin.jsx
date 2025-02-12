@@ -45,7 +45,6 @@ function StudentLogin() {
         if(res){
           setTimeout(()=>{
         navigate("/", { replace: true });
-
           },500)
         }
       })
