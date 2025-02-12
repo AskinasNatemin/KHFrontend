@@ -2,9 +2,13 @@ import { Link, useNavigate } from "react-router-dom";
 import "../../Styles/Student/StudentReg.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { IoArrowBackCircleOutline } from "react-icons/io5";
-
+import { HiOutlineEye } from "react-icons/hi";
+import { HiOutlineEyeOff } from "react-icons/hi";
+import { BiSolidHome  } from "react-icons/bi";
 function StudentRegistration() {
+    const [showPassword, setShowPassword] = useState(false);
+    const [password, setPassword] = useState("");
+  
   const navigate = useNavigate();
   const [studentRegister, setStudentRegister] = useState({
     userName: "",
@@ -94,14 +98,14 @@ function StudentRegistration() {
 
   return (
     <div className="StudentContainer">
-      <div className="StudentRegborder">
-        <div className="studentRegGoBackContainer p-3" >
-        <IoArrowBackCircleOutline onClick={handleGoBack} className="staffRegGoBackIcon"/>
-
+       <div className="StudentRegGoBackContainer p-3  w-100" >
+        < BiSolidHome    onClick={handleGoBack} className="StudentRegGoBackIcon float-end"/>
         </div>
+      <div className="StudentRegborder">
+       
         <div className="StudentReginput">
           <div className="StudentReghead">
-            <h2>Registration Form</h2>
+            <h3>STUDENT SIGNUP</h3>
           </div>
 
           {error && <div className="alert alert-danger">{error}</div>}
@@ -142,19 +146,27 @@ function StudentRegistration() {
               onKeyDown={handleKeyDown}
             />
           </div>
-          <div className="mb-3">
-            <input
-              type="password"
-              className="form-control"
-              placeholder="Password"
-              name="password"
-              value={studentRegister.password}
-              onChange={handleChange}
-              onKeyDown={handleKeyDown}
-            />
-          </div>
+            <div className="mb-3 position-relative">
+                        <input
+                          type={showPassword ? "text" : "password"}
+                          className="form-control pe-5"
+                          id="exampleFormControlInput3"
+                          placeholder="Password"
+                          name="Password"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                        />
+                        {password && (
+                          <span
+                            onClick={() => setShowPassword(!showPassword)}
+                            className="position-absolute top-50 end-0 translate-middle-y pe-3"
+                            style={{ cursor: "pointer", color: "#6c757d" }}
+                          >
+                            {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
+                          </span>
+                        )}</div>
           <div className="d-grid gap-2 col-6 mx-auto StudentRegbutton">
-            <button className="btn btn-primary" onClick={addUserToServer}>
+            <button className="btn btn-primary custom-btn " onClick={addUserToServer}>
               CREATE ACCOUNT
             </button>
           </div>
