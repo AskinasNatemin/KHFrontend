@@ -1,31 +1,30 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
 .student-login {
   display: flex;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
   background-color: white;
 }
 
+.login-image {
+  flex: 1;
+  background-image: url('../../Assets/images/LoginImage/studentLoginImg.png');
+  background-size: cover;
+  background-position: center;
+}
+
 .student-frame {
-  width: 400px;
-  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
   box-shadow: 1px 1px 25px 1px rgb(214, 211, 211);
   border-radius: 10px;
-  padding-bottom: 25px;
-  padding-top: 2px;
+  background-color: white;
 }
 
 .student-frame h1 {
   color: rgb(0, 81, 255);
-}
-
-.student-box {
-  margin-top: 15px;
 }
 
 .student-box input {
@@ -37,27 +36,12 @@
   padding-left: 10px;
 }
 
-.errorContainer,.successContainer{
-  height: 60px;
-  width: 300px;
-  margin: auto;
-}
-
 .student-box input:focus {
   box-shadow: 1px 1px 10px 1px rgb(192, 190, 190);
 }
 
-.student-forgot {
+.student-forgot, .student-reg {
   margin-top: 10px;
-  margin-left: 170px;
-}
-
-.student-forgot a {
-  font-weight: 400;
-}
-
-.student-but {
-  margin-top: 20px;
 }
 
 .student-but button {
@@ -67,17 +51,11 @@
   color: white;
   border: none;
   background-color: rgb(0, 81, 255);
-}
-
-.student-reg {
   margin-top: 20px;
+  cursor: pointer;
 }
 
-.student-reg p {
-  font-weight: 500;
-}
-
-.studentLoginGoBackIcon{
+.studentLoginGoBackIcon {
   height: 30px;
   width: 30px;
   cursor: pointer;

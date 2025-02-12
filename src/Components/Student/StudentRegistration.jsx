@@ -3,8 +3,12 @@ import "../../Styles/Student/StudentReg.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { IoArrowBackCircleSharp } from "react-icons/io5";
-
+import { HiOutlineEye } from "react-icons/hi";
+import { HiOutlineEyeOff } from "react-icons/hi";
 function StudentRegistration() {
+    const [showPassword, setShowPassword] = useState(false);
+    const [password, setPassword] = useState("");
+  
   const navigate = useNavigate();
   const [studentRegister, setStudentRegister] = useState({
     userName: "",
@@ -133,17 +137,25 @@ function StudentRegistration() {
               onKeyDown={handleKeyDown}
             />
           </div>
-          <div className="mb-3">
-            <input
-              type="password"
-              className="form-control"
-              placeholder="Password"
-              name="password"
-              value={studentRegister.password}
-              onChange={handleChange}
-              onKeyDown={handleKeyDown}
-            />
-          </div>
+            <div className="mb-3 position-relative">
+                        <input
+                          type={showPassword ? "text" : "password"}
+                          className="form-control pe-5"
+                          id="exampleFormControlInput3"
+                          placeholder="Password"
+                          name="Password"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                        />
+                        {password && (
+                          <span
+                            onClick={() => setShowPassword(!showPassword)}
+                            className="position-absolute top-50 end-0 translate-middle-y pe-3"
+                            style={{ cursor: "pointer", color: "#6c757d" }}
+                          >
+                            {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
+                          </span>
+                        )}</div>
           <div className="d-grid gap-2 col-6 mx-auto StudentRegbutton">
             <button className="btn btn-primary" onClick={addUserToServer}>
               CREATE ACCOUNT
