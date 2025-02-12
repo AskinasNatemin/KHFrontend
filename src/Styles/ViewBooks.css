@@ -1,0 +1,93 @@
+.tabs-container {
+    font-family: Arial, sans-serif;
+    margin-top: 20px;
+  }
+  
+  /* Style for the Tabs */
+  .tabs {
+    display: flex;
+    cursor: pointer;
+    background-color: #f1f1f1;
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+    border-bottom: 2px solid #ddd;
+  }
+  
+  .tab {
+    /* flex: 1; */
+    padding: 10px;
+    text-align: center;
+    background-color: #e2e2e2;
+    font-size: 18px;
+    color: #333;
+    transition: background-color 0.3s ease;
+  }
+  
+  .tab:hover {
+    background-color: #d1d1d1;
+  }
+  
+  .tab.active {
+    background-color: #fff;
+    border-bottom: 2px solid #007BFF;
+    color: #007BFF;
+    font-weight: bold;
+  }
+  
+  /* Style for Tab Content */
+  .tab-content {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 0 0 8px 8px;
+  }
+  
+  .books-section h2 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .books-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .book-card {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .book-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  
+  .book-card h3 {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  .book-card p {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 10px;
+  }
+  
+  .book-link {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+  }
+  
+  .book-link:hover {
+    text-decoration: underline;
+  }
+  
