@@ -1,9 +1,10 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../Styles/Staff/StaffReg.css";
 import { HiOutlineEye } from "react-icons/hi";
 import { HiOutlineEyeOff } from "react-icons/hi";
+import StaffCodePage from "./StaffCodePage";
 import { BiSolidHome } from "react-icons/bi";
 import { FaUser } from "react-icons/fa";
 
@@ -19,6 +20,8 @@ function StaffRegistration() {
   });
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const [codeBox, setCodeBox] = useState(true);
+  const [staffAccess, setStaffAccess] = useState(false);
 
   const handleChange = (e) => {
     setStaffRegister((prev) => ({
@@ -78,98 +81,117 @@ function StaffRegistration() {
       addUserToServer();
     }
   };
+
+  useEffect(() => {
+    // staffAccess?setCodeBox(false)
+    if (staffAccess) {
+      setCodeBox(false);
+    }
+  }, [staffAccess]);
+
   return (
     <div className="staffContaine">
-      <div className="staffRegGoBackContainer p-3  w-100">
-        <BiSolidHome
-          onClick={handleGoBack}
-          className="staffRegGoBackIcon float-end"
+      {codeBox && (
+        <StaffCodePage
+          className="StaffCodeContainer"
+          setStaffAccess={setStaffAccess}
         />
-      </div>
-      <div className="staffborder">
-        <span className="">
-          <div className="staffinput">
-            <div className="staffhead">
-              <h3>STAFF SIGNUP</h3>
-            </div>
-            {error && <div className="alert alert-danger">{error}</div>}
-            {successMessage && (
-              <div className="alert alert-success">{successMessage}</div>
-            )}
-
-            <div className="position-relative mb-3">
-              <FaUser className="position-absolute top-50 start-0 translate-middle-y ms-2 text-secondary " />
-              <input
-                type="text"
-                className="form-control " 
-                placeholder="Username"
-                aria-label="Username"
-                id="staffRegName"
-                name="Name"
-                value={staffRegister.Name}
-                onChange={handleChange}
-                onKeyDown={handleKeyDown}
-              />
-            </div>
-
-            <div className="mb-3">
-              <input
-                type="email"
-                className="form-control"
-                id="exampleFormControlInput1"
-                placeholder="Email"
-                name="Email"
-                value={staffRegister.Email}
-                onChange={handleChange}
-                onKeyDown={handleKeyDown}
-              />
-            </div>
-            <div className="mb-3">
-              <input
-                type="number"
-                className="form-control"
-                id="exampleFormControlInput2"
-                placeholder="Contact"
-                name="Contact"
-                value={staffRegister.Contact}
-                onChange={handleChange}
-                onKeyDown={handleKeyDown}
-              />
-            </div>
-            <div className="mb-3 position-relative">
-              <input
-                type={showPassword ? "text" : "password"}
-                className="form-control pe-5"
-                id="exampleFormControlInput3"
-                placeholder="Password"
-                name="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              {password && (
-                <span
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="position-absolute top-50 end-0 translate-middle-y pe-3"
-                  style={{ cursor: "pointer", color: "#6c757d" }}
-                >
-                  {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
-                </span>
-              )}
-            </div>
-            <div className="d-grid gap-2 col-6 mx-auto staffbutton">
-              <button
-                className="btn btn-primary custom-btn"
-                onClick={addUserToServer}
-              >
-                CREATE ACCOUNT
-              </button>
-            </div>
-            <div className="stafflink">
-              Already have an account? <Link to="/StaffLogin">Sign in</Link>
-            </div>
+      )}
+      {staffAccess && (
+        <>
+          <div className="staffRegGoBackContainer p-3  w-100 ">
+            <BiSolidHome
+              onClick={handleGoBack}
+              className="staffRegGoBackIcon float-end"
+            />
           </div>
-        </span>
-      </div>
+
+          <div className="staffborder">
+            <span className="">
+              <div className="staffinput">
+                <div className="staffhead">
+                  <h3>STAFF SIGNUP</h3>
+                </div>
+                {error && <div className="alert alert-danger">{error}</div>}
+                {successMessage && (
+                  <div className="alert alert-success">{successMessage}</div>
+                )}
+
+                <div className="position-relative mb-3">
+                  <FaUser className="position-absolute top-50 start-0 translate-middle-y ms-2 text-secondary " />
+                  <input
+                    type="text"
+                    className="form-control "
+                    placeholder="Username"
+                    aria-label="Username"
+                    id="staffRegName"
+                    name="Name"
+                    value={staffRegister.Name}
+                    onChange={handleChange}
+                    onKeyDown={handleKeyDown}
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <input
+                    type="email"
+                    className="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="Email"
+                    name="Email"
+                    value={staffRegister.Email}
+                    onChange={handleChange}
+                    onKeyDown={handleKeyDown}
+                  />
+                </div>
+                <div className="mb-3">
+                  <input
+                    type="number"
+                    className="form-control"
+                    id="exampleFormControlInput2"
+                    placeholder="Contact"
+                    name="Contact"
+                    value={staffRegister.Contact}
+                    onChange={handleChange}
+                    onKeyDown={handleKeyDown}
+                  />
+                </div>
+                <div className="mb-3 position-relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    className="form-control pe-5"
+                    id="exampleFormControlInput3"
+                    placeholder="Password"
+                    name="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  {password && (
+                    <span
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="position-absolute top-50 end-0 translate-middle-y pe-3"
+                      style={{ cursor: "pointer", color: "#6c757d" }}
+                    >
+                      {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
+                    </span>
+                  )}
+                </div>
+                <div className="d-grid gap-2 col-6 mx-auto staffbutton">
+                  <button
+                    className="btn btn-primary custom-btn"
+                    onClick={addUserToServer}
+                  >
+                    CREATE ACCOUNT
+                  </button>
+                </div>
+                <div className="stafflink">
+                  Already have an account? <Link to="/StaffLogin">Sign in</Link>
+                </div>
+              </div>
+            </span>
+          </div>
+        </>
+      )}
     </div>
   );
 }

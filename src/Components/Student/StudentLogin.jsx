@@ -41,11 +41,11 @@ function StudentLogin() {
         setLoggedData(res.data.data);
         return res;
       })
-      .then((res) => {
-        if (res) {
-          setTimeout(() => {
-            navigate("/", { replace: true });
-          }, 500);
+      .then((res)=>{
+        if(res){
+          setTimeout(()=>{
+        navigate("/", { replace: true });
+          },500)
         }
       })
       .catch((err) => {

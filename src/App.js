@@ -13,6 +13,7 @@ import { AdminAddingBooks } from "./Components/Admin/AdminAddingBooks";
 import StudentRegistration from "./Components/Student/StudentRegistration";
 import StaffForgetPassword from "./Components/Staff/StaffForgetPassword";
 import StudentForgetPassword from "./Components/Student/StudentForgetPassword";
+import StaffCodePage from "./Components/Staff/StaffCodePage";
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
           <Route path="AdminAddingBooks" element={<AdminAddingBooks/>}/>
           <Route path="StaffForgetPassword" element={<StaffForgetPassword/>}/>
           <Route path="StudentForgetPassword" element={<StudentForgetPassword/>}/>
+          <Route path="StaffCodepage" element={<StaffCodePage/>}/>
         </Routes>
       </BrowserRouter>
     </div>

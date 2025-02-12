@@ -20,6 +20,8 @@ function StudentRegistration() {
   const [successMessage, setSuccessMessage] = useState("");
 
   const handleChange = (e) => {
+    setError("");
+
     setStudentRegister((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
