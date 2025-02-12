@@ -8,7 +8,6 @@ import StaffCodePage from "./StaffCodePage";
 
 function StaffRegistration() {
   const [showPassword, setShowPassword] = useState(false);
-  const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [staffRegister, setStaffRegister] = useState({
     Name: "",
@@ -22,56 +21,25 @@ function StaffRegistration() {
   const [staffAccess,setStaffAccess]=useState(false)
 
   const handleChange = (e) => {
+    setError('')
     setStaffRegister((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
   };
 
-  const validateForm = () => {
-    const { Name, Email, Contact, Password } = staffRegister;
-    if (!Name || !Email || !Contact || !Password) {
-      setError("All fields are required.");
-      setSuccessMessage("");
-      return false;
-    }
-    if (!/^\S+@\S+\.\S+$/.test(Email)) {
-      setError("Please enter a valid email address.");
-      setSuccessMessage("");
-      return false;
-    }
-    if (Password.length < 6) {
-      setError("Password must be at least 6 characters.");
-      setSuccessMessage("");
-      return false;
-    }
-    setError(""); // Clear errors if validation passes
-    return true;
-  };
 
   const addUserToServer = async () => {
-    if (!validateForm()) return;
-    try {
-      const response = await axios.post(
-        "http://localhost:5001/staffRegistration",
-        staffRegister
-      );
-      setSuccessMessage("Registration successful!");
-      setStaffRegister({ Name: "", Email: "", Password: "", Contact: "" }); // Clear form
-      navigate("/", { replace: true });
-    } catch (err) {
-      console.log("err", err.response?.data?.message || err.message);
-      if (
-        err.response &&
-        err.response.data.message === "Email is already registered."
-      ) {
-        setError("This email is already registered.");
-      } else {
-        setError("Registration failed. Please try again.");
-      }
-
-    }
+    axios.post('http://localhost:5001/staffRegistration',staffRegister)
+    .then((res)=>{
+      console.log(res);  
+    })
+    .catch((err)=>{
+      console.log(err.response.data);
+      // setError(err.response.data.message)
+    })
   };
+
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       addUserToServer();
@@ -79,7 +47,6 @@ function StaffRegistration() {
   };
 
   useEffect(()=>{
-    // staffAccess?setCodeBox(false)
     if(staffAccess){
       setCodeBox(false)
     }
@@ -148,10 +115,10 @@ function StaffRegistration() {
                 id="exampleFormControlInput3"
                 placeholder="Password"
                 name="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={staffRegister.Password}
+                onChange={handleChange}
               />
-              {password && (
+              {staffRegister.Password && (
                 <span
                   onClick={() => setShowPassword(!showPassword)}
                   className="position-absolute top-50 end-0 translate-middle-y pe-3"

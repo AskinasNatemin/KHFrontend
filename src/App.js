@@ -8,7 +8,7 @@ import StaffRegistration from "./Components/Staff/StaffRegistration";
 import AdminLogin from "./Components/Admin/AdminLogin";
 import StaffLogin from "./Components/Staff/StaffLogin";
 import StudentLogin from "./Components/Student/StudentLogin";
-import ViewBooks from "./Components/ViewBooks";
+import ViewBooks from "./Components/Books/ViewBooks";
 import { AdminAddingBooks } from "./Components/Admin/AdminAddingBooks";
 import StudentRegistration from "./Components/Student/StudentRegistration";
 import StaffForgetPassword from "./Components/Staff/StaffForgetPassword";
