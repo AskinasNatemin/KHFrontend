@@ -4,11 +4,16 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { HiOutlineEye } from "react-icons/hi";
 import { HiOutlineEyeOff } from "react-icons/hi";
-import { BiSolidHome } from "react-icons/bi";
+import { FaHome } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { MdContactPage } from "react-icons/md";
+import { FaLock } from "react-icons/fa";
 
 function StudentRegistration() {
-
-  const [showPassword, setShowPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+    const [password, setPassword] = useState("");
+  
   const navigate = useNavigate();
   const [studentRegister, setStudentRegister] = useState({
     userName: "",
@@ -99,7 +104,7 @@ function StudentRegistration() {
   return (
     <div className="StudentContainer">
       <div className="StudentRegGoBackContainer p-3  w-100">
-        <BiSolidHome
+        <FaHome 
           onClick={handleGoBack}
           className="StudentRegGoBackIcon float-end"
         />
@@ -115,7 +120,8 @@ function StudentRegistration() {
             <div className="alert alert-success">{successMessage}</div>
           )}
 
-          <div className="input-group flex-nowrap">
+          <div className="position-relative mb-3">
+            <FaUser className="position-absolute top-50 start-0 translate-middle-y ms-2  studentregcustom-icon " />
             <input
               type="text"
               className="form-control"
@@ -126,7 +132,9 @@ function StudentRegistration() {
               onKeyDown={handleKeyDown}
             />
           </div>
-          <div className="mb-3">
+          <div className="position-relative mb-3">
+            <MdEmail className="position-absolute top-50 start-0 translate-middle-y ms-2  studentregcustom-icon" />
+
             <input
               type="email"
               className="form-control"
@@ -137,7 +145,9 @@ function StudentRegistration() {
               onKeyDown={handleKeyDown}
             />
           </div>
-          <div className="mb-3">
+          <div className="position-relative mb-3">
+            <MdContactPage className="position-absolute top-50 start-0 translate-middle-y ms-2 studentregcustom-icon" />
+
             <input
               type="number"
               className="form-control"
@@ -149,17 +159,17 @@ function StudentRegistration() {
             />
           </div>
           <div className="mb-3 position-relative">
+            <FaLock className="position-absolute top-50 start-0 translate-middle-y ms-2  studentregcustom-icon " />
             <input
               type={showPassword ? "text" : "password"}
               className="form-control pe-5"
               id="exampleFormControlInput3"
               placeholder="Password"
-              name="password"
-              value={studentRegister.password}
-              onKeyDown={handleKeyDown}
-              onChange={handleChange}
+              name="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
-            {studentRegister.password && (
+            {password && (
               <span
                 onClick={() => setShowPassword(!showPassword)}
                 className="position-absolute top-50 end-0 translate-middle-y pe-3"

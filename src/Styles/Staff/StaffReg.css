@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
 .staffborder{
-    /* margin:auto; */
     padding-bottom: 30px;
     width:500px;
     margin-right: 150px;
@@ -77,3 +76,7 @@
     background-color: #e38585 !important; /* Green color */
     
   } 
+  .custom-icon {
+    color: #4c4a4a; /* Custom Green */
+   
+  }
