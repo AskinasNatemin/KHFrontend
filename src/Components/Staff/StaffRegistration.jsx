@@ -57,6 +57,10 @@ function StaffRegistration() {
     }
   }, [staffAccess]);
 
+  const handleGoBack=()=>{
+    navigate('/')
+  }
+
   return (
     <div className="staffContaine">
       {codeBox && (
