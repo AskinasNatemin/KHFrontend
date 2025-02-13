@@ -39,7 +39,7 @@ function StudentLogin() {
         setErrorMsg("");
         setSuccessMsg(res.data.message);
         setLoggedData(res.data.data);
-        return res
+        return res;
       })
       .then((res)=>{
         if(res){
@@ -49,7 +49,6 @@ function StudentLogin() {
         }
       })
       .catch((err) => {
-        console.log(err.response);
         setErrorMsg(err.response?.data?.message);
       });
   };
@@ -61,11 +60,12 @@ function StudentLogin() {
   };
 
   const handleGoBack = () => {
-    navigate("/",);
+    navigate("/");
   };
 
   return (
     <div className="student-login">
+      <div className="login-image"></div>
       <div className="student-frame">
         <div className="w-100 studentLoginGoBackContainer p-2 d-flex align-items-center">
           <IoArrowBackCircleOutline
@@ -73,20 +73,16 @@ function StudentLogin() {
             onClick={handleGoBack}
           />
         </div>
-
         <form>
           <h1>LOGIN</h1>
-
           {errorMsg && (
             <div className="errorContainer alert alert-danger">{errorMsg}</div>
           )}
-
           {successMsg && (
             <div className="successContainer alert alert-success">
               {successMsg}
             </div>
           )}
-
           <div className="student-box">
             <input
               type="text"
@@ -128,7 +124,7 @@ function StudentLogin() {
           <div className="student-reg">
             <span>
               Don't have an account?
-              <Link to={"/StudentRegistration"} className="ms-1">
+              <Link to="/StudentRegistration" className="ms-1">
                 Sign up
               </Link>
             </span>
