@@ -4,11 +4,16 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { HiOutlineEye } from "react-icons/hi";
 import { HiOutlineEyeOff } from "react-icons/hi";
-import { BiSolidHome  } from "react-icons/bi";
+import { FaHome } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { MdContactPage } from "react-icons/md";
+import { FaLock } from "react-icons/fa";
+
 function StudentRegistration() {
-    const [showPassword, setShowPassword] = useState(false);
-    const [password, setPassword] = useState("");
-  
+  const [showPassword, setShowPassword] = useState(false);
+  const [password, setPassword] = useState("");
+
   const navigate = useNavigate();
   const [studentRegister, setStudentRegister] = useState({
     userName: "",
@@ -45,7 +50,7 @@ function StudentRegistration() {
       setSuccessMessage("");
       return false;
     }
-    setError(""); 
+    setError("");
     return true;
   };
 
@@ -56,18 +61,18 @@ function StudentRegistration() {
         "http://localhost:5001/studentRegistration",
         studentRegister
       );
-      localStorage.setItem("user",response.data.data._id);
-      
+      localStorage.setItem("user", response.data.data._id);
+
       setSuccessMessage("Registration successful!");
       setStudentRegister({
         userName: "",
         email: "",
         phoneNumber: "",
         password: "",
-      }); 
-      setTimeout(()=>{
+      });
+      setTimeout(() => {
         navigate("/", { replace: true });
-      },500)
+      }, 500);
     } catch (err) {
       console.log("err", err.response?.data?.message || err.message);
       if (
@@ -91,18 +96,20 @@ function StudentRegistration() {
     }
   };
 
-  useEffect(()=>{
-    setError('')
-    setSuccessMessage('')
-  },[])
+  useEffect(() => {
+    setError("");
+    setSuccessMessage("");
+  }, []);
 
   return (
     <div className="StudentContainer">
-       <div className="StudentRegGoBackContainer p-3  w-100" >
-        < BiSolidHome    onClick={handleGoBack} className="StudentRegGoBackIcon float-end"/>
-        </div>
+      <div className="StudentRegGoBackContainer p-3  w-100">
+        <FaHome 
+          onClick={handleGoBack}
+          className="StudentRegGoBackIcon float-end"
+        />
+      </div>
       <div className="StudentRegborder">
-       
         <div className="StudentReginput">
           <div className="StudentReghead">
             <h3>STUDENT SIGNUP</h3>
@@ -113,7 +120,8 @@ function StudentRegistration() {
             <div className="alert alert-success">{successMessage}</div>
           )}
 
-          <div className="input-group flex-nowrap">
+          <div className="position-relative mb-3">
+            <FaUser className="position-absolute top-50 start-0 translate-middle-y ms-2  studentregcustom-icon " />
             <input
               type="text"
               className="form-control"
@@ -124,7 +132,9 @@ function StudentRegistration() {
               onKeyDown={handleKeyDown}
             />
           </div>
-          <div className="mb-3">
+          <div className="position-relative mb-3">
+            <MdEmail className="position-absolute top-50 start-0 translate-middle-y ms-2  studentregcustom-icon" />
+
             <input
               type="email"
               className="form-control"
@@ -135,7 +145,9 @@ function StudentRegistration() {
               onKeyDown={handleKeyDown}
             />
           </div>
-          <div className="mb-3">
+          <div className="position-relative mb-3">
+            <MdContactPage className="position-absolute top-50 start-0 translate-middle-y ms-2 studentregcustom-icon" />
+
             <input
               type="number"
               className="form-control"
@@ -146,27 +158,32 @@ function StudentRegistration() {
               onKeyDown={handleKeyDown}
             />
           </div>
-            <div className="mb-3 position-relative">
-                        <input
-                          type={showPassword ? "text" : "password"}
-                          className="form-control pe-5"
-                          id="exampleFormControlInput3"
-                          placeholder="Password"
-                          name="Password"
-                          value={password}
-                          onChange={(e) => setPassword(e.target.value)}
-                        />
-                        {password && (
-                          <span
-                            onClick={() => setShowPassword(!showPassword)}
-                            className="position-absolute top-50 end-0 translate-middle-y pe-3"
-                            style={{ cursor: "pointer", color: "#6c757d" }}
-                          >
-                            {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
-                          </span>
-                        )}</div>
+          <div className="mb-3 position-relative">
+            <FaLock className="position-absolute top-50 start-0 translate-middle-y ms-2  studentregcustom-icon " />
+            <input
+              type={showPassword ? "text" : "password"}
+              className="form-control pe-5"
+              id="exampleFormControlInput3"
+              placeholder="Password"
+              name="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {password && (
+              <span
+                onClick={() => setShowPassword(!showPassword)}
+                className="position-absolute top-50 end-0 translate-middle-y pe-3"
+                style={{ cursor: "pointer", color: "#6c757d" }}
+              >
+                {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
+              </span>
+            )}
+          </div>
           <div className="d-grid gap-2 col-6 mx-auto StudentRegbutton">
-            <button className="btn btn-primary custom-btn " onClick={addUserToServer}>
+            <button
+              className="btn btn-primary custom-btn "
+              onClick={addUserToServer}
+            >
               CREATE ACCOUNT
             </button>
           </div>

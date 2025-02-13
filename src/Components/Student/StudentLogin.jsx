@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import "../../Styles/Student/StudentLogin.css";
 import { Link, useNavigate } from "react-router-dom";
-import { IoArrowBackCircleOutline } from "react-icons/io5";
 import axios from "axios";
 import { loggData } from "../Context/AppContext";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
+import { MdEmail } from "react-icons/md";
+import { FaLock } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
 
 function StudentLogin() {
   const [data, setData] = useState({
@@ -41,11 +43,11 @@ function StudentLogin() {
         setLoggedData(res.data.data);
         return res;
       })
-      .then((res)=>{
-        if(res){
-          setTimeout(()=>{
-        navigate("/", { replace: true });
-          },500)
+      .then((res) => {
+        if (res) {
+          setTimeout(() => {
+            navigate("/", { replace: true });
+          }, 500);
         }
       })
       .catch((err) => {
@@ -64,72 +66,79 @@ function StudentLogin() {
   };
 
   return (
-    <div className="student-login">
-      <div className="login-image"></div>
-      <div className="student-frame">
-        <div className="w-100 studentLoginGoBackContainer p-2 d-flex align-items-center">
-          <IoArrowBackCircleOutline
-            className="studentLoginGoBackIcon float-start"
-            onClick={handleGoBack}
-          />
-        </div>
-        <form>
-          <h1>LOGIN</h1>
+    <div className="studentlogcontainer">
+      <div className="studentlogGoBackContainer p-3  w-100 ">
+        <FaHome
+          onClick={handleGoBack}
+          className="studentlogGoBackIcon float-end"
+        />
+      </div>
+      <div className="studentlogborder">
+        <span className="">
+        <div className="studentloghead">
+              <h3> STUDENT LOGIN</h3>
+            </div>
           {errorMsg && (
-            <div className="errorContainer alert alert-danger">{errorMsg}</div>
+            <div className="errorContainer alert ">{errorMsg}</div>
           )}
           {successMsg && (
             <div className="successContainer alert alert-success">
               {successMsg}
             </div>
           )}
-          <div className="student-box">
-            <input
-              type="text"
-              name="email"
-              placeholder="E-Mail"
-              onChange={handleInputs}
-              value={data.email}
-              onKeyDown={handleOnKeyDown}
-            />
-          </div>
-          <div className="student-box position-relative">
-            <input
-              type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              name="password"
-              onChange={handleInputs}
-              value={data.password}
-              className="pe-5"
-              onKeyDown={handleOnKeyDown}
-            />
-            {data.password && (
-              <span
-                onClick={() => setShowPassword(!showPassword)}
-                className="position-absolute top-50  translate-middle-y pe-3"
-                style={{ cursor: "pointer", color: "#6c757d", right: "50px" }}
+          <div className="studentloginput">
+            <div className="position-relative mb-3">
+              <MdEmail className="position-absolute top-50 start-0 translate-middle-y ms-2  studentlogincustom-icon" />
+              <input
+                type="email"
+                className="form-control"
+                id="exampleFormControlInput1"
+                placeholder="Email"
+                name="email"
+                onChange={handleInputs}
+                value={data.email}
+                onKeyDown={handleOnKeyDown}
+              />
+            </div>
+            <div className="position-relative mb-3">
+              <FaLock className="position-absolute top-50 start-0 translate-middle-y ms-2  studentlogincustom-icon " />
+
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                name="password"
+                onChange={handleInputs}
+                value={data.password}
+                className="form-control pe-5"
+                onKeyDown={handleOnKeyDown}
+              />
+              {data.password && (
+                <span
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="position-absolute top-50  translate-middle-y pe-3"
+                  style={{ cursor: "pointer", color: "#6c757d", left: "325px" }}
+                >
+                  {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
+                </span>
+              )}
+            </div>
+            <div className="d-flex justify-content-end studentloglink">
+              <Link to={"/StudentForgetPassword"}>forgot password</Link>
+            </div>
+            <div className="d-grid gap-2 col-6 mx-auto studentlogbutton">
+              <button
+                className="btn btn-primary studentlogcustom-btn"
+                type="button"
+                onClick={handleLogin}
               >
-                {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
-              </span>
-            )}
+                LOGIN
+              </button>
+            </div>
+            <div className="studentloglink">
+              Create new account <Link to="/StudentRegistration">Sign up</Link>
+            </div>
           </div>
-          <div className="student-forgot">
-            <Link to={"/StudentForgetPassword"}>forgot password</Link>
-          </div>
-          <div className="student-but">
-            <button type="button" onClick={handleLogin}>
-              Login
-            </button>
-          </div>
-          <div className="student-reg">
-            <span>
-              Don't have an account?
-              <Link to="/StudentRegistration" className="ms-1">
-                Sign up
-              </Link>
-            </span>
-          </div>
-        </form>
+        </span>
       </div>
     </div>
   );

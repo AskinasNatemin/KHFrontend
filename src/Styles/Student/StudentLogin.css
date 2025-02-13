@@ -1,84 +1,99 @@
-* {
-  margin: 0;
-  padding: 0;
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+
+.studentlogborder {
+  padding-bottom: 30px;
+  width:500px;
+  margin-right: 250px;
+  margin-top: 100px;
+  margin-left: 190px;
+  /* border: 2px solid black; */
 }
 
-.student-login {
+.studentlogcontainer{
+  background-image:url(../../Assets/images/LoginImage/StudentLogImg.jpg);
+  height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background-color: white;
+  flex-direction: column;
+  background-size: cover;
+  background-position: 0 -145px;
+  background-repeat: no-repeat;
+  position: relative;
 }
 
-.student-frame {
-  width: 400px;
-  text-align: center;
-  box-shadow: 1px 1px 25px 1px rgb(214, 211, 211);
-  border-radius: 10px;
-  padding-bottom: 25px;
-  padding-top: 2px;
-}
-
-.student-frame h1 {
-  color: rgb(0, 81, 255);
-}
-
-.student-box {
-  margin-top: 15px;
-}
-
-.student-box input {
-  height: 40px;
-  width: 300px;
-  border: 0.5px solid rgb(191, 187, 187);
-  outline: none;
-  border-radius: 10px;
-  padding-left: 10px;
-}
-
-.errorContainer,.successContainer{
-  height: 60px;
-  width: 300px;
-  margin: auto;
-}
-
-.student-box input:focus {
-  box-shadow: 1px 1px 10px 1px rgb(192, 190, 190);
-}
-
-.student-forgot {
-  margin-top: 10px;
-  margin-left: 170px;
-}
-
-.student-forgot a {
+.studentloghead h3{
   font-weight: 400;
+  padding-top:5px ;
+   text-align: center;
+   margin-bottom: 15px;
+   font-family: "Righteous", serif;
+   color: rgb(159, 71, 71);
+ 
 }
 
-.student-but {
-  margin-top: 20px;
-}
-
-.student-but button {
-  width: 200px;
-  height: 40px;
-  border-radius: 10px;
-  color: white;
-  border: none;
-  background-color: rgb(0, 81, 255);
-}
-
-.student-reg {
-  margin-top: 20px;
-}
-
-.student-reg p {
-  font-weight: 500;
-}
-
-.studentLoginGoBackIcon{
+.studentlogGoBackIcon{
   height: 30px;
-  width: 30px;
+  width: 35px;
   cursor: pointer;
+  color: rgb(159, 71, 71);   
 }
+.studentloginput {
+  width: 350px;
+ margin: auto;
+  /* border: 2px solid black; */
+
+}
+.studentloginput input{
+  margin-bottom: 25px;
+ border-radius: 10px;
+ padding-left: 30PX;
+}
+.errorContainer,.successContainer{
+  height: 50px;
+  width: 260px;
+  margin: auto;
+  margin-bottom: 15px;
+  background-color:white;
+  color:red;
+  display: flex;
+  align-items: center;
+  font-family:Arial, Helvetica, sans-serif;
+  /* font-weight: bold; */
+}
+
+.studentlogbutton{
+  margin-top: 20px;
+}
+
+.studentlogbutton button{
+  border-radius: 5px;
+  background-color:  rgb(159, 71, 71);
+  border:rgb(159, 71, 71);
+}
+
+.studentlogbutton button:hover{
+  background-color:rgb(180, 85, 85);
+}
+
+.studentlogcustom-btn:active {
+  background-color: #e38585 !important; /* Green color */
+  
+} 
+.form-control:focus{
+  border-color: rgb(138, 138, 138);
+  box-shadow: 1px 1px 10px 1px rgb(192, 190, 190)
+}
+.studentloglink{
+  text-align: center;
+  margin-top: 20px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.studentloglink a{
+  color:#e82727;
+  text-decoration: none;
+}
+
+
+

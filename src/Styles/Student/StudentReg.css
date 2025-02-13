@@ -42,6 +42,8 @@
 .StudentReginput input{
    margin-bottom: 25px;
    border-radius: 10px;
+   padding-left: 30PX;
+
 }
 .StudentRegbutton{
     margin-top: 45px;
@@ -72,4 +74,8 @@
 .custom-btn:active {
     background-color: #e38585 !important; /* Green color */
     
+  }
+  .studentregcustom-icon {
+    color: #4c4a4a; /* Custom Green */
+   
   }

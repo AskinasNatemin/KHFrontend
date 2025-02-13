@@ -5,8 +5,11 @@ import "../../Styles/Staff/StaffReg.css";
 import { HiOutlineEye } from "react-icons/hi";
 import { HiOutlineEyeOff } from "react-icons/hi";
 import StaffCodePage from "./StaffCodePage";
-import { BiSolidHome } from "react-icons/bi";
+import { FaHome } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { MdContactPage } from "react-icons/md";
+import { FaLock } from "react-icons/fa";
 
 function StaffRegistration() {
   const [showPassword, setShowPassword] = useState(false);
@@ -100,7 +103,7 @@ function StaffRegistration() {
       {staffAccess && (
         <>
           <div className="staffRegGoBackContainer p-3  w-100 ">
-            <BiSolidHome
+            <FaHome 
               onClick={handleGoBack}
               className="staffRegGoBackIcon float-end"
             />
@@ -118,7 +121,7 @@ function StaffRegistration() {
                 )}
 
                 <div className="position-relative mb-3">
-                  <FaUser className="position-absolute top-50 start-0 translate-middle-y ms-2 text-secondary " />
+                  <FaUser className="position-absolute top-50 start-0 translate-middle-y ms-2  custom-icon " />
                   <input
                     type="text"
                     className="form-control "
@@ -132,10 +135,11 @@ function StaffRegistration() {
                   />
                 </div>
 
-                <div className="mb-3">
+                <div className="position-relative mb-3">
+                  <MdEmail className="position-absolute top-50 start-0 translate-middle-y ms-2  custom-icon" />
                   <input
                     type="email"
-                    className="form-control"
+                    className="form-control " // Adds padding to prevent text overlap with the icon
                     id="exampleFormControlInput1"
                     placeholder="Email"
                     name="Email"
@@ -144,8 +148,9 @@ function StaffRegistration() {
                     onKeyDown={handleKeyDown}
                   />
                 </div>
-                <div className="mb-3">
-                  <input
+                <div className="position-relative mb-3">
+                <MdContactPage className="position-absolute top-50 start-0 translate-middle-y ms-2 custom-icon" />            
+                      <input
                     type="number"
                     className="form-control"
                     id="exampleFormControlInput2"
@@ -157,6 +162,7 @@ function StaffRegistration() {
                   />
                 </div>
                 <div className="mb-3 position-relative">
+                  <FaLock  className="position-absolute top-50 start-0 translate-middle-y ms-2  custom-icon "/>
                   <input
                     type={showPassword ? "text" : "password"}
                     className="form-control pe-5"
@@ -169,7 +175,7 @@ function StaffRegistration() {
                   {password && (
                     <span
                       onClick={() => setShowPassword(!showPassword)}
-                      className="position-absolute top-50 end-0 translate-middle-y pe-3"
+                      className="position-absolute top-50 end-0 translate-middle-y pe-3 "
                       style={{ cursor: "pointer", color: "#6c757d" }}
                     >
                       {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
