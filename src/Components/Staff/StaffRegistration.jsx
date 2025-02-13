@@ -151,7 +151,7 @@ function StaffRegistration() {
               )}
             </div>
             <div className="d-grid gap-2 col-6 mx-auto staffbutton">
-              <button className="btn btn-primary" onClick={addUserToServer}>
+              <button className="btn btn-primary custom-btn" onClick={addUserToServer}>
                 CREATE ACCOUNT
               </button>
             </div>
