@@ -99,65 +99,61 @@ function StaffRegistration() {
                     onKeyDown={handleKeyDown}
                   />
                 </div>
-                <div className="position-relative mb-3">
+            <div className="position-relative mb-3">
                   <MdEmail className="position-absolute top-50 start-0 translate-middle-y ms-2  custom-icon" />
-                  <input
-                    type="email"
-                    className="form-control " // Adds padding to prevent text overlap with the icon
-                    id="exampleFormControlInput1"
-                    placeholder="Email"
-                    name="Email"
-                    value={staffRegister.Email}
-                    onChange={handleChange}
-                    onKeyDown={handleKeyDown}
-                  />
-                </div>
-                <div className="position-relative mb-3">
+              <input
+                type="email"
+                className="form-control " // Adds padding to prevent text overlap with the icon
+                id="exampleFormControlInput1"
+                placeholder="Email"
+                name="Email"
+                value={staffRegister.Email}
+                onChange={handleChange}
+                onKeyDown={handleKeyDown}
+              />
+            </div>
+            <div className="position-relative mb-3">
                 <MdContactPage className="position-absolute top-50 start-0 translate-middle-y ms-2 custom-icon" />            
-                      <input
-                    type="number"
-                    className="form-control"
-                    id="exampleFormControlInput2"
-                    placeholder="Contact"
-                    name="Contact"
-                    value={staffRegister.Contact}
-                    onChange={handleChange}
-                    onKeyDown={handleKeyDown}
-                  />
-                </div>
-                <div className="mb-3 position-relative">
-                  <FaLock  className="position-absolute top-50 start-0 translate-middle-y ms-2  custom-icon "/>
                   <input
-                    type={showPassword ? "text" : "password"}
-                    className="form-control pe-5"
-                    id="exampleFormControlInput3"
-                    placeholder="Password"
-                    name="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                  {password && (
-                    <span
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="position-absolute top-50 end-0 translate-middle-y pe-3 "
-                      style={{ cursor: "pointer", color: "#6c757d" }}
-                    >
-                      {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
-                    </span>
-                  )}
-                </div>
-                <div className="d-grid gap-2 col-6 mx-auto staffbutton">
-                  <button
-                    className="btn btn-primary custom-btn"
-                    onClick={addUserToServer}
-                  >
-                    CREATE ACCOUNT
-                  </button>
-                </div>
-                <div className="stafflink">
-                  Already have an account? <Link to="/StaffLogin">Sign in</Link>
-                </div>
-
+                type="number"
+                className="form-control"
+                id="exampleFormControlInput2"
+                placeholder="Contact"
+                name="Contact"
+                value={staffRegister.Contact}
+                onChange={handleChange}
+                onKeyDown={handleKeyDown}
+              />
+            </div>
+            <div className="mb-3 position-relative">
+                  <FaLock  className="position-absolute top-50 start-0 translate-middle-y ms-2  custom-icon "/>
+              <input
+                type={showPassword ? "text" : "password"}
+                className="form-control pe-5"
+                id="exampleFormControlInput3"
+                placeholder="Password"
+                name="Password"
+                value={staffRegister.Password}
+                onChange={handleChange}
+              />
+              {staffRegister.Password && (
+                <span
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="position-absolute top-50 end-0 translate-middle-y pe-3 "
+                  style={{ cursor: "pointer", color: "#6c757d" }}
+                >
+                  {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
+                </span>
+              )}
+            </div>
+            <div className="d-grid gap-2 col-6 mx-auto staffbutton">
+              <button className="btn btn-primary" onClick={addUserToServer}>
+                CREATE ACCOUNT
+              </button>
+            </div>
+            <div className="stafflink">
+              Already have an account? <Link to="/StaffLogin">Sign in</Link>
+            </div>
               </div>
             </span>
           </div>
