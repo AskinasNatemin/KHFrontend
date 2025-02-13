@@ -41,7 +41,6 @@ function StaffRegistration() {
     })
     .catch((err)=>{
       console.log(err.response.data);
-      // setError(err.response.data.message)
     })
   };
 

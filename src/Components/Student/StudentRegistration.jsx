@@ -11,9 +11,9 @@ import { MdContactPage } from "react-icons/md";
 import { FaLock } from "react-icons/fa";
 
 function StudentRegistration() {
-  const [showPassword, setShowPassword] = useState(false);
-  const [password, setPassword] = useState("");
-
+    const [showPassword, setShowPassword] = useState(false);
+    const [password, setPassword] = useState("");
+  
   const navigate = useNavigate();
   const [studentRegister, setStudentRegister] = useState({
     userName: "",
