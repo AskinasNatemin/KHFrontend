@@ -10,16 +10,16 @@ import Profile from "./Profile";
 const Navbar = ({ handleRegistration }) => {
   const { isLogged, setIsLogged } = useContext(Logged);
   const [profileShower, setProfileShower] = useState(false);
-  const user = localStorage.getItem('user');
+  const userId = localStorage.getItem('userId');
 
   useEffect(() => {
-    if (user) {
+    if (userId) {
       setIsLogged(true);
     } else {
       setIsLogged(false);
       setProfileShower(false);
     }
-  }, [user]);
+  }, [userId]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {

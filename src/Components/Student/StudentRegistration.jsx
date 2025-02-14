@@ -12,14 +12,13 @@ import { FaLock } from "react-icons/fa";
 
 function StudentRegistration() {
     const [showPassword, setShowPassword] = useState(false);
-    const [password, setPassword] = useState("");
   
   const navigate = useNavigate();
   const [studentRegister, setStudentRegister] = useState({
     userName: "",
     email: "",
     phoneNumber: "",
-    password: "",
+    password: '',
   });
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
@@ -34,6 +33,8 @@ function StudentRegistration() {
   };
 
   const validateForm = () => {
+    console.log(studentRegister);
+    
     const { userName, email, phoneNumber, password } = studentRegister;
     if (!userName || !email || !phoneNumber || !password) {
       setError("All fields are required.");
@@ -50,6 +51,11 @@ function StudentRegistration() {
       setSuccessMessage("");
       return false;
     }
+    if(isNaN(password)){
+      setError("Password must be a number");
+      setSuccessMessage("");
+      return false;
+    }
     setError("");
     return true;
   };
@@ -61,7 +67,7 @@ function StudentRegistration() {
         "http://localhost:5001/studentRegistration",
         studentRegister
       );
-      localStorage.setItem("user", response.data.data._id);
+      localStorage.setItem("userId", response.data.data._id);
 
       setSuccessMessage("Registration successful!");
       setStudentRegister({
@@ -123,6 +129,7 @@ function StudentRegistration() {
           <div className="position-relative mb-3">
             <FaUser className="position-absolute top-50 start-0 translate-middle-y ms-2  studentregcustom-icon " />
             <input
+              autoFocus
               type="text"
               className="form-control"
               placeholder="Username"
@@ -165,11 +172,12 @@ function StudentRegistration() {
               className="form-control pe-5"
               id="exampleFormControlInput3"
               placeholder="Password"
-              name="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              name="password"
+              value={studentRegister.password}
+              onChange={handleChange}
+              onKeyDown={handleKeyDown}
             />
-            {password && (
+            {studentRegister.password && (
               <span
                 onClick={() => setShowPassword(!showPassword)}
                 className="position-absolute top-50 end-0 translate-middle-y pe-3"
