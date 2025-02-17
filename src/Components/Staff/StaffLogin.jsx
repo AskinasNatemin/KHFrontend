@@ -18,18 +18,18 @@ const StaffLogin = () => {
     Password: "",
   });
   const [error,setError]=useState('')
-  const[success,setSuccess]=useState
+  const[success,setSuccess]=useState()
 
-  const staffLogin=()=>{
-    axios.post('http://localhost:5001/staffLogin/${id}')
-    .then(res=>{
-      console.log(res);
+  /* const staffLogin=()=>{
+    // axios.post('http://localhost:5001/staffLogin/${id}')
+    // .then(res=>{
+    //   console.log(res);
       
-    })
-    .catch(err=>{
+    // })
+    // .catch(err=>{
 
-    })
-  }
+    // })
+  } */
 
   const handleGoBack = () => {
     navigate("/");

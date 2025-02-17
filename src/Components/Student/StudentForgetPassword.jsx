@@ -9,9 +9,9 @@ const initialState = {
   newPassword: "",
   isEmailValid: false,
   showPasswordField: false,
-  error: "",
+  error: 'hi',
   readOnlyEmail: false,
-  success: "",
+  success: "bye",
 };
 
 function reducer(state, action) {
@@ -115,9 +115,9 @@ function StudentForgetPassword() {
         </div>
         <div className="studentForgetinput">
           {state.error && (
-            <span className="alert alert-danger mb-2 d-block">
+            <div className="alert alert-danger  mb-2 d-block">
               {state.error}
-            </span>
+            </div>
           )}
           {state.success && (
             <span className="alert alert-success mb-2 d-block">
