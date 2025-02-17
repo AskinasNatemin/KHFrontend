@@ -11,7 +11,7 @@
 }
 
 .studentlogcontainer{
-  background-image:url(../../Assets/images/LoginImage/StudentLogImg.jpg);
+  background-image:url(../../Assets/images/LoginImage/StudentLogImg.png);
   height: 100vh;
   display: flex;
   align-items: center;
@@ -28,7 +28,7 @@
    text-align: center;
    margin-bottom: 15px;
    font-family: "Righteous", serif;
-   color: rgb(159, 71, 71);
+   color: rgb(124, 6, 6);
  
 }
 
@@ -36,7 +36,7 @@
   height: 30px;
   width: 35px;
   cursor: pointer;
-  color: rgb(159, 71, 71);   
+  color:  rgb(124, 6, 6);   
 }
 .studentloginput {
   width: 350px;
@@ -90,16 +90,16 @@
 
 .studentlogbutton button{
   border-radius: 5px;
-  background-color:  rgb(159, 71, 71);
-  border:rgb(159, 71, 71);
+  background-color:  rgb(124, 6, 6);
+  border: rgb(124, 6, 6);
 }
 
 .studentlogbutton button:hover{
-  background-color:rgb(180, 85, 85);
+  background-color: rgb(153, 8, 8);
 }
 
 .studentlogcustom-btn:active {
-  background-color: #e38585 !important;
+  background-color:rgb(151, 50, 50)!important; /* Green color */
   
 } 
 .form-control:focus{
@@ -113,7 +113,7 @@
 }
 
 .studentloglink a{
-  color:#e82727;
+  color:#a00000;
   text-decoration: none;
 }
 
