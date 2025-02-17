@@ -1,18 +1,5 @@
 /* Container that centers the popup */
-.popup-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999; /* Ensures it's on top of everything */
-  }
   
-  /* Popup box design */
   .popup-box {
     background: #fff;
     padding: 20px;
@@ -29,12 +16,7 @@
     margin-bottom: 15px;
     text-align: center;
   }
-  
-  /* Form input group */
-  /* .input-group {
-    margin-bottom: 15px;
-  } */
-  
+    
   .input-group label {
     display: block;
     font-weight: bold;

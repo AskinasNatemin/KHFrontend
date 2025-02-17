@@ -1,7 +1,8 @@
 import axios from "axios";
 import "../../Styles/Student/StudentForgetPassword.css";
-import React, { useReducer, useState } from "react";
+import React, { useReducer } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { TbRefresh } from "react-icons/tb";
 
 const initialState = {
   email: "",
@@ -9,8 +10,8 @@ const initialState = {
   isEmailValid: false,
   showPasswordField: false,
   error: "",
-  readOnlyEmail:false,
-  success:''
+  readOnlyEmail: false,
+  success: "",
 };
 
 function reducer(state, action) {
@@ -23,12 +24,12 @@ function reducer(state, action) {
       return { ...state, showPasswordField: action.payload };
     case "SET_EMAIL_VALID":
       return { ...state, isEmailValid: action.payload };
-    case "SET_ERROR": 
+    case "SET_ERROR":
       return { ...state, error: action.payload };
-    case "SET_SUCCESS": 
+    case "SET_SUCCESS":
       return { ...state, success: action.payload };
-    case 'SET_READ_ONLY_EMAIL':
-      return{...state,readOnlyEmail:action.payload}
+    case "SET_READ_ONLY_EMAIL":
+      return { ...state, readOnlyEmail: action.payload };
     default:
       return state;
   }
@@ -36,15 +37,15 @@ function reducer(state, action) {
 
 function StudentForgetPassword() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
-    dispatch({type:"SET_ERROR",payload:''})
+    dispatch({ type: "SET_ERROR", payload: "" });
     dispatch({ type: "SET_EMAIL", payload: e.target.value });
   };
 
   const handleNewPasswordChange = (e) => {
-    dispatch({type:"SET_ERROR",payload:''})
+    dispatch({ type: "SET_ERROR", payload: "" });
     dispatch({ type: "SET_NEW_PASSWORD", payload: e.target.value });
   };
 
@@ -59,104 +60,127 @@ function StudentForgetPassword() {
         if (data) {
           dispatch({ type: "SET_EMAIL_VALID", payload: true });
           dispatch({ type: "SET_SHOW_PASSWORD_FIELD", payload: true });
-          dispatch({type:"SET_ERROR",payload:''})
-          dispatch({type:"SET_READ_ONLY_EMAIL",payload:true})
-        } 
+          dispatch({ type: "SET_ERROR", payload: "" });
+          dispatch({ type: "SET_READ_ONLY_EMAIL", payload: true });
+        }
       })
       .catch((err) => {
         console.log(err.response.data);
-        dispatch({type:"SET_ERROR",payload:err.response.data.message})
+        dispatch({ type: "SET_ERROR", payload: err.response.data.message });
       });
   };
 
-
   const handleResetPassword = () => {
-    const { email,newPassword:password} = state;
+    const { email, newPassword: password } = state;
     axios
-      .post("http://localhost:5001/changePassword", { email ,password })
-      .then((res)=>{
-        dispatch({type:"SET_SUCCESS",payload:res.data.message})
-        return res
+      .post("http://localhost:5001/changePassword", { email, password })
+      .then((res) => {
+        dispatch({ type: "SET_SUCCESS", payload: res.data.message });
+        return res;
       })
-      .then((res)=>{
-        if(res){
-          setTimeout(()=>{
-            navigate('/StudentLogin')
-          },500)
+      .then((res) => {
+        if (res) {
+          setTimeout(() => {
+            navigate("/StudentLogin");
+          }, 500);
         }
       })
-      .catch((err)=>{
+      .catch((err) => {
         console.log(err.response.data);
-        dispatch({type:"SET_ERROR",payload:err.response.data.message})
-      })
+        dispatch({ type: "SET_ERROR", payload: err.response.data.message });
+      });
   };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      if(e.target.name==='forgetMail'){
+        handleEmailSubmit();
+      }
+      else if(e.target.name === 'setPassword'){
+        handleResetPassword()
+      }
+    }
+  };
+
+  const handleRefresh=()=>{
+    window.location.reload();
+  }
 
   return (
     <div className="studentForgetmain">
-    <div className="studentForgetborder">
-
-        <div className="studentForgethead">
-          <h3>Forget Password</h3>
+      <div className="studentForgetborder">
+        <div className="studentForgethead d-flex align-items-center justify-content-center">
+          <h3 className="">Forget Password</h3>
+          <TbRefresh onClick={handleRefresh} title="refresh" className=""/>
         </div>
-      <div className="studentForgetinput">
+        <div className="studentForgetinput">
+          {state.error && (
+            <span className="alert alert-danger mb-2 d-block">
+              {state.error}
+            </span>
+          )}
+          {state.success && (
+            <span className="alert alert-success mb-2 d-block">
+              {state.success}
+            </span>
+          )}
 
-        {
-          state.error && <span className="alert alert-danger mb-2 d-block">{state.error}</span>
-        }
-        {
-          state.success && <span className="alert alert-success mb-2 d-block">{state.success}</span>
-        }
-
-        <div className="mb-3">
-          <input
-            type="email"
-            className="form-control"
-            placeholder="Enter Email"
-            value={state.email}
-            onChange={handleEmailChange}
-            readOnly={state.readOnlyEmail} 
-          />
-        </div>
-
-        {!state.showPasswordField && (
-          <div className="d-grid gap-2 col-6 mx-auto studentForgetbutton">
-            <button className="btn btn-primary" onClick={handleEmailSubmit}>
-              Enter
-            </button>
+          <div className="mb-3">
+            <input
+              autoFocus
+              type="email"
+              className="form-control"
+              placeholder="Enter Email"
+              name="forgetMail"
+              value={state.email}
+              onChange={handleEmailChange}
+              readOnly={state.readOnlyEmail}
+              onKeyDown={handleKeyDown}
+            />
           </div>
-        )}
 
-        {state.showPasswordField && (
-          <>
-            <div className="mb-3">
-              <input
-                type="password"
-                className="form-control"
-                placeholder="New Password"
-                value={state.newPassword}
-                onChange={handleNewPasswordChange}
-              />
-            </div>
-
+          {!state.showPasswordField && (
             <div className="d-grid gap-2 col-6 mx-auto studentForgetbutton">
-              <button
-                className="btn btn-primary"
-                onClick={handleResetPassword}
-              >
-                Confirm
+              <button className="btn btn-primary"
+               onClick={handleEmailSubmit}
+               >
+                Enter
               </button>
             </div>
-          </>
-        )}
+          )}
 
-        <div className="studentForgetlink">
-          Create a new account <Link to="/StudentRegistration">Sign up</Link>
+          {state.showPasswordField && (
+            <>
+              <div className="mb-3">
+                <input
+                  type="password"
+                  name="setPassword"
+                  className="form-control"
+                  placeholder="New Password"
+                  value={state.newPassword}
+                  onChange={handleNewPasswordChange}
+                  onKeyDown={handleKeyDown}
+                />
+              </div>
+
+              <div className="d-grid gap-2 col-6 mx-auto studentForgetbutton">
+                <button
+                  className="btn btn-primary"
+                  onClick={handleResetPassword}
+                >
+                  Confirm
+                </button>
+              </div>
+            </>
+          )}
+
+          <div className="studentForgetlink">
+            Create a new account <Link to="/StudentRegistration">Sign up</Link>
+          </div>
         </div>
       </div>
     </div>
-    </div>
   );
 }
-
 
 export default StudentForgetPassword;

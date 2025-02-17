@@ -38,7 +38,7 @@ function StudentLogin() {
     axios
       .post("http://localhost:5001/studentLogin", data)
       .then((res) => {
-        localStorage.setItem("user", res.data.data._id);
+        localStorage.setItem("userId", res.data.data._id);
         setErrorMsg("");
         setSuccessMsg(res.data.message);
         setLoggedData(res.data.data);
@@ -66,6 +66,7 @@ function StudentLogin() {
     navigate("/");
   };
 
+
   return (
     <div className="studentlogcontainer">
       <div className="studentlogGoBackContainer p-3  w-100 ">
@@ -76,6 +77,7 @@ function StudentLogin() {
       </div>
       <div className="studentlogborder">
         <span className="">
+
         <div className="studentloghead">
               <h3> STUDENT LOGIN</h3>
             </div>
@@ -95,6 +97,7 @@ function StudentLogin() {
             <div className="position-relative mb-3">
               <MdEmail className="position-absolute top-50 start-0 translate-middle-y ms-2  studentlogincustom-icon" />
               <input
+                autoFocus
                 type="email"
                 className="form-control"
                 id="exampleFormControlInput1"

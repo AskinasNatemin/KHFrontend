@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { MdEmail } from "react-icons/md";
 import { FaLock } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
+import axios from 'axios'
 
 const StaffLogin = () => {
   const navigate = useNavigate();
@@ -16,9 +17,24 @@ const StaffLogin = () => {
     Email: "",
     Password: "",
   });
+  const [error,setError]=useState('')
+  const[success,setSuccess]=useState
+
+  const staffLogin=()=>{
+    axios.post('http://localhost:5001/staffLogin/${id}')
+    .then(res=>{
+      console.log(res);
+      
+    })
+    .catch(err=>{
+
+    })
+  }
+
   const handleGoBack = () => {
     navigate("/");
   };
+
   return (
     <div className="stafflogcontainer">
       <div className="stafflogGoBackContainer p-3  w-100 ">
@@ -36,6 +52,7 @@ const StaffLogin = () => {
             <div className="position-relative mb-3">
               <MdEmail className="position-absolute top-50 start-0 translate-middle-y ms-2  stafflogincustom-icon" />
               <input
+                autoFocus
                 type="email"
                 className="form-control"
                 id="exampleFormControlInput1"
@@ -74,7 +91,7 @@ const StaffLogin = () => {
                 type="Submit"
                 onClick={() => navigate("/", { replace: true })}
               >
-               LOGIN
+                LOGIN
               </button>
             </div>
             <div className="staffloglink">
