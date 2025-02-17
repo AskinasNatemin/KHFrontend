@@ -1,7 +1,8 @@
 import axios from "axios";
 import "../../Styles/Student/StudentForgetPassword.css";
-import React, { useReducer, useState } from "react";
+import React, { useReducer } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { TbRefresh } from "react-icons/tb";
 
 const initialState = {
   email: "",
@@ -90,69 +91,94 @@ function StudentForgetPassword() {
       });
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      if(e.target.name==='forgetMail'){
+        handleEmailSubmit();
+      }
+      else if(e.target.name === 'setPassword'){
+        handleResetPassword()
+      }
+    }
+  };
+
+  const handleRefresh=()=>{
+    window.location.reload();
+  }
+
   return (
     <div className="studentForgetmain">
-    <div className="studentForgetborder">
-
-        <div className="studentForgethead">
-          <h3>Forget Password</h3>
+      <div className="studentForgetborder">
+        <div className="studentForgethead d-flex align-items-center justify-content-center">
+          <h3 className="">Forget Password</h3>
+          <TbRefresh onClick={handleRefresh} title="refresh" className=""/>
         </div>
-      <div className="studentForgetinput">
+        <div className="studentForgetinput">
+          {state.error && (
+            <span className="alert alert-danger mb-2 d-block">
+              {state.error}
+            </span>
+          )}
+          {state.success && (
+            <span className="alert alert-success mb-2 d-block">
+              {state.success}
+            </span>
+          )}
 
-        {state.error && (
-          <span className="alert alert-danger mb-2 d-block">{state.error}</span>
-        )}
-        {state.success && (
-          <span className="alert alert-success mb-2 d-block">
-            {state.success}
-          </span>
-        )}
-
-        <div className="mb-3">
-          <input
-            autoFocus
-            type="email"
-            className="form-control"
-            placeholder="Enter Email"
-            value={state.email}
-            onChange={handleEmailChange}
-            readOnly={state.readOnlyEmail}
-          />
-        </div>
-
-        {!state.showPasswordField && (
-          <div className="d-grid gap-2 col-6 mx-auto studentForgetbutton">
-            <button className="btn btn-primary" onClick={handleEmailSubmit}>
-              Enter
-            </button>
+          <div className="mb-3">
+            <input
+              autoFocus
+              type="email"
+              className="form-control"
+              placeholder="Enter Email"
+              name="forgetMail"
+              value={state.email}
+              onChange={handleEmailChange}
+              readOnly={state.readOnlyEmail}
+              onKeyDown={handleKeyDown}
+            />
           </div>
-        )}
 
-        {state.showPasswordField && (
-          <>
-            <div className="mb-3">
-              <input
-                type="password"
-                className="form-control"
-                placeholder="New Password"
-                value={state.newPassword}
-                onChange={handleNewPasswordChange}
-              />
-            </div>
-
+          {!state.showPasswordField && (
             <div className="d-grid gap-2 col-6 mx-auto studentForgetbutton">
-              <button className="btn btn-primary" onClick={handleResetPassword}>
-                Confirm
+              <button className="btn btn-primary"
+               onClick={handleEmailSubmit}
+               >
+                Enter
               </button>
             </div>
-          </>
-        )}
+          )}
 
-        <div className="studentForgetlink">
-          Create a new account <Link to="/StudentRegistration">Sign up</Link>
+          {state.showPasswordField && (
+            <>
+              <div className="mb-3">
+                <input
+                  type="password"
+                  name="setPassword"
+                  className="form-control"
+                  placeholder="New Password"
+                  value={state.newPassword}
+                  onChange={handleNewPasswordChange}
+                  onKeyDown={handleKeyDown}
+                />
+              </div>
+
+              <div className="d-grid gap-2 col-6 mx-auto studentForgetbutton">
+                <button
+                  className="btn btn-primary"
+                  onClick={handleResetPassword}
+                >
+                  Confirm
+                </button>
+              </div>
+            </>
+          )}
+
+          <div className="studentForgetlink">
+            Create a new account <Link to="/StudentRegistration">Sign up</Link>
+          </div>
         </div>
       </div>
-    </div>
     </div>
   );
 }
