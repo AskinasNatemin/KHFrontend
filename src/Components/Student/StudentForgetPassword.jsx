@@ -1,8 +1,12 @@
 import axios from "axios";
 import "../../Styles/Student/StudentForgetPassword.css";
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { TbRefresh } from "react-icons/tb";
+import { FaHome } from "react-icons/fa";
+import { HiRefresh } from "react-icons/hi";
+import { MdEmail } from "react-icons/md";
+import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
+import { FaLock } from "react-icons/fa";
 
 const initialState = {
   email: "",
@@ -36,6 +40,7 @@ function reducer(state, action) {
 }
 
 function StudentForgetPassword() {
+  const [seePassword, setSeePassword] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
   const navigate = useNavigate();
 
@@ -53,9 +58,7 @@ function StudentForgetPassword() {
     const { email } = state;
     axios
       .post("http://localhost:5001/studentCheckMail", { email })
-      .then((response) => {
-        return response.data.data;
-      })
+      .then((response) => response.data.data)
       .then((data) => {
         if (data) {
           dispatch({ type: "SET_EMAIL_VALID", payload: true });
@@ -93,25 +96,36 @@ function StudentForgetPassword() {
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      if(e.target.name==='forgetMail'){
+      if (e.target.name === "forgetMail") {
         handleEmailSubmit();
-      }
-      else if(e.target.name === 'setPassword'){
-        handleResetPassword()
+      } else if (e.target.name === "setPassword") {
+        handleResetPassword();
       }
     }
   };
 
-  const handleRefresh=()=>{
+  const handleRefresh = () => {
     window.location.reload();
-  }
-
+  };
+  const handleGoBack = () => {
+    navigate("/");
+  };
   return (
     <div className="studentForgetmain">
+      <div className="studentForgetGoBackContainer p-3  w-100 ">
+              <FaHome
+                onClick={handleGoBack}
+                className="studentlogGoBackIcon float-end"
+              />
+            </div>
       <div className="studentForgetborder">
         <div className="studentForgethead d-flex align-items-center justify-content-center">
           <h3 className="">Forget Password</h3>
-          <TbRefresh onClick={handleRefresh} title="refresh" className=""/>
+          <HiRefresh
+            onClick={handleRefresh}
+            title="refresh"
+            className="studentRefresh"
+          />
         </div>
         <div className="studentForgetinput">
           {state.error && (
@@ -125,7 +139,8 @@ function StudentForgetPassword() {
             </span>
           )}
 
-          <div className="mb-3">
+          <div className="position-relative mb-3">
+            <MdEmail className="position-absolute top-50 start-0 translate-middle-y ms-2 studentforgetcustom-icon" />
             <input
               autoFocus
               type="email"
@@ -141,9 +156,7 @@ function StudentForgetPassword() {
 
           {!state.showPasswordField && (
             <div className="d-grid gap-2 col-6 mx-auto studentForgetbutton">
-              <button className="btn btn-primary"
-               onClick={handleEmailSubmit}
-               >
+              <button className="btn btn-primary" onClick={handleEmailSubmit}>
                 Enter
               </button>
             </div>
@@ -151,9 +164,11 @@ function StudentForgetPassword() {
 
           {state.showPasswordField && (
             <>
-              <div className="mb-3">
+              <div className="position-relative mb-3">
+                <FaLock className="position-absolute top-50 start-0 translate-middle-y ms-2  studentlogincustom-icon " />
+
                 <input
-                  type="password"
+                  type={seePassword ? "text" : "password"}
                   name="setPassword"
                   className="form-control"
                   placeholder="New Password"
@@ -161,11 +176,20 @@ function StudentForgetPassword() {
                   onChange={handleNewPasswordChange}
                   onKeyDown={handleKeyDown}
                 />
+                {state.newPassword && (
+                  <span
+                    onClick={() => setSeePassword(!seePassword)}
+                    className="position-absolute top-50 end-0 translate-middle-y pe-3"
+                    style={{ cursor: "pointer", color: "#6c757d" }}
+                  >
+                    {seePassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
+                  </span>
+                )}
               </div>
 
               <div className="d-grid gap-2 col-6 mx-auto studentForgetbutton">
                 <button
-                  className="btn btn-primary"
+                  className="btn btn-primary studentForgetcustom-btn"
                   onClick={handleResetPassword}
                 >
                   Confirm
