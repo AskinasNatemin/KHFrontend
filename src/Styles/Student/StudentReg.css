@@ -25,14 +25,14 @@
     text-align: center;
     margin-bottom: 40px;
     font-family: "Righteous", serif;
-    color: rgb(159, 71, 71);
+    color: rgb(124, 6, 6);
 }
 
 .StudentRegGoBackIcon{
     height: 30px;
     width: 35px;
     cursor: pointer;
-    color: rgb(159, 71, 71);   
+    color: rgb(124, 6, 6);
 }
 
 .StudentReginput {
@@ -51,11 +51,11 @@
 }
 .StudentRegbutton button{
     border-radius: 5px;
-     background-color:  rgb(159, 71, 71);
-     border:rgb(159, 71, 71);
+    background-color:  rgb(124, 6, 6);
+    border: rgb(124, 6, 6);
 }
 .StudentRegbutton button:hover{
-    background-color:rgb(180, 85, 85);
+    background-color: rgb(153, 8, 8);
 }
 .form-control:focus{
     border-color: rgb(245, 245, 245);
@@ -67,12 +67,12 @@
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .StudentReglink a{
-   color:#f04242;
+    color:#a00000;
    text-decoration: none;
 }
  
 .custom-btn:active {
-    background-color: #e38585 !important; /* Green color */
+    background-color:rgb(151, 50, 50)!important; /* Green color */
     
   }
   .studentregcustom-icon {
