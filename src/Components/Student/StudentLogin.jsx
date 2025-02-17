@@ -7,7 +7,8 @@ import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import { MdEmail } from "react-icons/md";
 import { FaLock } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
-
+import { FiAlertTriangle } from "react-icons/fi";
+import { TiTick } from "react-icons/ti";
 function StudentLogin() {
   const [data, setData] = useState({
     email: "",
@@ -79,10 +80,14 @@ function StudentLogin() {
               <h3> STUDENT LOGIN</h3>
             </div>
           {errorMsg && (
-            <div className="errorContainer alert ">{errorMsg}</div>
+            <div className="studentlogerrorContainer alert ">
+              <div className="studentlogerroricon">
+            <FiAlertTriangle   className="icon-class" /></div> {errorMsg}</div>
           )}
           {successMsg && (
-            <div className="successContainer alert alert-success">
+            <div className="studentlogsuccessContainer alert alert-success">
+              <div className="studentlogsuccessicon">
+              <TiTick   className="icon-class" /></div>
               {successMsg}
             </div>
           )}

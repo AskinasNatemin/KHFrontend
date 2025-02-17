@@ -92,11 +92,13 @@ function StudentForgetPassword() {
   };
 
   return (
+    <div className="studentForgetmain">
     <div className="studentForgetborder">
-      <div className="studentForgetinput">
+
         <div className="studentForgethead">
-          <h2>Forget Password</h2>
+          <h3>Forget Password</h3>
         </div>
+      <div className="studentForgetinput">
 
         {
           state.error && <span className="alert alert-danger mb-2 d-block">{state.error}</span>
@@ -151,6 +153,7 @@ function StudentForgetPassword() {
           Create a new account <Link to="/StudentRegistration">Sign up</Link>
         </div>
       </div>
+    </div>
     </div>
   );
 }
