@@ -13,7 +13,6 @@ import { AdminAddingBooks } from "./Components/Admin/AdminAddingBooks";
 import StudentRegistration from "./Components/Student/StudentRegistration";
 import StaffForgetPassword from"./Components/Staff/StaffForgetPassword"
 import AdminDashboard from "./Components/Admin/AdminDashboard";
-import StaffForgetPassword from "./Components/Staff/StaffForgetPassword";
 import StudentForgetPassword from "./Components/Student/StudentForgetPassword";
 import StaffCodePage from "./Components/Staff/StaffCodePage";
 
