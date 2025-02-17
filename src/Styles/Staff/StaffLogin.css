@@ -8,7 +8,7 @@
     margin-left: 355px;
 }
 .stafflogcontainer{
-    background-image:url(../../Assets/images/LoginImage/StaffLogImg.jpg);
+    background-image:url(../../Assets/images/LoginImage/StaffLogImg.png);
     height: 100vh;
     display: flex;
     align-items: center;
@@ -24,14 +24,14 @@
      text-align: center;
      margin-bottom: 40px;
      font-family: "Righteous", serif;
-     color: rgb(159, 71, 71);
+     color: rgb(124, 6, 6);
    
 }
 .stafflogGoBackIcon{
     height: 30px;
     width: 35px;
     cursor: pointer;
-    color: rgb(159, 71, 71);   
+    color:  rgb(124, 6, 6);   
 }
 .staffloginput {
     width: 350px;
@@ -46,14 +46,14 @@
 }
 .stafflogbutton button{
     border-radius: 5px;
-    background-color:  rgb(159, 71, 71);
-    border:rgb(159, 71, 71);
+    background-color:  rgb(124, 6, 6);
+    border: rgb(124, 6, 6);
 }
 .stafflogbutton button:hover{
-    background-color:rgb(180, 85, 85);
+    background-color: rgb(153, 8, 8);
 }
 .stafflogcustom-btn:active {
-    background-color: #e38585 !important; /* Green color */
+    background-color:rgb(151, 50, 50)!important; /* Green color */
     
   } 
 .form-control:focus{
@@ -66,6 +66,6 @@
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .staffloglink a{
-    color:#e82727;
+    color:#a00000;
     text-decoration: none;
  }
