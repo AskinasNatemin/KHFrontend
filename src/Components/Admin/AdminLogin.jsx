@@ -29,14 +29,12 @@ const AdminLogin = () => {
       // You could store the admin info in localStorage or context, if needed
       // localStorage.setItem("adminEmail", response.data.adminEmail);
 
-      navigate('/')
+      navigate("/");
     } catch (error) {
       // Handle errors (incorrect login)
       if (error.response && error.response.data) {
         alert(error.response.data.message);
-      }
-    
-       else {
+      } else {
         alert("An error occurred. Please try again.");
       }
     }
@@ -54,6 +52,7 @@ const AdminLogin = () => {
 
               <div className="mb-3">
                 <input
+                  autoFocus
                   onChange={change}
                   type="email"
                   className="form-control"

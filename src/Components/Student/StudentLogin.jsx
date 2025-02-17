@@ -1,13 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import "../../Styles/Student/StudentLogin.css";
 import { Link, useNavigate } from "react-router-dom";
-import { IoArrowBackCircleOutline } from "react-icons/io5";
 import axios from "axios";
 import { loggData } from "../Context/AppContext";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
-
+import { MdEmail } from "react-icons/md";
+import { FaLock } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
+import { FiAlertTriangle } from "react-icons/fi";
+import { TiTick } from "react-icons/ti";
 function StudentLogin() {
-  
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -17,7 +19,6 @@ function StudentLogin() {
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const { loggedData, setLoggedData } = useContext(loggData);
-  const [truthyState] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -37,101 +38,115 @@ function StudentLogin() {
     axios
       .post("http://localhost:5001/studentLogin", data)
       .then((res) => {
-        console.log(res.data.data._id);
-       localStorage.setItem("user",res.data.data._id)       
+        localStorage.setItem("userId", res.data.data._id);
         setErrorMsg("");
         setSuccessMsg(res.data.message);
         setLoggedData(res.data.data);
-        navigate("/", { replace: true });
+        return res;
+      })
+      .then((res) => {
+        if (res) {
+          setTimeout(() => {
+            navigate("/", { replace: true });
+          }, 500);
+        }
       })
       .catch((err) => {
-        console.log(err.response);
         setErrorMsg(err.response?.data?.message);
       });
   };
 
-
-  const handleOnKeyDown=(e)=>{
-    if(e.key==='Enter'){
-      handleLogin()
+  const handleOnKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleLogin();
     }
-  }
+  };
 
-  const handleGoBack=()=>{
-    navigate('/', { replace: true, state: { truthyState } });      
-  }
+  const handleGoBack = () => {
+    navigate("/");
+  };
+
 
   return (
-    <div className="student-login">
-      <div className="student-frame">
-        <div className="w-100 studentLoginGoBackContainer p-2 d-flex align-items-center">
-          <IoArrowBackCircleOutline
-            className="studentLoginGoBackIcon float-start"
-            onClick={handleGoBack}
-          />
-        </div>
+    <div className="studentlogcontainer">
+      <div className="studentlogGoBackContainer p-3  w-100 ">
+        <FaHome
+          onClick={handleGoBack}
+          className="studentlogGoBackIcon float-end"
+        />
+      </div>
+      <div className="studentlogborder">
+        <span className="">
 
-        <form>
-          <h1>LOGIN</h1>
-
+        <div className="studentloghead">
+              <h3> STUDENT LOGIN</h3>
+            </div>
           {errorMsg && (
-            <div className="errorContainer alert alert-danger">{errorMsg}</div>
+            <div className="studentlogerrorContainer alert ">
+              <div className="studentlogerroricon">
+            <FiAlertTriangle   className="icon-class" /></div> {errorMsg}</div>
           )}
-
           {successMsg && (
-            <div className="successContainer alert alert-success">
+            <div className="studentlogsuccessContainer alert alert-success">
+              <div className="studentlogsuccessicon">
+              <TiTick   className="icon-class" /></div>
               {successMsg}
             </div>
           )}
+          <div className="studentloginput">
+            <div className="position-relative mb-3">
+              <MdEmail className="position-absolute top-50 start-0 translate-middle-y ms-2  studentlogincustom-icon" />
+              <input
+                autoFocus
+                type="email"
+                className="form-control"
+                id="exampleFormControlInput1"
+                placeholder="Email"
+                name="email"
+                onChange={handleInputs}
+                value={data.email}
+                onKeyDown={handleOnKeyDown}
+              />
+            </div>
+            <div className="position-relative mb-3">
+              <FaLock className="position-absolute top-50 start-0 translate-middle-y ms-2  studentlogincustom-icon " />
 
-          <div className="student-box">
-            <input
-              type="text"
-              name="email"
-              placeholder="E-Mail"
-              onChange={handleInputs}
-              value={data.email}
-              onKeyDown={handleOnKeyDown}
-            />
-          </div>
-          <div className="student-box position-relative">
-            <input
-              type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              name="password"
-              onChange={handleInputs}
-              value={data.password}
-              className="pe-5" // Add padding to make space for the icon
-              onKeyDown={handleOnKeyDown}
-            />
-            {data.password && (
-              <span
-                onClick={() => setShowPassword(!showPassword)}
-                className="position-absolute top-50  translate-middle-y pe-3"
-                
-                style={{ cursor: "pointer", color: "#6c757d",right:"50px" }}
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                name="password"
+                onChange={handleInputs}
+                value={data.password}
+                className="form-control pe-5"
+                onKeyDown={handleOnKeyDown}
+              />
+              {data.password && (
+                <span
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="position-absolute top-50  translate-middle-y pe-3"
+                  style={{ cursor: "pointer", color: "#6c757d", left: "325px" }}
+                >
+                  {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
+                </span>
+              )}
+            </div>
+            <div className="d-flex justify-content-end studentloglink">
+              <Link to={"/StudentForgetPassword"}>forgot password</Link>
+            </div>
+            <div className="d-grid gap-2 col-6 mx-auto studentlogbutton">
+              <button
+                className="btn btn-primary studentlogcustom-btn"
+                type="button"
+                onClick={handleLogin}
               >
-                {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
-              </span>
-            )}
+                LOGIN
+              </button>
+            </div>
+            <div className="studentloglink">
+              Create new account <Link to="/StudentRegistration">Sign up</Link>
+            </div>
           </div>
-          <div className="student-forgot">
-            <Link to={"/StudentForgotPassword"}>forgot password</Link>
-          </div>
-          <div className="student-but">
-            <button type="button" onClick={handleLogin}>
-              Login
-            </button>
-          </div>
-          <div className="student-reg">
-            <span>
-              Don't have an account?
-              <Link to={"/StudentRegistration"} className="ms-1">
-                Sign up
-              </Link>
-            </span>
-          </div>
-        </form>
+        </span>
       </div>
     </div>
   );

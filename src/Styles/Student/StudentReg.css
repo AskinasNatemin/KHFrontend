@@ -1,51 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
 .StudentRegborder{
-    margin:auto;
+
     width:500px;
-    border-radius: 10px;
-    box-shadow: 5px 5px 15px 5px rgb(197, 191, 191);
     padding-bottom: 60px;
+    margin-left: 210px;
+    margin-top: 50px;
 }
 
 .StudentContainer{
+    background-image:url(../../Assets/images/RegistrationImage/Regbackgroundimg.png);
     height: 100vh;
     display: flex;
     align-items: center;
+    flex-direction: column;
+    background-size: cover;
+    background-position: 0 -150px;
+    background-repeat: no-repeat;
 }
 
-.StudentReghead{
+.StudentReghead h3{
+    font-weight: 400;
    padding-top:5px ;
     text-align: center;
     margin-bottom: 40px;
-    color: rgb(0, 81, 255);
+    font-family: "Righteous", serif;
+    color: rgb(124, 6, 6);
 }
 
-.staffRegGoBackIcon{
+.StudentRegGoBackIcon{
     height: 30px;
-    width: 30px;
+    width: 35px;
     cursor: pointer;
+    color: rgb(124, 6, 6);
 }
 
 .StudentReginput {
     width: 350px;
-    margin-top: 2px;
-    margin-left: 70px;
+    
 }
 .StudentReginput input{
    margin-bottom: 25px;
    border-radius: 10px;
+   padding-left: 30PX;
+
 }
 .StudentRegbutton{
     margin-top: 45px;
+    
 }
 .StudentRegbutton button{
     border-radius: 5px;
+    background-color:  rgb(124, 6, 6);
+    border: rgb(124, 6, 6);
+}
+.StudentRegbutton button:hover{
+    background-color: rgb(153, 8, 8);
 }
 .form-control:focus{
-    border-color: rgb(138, 138, 138);
-    box-shadow: 1px 1px 10px 1px rgb(192, 190, 190)
+    border-color: rgb(245, 245, 245);
+    box-shadow: 1px 1px 10px 1px rgb(214, 214, 214)
 }
 .StudentReglink{
     text-align: center;
     margin-top: 20px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+.StudentReglink a{
+    color:#a00000;
+   text-decoration: none;
+}
+ 
+.custom-btn:active {
+    background-color:rgb(151, 50, 50)!important; /* Green color */
+    
+  }
+  .studentregcustom-icon {
+    color: #4c4a4a; /* Custom Green */
+   
+  }
