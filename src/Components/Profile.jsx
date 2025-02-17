@@ -5,11 +5,11 @@ import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const [student, setStudent] = useState();
-  const [studentId, setStudentId] = useState(localStorage.getItem("user"));
+  const [studentId, setStudentId] = useState(localStorage.getItem("userId"));
   const navigate=useNavigate()
   
   const handleLogout=()=>{
-    localStorage.removeItem("user")
+    localStorage.removeItem("userId")
     navigate('/')
   }
 

@@ -48,6 +48,7 @@ function StaffForgetPassword() {
 
             <div className="mb-3">
               <input
+                autoFocus
                 type="email"
                 className="form-control"
                 placeholder="Enter Email"
@@ -57,9 +58,7 @@ function StaffForgetPassword() {
 
             {!showPasswordField && (
               <div className="d-grid gap-2 col-6 mx-auto staffForgetbutton">
-                <button className="btn btn-primary">
-                  Enter
-                </button>
+                <button className="btn btn-primary">Enter</button>
               </div>
             )}
 
@@ -75,9 +74,7 @@ function StaffForgetPassword() {
                 </div>
 
                 <div className="d-grid gap-2 col-6 mx-auto staffForgetbutton">
-                  <button className="btn btn-primary">
-                    Confirm
-                  </button>
+                  <button className="btn btn-primary">Confirm</button>
                 </div>
               </>
             )}
