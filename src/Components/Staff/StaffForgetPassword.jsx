@@ -13,9 +13,9 @@ const initialState = {
   newPassword: "",
   isEmailValid: false,
   showPasswordField: false,
-  error: "hi",
+  error: "",
   readOnlyEmail: false,
-  success: "bye",
+  success: "",
 };
 
 function reducer(state, action) {
@@ -69,6 +69,7 @@ function StaffForgetPassword() {
       })
       .catch((err) => {
         console.log(err.response.data);
+        dispatch({ type: "SET_SUCCESS", payload: "" });
         dispatch({ type: "SET_ERROR", payload: err.response.data.message });
       });
   };
@@ -84,12 +85,13 @@ function StaffForgetPassword() {
       .then((res) => {
         if (res) {
           setTimeout(() => {
-            navigate("/StudentLogin");
+            navigate("/StudentLogin",{replace:true});
           }, 500);
         }
       })
       .catch((err) => {
         console.log(err.response.data);
+        // dispatch({ type: "SET_SUCCESS", payload: "" });
         dispatch({ type: "SET_ERROR", payload: err.response.data.message });
       });
   };
