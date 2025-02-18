@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "../../Styles/Staff/StaffLogin.css";
 import { Link } from "react-router-dom";
 import { HiOutlineEye } from "react-icons/hi";
@@ -7,29 +7,62 @@ import { useNavigate } from "react-router-dom";
 import { MdEmail } from "react-icons/md";
 import { FaLock } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
-import axios from 'axios'
+import { FiAlertTriangle } from "react-icons/fi";
+import { TiTick } from "react-icons/ti";
+
+import axios from "axios";
+import { loggData } from "../Context/AppContext";
 
 const StaffLogin = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
-  const [state, setState] = useState({
+  const [data, setData] = useState({
     Email: "",
     Password: "",
   });
-  const [error,setError]=useState('')
-  const[success,setSuccess]=useState
+  const [errorMsg, setErrorMsg] = useState("");
+  const [successMsg, setSuccessMsg] = useState("");
+  const { loggedData, setLoggedData } = useContext(loggData);
 
-  const staffLogin=()=>{
-    axios.post('http://localhost:5001/staffLogin/${id}')
-    .then(res=>{
-      console.log(res);
-      
-    })
-    .catch(err=>{
+  const handleInputs = (e) => {
+    setErrorMsg("");
+    setData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
-    })
-  }
+  const handleLogin = () => {
+    axios
+      .post("http://localhost:5001/staffLogin", data)
+      .then((res) => {
+        localStorage.setItem("userId", res.data.data._id);
+        localStorage.setItem("user", res.data.data.user);
+        setErrorMsg("");
+        setSuccessMsg(res.data.message);
+        setLoggedData(res.data.data);
+        return res;
+      })
+      .then((res) => {
+        if (res) {
+          setTimeout(() => {
+            navigate("/", { replace: true });
+          }, 500);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+
+        setErrorMsg(err.response?.data?.message);
+      });
+  };
+
+  const handleOnKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleLogin();
+    }
+  };
 
   const handleGoBack = () => {
     navigate("/");
@@ -45,10 +78,28 @@ const StaffLogin = () => {
       </div>
       <div className="stafflogborder">
         <span className="">
-          <div className="staffloginput">
-            <div className="staffloghead">
-              <h3> STAFF LOGIN</h3>
+          <div className="staffloghead">
+            <h3> STAFF LOGIN</h3>
+          </div>
+
+          {errorMsg && (
+            <div className="stafflogerrorContainer alert ">
+              <div className="stafflogerroricon">
+                <FiAlertTriangle className="icon-class" />
+              </div>
+              {errorMsg}
             </div>
+          )}
+          {successMsg && (
+            <div className="stafflogsuccessContainer alert alert-success">
+              <div className="stafflogsuccessicon">
+                <TiTick className="icon-class" />
+              </div>
+              {successMsg}
+            </div>
+          )}
+
+          <div className="staffloginput">
             <div className="position-relative mb-3">
               <MdEmail className="position-absolute top-50 start-0 translate-middle-y ms-2  stafflogincustom-icon" />
               <input
@@ -58,6 +109,9 @@ const StaffLogin = () => {
                 id="exampleFormControlInput1"
                 placeholder="Email"
                 name="Email"
+                onChange={handleInputs}
+                value={data.Email}
+                onKeyDown={handleOnKeyDown}
               />
             </div>
             <div className="position-relative mb-3">
@@ -68,10 +122,11 @@ const StaffLogin = () => {
                 id="exampleFormControlInput3"
                 placeholder="Password"
                 name="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={data.Password}
+                onChange={handleInputs}
+                onKeyDown={handleOnKeyDown}
               />
-              {password && (
+              {data.Password && (
                 <span
                   onClick={() => setShowPassword(!showPassword)}
                   className="position-absolute top-50 end-0 translate-middle-y pe-3"
@@ -89,7 +144,7 @@ const StaffLogin = () => {
               <button
                 className="btn btn-primary stafflogcustom-btn"
                 type="Submit"
-                onClick={() => navigate("/", { replace: true })}
+                onClick={handleLogin}
               >
                 LOGIN
               </button>

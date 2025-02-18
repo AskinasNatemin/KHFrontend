@@ -1,17 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 
 .studentlogborder {
   padding-bottom: 30px;
-  width:500px;
+  width: 500px;
   margin-right: 250px;
   margin-top: 100px;
   margin-left: 190px;
   /* border: 2px solid black; */
 }
 
-.studentlogcontainer{
-  background-image:url(../../Assets/images/LoginImage/StudentLogImg.png);
+.studentlogcontainer {
+  background-image: url(../../Assets/images/LoginImage/StudentLogImg.png);
   height: 100vh;
   display: flex;
   align-items: center;
@@ -22,100 +21,92 @@
   position: relative;
 }
 
-.studentloghead h3{
+.studentloghead h3 {
   font-weight: 400;
-  padding-top:5px ;
-   text-align: center;
-   margin-bottom: 15px;
-   font-family: "Righteous", serif;
-   color: rgb(124, 6, 6);
- 
+  padding-top: 5px;
+  text-align: center;
+  margin-bottom: 15px;
+  font-family: "Righteous", serif;
+  color: rgb(124, 6, 6);
 }
 
-.studentlogGoBackIcon{
+.studentlogGoBackIcon {
   height: 30px;
   width: 35px;
   cursor: pointer;
-  color:  rgb(124, 6, 6);   
+  color: rgb(124, 6, 6);
 }
 .studentloginput {
   width: 350px;
- margin: auto;
+  margin: auto;
   /* border: 2px solid black; */
-
 }
-.studentloginput input{
+.studentloginput input {
   margin-bottom: 25px;
- border-radius: 10px;
- padding-left: 30PX;
+  border-radius: 10px;
+  padding-left: 30px;
 }
-.studentlogerrorContainer{
+.studentlogerrorContainer {
   height: 50px;
   width: 260px;
   margin: auto;
   margin-bottom: 15px;
-  background-color:rgba(248, 248, 248, 0.749);
-  color:rgb(255, 0, 0);
+  background-color: rgb(248, 248, 248);
+  color: rgb(255, 0, 0);
   display: flex;
   align-items: center;
-  font-family:Arial, Helvetica, sans-serif;
- 
+  font-family: Arial, Helvetica, sans-serif;
 }
-.studentlogerroricon{
+.studentlogerroricon {
   margin-bottom: 3px;
   padding-right: 7px;
-  padding-left:10px;
+  padding-left: 10px;
 }
-.studentlogsuccessContainer{
+.studentlogsuccessContainer {
   height: 50px;
   width: 260px;
   margin: auto;
   margin-bottom: 15px;
-  background-color:rgba(188, 248, 156, 0.582);
-  color:rgb(59, 128, 53);
+  background-color: rgba(188, 248, 156, 0.582);
+  color: rgb(59, 128, 53);
   display: flex;
   align-items: center;
-  font-family:Arial, Helvetica, sans-serif;
-
+  font-family: Arial, Helvetica, sans-serif;
 }
-.studentlogsuccessicon{
+.studentlogsuccessicon {
   margin-bottom: 3px;
   padding-right: 7px;
-  padding-left:10px;
+  padding-left: 10px;
 }
 
-.studentlogbutton{
+.studentlogbutton {
   margin-top: 20px;
 }
 
-.studentlogbutton button{
+.studentlogbutton button {
   border-radius: 5px;
-  background-color:  rgb(124, 6, 6);
+  background-color: rgb(124, 6, 6);
   border: rgb(124, 6, 6);
 }
 
-.studentlogbutton button:hover{
+.studentlogbutton button:hover {
   background-color: rgb(153, 8, 8);
 }
 
 .studentlogcustom-btn:active {
-  background-color:rgb(151, 50, 50)!important; /* Green color */
-  
-} 
-.form-control:focus{
-  border-color: rgb(138, 138, 138);
-  box-shadow: 1px 1px 10px 1px rgb(192, 190, 190)
+  background-color: rgb(151, 50, 50) !important; /* Green color */
 }
-.studentloglink{
+.form-control:focus {
+  border-color: rgb(138, 138, 138);
+  box-shadow: 1px 1px 10px 1px rgb(192, 190, 190);
+}
+.studentloglink {
   text-align: center;
   margin-top: 20px;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.studentloglink a{
-  color:#a00000;
+.studentloglink a {
+  color: #a00000;
   text-decoration: none;
 }
-
-
-

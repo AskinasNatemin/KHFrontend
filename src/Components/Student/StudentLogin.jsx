@@ -37,8 +37,9 @@ function StudentLogin() {
   const handleLogin = () => {
     axios
       .post("http://localhost:5001/studentLogin", data)
-      .then((res) => {
+      .then((res) => {        
         localStorage.setItem("userId", res.data.data._id);
+        localStorage.setItem("user", res.data.data.user);
         setErrorMsg("");
         setSuccessMsg(res.data.message);
         setLoggedData(res.data.data);

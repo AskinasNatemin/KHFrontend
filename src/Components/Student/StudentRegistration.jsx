@@ -33,7 +33,6 @@ function StudentRegistration() {
   };
 
   const validateForm = () => {
-    console.log(studentRegister);
     
     const { userName, email, phoneNumber, password } = studentRegister;
     if (!userName || !email || !phoneNumber || !password) {
@@ -68,6 +67,7 @@ function StudentRegistration() {
         studentRegister
       );
       localStorage.setItem("userId", response.data.data._id);
+      localStorage.setItem("user", response.data.data.user);
 
       setSuccessMessage("Registration successful!");
       setStudentRegister({

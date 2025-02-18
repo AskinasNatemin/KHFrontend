@@ -39,7 +39,7 @@ const HomePage = () => {
       <Navbar handleRegistration={handleRegistration} />
 
       <div className="container row mx-auto flex-fill homeContent d-flex flex-column-reverse flex-md-row">
-        <div className="col-sm-12 col-md-6 d-flex flex-column justify-content-center my-2 rounded homeContent">
+        <div className="col-sm-12 col-md-6 d-flex flex-column justify-content-center my-2 rounded homeContent ">
           <h3 className="ms-3 mb-4">KNOWLEDGE HUB</h3>
           <p className="w-75 ms-3">
             Welcome to <b>KNOWLEDGE HUB</b>, your gateway to a world of
