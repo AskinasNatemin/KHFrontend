@@ -13,9 +13,9 @@ const initialState = {
   newPassword: "",
   isEmailValid: false,
   showPasswordField: false,
-  error: 'hi',
+  error: '',
   readOnlyEmail: false,
-  success: "bye",
+  success: "",
 };
 
 function reducer(state, action) {
@@ -76,7 +76,7 @@ function StudentForgetPassword() {
   const handleResetPassword = () => {
     const { email, newPassword: password } = state;
     axios
-      .post("http://localhost:5001/changePassword", { email, password })
+      .post("http://localhost:5001/studentChangePassword", { email, password })
       .then((res) => {
         dispatch({ type: "SET_SUCCESS", payload: res.data.message });
         return res;

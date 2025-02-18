@@ -14,7 +14,6 @@ import axios from "axios";
 import { loggData } from "../Context/AppContext";
 
 const StaffLogin = () => {
-  
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
@@ -33,12 +32,13 @@ const StaffLogin = () => {
       [e.target.name]: e.target.value,
     }));
   };
- 
-  const handleLogin = () => {    
+
+  const handleLogin = () => {
     axios
       .post("http://localhost:5001/staffLogin", data)
-      .then((res) => {        
+      .then((res) => {
         localStorage.setItem("userId", res.data.data._id);
+        localStorage.setItem("user", res.data.data.user);
         setErrorMsg("");
         setSuccessMsg(res.data.message);
         setLoggedData(res.data.data);
@@ -53,7 +53,7 @@ const StaffLogin = () => {
       })
       .catch((err) => {
         console.log(err);
-        
+
         setErrorMsg(err.response?.data?.message);
       });
   };
@@ -64,11 +64,9 @@ const StaffLogin = () => {
     }
   };
 
-
   const handleGoBack = () => {
     navigate("/");
   };
-
 
   return (
     <div className="stafflogcontainer">
@@ -79,7 +77,6 @@ const StaffLogin = () => {
         />
       </div>
       <div className="stafflogborder">
-
         <span className="">
           <div className="staffloghead">
             <h3> STAFF LOGIN</h3>
