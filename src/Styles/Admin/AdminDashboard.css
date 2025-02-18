@@ -47,7 +47,7 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin-top: 120px; /* Give it space below navbar */
+  /* margin-top: 120px; Give it space below navbar */
 }
 
 .piechartcolumn {
