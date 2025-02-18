@@ -29,7 +29,7 @@ const AdminLogin = () => {
       // You could store the admin info in localStorage or context, if needed
       // localStorage.setItem("adminEmail", response.data.adminEmail);
 
-      navigate("/");
+      navigate("/AdminDashboard");
     } catch (error) {
       // Handle errors (incorrect login)
       if (error.response && error.response.data) {
