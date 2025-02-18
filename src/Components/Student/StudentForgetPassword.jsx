@@ -78,7 +78,7 @@ function StudentForgetPassword() {
   const handleResetPassword = () => {
     const { email, newPassword: password } = state;
     axios
-      .post("http://localhost:5001/changePassword", { email, password })
+      .post("http://localhost:5001/studentChangePassword", { email, password })
       .then((res) => {
         dispatch({ type: "SET_SUCCESS", payload: res.data.message });
         return res;
@@ -86,7 +86,7 @@ function StudentForgetPassword() {
       .then((res) => {
         if (res) {
           setTimeout(() => {
-            navigate("/StudentLogin");
+            navigate("/StudentLogin",{replace:true});
           }, 500);
         }
       })
