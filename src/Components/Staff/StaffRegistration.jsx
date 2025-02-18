@@ -37,10 +37,13 @@ function StaffRegistration() {
     axios
       .post("http://localhost:5001/staffRegistration", staffRegister)
       .then((res) => {
+        setError("");
         setSuccessMessage(res.data.message);
-        localStorage.setItem("user", res.data._id);
+        localStorage.setItem("userId", res.data.data._id);
+        localStorage.setItem("user", res.data.data.user);
+
         setTimeout(() => {
-          navigate("/");
+          navigate("/", { replace: true });
         }, 1000);
       })
       .catch((err) => {
@@ -144,6 +147,8 @@ function StaffRegistration() {
                     name="Password"
                     value={staffRegister.Password}
                     onChange={handleChange}
+                    onKeyDown={handleKeyDown}
+
                   />
                   {staffRegister.Password && (
                     <span

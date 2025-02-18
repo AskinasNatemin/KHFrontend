@@ -1,41 +1,32 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "../../Styles/Staff/StaffForgetPassword.css";
 
+const initialState={
+  email: "",
+  newPassword: "",
+  isEmailValid: false,
+  showPasswordField: false,
+  error: 'hi',
+  readOnlyEmail: false,
+  success: "bye",
+}
+
+function reducer(state,action){
+  switch(action.type){
+    // case 
+  }
+} 
+
 function StaffForgetPassword() {
+
   const [Email, setEmail] = useState("");
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [newPassword, setNewPassword] = useState("");
   const [showPasswordField, setShowPasswordField] = useState(false);
+  const[state,dispatch]=useReducer(reducer,initialState)
 
-  // const handleEmailSubmit = async () => {
-  //   try {
-  //     const response = await axios.post("http://localhost:5001/", {Email });
-
-  //     if (response.data.valid) {
-  //       setIsEmailValid(true);
-  //       setShowPasswordField(true);
-  //     } else {
-  //       alert("Email not found. Please enter a registered email.");
-  //     }
-  //   } catch (error) {
-  //     alert("Error validating email. Please try again.");
-  //   }
-  // };
-
-  // const handlePasswordSubmit = async () => {
-  //   try {
-  //     if (!newPassword) {
-  //       alert("Please enter a new password.");
-  //       return;
-  //     }
-  //     await axios.post("http://localhost:5001/resetPassword", { email: Email, newPassword });
-  //     alert("Password changed successfully. You can now log in.");
-  //   } catch (error) {
-  //     alert("Error resetting password. Please try again.");
-  //   }
-  // };
 
   return (
     <>
