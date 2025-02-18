@@ -7,6 +7,8 @@ import { HiRefresh } from "react-icons/hi";
 import { MdEmail } from "react-icons/md";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import { FaLock } from "react-icons/fa";
+import { FiAlertTriangle } from "react-icons/fi";
+import { TiTick } from "react-icons/ti";
 
 const initialState = {
   email: "",
@@ -76,7 +78,7 @@ function StudentForgetPassword() {
   const handleResetPassword = () => {
     const { email, newPassword: password } = state;
     axios
-      .post("http://localhost:5001/studentChangePassword", { email, password })
+      .post("http://localhost:5001/changePassword", { email, password })
       .then((res) => {
         dispatch({ type: "SET_SUCCESS", payload: res.data.message });
         return res;
@@ -129,14 +131,20 @@ function StudentForgetPassword() {
         </div>
         <div className="studentForgetinput">
           {state.error && (
-            <div className="alert alert-danger  mb-2 d-block">
+            <div className="studentForgeterrorContainer alert ">
+              <div className="studentForgeterroricon">
+                <FiAlertTriangle className="icon-class" />
+              </div>
               {state.error}
             </div>
           )}
           {state.success && (
-            <span className="alert alert-success mb-2 d-block">
+            <div className="studentForgetsuccessContainer alert">
+              <div className="studentForgetsuccessicon">
+                <TiTick className="icon-class" />
+              </div>
               {state.success}
-            </span>
+            </div>
           )}
 
           <div className="position-relative mb-3">
