@@ -4,8 +4,11 @@ import { Link } from "react-router-dom";
 import { RiHomeOfficeLine } from "react-icons/ri";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineAddToPhotos } from "react-icons/md";
-import logo from'../../Assets/icon/logo.png'
+import logo from "../../Assets/icon/logo.png";
 import { FaSignOutAlt } from "react-icons/fa";
+import { FaUsers } from "react-icons/fa6";
+import { GiBookshelf } from "react-icons/gi";
+import { SiBookstack } from "react-icons/si";
 
 function AdminDashboard() {
   return (
@@ -35,79 +38,39 @@ function AdminDashboard() {
       <div className="AdminDashboardMainContent">
         {/* Navbar */}
         <div className="AdminDashboardnavbar">
-          <h2 className="Knowledgename"><img className="knowledgehublogo" src={logo} alt="" />Knowledge Hub</h2>
-          
+          <h2 className="Knowledgename">
+            <img className="knowledgehublogo" src={logo} alt="" />
+            Knowledge Hub
+          </h2>
+
           <button className="lbut">
-          <FaSignOutAlt className="logouticon" />
+            Logout
+            <FaSignOutAlt className="logouticon" />
           </button>
         </div>
-
-        {/* Piechart Rows */}
-        <div className="row">
-          <div className="piechartcolumn">
-            <h4 className="columnheading">Users</h4>
-            <div class="scroll-container">
-              <ul>
-                <li>Item 1</li>
-                <li>Item 2</li>
-                <li>Item 3</li>
-                <li>Item 4</li>
-                <li>Item 5</li>
-                <li>Item 6</li> 
-                <li>Item 7</li>
-                <li>Item 8</li>
-                <li>Item 9</li>
-                <li>Item 10</li>
-                <li>Item 11</li>
-                <li>Item 12</li>
-                <li>Item 13</li>
-                <li>Item 14</li>
-                <li>Item 15</li>
-              </ul>
+        <div className="dashrow">
+          <div className="dashcard">
+            <div className="dashcard-body">
+              <FaUsers className="cardusericon" />
+              <div>
+                <button className="dashcarduserbut">Users</button>
+              </div>
             </div>
           </div>
-          <div className="piechartcolumn">
-            <h4 className="columnheading">Lented Books</h4>
-            <div class="scroll-container">
-              <ul>
-                <li>Item 1</li>
-                <li>Item 2</li>
-                <li>Item 3</li>
-                <li>Item 4</li>
-                <li>Item 5</li>
-                <li>Item 6</li>
-                <li>Item 7</li>
-                <li>Item 8</li>
-                <li>Item 9</li>
-                <li>Item 10</li>
-                <li>Item 11</li>
-                <li>Item 12</li>
-                <li>Item 13</li>
-                <li>Item 14</li>
-                <li>Item 15</li>
-              </ul>
+          <div className="dashcard">
+            <div className="dashcard-body">
+              <GiBookshelf className="dashcardlendedbooksicon" />
+              <div>
+                <button className="dashcardlentbookbut">Lended Books</button>
+              </div>
             </div>
           </div>
-          <div className="piechartcolumn">
-            <h4 className="columnheading">Added Books</h4>
-            <div class="scroll-container">
-              <ul>
-                <li>Item 1</li>
-                <li>Item 2</li>
-                <li>Item 3</li>
-                <li>Item 4</li>
-                <li>Item 5</li>
-                <li>Item 6</li>
-                <li>Item 7</li>
-                <li>Item 8</li>
-                <li>Item 9</li>
-                <li>Item 10</li>
-                <li>Item 11</li>
-                <li>Item 12</li>
-                <li>Item 13</li>
-                <li>Item 14</li>
-                <li>Item 15</li>
-              </ul>
+          <div className="dashcard">
+            <div className="dashcard-body">
+              <SiBookstack className="dashcardaddbooksicon" />
+              <div>
+                <button className="dashcardaddbookbut">added Books</button>
+              </div>
             </div>
           </div>
         </div>

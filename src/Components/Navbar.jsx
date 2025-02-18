@@ -3,23 +3,35 @@ import { NavLink } from "react-router-dom";
 import logo from "../Assets/icon/logo.png";
 import { CgProfile } from "react-icons/cg";
 import "../Styles/Navbar.css";
-import '../Styles/Profile.css'
+import '../Styles/Profile.css';
 import { Logged } from "./Context/AppContext";
 import Profile from "./Profile";
 
 const Navbar = ({ handleRegistration }) => {
   const { isLogged, setIsLogged } = useContext(Logged);
   const [profileShower, setProfileShower] = useState(false);
-  const user=localStorage.getItem('user')
+  const userId = localStorage.getItem('userId');
 
-  useEffect(()=>{
-    if(user){
-      setIsLogged(true)
-    }else{
-      setIsLogged(false)
-      setProfileShower(false)
+  useEffect(() => {
+    if (userId) {
+      setIsLogged(true);
+    } else {
+      setIsLogged(false);
+      setProfileShower(false);
     }
-  },[user])
+  }, [userId]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!event.target.closest('.cgProfile') && !event.target.closest('.profile-container')) {
+        setProfileShower(false);
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   return (
     <>
@@ -60,8 +72,9 @@ const Navbar = ({ handleRegistration }) => {
           <div className="buttons me-4 gap-3 d-flex">
             {isLogged ? (
               <CgProfile
-              className="cgProfile"
-                onClick={() => {
+                className="cgProfile"
+                onClick={(e) => {
+                  e.stopPropagation();
                   setProfileShower(!profileShower);
                 }}
               />
@@ -86,10 +99,12 @@ const Navbar = ({ handleRegistration }) => {
           </div>
         </div>
       </nav>
-      {
-        profileShower &&
-        <Profile/>
-      }
+
+      {profileShower && (
+        <div className="profile-container">
+          <Profile />
+        </div>
+      )}
     </>
   );
 };
