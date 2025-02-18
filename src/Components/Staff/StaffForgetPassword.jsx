@@ -1,82 +1,210 @@
 import React, { useReducer, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../../Styles/Staff/StaffForgetPassword.css";
+import { FaLock } from "react-icons/fa";
+import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
+import { MdEmail } from "react-icons/md";
+import { HiRefresh } from "react-icons/hi";
+import { FaHome } from "react-icons/fa";
 
-const initialState={
+const initialState = {
   email: "",
   newPassword: "",
   isEmailValid: false,
   showPasswordField: false,
-  error: 'hi',
+  error: "hi",
   readOnlyEmail: false,
   success: "bye",
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "SET_EMAIL":
+      return { ...state, email: action.payload };
+    case "SET_NEW_PASSWORD":
+      return { ...state, newPassword: action.payload };
+    case "SET_SHOW_PASSWORD_FIELD":
+      return { ...state, showPasswordField: action.payload };
+    case "SET_EMAIL_VALID":
+      return { ...state, isEmailValid: action.payload };
+    case "SET_ERROR":
+      return { ...state, error: action.payload };
+    case "SET_SUCCESS":
+      return { ...state, success: action.payload };
+    case "SET_READ_ONLY_EMAIL":
+      return { ...state, readOnlyEmail: action.payload };
+    default:
+      return state;
+  }
 }
 
-function reducer(state,action){
-  switch(action.type){
-    // case 
-  }
-} 
-
 function StaffForgetPassword() {
+  const [seePassword, setSeePassword] = useState(false);
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const navigate = useNavigate();
 
-  const [Email, setEmail] = useState("");
-  const [isEmailValid, setIsEmailValid] = useState(false);
-  const [newPassword, setNewPassword] = useState("");
-  const [showPasswordField, setShowPasswordField] = useState(false);
-  const[state,dispatch]=useReducer(reducer,initialState)
+  const handleEmailChange = (e) => {
+    dispatch({ type: "SET_ERROR", payload: "" });
+    dispatch({ type: "SET_EMAIL", payload: e.target.value });
+  };
 
+  const handleNewPasswordChange = (e) => {
+    dispatch({ type: "SET_ERROR", payload: "" });
+    dispatch({ type: "SET_NEW_PASSWORD", payload: e.target.value });
+  };
+
+  const handleEmailSubmit = () => {
+    const { email } = state;
+    axios
+      .post("http://localhost:5001/staffCheckMail", { email })
+      .then((response) => response.data.data)
+      .then((data) => {
+        if (data) {
+          dispatch({ type: "SET_EMAIL_VALID", payload: true });
+          dispatch({ type: "SET_SHOW_PASSWORD_FIELD", payload: true });
+          dispatch({ type: "SET_ERROR", payload: "" });
+          dispatch({ type: "SET_READ_ONLY_EMAIL", payload: true });
+        }
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+        dispatch({ type: "SET_ERROR", payload: err.response.data.message });
+      });
+  };
+
+  const handleResetPassword = () => {
+    const { email, newPassword: password } = state;
+    axios
+      .post("http://localhost:5001/staffChangePassword", { email, password })
+      .then((res) => {
+        dispatch({ type: "SET_SUCCESS", payload: res.data.message });
+        return res;
+      })
+      .then((res) => {
+        if (res) {
+          setTimeout(() => {
+            navigate("/StudentLogin");
+          }, 500);
+        }
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+        dispatch({ type: "SET_ERROR", payload: err.response.data.message });
+      });
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      if (e.target.name === "forgetMail") {
+        handleEmailSubmit();
+      } else if (e.target.name === "setPassword") {
+        handleResetPassword();
+      }
+    }
+  };
+
+  const handleRefresh = () => {
+    window.location.reload();
+  };
+  const handleGoBack = () => {
+    navigate("/");
+  };
 
   return (
-    <>
-      <div className="staffForgetborder">
-        <span>
-          <div className="staffForgetinput">
-            <div className="staffForgethead">
-              <h2>Forget Password</h2>
-            </div>
-
-            <div className="mb-3">
-              <input
-                autoFocus
-                type="email"
-                className="form-control"
-                placeholder="Enter Email"
-                value={Email}
-              />
-            </div>
-
-            {!showPasswordField && (
-              <div className="d-grid gap-2 col-6 mx-auto staffForgetbutton">
-                <button className="btn btn-primary">Enter</button>
-              </div>
-            )}
-
-            {showPasswordField && (
-              <>
-                <div className="mb-3">
-                  <input
-                    type="password"
-                    className="form-control"
-                    placeholder="New Password"
-                    value={newPassword}
-                  />
-                </div>
-
-                <div className="d-grid gap-2 col-6 mx-auto staffForgetbutton">
-                  <button className="btn btn-primary">Confirm</button>
-                </div>
-              </>
-            )}
-
-            <div className="staffForgetlink">
-              Create a new account <Link to="/StaffRegistration">Sign up</Link>
-            </div>
-          </div>
-        </span>
+    <div className="staffForgetmain">
+      <div className="staffForgetGoBackContainer p-3  w-100 ">
+        <FaHome
+          onClick={handleGoBack}
+          className="stafflogGoBackIcon float-end"
+        />
       </div>
-    </>
+      <div className="staffForgetborder">
+        <div className="staffForgethead d-flex align-items-center justify-content-center">
+          <h3 className="">Forget Password</h3>
+          <HiRefresh
+            onClick={handleRefresh}
+            title="refresh"
+            className="staffRefresh"
+          />
+        </div>
+        <div className="staffForgetinput">
+          {state.error && (
+            <div className="alert alert-danger  mb-2 d-block">
+              {state.error}
+            </div>
+          )}
+          {state.success && (
+            <span className="alert alert-success mb-2 d-block">
+              {state.success}
+            </span>
+          )}
+
+          <div className="position-relative mb-3">
+            <MdEmail className="position-absolute top-50 start-0 translate-middle-y ms-2 staffforgetcustom-icon" />
+            <input
+              autoFocus
+              type="email"
+              className="form-control"
+              placeholder="Enter Email"
+              name="forgetMail"
+              value={state.email}
+              onChange={handleEmailChange}
+              readOnly={state.readOnlyEmail}
+              onKeyDown={handleKeyDown}
+            />
+          </div>
+
+          {!state.showPasswordField && (
+            <div className="d-grid gap-2 col-6 mx-auto staffForgetbutton">
+              <button className="btn btn-primary" onClick={handleEmailSubmit}>
+                Enter
+              </button>
+            </div>
+          )}
+
+          {state.showPasswordField && (
+            <>
+              <div className="position-relative mb-3">
+                <FaLock className="position-absolute top-50 start-0 translate-middle-y ms-2  stafflogincustom-icon " />
+
+                <input
+                  type={seePassword ? "text" : "password"}
+                  name="setPassword"
+                  className="form-control"
+                  placeholder="New Password"
+                  value={state.newPassword}
+                  onChange={handleNewPasswordChange}
+                  onKeyDown={handleKeyDown}
+                />
+                {state.newPassword && (
+                  <span
+                    onClick={() => setSeePassword(!seePassword)}
+                    className="position-absolute top-50 end-0 translate-middle-y pe-3"
+                    style={{ cursor: "pointer", color: "#6c757d" }}
+                  >
+                    {seePassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
+                  </span>
+                )}
+              </div>
+
+              <div className="d-grid gap-2 col-6 mx-auto staffForgetbutton">
+                <button
+                  className="btn btn-primary staffForgetcustom-btn"
+                  onClick={handleResetPassword}
+                >
+                  Confirm
+                </button>
+              </div>
+            </>
+          )}
+
+          <div className="staffForgetlink">
+            Create a new account <Link to="/StaffRegistration">Sign up</Link>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 

@@ -13,7 +13,7 @@ const initialState = {
   newPassword: "",
   isEmailValid: false,
   showPasswordField: false,
-  error: '',
+  error: "",
   readOnlyEmail: false,
   success: "",
 };
@@ -113,11 +113,11 @@ function StudentForgetPassword() {
   return (
     <div className="studentForgetmain">
       <div className="studentForgetGoBackContainer p-3  w-100 ">
-              <FaHome
-                onClick={handleGoBack}
-                className="studentlogGoBackIcon float-end"
-              />
-            </div>
+        <FaHome
+          onClick={handleGoBack}
+          className="studentlogGoBackIcon float-end"
+        />
+      </div>
       <div className="studentForgetborder">
         <div className="studentForgethead d-flex align-items-center justify-content-center">
           <h3 className="">Forget Password</h3>
