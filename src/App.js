@@ -11,10 +11,13 @@ import StudentLogin from "./Components/Student/StudentLogin";
 import ViewBooks from "./Components/Books/ViewBooks";
 import { AdminAddingBooks } from "./Components/Admin/AdminAddingBooks";
 import StudentRegistration from "./Components/Student/StudentRegistration";
-import StaffForgetPassword from"./Components/Staff/StaffForgetPassword"
-import AdminDashboard from "./Components/Admin/AdminDashboard";
+
+import StaffForgetPassword from "./Components/Staff/StaffForgetPassword";
 import StudentForgetPassword from "./Components/Student/StudentForgetPassword";
 import StaffCodePage from "./Components/Staff/StaffCodePage";
+
+import StaffForgetPassword from"./Components/Staff/StaffForgetPassword"
+import AdminDashboard from "./Components/Admin/AdminDashboard";
 
 
 
@@ -37,7 +40,6 @@ function App() {
           <Route path="AdminDashboard" element={<AdminDashboard/>}/>
           <Route path="StudentForgetPassword" element={<StudentForgetPassword/>}/>
           <Route path="StaffCodepage" element={<StaffCodePage/>}/>
-
         </Routes>
       </BrowserRouter>
     </div>
