@@ -78,7 +78,7 @@ function StudentForgetPassword() {
   const handleResetPassword = () => {
     const { email, newPassword: password } = state;
     axios
-      .post("http://localhost:5001/changePassword", { email, password })
+      .post("http://localhost:5001/studentChangePassword", { email, password })
       .then((res) => {
         dispatch({ type: "SET_SUCCESS", payload: res.data.message });
         return res;
@@ -86,7 +86,7 @@ function StudentForgetPassword() {
       .then((res) => {
         if (res) {
           setTimeout(() => {
-            navigate("/StudentLogin");
+            navigate("/StudentLogin",{replace:true});
           }, 500);
         }
       })
@@ -164,7 +164,7 @@ function StudentForgetPassword() {
 
           {!state.showPasswordField && (
             <div className="d-grid gap-2 col-6 mx-auto studentForgetbutton">
-              <button className="btn btn-primary" onClick={handleEmailSubmit}>
+              <button className="btn btn-primary studentForgetcustom-btn" onClick={handleEmailSubmit}>
                 Enter
               </button>
             </div>

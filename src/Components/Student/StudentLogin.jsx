@@ -136,7 +136,7 @@ function StudentLogin() {
             </div>
             <div className="d-grid gap-2 col-6 mx-auto studentlogbutton">
               <button
-                className="btn btn-primary studentlogcustom-btn"
+                className="btn btn-danger studentlogcustom-btn"
                 type="button"
                 onClick={handleLogin}
               >

@@ -142,7 +142,7 @@ const StaffLogin = () => {
             </div>
             <div className="d-grid gap-2 col-6 mx-auto stafflogbutton">
               <button
-                className="btn btn-primary stafflogcustom-btn"
+                className="btn btn-danger stafflogcustom-btn"
                 type="Submit"
                 onClick={handleLogin}
               >

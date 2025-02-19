@@ -10,6 +10,8 @@ import { FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { MdContactPage } from "react-icons/md";
 import { FaLock } from "react-icons/fa";
+import { FiAlertTriangle } from "react-icons/fi";
+import { TiTick } from "react-icons/ti";
 
 function StaffRegistration() {
   const [showPassword, setShowPassword] = useState(false);
@@ -91,13 +93,23 @@ function StaffRegistration() {
                 <div className="staffhead">
                   <h3>STAFF SIGNUP</h3>
                 </div>
-                {error && <div className="alert alert-danger">{error}</div>}
+                {error && <div className="staffRegerrorContainer alert ">
+                              <div className="staffRegerroricon">
+                                <FiAlertTriangle className="icon-class" />
+                              </div>
+                              {error}
+                             </div>}
                 {successMessage && (
-                  <div className="alert alert-success">{successMessage}</div>
+                   <div className="staffRegsuccessContainer alert">
+                                <div className="staffRegsuccessicon">
+                                  <TiTick className="icon-class" />
+                                </div>
+                                {successMessage}
+                              </div>
                 )}
 
                 <div className="position-relative mb-3">
-                  <FaUser className="position-absolute top-50 start-0 translate-middle-y ms-2  custom-icon " />
+                  <FaUser className="position-absolute top-50 start-0 translate-middle-y ms-2   " />
                   <input
                     autoFocus
                     type="text"
@@ -112,7 +124,7 @@ function StaffRegistration() {
                   />
                 </div>
                 <div className="position-relative mb-3">
-                  <MdEmail className="position-absolute top-50 start-0 translate-middle-y ms-2  custom-icon" />
+                  <MdEmail className="position-absolute top-50 start-0 translate-middle-y ms-2  " />
                   <input
                     type="email"
                     className="form-control " // Adds padding to prevent text overlap with the icon
@@ -125,7 +137,7 @@ function StaffRegistration() {
                   />
                 </div>
                 <div className="position-relative mb-3">
-                  <MdContactPage className="position-absolute top-50 start-0 translate-middle-y ms-2 custom-icon" />
+                  <MdContactPage className="position-absolute top-50 start-0 translate-middle-y ms-2 " />
                   <input
                     type="number"
                     className="form-control"
@@ -138,7 +150,7 @@ function StaffRegistration() {
                   />
                 </div>
                 <div className="mb-3 position-relative">
-                  <FaLock className="position-absolute top-50 start-0 translate-middle-y ms-2  custom-icon " />
+                  <FaLock className="position-absolute top-50 start-0 translate-middle-y ms-2   " />
                   <input
                     type={showPassword ? "text" : "password"}
                     className="form-control pe-5"
@@ -162,7 +174,7 @@ function StaffRegistration() {
                 </div>
                 <div className="d-grid gap-2 col-6 mx-auto staffbutton">
                   <button
-                    className="btn btn-primary custom-btn"
+                    className="btn btn-danger custom-btn"
                     onClick={addUserToServer}
                   >
                     CREATE ACCOUNT
