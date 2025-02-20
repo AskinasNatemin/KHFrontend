@@ -1,16 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../Assets/icon/logo.png";
 import { CgProfile } from "react-icons/cg";
 import "../Styles/Navbar.css";
-import '../Styles/Profile.css';
+import "../Styles/Profile.css";
 import { Logged } from "./Context/AppContext";
 import Profile from "./Profile";
 
 const Navbar = ({ handleRegistration }) => {
   const { isLogged, setIsLogged } = useContext(Logged);
   const [profileShower, setProfileShower] = useState(false);
-  const userId = localStorage.getItem('userId');
+  const userId = localStorage.getItem("userId");
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (userId) {
@@ -23,7 +24,10 @@ const Navbar = ({ handleRegistration }) => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (!event.target.closest('.cgProfile') && !event.target.closest('.profile-container')) {
+      if (
+        !event.target.closest(".cgProfile") &&
+        !event.target.closest(".profile-container")
+      ) {
         setProfileShower(false);
       }
     };
