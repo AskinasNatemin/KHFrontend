@@ -1,20 +1,17 @@
 .tabs-container {
     font-family: Arial, sans-serif;
-    margin-top: 20px;
   }
   
-  /* Style for the Tabs */
   .tabs {
     display: flex;
     cursor: pointer;
-    background-color: #f1f1f1;
+    background-color: white;
     border-radius: 8px 8px 0 0;
     overflow: hidden;
     border-bottom: 2px solid #ddd;
   }
   
   .tab {
-    /* flex: 1; */
     padding: 10px;
     text-align: center;
     background-color: #e2e2e2;
@@ -34,7 +31,6 @@
     font-weight: bold;
   }
   
-  /* Style for Tab Content */
   .tab-content {
     padding: 20px;
     border: 1px solid #ddd;
