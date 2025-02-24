@@ -1,5 +1,6 @@
-import '../../Styles/ViewBooks.css'
+import "../../Styles/ViewBooks.css";
 import React, { useState } from "react";
+import Navbar from "../Navbar.jsx";
 
 const booksData = {
   studentBooks: [
@@ -42,9 +43,10 @@ const ViewBooks = () => {
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
+
   return (
-    <div className="tabs-container">
-      {/* Tabs Section */}
+    <div className="tabs-container container">
+      <Navbar />
       <div className="tabs">
         <div
           className={`tab ${activeTab === "studentBooks" ? "active" : ""}`}

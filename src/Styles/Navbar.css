@@ -11,7 +11,7 @@
 }
 
 .navbar-collapse .navbar-nav .active{
-  color: #008080; /* Teal */
+  color:rgb(229, 128, 160);
 }
 
 .cgProfile{
@@ -29,3 +29,5 @@
 .khNavbar{
   position: relative;
 }
+
+
