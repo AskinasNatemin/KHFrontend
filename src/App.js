@@ -15,9 +15,8 @@ import StudentRegistration from "./Components/Student/StudentRegistration";
 import StaffForgetPassword from "./Components/Staff/StaffForgetPassword";
 import StudentForgetPassword from "./Components/Student/StudentForgetPassword";
 import StaffCodePage from "./Components/Staff/StaffCodePage";
-
-import StaffForgetPassword from"./Components/Staff/StaffForgetPassword"
 import AdminDashboard from "./Components/Admin/AdminDashboard";
+import UsersData from "./Components/Users/UsersData";
 
 
 
@@ -40,6 +39,7 @@ function App() {
           <Route path="AdminDashboard" element={<AdminDashboard/>}/>
           <Route path="StudentForgetPassword" element={<StudentForgetPassword/>}/>
           <Route path="StaffCodepage" element={<StaffCodePage/>}/>
+          <Route path="UsersData" element={<UsersData/>}/>
         </Routes>
       </BrowserRouter>
     </div>
