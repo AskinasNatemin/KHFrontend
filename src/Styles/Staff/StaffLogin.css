@@ -1,22 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 
 .stafflogborder {
-  padding-bottom: 30px;
-  width: 500px;
-  margin-right: 150px;
   margin-top: 100px;
-  margin-left: 355px;
+  width: 500px;
+  border:2px solid black
+
 }
 .stafflogcontainer {
-  background-image: url(../../Assets/images/LoginImage/StaffLogImg.png);
+  background-color:#E580A0 ;
   height: 100vh;
   display: flex;
   align-items: center;
   flex-direction: column;
   background-size: cover;
-  background-position: 0 -145px;
+  /* background-position: 0 -145px; */
   background-repeat: no-repeat;
   position: relative;
+  border:2px solid black
 }
 .staffloghead h3 {
   font-weight: 400;
@@ -35,6 +35,7 @@
 .staffloginput {
   width: 350px;
   margin: auto;
+  
 }
 .staffloginput input {
   margin-bottom: 25px;
@@ -70,23 +71,15 @@
 }
 
 .stafflogerrorContainer {
-  min-width: 200px; 
-  max-width: fit-content;
-  width: auto;
-  height: auto;
-  padding: 10px 15px; 
+  height: 50px;
+  width: 260px;
   margin: auto;
   margin-bottom: 15px;
   background-color: rgb(248, 248, 248);
   color: rgb(255, 0, 0);
   display: flex;
   align-items: center;
-  justify-content: center; 
   font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
-  border-radius: 5px;
-  word-wrap: break-word; 
-  white-space: normal; 
 }
 
 .stafflogsuccessContainer {
@@ -104,7 +97,7 @@
 .stafflogerroricon {
   margin-bottom: 3px;
   padding-right: 7px;
- 
+  padding-left: 10px;
 }
 .stafflogsuccessicon{
   margin-bottom: 3px;

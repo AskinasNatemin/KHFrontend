@@ -164,8 +164,8 @@ function StudentForgetPassword() {
 
           {!state.showPasswordField && (
             <div className="d-grid gap-2 col-6 mx-auto studentForgetbutton">
-              <button className="btn btn-primary studentForgetcustom-btn" onClick={handleEmailSubmit}>
-                Enter
+              <button className="btn btn-danger studentForgetcustom-btn" onClick={handleEmailSubmit}>
+                ENTER
               </button>
             </div>
           )}
@@ -197,10 +197,10 @@ function StudentForgetPassword() {
 
               <div className="d-grid gap-2 col-6 mx-auto studentForgetbutton">
                 <button
-                  className="btn btn-primary studentForgetcustom-btn"
+                  className="btn btn-danger studentForgetcustom-btn"
                   onClick={handleResetPassword}
                 >
-                  Confirm
+                  CONFIRM
                 </button>
               </div>
             </>

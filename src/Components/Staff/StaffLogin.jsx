@@ -9,7 +9,7 @@ import { FaLock } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
 import { FiAlertTriangle } from "react-icons/fi";
 import { TiTick } from "react-icons/ti";
-
+import stafflogImg from "../../Assets/images/LoginImage/studentLoginIMG.png"
 import axios from "axios";
 import { loggData } from "../Context/AppContext";
 
@@ -76,7 +76,11 @@ const StaffLogin = () => {
           className="stafflogGoBackIcon float-end"
         />
       </div>
-      <div className="stafflogborder">
+      <div class="container">
+  <div class="row">
+    <div class="col-9">.col-9</div>
+    <div className="col-4"><img src={stafflogImg}/></div>
+    <div class="col-6"><div className="stafflogborder">
         <span className="">
           <div className="staffloghead">
             <h3> STAFF LOGIN</h3>
@@ -154,7 +158,10 @@ const StaffLogin = () => {
             </div>
           </div>
         </span>
-      </div>
+      </div><br/>Subsequent columns continue along the new line.</div>
+  </div>
+</div>
+      
     </div>
   );
 };

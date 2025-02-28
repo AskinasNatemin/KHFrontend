@@ -93,19 +93,21 @@ function StaffRegistration() {
                 <div className="staffhead">
                   <h3>STAFF SIGNUP</h3>
                 </div>
-                {error && <div className="staffRegerrorContainer alert ">
-                              <div className="staffRegerroricon">
-                                <FiAlertTriangle className="icon-class" />
-                              </div>
-                              {error}
-                             </div>}
+                {error && (
+                  <div className="staffRegerrorContainer alert ">
+                    <div className="staffRegerroricon">
+                      <FiAlertTriangle className="icon-class" />
+                    </div>
+                    {error}
+                  </div>
+                )}
                 {successMessage && (
-                   <div className="staffRegsuccessContainer alert">
-                                <div className="staffRegsuccessicon">
-                                  <TiTick className="icon-class" />
-                                </div>
-                                {successMessage}
-                              </div>
+                  <div className="staffRegsuccessContainer alert">
+                    <div className="staffRegsuccessicon">
+                      <TiTick className="icon-class" />
+                    </div>
+                    {successMessage}
+                  </div>
                 )}
 
                 <div className="position-relative mb-3">
@@ -160,7 +162,6 @@ function StaffRegistration() {
                     value={staffRegister.Password}
                     onChange={handleChange}
                     onKeyDown={handleKeyDown}
-
                   />
                   {staffRegister.Password && (
                     <span

@@ -1,32 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+
 .adminborder {
-  margin: auto;
-  margin-top: 150px;
-  height: 310px;
-  width: 425px;
-  border-radius: 10px;
-  box-shadow: 5px 5px 15px 5px rgb(197, 191, 191);
+  padding-bottom: 30px;
+  width: 500px;
+  margin-right: 150px;
+  margin-top: 100px;
+  margin-left: 55px;
 }
-.adminhead {
-  padding-top:30px;
+.adminlogcontainer{
+  background-image: url(../../Assets/images/AdminImage/AdminLoginImg.png);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-size: cover;
+  background-position: 0 -145px;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.adminhead  h3{
+  font-weight: 400;
+  padding-top: 5px;
   text-align: center;
   margin-bottom: 40px;
-  color: rgb(0, 81, 255);
+  font-family: "Righteous", serif;
+  color: rgb(124, 6, 6);
 }
 .admininput {
   width: 350px;
-  margin-left: 35px;
+  margin: auto;
 }
 .admininput input {
   margin-bottom: 25px;
   border-radius: 10px;
+  padding-left: 30px;
 }
-.adminbutton {
-  justify-content: center;
+.adminlogbutton button {
+  border-radius: 5px;
+  background-color: rgb(124, 6, 6);
+  border: rgb(124, 6, 6);
 }
-.adminbutton button {
-  border-radius: 50px;
+.adminlogbutton button:hover {
+  background-color: rgb(153, 8, 8);
+}
+.adminlogcustom-btn:active {
+  background-color: rgb(151, 50, 50) !important; /* Green color */
 }
 .form-control:focus {
   border-color: rgb(138, 138, 138);
   box-shadow: 1px 1px 10px 1px rgb(192, 190, 190);
+}
+.adminlogGoBackIcon {
+  height: 30px;
+  width: 35px;
+  cursor: pointer;
+  color: rgb(124, 6, 6);
 }
