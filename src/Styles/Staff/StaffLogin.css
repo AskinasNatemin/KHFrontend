@@ -8,7 +8,7 @@
   margin-left: 355px;
 }
 .stafflogcontainer {
-  background-image: url(../../Assets/images/LoginImage/StaffLogImg.png);
+  background-color: #E580A0;
   height: 100vh;
   display: flex;
   align-items: center;

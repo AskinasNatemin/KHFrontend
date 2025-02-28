@@ -70,7 +70,7 @@ const StaffLogin = () => {
 
   return (
     <div className="stafflogcontainer">
-      <div className="stafflogGoBackContainer p-3  w-100 ">
+      <div className="stafflogGoBackContainer p-3 w-100">
         <FaHome
           onClick={handleGoBack}
           className="stafflogGoBackIcon float-end"
