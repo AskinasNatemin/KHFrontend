@@ -5,20 +5,17 @@ import axios from "axios";
 import { loggData } from "../Context/AppContext";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import { MdEmail } from "react-icons/md";
-import { FaLock } from "react-icons/fa";
-import { FaHome } from "react-icons/fa";
+import { FaLock, FaHome } from "react-icons/fa";
 import { FiAlertTriangle } from "react-icons/fi";
 import { TiTick } from "react-icons/ti";
-function StudentLogin() {
-  const [data, setData] = useState({
-    email: "",
-    password: "",
-  });
+import studentLoginImage from "../../Assets/images/LoginImage/studentLoginImage.png";
 
+function StudentLogin() {
+  const [data, setData] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
-  const { loggedData, setLoggedData } = useContext(loggData);
+  const { setLoggedData } = useContext(loggData);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,29 +25,19 @@ function StudentLogin() {
 
   const handleInputs = (e) => {
     setErrorMsg("");
-    setData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
+    setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleLogin = () => {
     axios
       .post("http://localhost:5001/studentLogin", data)
-      .then((res) => {        
+      .then((res) => {
         localStorage.setItem("userId", res.data.data._id);
         localStorage.setItem("user", res.data.data.user);
         setErrorMsg("");
         setSuccessMsg(res.data.message);
         setLoggedData(res.data.data);
-        return res;
-      })
-      .then((res) => {
-        if (res) {
-          setTimeout(() => {
-            navigate("/", { replace: true });
-          }, 500);
-        }
+        setTimeout(() => navigate("/", { replace: true }), 500);
       })
       .catch((err) => {
         setErrorMsg(err.response?.data?.message);
@@ -63,91 +50,67 @@ function StudentLogin() {
     }
   };
 
-  const handleGoBack = () => {
-    navigate("/");
-  };
-
-
   return (
-    <div className="studentlogcontainer">
-      <div className="studentlogGoBackContainer p-3  w-100 ">
-        <FaHome
-          onClick={handleGoBack}
-          className="studentlogGoBackIcon float-end"
-        />
+    <div className="studentLogContainer">
+      <div className="studentLogGoBackContainer py-4">
+        <FaHome onClick={() => navigate("/")} className="studentLogGoBackIcon" />
       </div>
-      <div className="studentlogborder">
-        <span className="">
-
-        <div className="studentloghead">
-              <h3> STUDENT LOGIN</h3>
-            </div>
-          {errorMsg && (
-            <div className="studentlogerrorContainer alert ">
-              <div className="studentlogerroricon">
-            <FiAlertTriangle   className="icon-class" /></div> {errorMsg}</div>
-          )}
-          {successMsg && (
-            <div className="studentlogsuccessContainer alert alert-success">
-              <div className="studentlogsuccessicon">
-              <TiTick   className="icon-class" /></div>
-              {successMsg}
-            </div>
-          )}
-          <div className="studentloginput">
-            <div className="position-relative mb-3">
-              <MdEmail className="position-absolute top-50 start-0 translate-middle-y ms-2  studentlogincustom-icon" />
-              <input
-                autoFocus
-                type="email"
-                className="form-control"
-                id="exampleFormControlInput1"
-                placeholder="Email"
-                name="email"
-                onChange={handleInputs}
-                value={data.email}
-                onKeyDown={handleOnKeyDown}
-              />
-            </div>
-            <div className="position-relative mb-3">
-              <FaLock className="position-absolute top-50 start-0 translate-middle-y ms-2  studentlogincustom-icon " />
-
-              <input
-                type={showPassword ? "text" : "password"}
-                placeholder="Password"
-                name="password"
-                onChange={handleInputs}
-                value={data.password}
-                className="form-control pe-5"
-                onKeyDown={handleOnKeyDown}
-              />
-              {data.password && (
-                <span
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="position-absolute top-50  translate-middle-y pe-3"
-                  style={{ cursor: "pointer", color: "#6c757d", left: "325px" }}
-                >
-                  {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
-                </span>
-              )}
-            </div>
-            <div className="d-flex justify-content-end studentloglink">
-              <Link to={"/StudentForgetPassword"}>forgot password</Link>
-            </div>
-            <div className="d-grid gap-2 col-6 mx-auto studentlogbutton">
-              <button
-                className="btn btn-primary studentlogcustom-btn"
-                type="button"
-                onClick={handleLogin}
-              >
-                LOGIN
-              </button>
-            </div>
-            <div className="studentloglink">
-              Create new account <Link to="/StudentRegistration">Sign up</Link>
+      <div className="studentContents">
+        <div className="studentImageContainer">
+          <img src={studentLoginImage} alt="welcome" />
+        </div>
+        <div className="studentLoginInputContainer">
+          <div className="studentLogBorder">
+            <h3 className="studentLogHead">STUDENT LOGIN</h3>
+            {errorMsg && (
+              <div className="studentLogErrorContainer">
+                <FiAlertTriangle className="studentLogIconClass" /> {errorMsg}
+              </div>
+            )}
+            {successMsg && (
+              <div className="studentLogSuccessContainer">
+                <TiTick className="studentLogIconClass" /> {successMsg}
+              </div>
+            )}
+            <div className="studentLogInput">
+              <div className="studentLogInputGroup">
+                <MdEmail className="studentLogInputIcon" />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  name="email"
+                  onChange={handleInputs}
+                  onKeyDown={handleOnKeyDown}
+                  value={data.email}
+                  autoFocus
+                />
+              </div>
+              <div className="studentLogInputGroup">
+                <FaLock className="studentLogInputIcon" />
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  name="password"
+                  onChange={handleInputs}
+                  onKeyDown={handleOnKeyDown}
+                  value={data.password}
+                />
+                {data.password && (
+                  <span onClick={() => setShowPassword(!showPassword)} className="studentLogPasswordToggle">
+                    {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
+                  </span>
+                )}
+              </div>
+              <div className="studentLogLink">
+                <Link to="/StudentForgetPassword">Forgot password?</Link>
+              </div>
+              <button className="studentLogButton" onClick={handleLogin}>LOGIN</button>
+              <div className="studentLogLink">
+                Create new account <Link to="/StudentRegistration">Sign up</Link>
+              </div>
             </div>
           </div>
-        </span>
+        </div>
       </div>
     </div>
   );
