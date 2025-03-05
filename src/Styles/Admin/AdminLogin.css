@@ -1,32 +1,88 @@
-.adminborder {
-  margin: auto;
-  margin-top: 150px;
-  height: 310px;
-  width: 425px;
-  border-radius: 10px;
-  box-shadow: 5px 5px 15px 5px rgb(197, 191, 191);
-}
-.adminhead {
-  padding-top:30px;
-  text-align: center;
-  margin-bottom: 40px;
-  color: rgb(0, 81, 255);
-}
-.admininput {
-  width: 350px;
-  margin-left: 35px;
-}
-.admininput input {
-  margin-bottom: 25px;
-  border-radius: 10px;
-}
-.adminbutton {
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+
+.adminlogcontainer {
+  background-color: #E580A0;
+  height: 100vh;
+  display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  padding-top: 50px; /* To ensure space for the home icon */
 }
-.adminbutton button {
-  border-radius: 50px;
+.adminImageContainer {
+  position: absolute;
+  bottom: 0px;  /* Adjusts position from bottom */
+  right: 10px;   /* Aligns image to the right */
+  max-width: 350px; /* Ensures responsiveness */
 }
+
+@media (max-width: 768px) {
+  .adminImageContainer {
+    max-width: 150px; /* Smaller image on mobile */
+    right: 10px;
+  }
+}
+
+
+.adminlogGoBackContainer {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.adminlogGoBackIcon {
+  height: 35px;
+  width: 35px;
+  cursor: pointer;
+  color: rgb(124, 6, 6);
+}
+
+.adminborder {
+  width: 100%;
+  max-width: 400px;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.adminhead h3 {
+  text-align: center;
+  font-family: "Righteous", serif;
+  color: rgb(124, 6, 6);
+  margin-bottom: 20px;
+}
+
+.admininput input {
+  margin-bottom: 15px;
+  border-radius: 8px;
+  padding-left: 35px;
+}
+
 .form-control:focus {
   border-color: rgb(138, 138, 138);
   box-shadow: 1px 1px 10px 1px rgb(192, 190, 190);
+}
+
+.adminlogbutton button {
+  border-radius: 5px;
+  background-color: rgb(124, 6, 6);
+  border: none;
+}
+
+.adminlogbutton button:hover {
+  background-color: rgb(153, 8, 8);
+}
+
+/* ✅ Responsive Design */
+@media (max-width: 768px) {
+  .adminborder {
+    max-width: 90%;
+  }
+}
+
+.adminLoginImage{
+ object-position: 0px 39px;
 }

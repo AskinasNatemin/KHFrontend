@@ -7,6 +7,8 @@ import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import { MdEmail } from "react-icons/md";
 import { HiRefresh } from "react-icons/hi";
 import { FaHome } from "react-icons/fa";
+import { FiAlertTriangle } from "react-icons/fi";
+import { TiTick } from "react-icons/ti";
 
 const initialState = {
   email: "",
@@ -85,7 +87,7 @@ function StaffForgetPassword() {
       .then((res) => {
         if (res) {
           setTimeout(() => {
-            navigate("/StudentLogin",{replace:true});
+            navigate("/StudentLogin", { replace: true });
           }, 500);
         }
       })
@@ -132,18 +134,24 @@ function StaffForgetPassword() {
         </div>
         <div className="staffForgetinput">
           {state.error && (
-            <div className="alert alert-danger  mb-2 d-block">
+            <div className="staffForgeterrorContainer alert ">
+              <div className="staffForgeterroricon">
+                <FiAlertTriangle className="icon-class" />
+              </div>
               {state.error}
             </div>
           )}
           {state.success && (
-            <span className="alert alert-success mb-2 d-block">
+            <div className="staffForgetsuccessContainer alert">
+              <div className="staffForgetsuccessicon">
+                <TiTick className="icon-class" />
+              </div>
               {state.success}
-            </span>
+            </div>
           )}
 
           <div className="position-relative mb-3">
-            <MdEmail className="position-absolute top-50 start-0 translate-middle-y ms-2 staffforgetcustom-icon" />
+            <MdEmail className="position-absolute top-50 start-0 translate-middle-y ms-2 " />
             <input
               autoFocus
               type="email"
@@ -159,8 +167,11 @@ function StaffForgetPassword() {
 
           {!state.showPasswordField && (
             <div className="d-grid gap-2 col-6 mx-auto staffForgetbutton">
-              <button className="btn btn-primary" onClick={handleEmailSubmit}>
-                Enter
+              <button
+                className="btn btn-danger staffForgetcustom-btn"
+                onClick={handleEmailSubmit}
+              >
+                ENTER
               </button>
             </div>
           )}
@@ -168,7 +179,7 @@ function StaffForgetPassword() {
           {state.showPasswordField && (
             <>
               <div className="position-relative mb-3">
-                <FaLock className="position-absolute top-50 start-0 translate-middle-y ms-2  stafflogincustom-icon " />
+                <FaLock className="position-absolute top-50 start-0 translate-middle-y ms-2  " />
 
                 <input
                   type={seePassword ? "text" : "password"}
@@ -192,10 +203,10 @@ function StaffForgetPassword() {
 
               <div className="d-grid gap-2 col-6 mx-auto staffForgetbutton">
                 <button
-                  className="btn btn-primary staffForgetcustom-btn"
+                  className="btn btn-danger staffForgetcustom-btn"
                   onClick={handleResetPassword}
                 >
-                  Confirm
+                  CONFIRM
                 </button>
               </div>
             </>

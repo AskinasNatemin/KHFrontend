@@ -164,6 +164,7 @@ const AdminAddingBooks = () => {
           >
             <option value="Student">Student</option>
             <option value="Staff">Staff</option>
+          </select>
         </div>
 
         <div className="bookButtons d-flex flex-column flex-md-row gap-3">
