@@ -9,7 +9,7 @@ import { FaLock } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
 import { FiAlertTriangle } from "react-icons/fi";
 import { TiTick } from "react-icons/ti";
-import stafflogImg from "../../Assets/images/LoginImage/studentLoginIMG.png"
+import staffLoginImage from "../../Assets/images/LoginImage/studentLoginImage.png";
 import axios from "axios";
 import { loggData } from "../Context/AppContext";
 
@@ -69,100 +69,72 @@ const StaffLogin = () => {
   };
 
   return (
-    <div className="stafflogcontainer">
-      <div className="stafflogGoBackContainer p-3  w-100 ">
-        <FaHome
-          onClick={handleGoBack}
-          className="stafflogGoBackIcon float-end"
-        />
-      </div>
-      <div class="container">
-  <div class="row">
-    <div class="col-9">.col-9</div>
-    <div className="col-4"><img src={stafflogImg}/></div>
-    <div class="col-6"><div className="stafflogborder">
-        <span className="">
-          <div className="staffloghead">
-            <h3> STAFF LOGIN</h3>
-          </div>
-
-          {errorMsg && (
-            <div className="stafflogerrorContainer alert ">
-              <div className="stafflogerroricon">
-                <FiAlertTriangle className="icon-class" />
-              </div>
-              {errorMsg}
-            </div>
-          )}
-          {successMsg && (
-            <div className="stafflogsuccessContainer alert alert-success">
-              <div className="stafflogsuccessicon">
-                <TiTick className="icon-class" />
-              </div>
-              {successMsg}
-            </div>
-          )}
-
-          <div className="staffloginput">
-            <div className="position-relative mb-3">
-              <MdEmail className="position-absolute top-50 start-0 translate-middle-y ms-2  stafflogincustom-icon" />
-              <input
-                autoFocus
-                type="email"
-                className="form-control"
-                id="exampleFormControlInput1"
-                placeholder="Email"
-                name="Email"
-                onChange={handleInputs}
-                value={data.Email}
-                onKeyDown={handleOnKeyDown}
-              />
-            </div>
-            <div className="position-relative mb-3">
-              <FaLock className="position-absolute top-50 start-0 translate-middle-y ms-2  stafflogincustom-icon " />
-              <input
-                type={showPassword ? "text" : "password"}
-                className="form-control pe-5"
-                id="exampleFormControlInput3"
-                placeholder="Password"
-                name="Password"
-                value={data.Password}
-                onChange={handleInputs}
-                onKeyDown={handleOnKeyDown}
-              />
-              {data.Password && (
-                <span
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="position-absolute top-50 end-0 translate-middle-y pe-3"
-                  style={{ cursor: "pointer", color: "#6c757d" }}
-                >
-                  {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
-                </span>
-              )}
-            </div>
-
-            <div className="d-flex justify-content-end staffloglink">
-              <Link to={"/StaffForgetPassword"}>forgot password</Link>
-            </div>
-            <div className="d-grid gap-2 col-6 mx-auto stafflogbutton">
-              <button
-                className="btn btn-danger stafflogcustom-btn"
-                type="Submit"
-                onClick={handleLogin}
-              >
-                LOGIN
-              </button>
-            </div>
-            <div className="staffloglink">
-              Create new account <Link to="/StaffRegistration">Sign up</Link>
-            </div>
-          </div>
-        </span>
-      </div><br/>Subsequent columns continue along the new line.</div>
-  </div>
-</div>
-      
-    </div>
+    <div className="staffLogContainer">
+         <div className="staffLogGoBackContainer py-4">
+           <FaHome onClick={() => navigate("/")} className="staffLogGoBackIcon" />
+         </div>
+         <div className="staffContents">
+           <div className="staffImageContainer">
+             <img src={staffLoginImage} alt="welcome" />
+           </div>
+           <div className="staffLoginInputContainer">
+             <div className="staffLogBorder">
+               <h3 className="staffLogHead">Staff LOGIN</h3>
+               {errorMsg && (
+                 <div className="staffLogErrorContainer">
+                   <FiAlertTriangle className="staffLogIconClass" /> {errorMsg}
+                 </div>
+               )}
+               {successMsg && (
+                 <div className="staffLogSuccessContainer">
+                   <TiTick className="staffLogIconClass" /> {successMsg}
+                 </div>
+               )}
+               <div className="staffLogInput">
+                 <div className="staffLogInputGroup">
+                   <MdEmail className="staffLogInputIcon" />
+                   <input
+                     type="email"
+                     className="form-control"
+                     placeholder="Email"
+                     name="Email"
+                     onChange={handleInputs}
+                     onKeyDown={handleOnKeyDown}
+                     value={data.Email}
+                     autoFocus
+                   />
+                 </div>
+                 <div className="staffLogInputGroup">
+                   <FaLock className="staffLogInputIcon" />
+                   <input
+                     type={showPassword ? "text" : "password"}
+                     placeholder="Password"
+                     className="form-control"
+                     name="Password"
+                     onChange={handleInputs}
+                     onKeyDown={handleOnKeyDown}
+                     value={data.Password}
+                   />
+                   {data.Password && (
+                     <span onClick={() => setShowPassword(!showPassword)} className="staffLogPasswordToggle">
+                       {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
+                     </span>
+                   )}
+                 </div>
+                 <div className="staffLogLink">
+                   <Link to="/staffForgetPassword">Forgot password?</Link>
+                 </div>
+                 <div className="d-grid gap-2 col-12 mx-auto staffLogButton">
+                 <button className="btn btn-danger " onClick={handleLogin}>LOGIN</button>
+                 </div>
+                 <div className="staffLogLink">
+                   Create new account <Link to="/staffRegistration">Sign up</Link>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
   );
 };
 

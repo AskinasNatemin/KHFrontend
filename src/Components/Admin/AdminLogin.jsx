@@ -6,6 +6,7 @@ import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import { FaHome } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaLock } from "react-icons/fa";
+import adminLoginImage from"../../Assets/images/AdminImage/adminLoginImg.png";
 
 const AdminLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -43,13 +44,15 @@ const AdminLogin = () => {
 
   return (
     <div className="adminlogcontainer">
-      <div className="adminlogGoBackContainer p-3 w-100">
-        <FaHome
-          onClick={handleGoBack}
-          className="adminlogGoBackIcon float-end"
-        />
+      <div className="adminlogGoBackContainer">
+        <FaHome onClick={handleGoBack} className="adminlogGoBackIcon" />
       </div>
-      <form onSubmit={handleLogin}>
+      <div className="adminImageContainer">
+  <img src={adminLoginImage} alt="welcome" className="img-fluid adminLoginImage" />
+</div>
+
+
+      <form onSubmit={handleLogin} className="w-100 d-flex justify-content-center">
         <div className="adminborder">
           <div className="admininput">
             <div className="adminhead">
@@ -57,7 +60,7 @@ const AdminLogin = () => {
             </div>
 
             <div className="position-relative mb-3">
-              <MdEmail className="position-absolute top-50 start-0 translate-middle-y ms-2  " />
+              <MdEmail className="position-absolute top-50 start-0 translate-middle-y ms-2" />
               <input
                 autoFocus
                 onChange={change}
@@ -71,7 +74,7 @@ const AdminLogin = () => {
             </div>
 
             <div className="position-relative mb-3">
-              <FaLock className="position-absolute top-50 start-0 translate-middle-y ms-2  stafflogincustom-icon " />
+              <FaLock className="position-absolute top-50 start-0 translate-middle-y ms-2" />
               <input
                 onChange={change}
                 type={showPassword ? "text" : "password"}
@@ -91,7 +94,8 @@ const AdminLogin = () => {
                 </span>
               )}
             </div>
-            <div className="d-grid gap-2 col-6 mx-auto adminlogbutton">
+
+            <div className="d-grid gap-2 col-12 mx-auto adminlogbutton">
               <button className="btn btn-danger" type="submit">
                 Login
               </button>

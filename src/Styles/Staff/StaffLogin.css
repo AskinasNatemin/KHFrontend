@@ -1,106 +1,217 @@
 @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
-
-.stafflogborder {
-  margin-top: 100px;
-  width: 500px;
-  border:2px solid black
-
-}
-.stafflogcontainer {
-  background-color:#E580A0 ;
+/* 
+body{
+  background-color: #E580A0;
+ 
+} */
+.staffLogContainer {
+  background-color: #E580A0;
   height: 100vh;
   display: flex;
-  align-items: center;
   flex-direction: column;
-  background-size: cover;
-  /* background-position: 0 -145px; */
-  background-repeat: no-repeat;
-  position: relative;
-  border:2px solid black
 }
-.staffloghead h3 {
-  font-weight: 400;
-  padding-top: 5px;
-  text-align: center;
-  margin-bottom: 40px;
-  font-family: "Righteous", serif;
-  color: rgb(124, 6, 6);
+
+.staffLogGoBackContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
 }
-.stafflogGoBackIcon {
-  height: 30px;
-  width: 35px;
+
+.staffLogGoBackIcon {
   cursor: pointer;
   color: rgb(124, 6, 6);
-}
-.staffloginput {
-  width: 350px;
-  margin: auto;
-  
-}
-.staffloginput input {
-  margin-bottom: 25px;
-  border-radius: 10px;
-  padding-left: 30px;
-}
-.stafflogbutton {
-  margin-top: 20px;
-}
-.stafflogbutton button {
-  border-radius: 5px;
-  background-color: rgb(124, 6, 6);
-  border: rgb(124, 6, 6);
-}
-.stafflogbutton button:hover {
-  background-color: rgb(153, 8, 8);
-}
-.stafflogcustom-btn:active {
-  background-color: rgb(151, 50, 50) !important; /* Green color */
+  font-size: 1.9rem;
 }
 .form-control:focus {
   border-color: rgb(138, 138, 138);
   box-shadow: 1px 1px 10px 1px rgb(192, 190, 190);
 }
-.staffloglink {
-  text-align: center;
-  margin-top: 20px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+.staffContents {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100vw;
+  margin: auto;
+  flex-wrap: nowrap;
+  height: 100%;
 }
-.staffloglink a {
+
+.staffImageContainer {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  height: 100%;
+}
+
+.staffImageContainer img {
+  max-width: 100%;
+  height: auto;
+  width: clamp(200px, 80%, 500px);
+  object-fit: contain;
+  align-self: flex-end;
+}
+
+.staffLoginInputContainer {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  height: 100%;
+}
+
+.staffLogBorder {
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 75px;
+}
+
+.staffLogHead {
+  font-family: "Righteous", sans-serif;
+  color: rgb(124, 6, 6);
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.staffLogInput {
+  width: 100%;
+}
+
+.staffLogInputGroup {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.staffLogInputGroup input {
+  margin-bottom: 15px;
+  border-radius: 8px;
+  padding-left: 35px;
+}
+
+.staffLogInputIcon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+
+}
+
+.staffLogPasswordToggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  /* color: #666; */
+}
+
+.staffLogLink {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.staffLogLink a {
   color: #a00000;
   text-decoration: none;
 }
 
-.stafflogerrorContainer {
-  height: 50px;
-  width: 260px;
-  margin: auto;
-  margin-bottom: 15px;
-  background-color: rgb(248, 248, 248);
-  color: rgb(255, 0, 0);
-  display: flex;
-  align-items: center;
-  font-family: Arial, Helvetica, sans-serif;
+.staffLogButton button {
+  border-radius: 5px;
+  background-color: rgb(124, 6, 6);
+  border: none;}
+
+.staffLogButton button:hover {
+  background-color: rgb(153, 8, 8);
 }
 
-.stafflogsuccessContainer {
-  height: 50px;
-  width: 260px;
-  margin: auto;
+.staffLogErrorContainer,
+.staffLogSuccessContainer {
+  width:fit-content;
+  padding: 10px;
+  border-radius: 5px;
   margin-bottom: 15px;
-  background-color: rgba(188, 248, 156, 0.582);
-  color: rgb(59, 128, 53);
   display: flex;
   align-items: center;
-  font-family: Arial, Helvetica, sans-serif;
+  margin-inline: auto;
+
 }
 
-.stafflogerroricon {
-  margin-bottom: 3px;
-  padding-right: 7px;
-  padding-left: 10px;
+.staffLogErrorContainer {
+  background-color: white;
+  color: red;
 }
-.stafflogsuccessicon{
-  margin-bottom: 3px;
-  padding-right: 7px;
-  padding-left: 10px;
+
+.staffLogSuccessContainer {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.staffLogIconClass {
+  margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+  .staffContents {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+
+  .staffImageContainer,
+  .staffLoginInputContainer {
+    flex: 1;
+  }
+
+  .staffLogHead {
+    font-size: 1.5rem;
+  }
+
+  .staffLogButton {
+    font-size: 0.9rem;
+  }
+
+  .staffLoginInputContainer {
+    margin-right: 15px;
+  }
+}
+
+@media (max-width: 512px) {
+  .staffContents {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+  }
+
+  .staffImageContainer {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+
+  .staffImageContainer img {
+    width: clamp(200px, 50%, 450px);
+    align-self: flex-end;
+  }
+
+  .staffLoginInputContainer {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .staffLogHead {
+    font-size: 1.2rem;
+  }
+
+  .staffLogButton {
+    padding: 8px;
+    font-size: 0.85rem;
+  }
 }
