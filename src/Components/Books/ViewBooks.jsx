@@ -1,6 +1,7 @@
 import "../../Styles/ViewBooks.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../Navbar.jsx";
+import axios from "axios";
 
 const booksData = {
   studentBooks: [
@@ -38,6 +39,19 @@ const booksData = {
 };
 
 const ViewBooks = () => {
+  const[data,setData]=useState([])
+
+  useEffect(() => {
+    axios.get('http://localhost:5001/Books')
+    .then((res)=>{
+      // console.log(res.data.data);
+      
+      setData(res.data.data)
+    })
+    .catch((err)=>{
+      console.log(err); 
+    })
+  }, []);
   const [activeTab, setActiveTab] = useState("studentBooks");
 
   const handleTabClick = (tab) => {
@@ -98,6 +112,22 @@ const ViewBooks = () => {
           </div>
         )}
       </div>
+      <>
+  {data.map((el, index) => {
+    console.log(el);
+    return (
+      <img 
+        key={index}
+        src={el.bookImage} 
+        className="border border-5 p-5"
+        alt="Book"
+        onError={(e) => console.error("Image Load Error:", e.target.src)}
+      />
+    );
+  })}
+</>
+
+
     </div>
   );
 };

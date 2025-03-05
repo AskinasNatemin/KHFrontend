@@ -11,14 +11,16 @@ import adminLoginImage from"../../Assets/images/AdminImage/adminLoginImg.png";
 const AdminLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [state, setState] = useState({
-    email: "",
-    password: "",
+    email: "", 
+    password: "", 
   });
 
   const navigate = useNavigate();
 
   const change = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
+    console.log(state);
+    
   };
 
   const handleLogin = async (e) => {
@@ -32,9 +34,11 @@ const AdminLogin = () => {
       alert(response.data.message);
       navigate("/AdminDashboard");
     } catch (error) {
-      alert(
-        error.response?.data?.message || "An error occurred. Please try again."
-      );
+      if (error.response && error.response.data) {
+        alert(error.response.data.message);
+      } else {
+        alert("An error occurred. Please try again.");
+      }
     }
   };
 
