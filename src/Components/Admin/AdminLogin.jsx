@@ -5,33 +5,28 @@ import { useNavigate } from "react-router-dom";
 
 const AdminLogin = () => {
   const [state, setState] = useState({
-    email: "", // Change to lowercase
-    password: "", // Change to lowercase
+    email: "", 
+    password: "", 
   });
 
   const navigate = useNavigate();
 
   const change = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
+    console.log(state);
+    
   };
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      // Send login request to backend
       const response = await axios.post("http://localhost:5001/AdminLogin", {
         email: state.email,
         password: state.password,
       });
-      // On successful login, handle the response (you can store token, admin info, etc.)
-      alert(response.data.message); // You can show success messages or redirect
-
-      // You could store the admin info in localStorage or context, if needed
-      // localStorage.setItem("adminEmail", response.data.adminEmail);
-
+      alert(response.data.message);
       navigate("/AdminDashboard");
     } catch (error) {
-      // Handle errors (incorrect login)
       if (error.response && error.response.data) {
         alert(error.response.data.message);
       } else {
