@@ -1,0 +1,124 @@
+/* Main Content Layout */
+.AdminDashboardMainContent {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.dashrow {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+/* Card Styling */
+.dashcard {
+  background-color: #02070c;
+  color: #fff;
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 10%;
+  margin-right:200px;
+  padding: 30px; /* Increased padding to make the card body bigger */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashcard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.dashcard-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Increase icon size */
+.dashcard-body .cardusericon,
+.dashcard-body .dashcardlendedbooksicon,
+.dashcard-body .dashcardaddbooksicon {
+  font-size: 50px; /* Increase icon size */
+  margin-bottom: 20px; /* Add more space between icon and button */
+}
+
+.dashcarduserbut,
+.dashcardlentbookbut,
+.dashcardaddbookbut {
+  padding: 8px 18px; /* Smaller padding for buttons */
+  font-size: 14px; /* Smaller font size */
+  border-radius: 5px;
+  background-color: #e74c3c;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: center;
+}
+
+.dashcarduserbut:hover,
+.dashcardlentbookbut:hover,
+.dashcardaddbookbut:hover {
+  background-color: #c0392b;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .dashcard {
+    width: 250px;
+  }
+
+  .AdminDashboardMainContent {
+    padding: 15px;
+  }
+
+  .dashrow {
+    justify-content: center;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashcard {
+    width: 100%;
+    max-width: 300px; /* Prevent stretching on very small screens */
+  }
+
+  .AdminDashboardMainContent {
+    padding: 10px;
+  }
+
+  .dashrow {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Smaller icons on mobile */
+  .dashcard-body .cardusericon,
+  .dashcard-body .dashcardlendedbooksicon,
+  .dashcard-body .dashcardaddbooksicon {
+    font-size: 40px; /* Increase size a little less on mobile */
+  }
+
+  /* Smaller buttons on mobile */
+  .dashcarduserbut,
+  .dashcardlentbookbut,
+  .dashcardaddbookbut {
+    font-size: 12px; /* Even smaller font size */
+    padding: 8px 16px;
+  }
+}
