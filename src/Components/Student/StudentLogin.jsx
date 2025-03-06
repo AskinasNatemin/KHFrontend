@@ -8,7 +8,7 @@ import { MdEmail } from "react-icons/md";
 import { FaLock, FaHome } from "react-icons/fa";
 import { FiAlertTriangle } from "react-icons/fi";
 import { TiTick } from "react-icons/ti";
-import studentLoginImage from "../../Assets/images/LoginImage/studentLoginImage.png";
+import studentLoginImage from '../../Assets/images/LoginImage/studentLoginIMG.png';
 
 function StudentLogin() {
   const [data, setData] = useState({ email: "", password: "" });

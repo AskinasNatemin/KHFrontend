@@ -1,93 +1,106 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "../../Styles/Admin/AdminAddingBooks.css";
 import axios from "axios";
-import convertToBase64 from "../Utills/Admin/convertToBase64";
 
 const AdminAddingBooks = () => {
   const [bookName, setBookName] = useState("");
   const [authorName, setAuthorName] = useState("");
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState(null);
+  const [imageFile, setImageFile] = useState(null);
   const [bookFile, setBookFile] = useState(null);
   const [category, setCategory] = useState("Student");
+
+  const [bookImage, setBookImage] = useState(null);
+  const [bookFileData, setBookFileData] = useState(null);
+
   const [errorMessage, setErrorMessage] = useState("");
   const [success, setSuccess] = useState("");
-  const data = {
-    bookName,
-    authorName,
-    description,
-    image,
-    bookFile,
-    category,
+
+  // Refs to reset file input
+  const imageInputRef = useRef(null);
+  const fileInputRef = useRef(null);
+
+  const handleFilesChange = (e) => {
+    setErrorMessage("");
+    setSuccess("");
+    const file = e.target.files[0];
+    if (!file) return;
+
+    if (file.type === "application/pdf") {
+      setBookFile(file);
+      setBookFileData(file.name);
+    } else if (file.type.startsWith("image/")) {
+      setImageFile(file);
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => setBookImage(reader.result);
+    }
   };
 
   const handleReset = () => {
     setBookName("");
     setAuthorName("");
     setDescription("");
-    setImage(null);
+    setBookImage(null);
+    setImageFile(null);
     setBookFile(null);
-    setCategory("");
+    setBookFileData(null);
+    setCategory("Student");
     setErrorMessage("");
+    setSuccess("");
+    if (imageInputRef.current) imageInputRef.current.value = "";
+    if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
-  const handleImageChange = async (e) => {
-    setErrorMessage("");
-    const file = e.target.files[0];
-    const base64 = await convertToBase64(file);
-    setImage(base64);
-  };
+  const submit = async () => {
+    if (!bookName || !authorName || !description || !imageFile || !bookFile) {
+      setErrorMessage("All fields are required!");
+      return;
+    }
 
-  const handleFileChange = async (e) => {
-    setErrorMessage("");
-    const file = e.target.files[0];
-    const base64 = await convertToBase64(file);
-    setBookFile(base64);
-  };
+    const formData = new FormData();
+    formData.append("bookName", bookName);
+    formData.append("authorName", authorName);
+    formData.append("description", description);
+    formData.append("category", category);
+    formData.append("imageFile", imageFile);
+    formData.append("bookFile", bookFile);
 
-  const submit = () => {
-    axios
-      .post("http://localhost:5001/AdminAddBooks", data)
-      .then((res) => {
-        console.log(res.data);
-        setSuccess(res.data.message);
-        setBookName("");
-        setAuthorName("");
-        setDescription("");
-        setImage(null);
-        setBookFile(null);
-        setCategory("");
-        setErrorMessage("");
-        setTimeout(() => {
-          setSuccess("");
-        }, 700);
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-        setSuccess("");
-        setErrorMessage(err.response.data.message);
-      });
-  };
+    try {
+      const response = await axios.post(
+        "http://localhost:5001/addBook",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
+      setSuccess(response.data.message);
+      setErrorMessage('')
+    } catch (err) {
+      setSuccess('')
+      setErrorMessage(err.response?.data?.message || "Failed to add book!");
+    }
+  };
   return (
     <div className="adminAddPageContainer border mt-5">
-      <>
-        {success && <div className="alert alert-success">{success}</div>}
-        {errorMessage && (
-          <div className="alert alert-danger">{errorMessage}</div>
-        )}
-      </>
+      {success && <div className="alert alert-success">{success}</div>}
+      {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
+
       <div className="d-flex w-100 flex-column flex-md-row">
         <div className="adminAddPageImageWrapper my-md-auto">
-          {image ? (
-            <img src={image} alt="Book" className="adminAddPageBookImage" />
+          {bookImage ? (
+            <img src={bookImage} alt="Book" className="adminAddPageBookImage" />
           ) : (
             <label className="adminAddPageImageUploadLabel">
               <input
                 type="file"
                 className="adminAddPageImageInput"
                 accept="image/*"
-                onChange={handleImageChange}
+                onChange={handleFilesChange}
+                ref={imageInputRef}
               />
               <span className="adminAddPagePlusIcon">+</span>
             </label>
@@ -95,31 +108,28 @@ const AdminAddingBooks = () => {
         </div>
 
         <div className="d-flex flex-column md-ps-5 flex-fill ps-sm-0 ps-md-5 my-md-auto">
-          <div className="adminAddPageInputField">
-            <input
-              type="text"
-              className="adminAddPageInputBox"
-              value={bookName}
-              placeholder="Book Name"
-              onChange={(e) => {
-                setBookName(e.target.value);
-                setErrorMessage("");
-              }}
-            />
-          </div>
-
-          <div>
-            <input
-              type="text"
-              className="adminAddPageInputBox"
-              value={authorName}
-              placeholder="Author Name"
-              onChange={(e) => {
-                setAuthorName(e.target.value);
-                setErrorMessage("");
-              }}
-            />
-          </div>
+          <input
+            type="text"
+            className="adminAddPageInputBox mb-3"
+            value={bookName}
+            placeholder="Book Name"
+            onChange={(e) => {
+              setBookName(e.target.value);
+              setErrorMessage("");
+              setSuccess("");
+            }}
+          />
+          <input
+            type="text"
+            className="adminAddPageInputBox"
+            value={authorName}
+            placeholder="Author Name"
+            onChange={(e) => {
+              setAuthorName(e.target.value);
+              setErrorMessage("");
+              setSuccess("");
+            }}
+          />
         </div>
       </div>
 
@@ -132,6 +142,7 @@ const AdminAddingBooks = () => {
             onChange={(e) => {
               setDescription(e.target.value);
               setErrorMessage("");
+              setSuccess("");
             }}
           />
         </div>
@@ -141,12 +152,12 @@ const AdminAddingBooks = () => {
           <input
             type="file"
             className="adminAddPageFileInput"
-            accept=".pdf, .epub, .mobi"
-            onChange={handleFileChange}
-            placeholder="Upload Book File"
+            accept=".pdf"
+            onChange={handleFilesChange}
+            ref={fileInputRef}
           />
-          {bookFile && (
-            <span className="adminAddPageFileName">{bookFile.name}</span>
+          {bookFileData && (
+            <span className="adminAddPageFileName">{bookFileData.name}</span>
           )}
         </div>
 
@@ -156,10 +167,7 @@ const AdminAddingBooks = () => {
             id="category"
             className="w-50 ms-auto p-1"
             value={category}
-            onChange={(e) => {
-              setCategory(e.target.value);
-              setErrorMessage("");
-            }}
+            onChange={(e) => setCategory(e.target.value)}
             required
           >
             <option value="Student">Student</option>
@@ -176,6 +184,7 @@ const AdminAddingBooks = () => {
           </button>
         </div>
       </div>
+
     </div>
   );
 };
