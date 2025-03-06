@@ -32,7 +32,7 @@ const AdminLogin = () => {
       });
 
       alert(response.data.message);
-      navigate("/AdminDashboard");
+      navigate("/AdminDashBackground");
     } catch (error) {
       if (error.response && error.response.data) {
         alert(error.response.data.message);
@@ -45,7 +45,7 @@ const AdminLogin = () => {
   const handleGoBack = () => {
     navigate("/");
   };
-
+  
   return (
     <div className="adminlogcontainer">
       <div className="adminlogGoBackContainer">

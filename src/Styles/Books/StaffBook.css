@@ -1,0 +1,42 @@
+.view-book-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .view-book-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .fav-icon-btn {
+    background: none;
+    border: 2px solid pink; /* Default pink border */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .fav-icon {
+    font-size: 24px;
+    color: pink; /* Default pink outline */
+    transition: color 0.3s ease;
+  }
+  
+  .fav-icon-btn.active {
+    background: pink; /* Full pink background when active */
+    border-color: pink;
+  }
+  
+  .fav-icon-btn.active .fav-icon {
+    color: white; /* White icon when active */
+  }

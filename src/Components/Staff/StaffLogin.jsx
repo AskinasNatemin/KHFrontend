@@ -9,7 +9,7 @@ import { FaLock } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
 import { FiAlertTriangle } from "react-icons/fi";
 import { TiTick } from "react-icons/ti";
-import staffLoginImage from "../../Assets/images/LoginImage/studentLoginImage.png";
+import staffLoginImage from "../../Assets/images/LoginImage/studentLoginIMG.png";
 import axios from "axios";
 import { loggData } from "../Context/AppContext";
 

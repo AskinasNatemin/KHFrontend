@@ -64,7 +64,7 @@ const Navbar = ({ handleRegistration }) => {
             <NavLink className="nav-link" to="/">
               Home
             </NavLink>
-            <NavLink className="nav-link" to="/ViewBooks">
+            <NavLink className="nav-link" to="/Books">
               Books
             </NavLink>
 
