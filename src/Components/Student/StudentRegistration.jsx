@@ -9,16 +9,18 @@ import { FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { MdContactPage } from "react-icons/md";
 import { FaLock } from "react-icons/fa";
+import { FiAlertTriangle } from "react-icons/fi";
+import { TiTick } from "react-icons/ti";
 
 function StudentRegistration() {
-    const [showPassword, setShowPassword] = useState(false);
-  
+  const [showPassword, setShowPassword] = useState(false);
+
   const navigate = useNavigate();
   const [studentRegister, setStudentRegister] = useState({
     userName: "",
     email: "",
     phoneNumber: "",
-    password: '',
+    password: "",
   });
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
@@ -33,7 +35,6 @@ function StudentRegistration() {
   };
 
   const validateForm = () => {
-    
     const { userName, email, phoneNumber, password } = studentRegister;
     if (!userName || !email || !phoneNumber || !password) {
       setError("All fields are required.");
@@ -50,7 +51,7 @@ function StudentRegistration() {
       setSuccessMessage("");
       return false;
     }
-    if(isNaN(password)){
+    if (isNaN(password)) {
       setError("Password must be a number");
       setSuccessMessage("");
       return false;
@@ -110,7 +111,7 @@ function StudentRegistration() {
   return (
     <div className="StudentContainer">
       <div className="StudentRegGoBackContainer p-3  w-100">
-        <FaHome 
+        <FaHome
           onClick={handleGoBack}
           className="StudentRegGoBackIcon float-end"
         />
@@ -121,9 +122,21 @@ function StudentRegistration() {
             <h3>STUDENT SIGNUP</h3>
           </div>
 
-          {error && <div className="alert alert-danger">{error}</div>}
+          {error && (
+            <div className="studentRegerrorContainer alert ">
+              <div className="studentRegerroricon">
+                <FiAlertTriangle className="icon-class" />
+              </div>
+              {error}
+            </div>
+          )}
           {successMessage && (
-            <div className="alert alert-success">{successMessage}</div>
+            <div className="studentRegsuccessContainer alert">
+              <div className="studentRegsuccessicon">
+                <TiTick className="icon-class" />
+              </div>
+              {successMessage}
+            </div>
           )}
 
           <div className="position-relative mb-3">
@@ -189,7 +202,7 @@ function StudentRegistration() {
           </div>
           <div className="d-grid gap-2 col-6 mx-auto StudentRegbutton">
             <button
-              className="btn btn-primary custom-btn "
+              className="btn btn-danger custom-btn "
               onClick={addUserToServer}
             >
               CREATE ACCOUNT

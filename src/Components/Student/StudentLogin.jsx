@@ -8,7 +8,7 @@ import { MdEmail } from "react-icons/md";
 import { FaLock, FaHome } from "react-icons/fa";
 import { FiAlertTriangle } from "react-icons/fi";
 import { TiTick } from "react-icons/ti";
-import studentLoginImage from "../../Assets/images/LoginImage/studentLoginImage.png";
+import studentLoginImage from '../../Assets/images/LoginImage/studentLoginIMG.png';
 
 function StudentLogin() {
   const [data, setData] = useState({ email: "", password: "" });
@@ -77,6 +77,7 @@ function StudentLogin() {
                 <MdEmail className="studentLogInputIcon" />
                 <input
                   type="email"
+                  className="form-control"
                   placeholder="Email"
                   name="email"
                   onChange={handleInputs}
@@ -90,6 +91,7 @@ function StudentLogin() {
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Password"
+                   className="form-control" 
                   name="password"
                   onChange={handleInputs}
                   onKeyDown={handleOnKeyDown}
@@ -104,7 +106,9 @@ function StudentLogin() {
               <div className="studentLogLink">
                 <Link to="/StudentForgetPassword">Forgot password?</Link>
               </div>
-              <button className="studentLogButton" onClick={handleLogin}>LOGIN</button>
+              <div className="d-grid gap-2 col-12 mx-auto studentLogButton">
+              <button className="btn btn-danger " onClick={handleLogin}>LOGIN</button>
+              </div>
               <div className="studentLogLink">
                 Create new account <Link to="/StudentRegistration">Sign up</Link>
               </div>
