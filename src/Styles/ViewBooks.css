@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+
 .tabs-container {
   font-family: Arial, sans-serif;
 }
@@ -26,8 +28,10 @@
 
 .tab.active {
   background-color: #fff;
-  border-bottom: 2px solid #007bff;
-  color: #007bff;
+  border-bottom: 5px solid rgb(124, 6, 6);
+  color:rgb(124, 6, 6);
+  font-family: "Righteous", serif;
+
   font-weight: bold;
 }
 

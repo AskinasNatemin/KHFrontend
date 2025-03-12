@@ -88,7 +88,7 @@ function StaffForgetPassword() {
       .then((res) => {
         if (res) {
           setTimeout(() => {
-            navigate("/StudentLogin", { replace: true });
+            navigate("/StaffLogin", { replace: true });
           }, 500);
         }
       })

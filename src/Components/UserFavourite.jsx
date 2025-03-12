@@ -30,7 +30,7 @@ const UserFavourite = () => {
 
   return (
     <div className="favouriteContainer container" style={{ height: "100vh" }}>
-      <h2 className="favouriteTitle">Favourite Books</h2>
+      <h2 className="favouriteTitle">FAVOURITE BOOKS</h2>
       {favouriteBooks.length ? (
         <div className="favouriteGrid">
           {favouriteBooks.map((book, index) => (
@@ -50,7 +50,7 @@ const UserFavourite = () => {
                     <p className="favouriteBookAuthor">
                       Author: <b>{book.authorName}</b>
                     </p>
-                    <button type="button">viewDetails</button>
+                    <button className="UserFavBookBtn" type="button">ViewDetails</button>
                     <MdDeleteForever className="delFavourite text-danger ms-auto"/>
                   </div>
                 </div>
