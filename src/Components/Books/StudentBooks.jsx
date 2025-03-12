@@ -13,6 +13,8 @@ const StudentBooks = () => {
     axios
       .get("http://localhost:5001/getAllBooks")
       .then((res) => {
+        console.log(res);
+        
         setData(res.data.data);
       })
       .catch((err) => {

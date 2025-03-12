@@ -15,10 +15,8 @@ import StaffForgetPassword from "./Components/Staff/StaffForgetPassword";
 import StudentForgetPassword from "./Components/Student/StudentForgetPassword";
 import StaffCodePage from "./Components/Staff/StaffCodePage";
 import UsersData from "./Components/Users/UsersData";
-import AdminDashSidebar from "./Components/Admin/AdminDashSidebar";
-import AdminDashBackground from "./Components/Admin/AdminDashBackground";
-import AdminMiddleContent from "./Components/Admin/AdminMiddleContent";
 import Book from "./Components/Books/Book";
+import AdminSideBar from "./Components/Admin/AdminSideBar";
 
 function App() {
   return (
@@ -39,9 +37,9 @@ function App() {
           <Route path="StudentForgetPassword" element={<StudentForgetPassword />}/>
           <Route path="StaffCodepage" element={<StaffCodePage />} />
           <Route path="UsersData" element={<UsersData />} />
-          <Route path="AdminDashSidebar" element={<AdminDashSidebar />} />
-          <Route path="AdminDashBackground" element={<AdminDashBackground />} />
-          <Route path="AdminMiddleContent" element={<AdminMiddleContent />} />
+          <Route path="AdminDashSidebar" element={<AdminSideBar />} />
+          {/* <Route path="AdminDashBackground" element={<AdminDashBackground />} /> */}
+          {/* <Route path="AdminMiddleContent" element={<AdminMiddleContent />} /> */}
           <Route path="Book/:id" element={<Book/>}/>
         </Routes>
       </BrowserRouter>
