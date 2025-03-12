@@ -1,130 +1,159 @@
-@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 
-.staffborder{
-    padding-bottom: 30px;
-    width:500px;
-    margin-right: 150px;
-    margin-top: 50px;
-    margin-left: 210px;
+.staffRegContainer {
+  background-color: #E580A0;
+  height:100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
 }
-
-.staffContaine{
-    background-image:url(../../Assets/images/RegistrationImage/StaffRegBackgroundImg.png);
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background-size: cover;
-    background-position: 0 -150px;
-    background-repeat: no-repeat;
-    position: relative;
-}
-
-.staffhead h3{
-    font-weight: 400;
-    padding-top:5px ;
-     text-align: center;
-     margin-bottom: 40px;
-     font-family: "Righteous", serif;
-     color: rgb(124, 6, 6);
-    }
-.staffRegGoBackIcon{
-    height: 30px;
-    width: 35px;
-    cursor: pointer;
-    color: rgb(124, 6, 6);
+.staffRegImageContainer {
+  position: absolute;
+  bottom: 4px;  
+  right: 10px;   
+  max-width: 350px; 
+  
 }
 
-.staffinput {
-    width: 350px;
-   
+@media (max-width: 768px) {
+  .staffRegImageContainer {
+    max-width:100px;
+    right: 1px;
+  }
 }
-.staffinput input{
-   margin-bottom: 25px;
-   border-radius: 10px;
-   padding-left: 30PX;
+.staffRegGoBackContainer{
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
-.staffbutton{
-    margin-top: 45px;
-    
+.staffRegGoBackIcon {
+  cursor: pointer;
+  color: rgb(124, 6, 6);
+  font-size: 1.9rem;
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
-.staffbutton button{
-    border-radius: 5px;
-    background-color:  rgb(124, 6, 6);
-    border: rgb(124, 6, 6);
+
+.staffRegBorder {
+  width: 100%;
+  max-width: 350px;
 }
-.staffbutton button:hover{
-    background-color: rgb(153, 8, 8);
+
+.staffRegHead h3{
+  text-align: center;
+  font-family: "Righteous", serif;
+  color: rgb(124, 6, 6);
+  margin-bottom: 20px;
 }
-.form-control:focus{
-    border-color: rgb(245, 245, 245);
-    box-shadow:1px 1px 10px 1px rgb(214, 214, 214)
+.staffReginput input{
+  margin-bottom: 15px;
+  border-radius: 8px;
+  padding-left: 38px;
+  
 }
-.stafflink{
-    text-align: center;
-    margin-top: 20px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.staffRegIcon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
 }
-.StaffCodeContainer{
-    position: absolute;
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #000000;
 }
-.stafflink a{
-    color:#a00000;
-   text-decoration: none;
+
+.staffRegButton button {
+  border-radius: 5px;
+  background-color: rgb(124, 6, 6);
+  border: none;
+}
+
+.staffRegButton button:hover {
+  background-color: rgb(153, 8, 8);
+}
+
+
+@media (max-width: 768px) {
+  .staffRegHead {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 512px) {
+  .staffRegBorder {
+    padding: 20px;
+  }
+
+  .staffRegHead {
+    font-size: 1.3rem;
+  }
+}
+.staffRegImage{
+  object-position: 0px 39px;
  }
-.custom-btn:active {
-    background-color:rgb(151, 50, 50)!important; /* Green color */
-    
-  } 
+ .staffRegLink{
+  text-align: center;
+  margin-top: 5px;
+  font-family: arial;
+}
+.staffRegLink a{
+  color:#a00000;
+   text-decoration: underline;
+}
+.staffRegerrorContainer {
+  height: 50px;
+  width: 260px;
+  margin: auto;
+  margin-bottom: 15px;
+  background-color: rgb(249, 249, 249);
+  color: rgb(198, 4, 4);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@media (max-width: 480px) {
   .staffRegerrorContainer {
-    min-width: 200px; 
-    max-width: fit-content;
-    width: auto;
-    height: auto;
-    padding: 10px 15px; 
-    margin: auto;
-    margin-bottom: 15px;
-    background-color: rgb(248, 248, 248);
-    color: rgb(255, 0, 0);
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-    border-radius: 5px;
-    word-wrap: break-word; 
-    white-space: normal; 
+    font-size: 14px; 
+    padding: 8px 12px;
   }
-  
-  @media (max-width: 480px) {
-    .staffRegerrorContainer {
-      font-size: 14px; 
-      padding: 8px 12px;
-    }
+}
+
+@media (min-width: 768px) {
+  .staffRegerrorContainer {
+    font-size: 16px;
   }
-  
-  @media (min-width: 768px) {
-    .staffRegerrorContainer {
-      font-size: 16px;
-    }
-  }
+}
 .staffRegerroricon{
-    margin-bottom: 3px;
-    padding-right: 7px;
+  margin-bottom: 3px;
+  padding-right: 7px;
 }
 .staffRegsuccessContainer {
-    height: 50px;
-    width: 260px;
-    margin: auto;
-    margin-bottom: 15px;
-    background-color: rgba(188, 248, 156, 0.582);
-    color: rgb(59, 128, 53);
-    display: flex;
-    align-items: center;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  .staffRegsuccessicon {
-    margin-bottom: 3px;
-    padding-right: 7px;
-    padding-left: 10px;
-  }
+  height: 50px;
+  width: 260px;
+  margin: auto;
+  margin-bottom: 15px;
+  background-color: rgba(188, 248, 156, 0.582);
+  color: rgb(59, 128, 53);
+  display: flex;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.staffRegsuccessicon {
+  margin-bottom: 3px;
+  padding-right: 7px;
+  padding-left: 10px;
+}
