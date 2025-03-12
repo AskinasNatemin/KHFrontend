@@ -1,217 +1,155 @@
 @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
-/* 
-body{
+
+.studentLogContainer{
   background-color: #E580A0;
- 
-} */
-.studentLogContainer {
-  background-color: #E580A0;
-  height: 100vh;
+  height:100vh;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
-}
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
 
-.studentLogGoBackContainer {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  padding: 10px;
 }
-
-.studentLogGoBackIcon {
+.studentLogGoBackContainer{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+.studentLogGoBackIcon{
   cursor: pointer;
   color: rgb(124, 6, 6);
   font-size: 1.9rem;
-}
-.form-control:focus {
-  border-color: rgb(138, 138, 138);
-  box-shadow: 1px 1px 10px 1px rgb(192, 190, 190);
-}
-.studentContents {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  justify-content: space-between;
-  width: 100vw;
-  margin: auto;
-  flex-wrap: nowrap;
-  height: 100%;
-}
-
-.studentImageContainer {
-  flex: 1;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
-  height: 100%;
-}
-
-.studentImageContainer img {
-  max-width: 100%;
-  height: auto;
-  width: clamp(200px, 80%, 500px);
-  object-fit: contain;
-  align-self: flex-end;
-}
-
-.studentLoginInputContainer {
-  flex: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  height: 100%;
-}
-
-.studentLogBorder {
-  text-align: center;
-  width: 100%;
-  max-width: 400px;
-  margin-top: 75px;
-}
-
-.studentLogHead {
-  font-family: "Righteous", sans-serif;
-  color: rgb(124, 6, 6);
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-}
-
-.studentLogInput {
-  width: 100%;
-}
-
-.studentLogInputGroup {
-  position: relative;
-  margin-bottom: 15px;
-}
-
-.studentLogInputGroup input {
-  margin-bottom: 15px;
-  border-radius: 8px;
-  padding-left: 35px;
-}
-
-.studentLogInputIcon {
   position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-
+  top: 20px;
+  right: 20px;
 }
-
-.studentLogPasswordToggle {
+.studentLogImageContainer {
   position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  /* color: #666; */
-}
-
-.studentLogLink {
-  text-align: center;
-  margin: 10px 0;
-}
-
-.studentLogLink a {
-  color: #a00000;
-  text-decoration: none;
-}
-
-.studentLogButton button {
-  border-radius: 5px;
-  background-color: rgb(124, 6, 6);
-  border: none;}
-
-.studentLogButton button:hover {
-  background-color: rgb(153, 8, 8);
-}
-
-.studentLogErrorContainer,
-.studentLogSuccessContainer {
-  width:fit-content;
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-  margin-inline: auto;
-
-}
-
-.studentLogErrorContainer {
-  background-color: white;
-  color: red;
-}
-
-.studentLogSuccessContainer {
-  background-color: #d4edda;
-  color: #155724;
-}
-
-.studentLogIconClass {
-  margin-right: 10px;
+  bottom: 4px;  
+  right: 10px;   
+  max-width: 350px; 
+  
 }
 
 @media (max-width: 768px) {
-  .studentContents {
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-  }
-
-  .studentImageContainer,
-  .studentLoginInputContainer {
-    flex: 1;
-  }
-
-  .studentLogHead {
-    font-size: 1.5rem;
-  }
-
-  .studentLogButton {
-    font-size: 0.9rem;
-  }
-
-  .studentLoginInputContainer {
-    margin-right: 15px;
+  .studentLogImageContainer {
+    max-width:100px;
+    right: 1px;
   }
 }
-
+.studentLogImage{
+  object-position: 0px 39px;
+ }
+ .studentLogBorder {
+  width: 100%;
+  max-width: 350px;
+}
 @media (max-width: 512px) {
-  .studentContents {
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;
-    max-width: 100%;
+  .studentLogBorder {
+    padding: 20px;
   }
+}
+.studentLoginput input{
+  margin-bottom: 15px;
+  border-radius: 8px;
+  padding-left: 38px;
+  font-family: Arial;
 
-  .studentImageContainer {
-    flex: 1;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
+}
+.form-control:focus {
+  border-color: rgb(138, 138, 138);
+  box-shadow: 1px 1px 10px 1px rgb(214, 214, 214);
+}
+.studentLogHead h3{
+  text-align: center;
+  font-family: "Righteous", serif;
+  color: rgb(124, 6, 6);
+  margin-bottom: 20px;
+}
+.studentLogerrorContainer{
+  height: 50px;
+  width: 260px;
+  margin: auto;
+  margin-bottom: 15px;
+  background-color: rgb(249, 249, 249);
+  color: rgb(198, 4, 4);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+@media (max-width: 480px) {
+  .studentLogerrorContainer {
+    font-size: 14px; 
+    padding: 8px 12px;
   }
+}
+@media (min-width: 768px) {
+  .studentLogerrorContainer {
+    font-size: 16px;
+  }
+}
+.studenterroricon{
+  margin-bottom: 3px;
+  padding-right: 7px;
+}
+.studentLogsuccessContainer {
+  height: 50px;
+  width: 260px;
+  margin: auto;
+  margin-bottom: 15px;
+  background-color: rgba(188, 248, 156, 0.582);
+  color: rgb(59, 128, 53);
+  display: flex;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.studentLogsuccessicon {
+  margin-bottom: 3px;
+  padding-right: 7px;
+  padding-left: 10px;
+}
+.studentLogIcon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+}
+.studentLogLink{
+  text-align: center;
+  margin-top: 5px;
+  font-family:Arial;
+color:rgb(11, 11, 11);
+ }
+.studentLogLink a{
+  color:#a00000;
+   text-decoration: underline;
+  font-family: Arial;
+}
+.studentLogButton button {
+  margin-top: 10px;
+  border-radius: 5px;
+  background-color: rgb(124, 6, 6);
+  border: none;
+  font-family: Arial;
+}
 
-  .studentImageContainer img {
-    width: clamp(200px, 50%, 450px);
-    align-self: flex-end;
-  }
+.studentLogButton button:hover {
+  background-color: rgb(111, 6, 6);
+}
 
-  .studentLoginInputContainer {
-    flex: 1;
-    justify-content: center;
-  }
+.studentLogForgetLink a{
+  color:#a00000;
+  text-decoration: underline;
+  font-family: Arial;
+}
+.studentLogForgetLink{
+  text-align:right;
+  margin-top: 5px;
+  font-family:Arial;
 
-  .studentLogHead {
-    font-size: 1.2rem;
-  }
-
-  .studentLogButton {
-    padding: 8px;
-    font-size: 0.85rem;
-  }
 }

@@ -6,13 +6,13 @@ import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import { FaHome } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaLock } from "react-icons/fa";
-import adminLoginImage from"../../Assets/images/AdminImage/adminLoginImg.png";
+import adminLoginImage from "../../Assets/images/AdminImage/adminLoginImg.png";
 
 const AdminLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [state, setState] = useState({
-    email: "", 
-    password: "", 
+    email: "",
+    password: "",
   });
 
   const navigate = useNavigate();
@@ -20,7 +20,6 @@ const AdminLogin = () => {
   const change = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
     console.log(state);
-    
   };
 
   const handleLogin = async (e) => {
@@ -45,18 +44,25 @@ const AdminLogin = () => {
   const handleGoBack = () => {
     navigate("/");
   };
-  
+
   return (
     <div className="adminlogcontainer">
       <div className="adminlogGoBackContainer">
-        <FaHome onClick={handleGoBack} className="adminlogGoBackIcon" />
+        <FaHome onClick={handleGoBack}
+         className="adminlogGoBackIcon" />
       </div>
       <div className="adminImageContainer">
-  <img src={adminLoginImage} alt="welcome" className="img-fluid adminLoginImage" />
-</div>
+        <img
+          src={adminLoginImage}
+          alt="welcome"
+          className="img-fluid adminLoginImage"
+        />
+      </div>
 
-
-      <form onSubmit={handleLogin} className="w-100 d-flex justify-content-center">
+      <form
+        onSubmit={handleLogin}
+        className="w-100 d-flex justify-content-center"
+      >
         <div className="adminborder">
           <div className="admininput">
             <div className="adminhead">
