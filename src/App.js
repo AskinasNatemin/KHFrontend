@@ -19,6 +19,8 @@ import AdminDashSidebar from "./Components/Admin/AdminDashSidebar";
 import AdminDashBackground from "./Components/Admin/AdminDashBackground";
 import AdminMiddleContent from "./Components/Admin/AdminMiddleContent";
 import Book from "./Components/Books/Book";
+import UserFavourite from "./Components/UserFavourite";
+import LoginFirst from "./Components/LoginFirst";
 
 function App() {
   return (
@@ -43,6 +45,8 @@ function App() {
           <Route path="AdminDashBackground" element={<AdminDashBackground />} />
           <Route path="AdminMiddleContent" element={<AdminMiddleContent />} />
           <Route path="Book/:id" element={<Book/>}/>
+          <Route path="UserFavouriteBooks" element={<UserFavourite/>}/>
+          <Route path="AccessDenied" element={<LoginFirst/>}/>
         </Routes>
       </BrowserRouter>
     </div>

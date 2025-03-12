@@ -6,9 +6,8 @@ import StudentBooks from "./StudentBooks.jsx";
 import StaffBooks from "./StaffBooks.jsx";
 
 const ViewBooks = () => {
-  
   const [activeTab, setActiveTab] = useState("studentBooks");
-
+  const userType = localStorage.getItem("user");
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
@@ -23,21 +22,21 @@ const ViewBooks = () => {
         >
           Student Books
         </div>
-        <div
-          className={`tab ${activeTab === "staffBooks" ? "active" : ""}`}
-          onClick={() => handleTabClick("staffBooks")}
-        >
-          Staff Books
-        </div>
+        {userType == "staff" ? (
+          <div
+            className={`tab ${activeTab === "staffBooks" ? "active" : ""}`}
+            onClick={() => handleTabClick("staffBooks")}
+          >
+            Staff Books
+          </div>
+        ) : (
+          ""
+        )}
       </div>
 
       {/* Content Section */}
       <div className="tab-content">
-        {activeTab === "studentBooks" ? (
-          <StudentBooks/>
-        ) : (
-          <StaffBooks/>
-        )}
+        {activeTab === "studentBooks" ? <StudentBooks /> : <StaffBooks />}
       </div>
     </div>
   );

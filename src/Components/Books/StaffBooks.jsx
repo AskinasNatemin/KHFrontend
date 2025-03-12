@@ -2,10 +2,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { MdFavorite } from "react-icons/md";
 import '../../Styles/Books/StaffBook.css';
+import { useNavigate } from "react-router-dom";
 
-const StudentBooks = () => {
+const StaffBooks = () => {
   const [data, setData] = useState([]);
   const [favoriteBooks, setFavoriteBooks] = useState({});
+  const navigate = useNavigate();
 
   const handleFetchBooks = () => {
     axios
@@ -25,19 +27,22 @@ const StudentBooks = () => {
   const toggleFavorite = (bookId) => {
     setFavoriteBooks((prevState) => ({
       ...prevState,
-      [bookId]: !prevState[bookId], 
+      [bookId]: !prevState[bookId],
     }));
   };
 
+  console.log(favoriteBooks);
+  
+
   return (
-    <div className="books-section ps-2">
-      <h2>Student Books</h2>
-      <div className="books-list">
+    <div className="staffBooksSection ps-2">
+      <h2>Staff Books</h2>
+      <div className="staffBooksList">
         {data.map((book) => (
           <>
             {book?.category === "Staff" && (
               <div
-                className="book-card border d-flex flex-column"
+                className="staffBookCard border d-flex flex-column"
                 key={book._id}
                 style={{ transition: "transform 0.3s ease", cursor: "pointer" }}
                 onMouseEnter={(e) =>
@@ -51,17 +56,17 @@ const StudentBooks = () => {
                   src={`http://localhost:5001/${book.imagePath}`}
                   alt={book.category}
                 />
-                <h3 className="bookName">{book.bookName}</h3>
-                <div className="card-body d-flex align-items-center justify-content-between">
-                  <button className="view-book-btn">View Details</button>
-                  <button
-                    className={`fav-icon-btn ${
+                <h3 className="staffBookName">{book.bookName}</h3>
+                <div className="staffCardBody d-flex align-items-center justify-content-between">
+                  <button className="staffViewBookBtn" onClick={() => navigate(`/Book/${book._id}`)}>View Details</button>
+                  <span
+                    className={`staffFavIconBtn ${
                       favoriteBooks[book._id] ? "active" : ""
                     }`}
                     onClick={() => toggleFavorite(book._id)}
                   >
-                    <MdFavorite className="fav-icon" />
-                  </button>
+                    <MdFavorite className="staffFavIcon" />
+                  </span>
                 </div>
               </div>
             )}
@@ -72,4 +77,4 @@ const StudentBooks = () => {
   );
 };
 
-export default StudentBooks;
+export default StaffBooks;
