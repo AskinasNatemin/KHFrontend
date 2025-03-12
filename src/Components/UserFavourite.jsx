@@ -49,7 +49,7 @@ const UserFavourite = () => {
                     <p className="favouriteBookAuthor">
                       Author: <b>{book.authorName}</b>
                     </p>
-                    <button className="UserFavBookBtn" type="button">ViewDetails</button>
+                    <button className="ViewFavBookBtn" type="button">ViewDetails</button>
                   </div>
                 </div>
               </div>

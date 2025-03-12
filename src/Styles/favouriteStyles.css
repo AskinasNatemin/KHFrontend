@@ -71,16 +71,13 @@
     font-weight: lighter;
     font-family: "Righteous", serif;
     color: rgb(124, 6, 6);
-    
-    
-
   }
   
   .favouriteBookAuthor {
     font-size: 14px;
     color: black;
   }
-  .UserFavBookBtn{
+  .ViewFavBookBtn{
     background-color:rgb(124, 6, 6);
     color: white;
     border: none;
@@ -94,12 +91,12 @@
     align-items: center;
     justify-content: center;
   }
-  .UserFavBookBtn:hover{
+  .ViewFavBookBtn:hover{
     background-color: rgb(153, 8, 8);
     transform: scale(1.05);
   
   }
-  .UserFavBookBtn:hover{
+  .ViewFavBookBtn:hover{
     transform: scale(0.95);
 
   }
