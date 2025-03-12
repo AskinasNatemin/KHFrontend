@@ -87,7 +87,7 @@ const StudentBooks = () => {
 
   return (
     <div className="studentBooksSection ps-2">
-      <h2>Student Books</h2>
+      <h2>STUDENT BOOKS</h2>
       {loading ? (
         <p>Loading...</p>
       ) : (

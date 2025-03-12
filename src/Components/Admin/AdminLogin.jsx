@@ -6,7 +6,7 @@ import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import { FaHome } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaLock } from "react-icons/fa";
-import adminLoginImage from "../../Assets/images/AdminImage/AdminLoginImg.png";
+import adminLoginImage from "../../Assets/images/AdminImage/adminLoginImg.png";
 
 const AdminLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -108,7 +108,7 @@ const AdminLogin = () => {
 
             <div className="d-grid gap-2 col-12 mx-auto adminlogbutton">
               <button className="btn btn-danger" type="submit">
-                Login
+                LOGIN
               </button>
             </div>
           </div>
