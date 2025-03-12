@@ -9,6 +9,7 @@ import { HiRefresh } from "react-icons/hi";
 import { FaHome } from "react-icons/fa";
 import { FiAlertTriangle } from "react-icons/fi";
 import { TiTick } from "react-icons/ti";
+import staffForgetImage from "../../Assets/images/ForgetPasswordImages/passwordImg.png";
 
 const initialState = {
   email: "",
@@ -116,27 +117,35 @@ function StaffForgetPassword() {
   };
 
   return (
-    <div className="staffForgetmain">
-      <div className="staffForgetGoBackContainer p-3  w-100 ">
+    <div className="staffForgetContainer">
+      <div className="staffForgetGoBackContainer">
         <FaHome
           onClick={handleGoBack}
-          className="stafflogGoBackIcon float-end"
+          className="staffForgetGoBackIcon"
         />
       </div>
+      <div className="staffForgetImageContainer">
+                <img
+                  src={staffForgetImage}
+                  alt="Staff"
+                  className="staffForgetImage img-fluid"
+                />
+              </div>
       <div className="staffForgetborder">
-        <div className="staffForgethead d-flex align-items-center justify-content-center">
+        <div className="studentForgetHead d-flex align-items-center justify-content-center">
           <h3 className="">Forget Password</h3>
           <HiRefresh
             onClick={handleRefresh}
             title="refresh"
-            className="staffRefresh"
+            className="staffRefresh float-end"
           />
         </div>
+   
         <div className="staffForgetinput">
           {state.error && (
             <div className="staffForgeterrorContainer alert ">
               <div className="staffForgeterroricon">
-                <FiAlertTriangle className="icon-class" />
+                <FiAlertTriangle className="me-2" />
               </div>
               {state.error}
             </div>
@@ -166,9 +175,9 @@ function StaffForgetPassword() {
           </div>
 
           {!state.showPasswordField && (
-            <div className="d-grid gap-2 col-6 mx-auto staffForgetbutton">
+            <div className="d-grid gap-2 col-12 mx-auto staffForgetButton">
               <button
-                className="btn btn-danger staffForgetcustom-btn"
+                className="btn btn-danger "
                 onClick={handleEmailSubmit}
               >
                 ENTER
@@ -179,7 +188,7 @@ function StaffForgetPassword() {
           {state.showPasswordField && (
             <>
               <div className="position-relative mb-3">
-                <FaLock className="position-absolute top-50 start-0 translate-middle-y ms-2  " />
+                <FaLock className="position-absolute top-50 start-0 translate-middle-y ms-2  staffForgetcustom-icon" />
 
                 <input
                   type={seePassword ? "text" : "password"}
@@ -194,16 +203,15 @@ function StaffForgetPassword() {
                   <span
                     onClick={() => setSeePassword(!seePassword)}
                     className="position-absolute top-50 end-0 translate-middle-y pe-3"
-                    style={{ cursor: "pointer", color: "#6c757d" }}
                   >
                     {seePassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
                   </span>
                 )}
               </div>
 
-              <div className="d-grid gap-2 col-6 mx-auto staffForgetbutton">
+              <div className="d-grid gap-2 col-12 mx-auto staffForgetButton">
                 <button
-                  className="btn btn-danger staffForgetcustom-btn"
+                  className="btn btn-danger "
                   onClick={handleResetPassword}
                 >
                   CONFIRM
@@ -212,7 +220,7 @@ function StaffForgetPassword() {
             </>
           )}
 
-          <div className="staffForgetlink">
+          <div className="staffForgetLink">
             Create a new account <Link to="/StaffRegistration">Sign up</Link>
           </div>
         </div>

@@ -5,6 +5,8 @@ import axios from "axios";
 import StudentBooks from "./StudentBooks.jsx";
 import StaffBooks from "./StaffBooks.jsx";
 
+
+
 const ViewBooks = () => {
   const [activeTab, setActiveTab] = useState("studentBooks");
   const userType = localStorage.getItem("user");
@@ -38,6 +40,22 @@ const ViewBooks = () => {
       <div className="tab-content">
         {activeTab === "studentBooks" ? <StudentBooks /> : <StaffBooks />}
       </div>
+      <>
+  {data.map((el, index) => {
+    console.log(el);
+    return (
+      <img 
+        key={index}
+        src={el.bookImage} 
+        className="border border-5 p-5"
+        alt="Book"
+        onError={(e) => console.error("Image Load Error:", e.target.src)}
+      />
+    );
+  })}
+</>
+
+
     </div>
   );
 };

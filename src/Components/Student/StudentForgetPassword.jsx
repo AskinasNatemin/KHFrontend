@@ -9,6 +9,7 @@ import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import { FaLock } from "react-icons/fa";
 import { FiAlertTriangle } from "react-icons/fi";
 import { TiTick } from "react-icons/ti";
+import studentForgetImage from "../../Assets/images/ForgetPasswordImages/passwordImg.png";
 
 const initialState = {
   email: "",
@@ -86,7 +87,7 @@ function StudentForgetPassword() {
       .then((res) => {
         if (res) {
           setTimeout(() => {
-            navigate("/StudentLogin",{replace:true});
+            navigate("/StudentLogin", { replace: true });
           }, 500);
         }
       })
@@ -113,27 +114,31 @@ function StudentForgetPassword() {
     navigate("/");
   };
   return (
-    <div className="studentForgetmain">
-      <div className="studentForgetGoBackContainer p-3  w-100 ">
-        <FaHome
-          onClick={handleGoBack}
-          className="studentlogGoBackIcon float-end"
+    <div className="studentForgetContainer">
+      <div className="studentForgetGoBackContainer  ">
+        <FaHome onClick={handleGoBack} className="studentForgetGoBackIcon " />
+      </div>
+      <div className="studentForgetImageContainer">
+        <img
+          src={studentForgetImage}
+          alt="Student"
+          className="studentForgetImage img-fluid"
         />
       </div>
-      <div className="studentForgetborder">
-        <div className="studentForgethead d-flex align-items-center justify-content-center">
+      <div className="studentForgetborder ">
+        <div className="studentForgetHead d-flex align-items-center justify-content-center">
           <h3 className="">Forget Password</h3>
           <HiRefresh
             onClick={handleRefresh}
             title="refresh"
-            className="studentRefresh"
+            className="studentRefresh  float-end"
           />
         </div>
         <div className="studentForgetinput">
           {state.error && (
             <div className="studentForgeterrorContainer alert ">
               <div className="studentForgeterroricon">
-                <FiAlertTriangle className="icon-class" />
+                <FiAlertTriangle className="me-2" />
               </div>
               {state.error}
             </div>
@@ -148,7 +153,7 @@ function StudentForgetPassword() {
           )}
 
           <div className="position-relative mb-3">
-            <MdEmail className="position-absolute top-50 start-0 translate-middle-y ms-2 studentforgetcustom-icon" />
+            <MdEmail className="position-absolute top-50 start-0 translate-middle-y ms-2" />
             <input
               autoFocus
               type="email"
@@ -163,8 +168,11 @@ function StudentForgetPassword() {
           </div>
 
           {!state.showPasswordField && (
-            <div className="d-grid gap-2 col-6 mx-auto studentForgetbutton">
-              <button className="btn btn-danger studentForgetcustom-btn" onClick={handleEmailSubmit}>
+            <div className="studentForgetButton d-grid gap-2 col-12 mx-auto">
+              <button
+                className="btn btn-danger "
+                onClick={handleEmailSubmit}
+              >
                 ENTER
               </button>
             </div>
@@ -188,16 +196,15 @@ function StudentForgetPassword() {
                   <span
                     onClick={() => setSeePassword(!seePassword)}
                     className="position-absolute top-50 end-0 translate-middle-y pe-3"
-                    style={{ cursor: "pointer", color: "#6c757d" }}
                   >
                     {seePassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
                   </span>
                 )}
               </div>
 
-              <div className="d-grid gap-2 col-6 mx-auto studentForgetbutton">
+              <div className="d-grid gap-2 col-12 mx-auto studentForgetButton">
                 <button
-                  className="btn btn-danger studentForgetcustom-btn"
+                  className="btn btn-danger"
                   onClick={handleResetPassword}
                 >
                   CONFIRM
@@ -206,7 +213,7 @@ function StudentForgetPassword() {
             </>
           )}
 
-          <div className="studentForgetlink">
+          <div className="studentForgetLink">
             Create a new account <Link to="/StudentRegistration">Sign up</Link>
           </div>
         </div>

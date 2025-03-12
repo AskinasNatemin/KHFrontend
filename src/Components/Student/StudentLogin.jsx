@@ -8,7 +8,7 @@ import { MdEmail } from "react-icons/md";
 import { FaLock, FaHome } from "react-icons/fa";
 import { FiAlertTriangle } from "react-icons/fi";
 import { TiTick } from "react-icons/ti";
-import studentLoginImage from '../../Assets/images/LoginImage/studentLoginIMG.png';
+import studentLoginImage from "../../Assets/images/LoginImage/studentLoginIMG.png";
 
 function StudentLogin() {
   const [data, setData] = useState({ email: "", password: "" });
@@ -54,67 +54,83 @@ function StudentLogin() {
 
   return (
     <div className="studentLogContainer">
-      <div className="studentLogGoBackContainer py-4">
-        <FaHome onClick={() => navigate("/")} className="studentLogGoBackIcon" />
+      <div className="studentLogGoBackContainer ">
+        <FaHome onClick={() => navigate("/")}
+         className="studentLogGoBackIcon"
+        />
       </div>
-      <div className="studentContents">
-        <div className="studentImageContainer">
-          <img src={studentLoginImage} alt="welcome" />
-        </div>
-        <div className="studentLoginInputContainer">
-          <div className="studentLogBorder">
-            <h3 className="studentLogHead">STUDENT LOGIN</h3>
-            {errorMsg && (
-              <div className="studentLogErrorContainer">
-                <FiAlertTriangle className="studentLogIconClass" /> {errorMsg}
+      <div className="studentLogImageContainer">
+        <img
+          src={studentLoginImage}
+          alt="welcome"
+          className="studentLogImage img-fluid"
+        />
+      </div>
+      <div className="studentLogBorder">
+        <div className="studentLoginput">
+          <div className="studentLogHead">
+            <h3>STUDENT LOGIN</h3>
+          </div>
+
+          {errorMsg && (
+            <div className="studentLogerrorContainer alert">
+              <div className="studentLogerroricon">
+                <FiAlertTriangle className="me-2" />
               </div>
-            )}
-            {successMsg && (
-              <div className="studentLogSuccessContainer">
-                <TiTick className="studentLogIconClass" /> {successMsg}
-              </div>
-            )}
-            <div className="studentLogInput">
-              <div className="studentLogInputGroup">
-                <MdEmail className="studentLogInputIcon" />
-                <input
-                  type="email"
-                  className="form-control"
-                  placeholder="Email"
-                  name="email"
-                  onChange={handleInputs}
-                  onKeyDown={handleOnKeyDown}
-                  value={data.email}
-                  autoFocus
-                />
-              </div>
-              <div className="studentLogInputGroup">
-                <FaLock className="studentLogInputIcon" />
-                <input
-                  type={showPassword ? "text" : "password"}
-                  placeholder="Password"
-                   className="form-control" 
-                  name="password"
-                  onChange={handleInputs}
-                  onKeyDown={handleOnKeyDown}
-                  value={data.password}
-                />
-                {data.password && (
-                  <span onClick={() => setShowPassword(!showPassword)} className="studentLogPasswordToggle">
-                    {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
-                  </span>
-                )}
-              </div>
-              <div className="studentLogLink">
-                <Link to="/StudentForgetPassword">Forgot password?</Link>
-              </div>
-              <div className="d-grid gap-2 col-12 mx-auto studentLogButton">
-              <button className="btn btn-danger " onClick={handleLogin}>LOGIN</button>
-              </div>
-              <div className="studentLogLink">
-                Create new account <Link to="/StudentRegistration">Sign up</Link>
-              </div>
+              {errorMsg}
             </div>
+          )}
+          {successMsg && (
+            <div className="studentLogsuccessContainer alert">
+              <div className="studentLogsuccessicon">
+                <TiTick className="me-2" />
+              </div>
+              {successMsg}
+            </div>
+          )}
+          <div className="mb-3 position-relative studentLog ">
+            <MdEmail className="studentLogIcon" />
+            <input
+              type="email"
+              placeholder="Email"
+              className=" form-control"
+              name="email"
+              onChange={handleInputs}
+              onKeyDown={handleOnKeyDown}
+              value={data.email}
+              autoFocus
+            />
+          </div>
+          <div className="mb-3 position-relative studentLog">
+            <FaLock className="staffLogIcon" />
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              className=" form-control"
+              name="password"
+              onChange={handleInputs}
+              onKeyDown={handleOnKeyDown}
+              value={data.password}
+            />
+            {data.password && (
+              <span
+                onClick={() => setShowPassword(!showPassword)}
+                className="position-absolute top-50 end-0 translate-middle-y pe-3"
+              >
+                {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
+              </span>
+            )}
+          </div>
+          <div className="studentLogForgetLink">
+            <Link to="/StudentForgetPassword">Forgot password?</Link>
+          </div>
+          <div className="d-grid gap-2 col-12 mx-auto studentLogButton">
+            <button className="btn btn-danger " onClick={handleLogin}>
+              LOGIN
+            </button>
+          </div>
+          <div className="studentLogLink">
+            Create new account <Link to="/StudentRegistration">Sign up</Link>
           </div>
         </div>
       </div>
