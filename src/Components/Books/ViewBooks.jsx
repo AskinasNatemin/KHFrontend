@@ -20,14 +20,14 @@ const ViewBooks = () => {
           className={`tab ${activeTab === "studentBooks" ? "active" : ""}`}
           onClick={() => handleTabClick("studentBooks")}
         >
-          Student Books
+          STUDENT BOOKS
         </div>
         {userType == "staff" ? (
           <div
             className={`tab ${activeTab === "staffBooks" ? "active" : ""}`}
             onClick={() => handleTabClick("staffBooks")}
           >
-            Staff Books
+            STAFF BOOKS
           </div>
         ) : (
           ""
