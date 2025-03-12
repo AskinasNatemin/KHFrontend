@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import {useNavigate} from 'react-router-dom'
 import "../Styles/favouriteStyles.css";
+import { MdDeleteForever } from "react-icons/md";
 
 const UserFavourite = () => {
   const userId = localStorage.getItem("userId");
@@ -50,6 +51,7 @@ const UserFavourite = () => {
                       Author: <b>{book.authorName}</b>
                     </p>
                     <button type="button">viewDetails</button>
+                    <MdDeleteForever className="delFavourite text-danger ms-auto"/>
                   </div>
                 </div>
               </div>
@@ -68,6 +70,7 @@ const UserFavourite = () => {
             <p className="text-secondary">
               Start adding your favorite books to see them here.
             </p>
+            
             <button className="btn btn-primary mt-3" onClick={()=>navigate('/Books')}>
               Back to Books
             </button>

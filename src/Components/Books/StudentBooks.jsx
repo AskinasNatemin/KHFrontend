@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { MdFavorite } from "react-icons/md";
+import { GoHeartFill } from "react-icons/go";
+import { CiHeart } from "react-icons/ci";
 import "../../Styles/Books/StudentBook.css";
 import { useNavigate } from "react-router-dom";
 import { favouriteBooksList } from "../Context/AppContext";
@@ -27,16 +28,19 @@ const StudentBooks = () => {
   // Fetch all favorite books of the user
   const getAllUserFavouriteBooks = async () => {
     try {
-      const res = await axios.post("http://localhost:5001/getAllUserFavouriteBooks", {
-        userId,
-        userType,
-      });
-  
+      const res = await axios.post(
+        "http://localhost:5001/getAllUserFavouriteBooks",
+        {
+          userId,
+          userType,
+        }
+      );
+
       // Extract only book IDs
-      const favBookIds = res.data.favouriteBooks.map(book => book._id) || [];
-      
+      const favBookIds = res.data.favouriteBooks.map((book) => book._id) || [];
+
       console.log("Fetched Favourite Book IDs:", favBookIds);
-      
+
       setFavouriteBooks(favBookIds); // Store only book IDs
       setLoading(false);
     } catch (err) {
@@ -44,18 +48,21 @@ const StudentBooks = () => {
       setLoading(false);
     }
   };
-  
+
   // Handle Favorite Toggle
   const toggleFavorite = async (bookId) => {
     try {
       const isFavourite = favouriteBooks.includes(bookId);
 
-      const res = await axios.post("http://localhost:5001/addUserFavouriteBooks", {
-        userId,
-        bookId,
-        userType,
-        action: isFavourite ? "remove" : "add",
-      });
+      const res = await axios.post(
+        "http://localhost:5001/addUserFavouriteBooks",
+        {
+          userId,
+          bookId,
+          userType,
+          action: isFavourite ? "remove" : "add",
+        }
+      );
 
       if (res.status === 200) {
         setFavouriteBooks((prev) => {
@@ -92,36 +99,57 @@ const StudentBooks = () => {
         <p>Loading...</p>
       ) : (
         <div className="studentBooksList">
-          {bookData.map((book) =>
-            book?.category === "Student" && (
-              <div
-                className="studentBookCard border d-flex flex-column"
-                key={book._id}
-                style={{ transition: "transform 0.3s ease", cursor: "pointer" }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.transform = "scale(1.05)")}
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.transform = "scale(1)")}>
-                
-                <img src={`http://localhost:5001/${book.imagePath}`} alt={book.category} />
-                <h3 className="studentBookName">{book.bookName}</h3>
-                <div className="studentCardBody d-flex align-items-center justify-content-between">
-                  <button
-                    className="studentViewBookBtn"
-                    onClick={() => navigate(`/Book/${book._id}`)}
-                  >
-                    View Details
-                  </button>
-                  <span className="studentFavIconBtn" onClick={() => toggleFavorite(book._id)}>
-                    <MdFavorite
-                      className={`studentFavIcon ${
-                        favouriteBooks.includes(book._id) ? "active" : ""
-                      }`}
-                    />
-                  </span>
+          {bookData.map(
+            (book) =>
+              book?.category === "Student" && (
+                <div
+                  className="studentBookCard border d-flex flex-column"
+                  key={book._id}
+                  style={{
+                    transition: "transform 0.3s ease",
+                    cursor: "pointer",
+                  }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.transform = "scale(1.05)")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.transform = "scale(1)")
+                  }
+                >
+                  <img
+                    src={`http://localhost:5001/${book.imagePath}`}
+                    alt={book.category}
+                  />
+                  <h3 className="studentBookName">{book.bookName}</h3>
+                  <div className="studentCardBody d-flex align-items-center justify-content-between">
+                    <button
+                      className="studentViewBookBtn"
+                      onClick={() => navigate(`/Book/${book._id}`)}
+                    >
+                      View Details
+                    </button>
+                    <span
+                      className="studentFavIconBtn"
+                      onClick={() => toggleFavorite(book._id)}
+                    >
+                      {!favouriteBooks.includes(book._id) && (
+                        <CiHeart
+                          className={`studentFavIcon ${
+                            favouriteBooks.includes(book._id) ? "active" : ""
+                          }`}
+                        />
+                      )}
+                      {favouriteBooks.includes(book._id) && (
+                        <GoHeartFill
+                        className={` studentFavIcon ${
+                          favouriteBooks.includes(book._id) ? "active" : ""
+                        }`}
+                      />
+                      )}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            )
+              )
           )}
         </div>
       )}
