@@ -6,7 +6,7 @@ import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import { FaHome } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaLock } from "react-icons/fa";
-import adminLoginImage from"../../Assets/images/AdminImage/adminLoginImg.png";
+import adminLoginImage from "../../Assets/images/AdminImage/AdminLoginImg.png";
 
 const AdminLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -29,6 +29,7 @@ const AdminLogin = () => {
       const response = await axios.post("http://localhost:5001/AdminLogin", {
         email: state.email,
         password: state.password,
+        
       });
 
       alert(response.data.message);
