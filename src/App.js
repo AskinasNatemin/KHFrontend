@@ -40,8 +40,6 @@ function App() {
           <Route path="StaffCodepage" element={<StaffCodePage />} />
           <Route path="UsersData" element={<UsersData />} />
           <Route path="AdminDashSidebar" element={<AdminSideBar />} />
-          {/* <Route path="AdminDashBackground" element={<AdminDashBackground />} /> */}
-          {/* <Route path="AdminMiddleContent" element={<AdminMiddleContent />} /> */}
           <Route path="Book/:id" element={<Book/>}/>
           <Route path="UserFavouriteBooks" element={<UserFavourite/>}/>
           <Route path="AccessDenied" element={<LoginFirst/>}/>
