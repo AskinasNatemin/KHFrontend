@@ -3,7 +3,7 @@ import "../Styles/Profile.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Profile = () => {
+const UserProfile = () => {
   const [userData, setUserData] = useState();
   const [id, setId] = useState(localStorage.getItem("userId"));
   const [user, setUser] = useState(localStorage.getItem("user"));
@@ -59,4 +59,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default UserProfile;

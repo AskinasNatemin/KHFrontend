@@ -21,6 +21,8 @@ function StudentLogin() {
   useEffect(() => {
     setErrorMsg("");
     setSuccessMsg("");
+    console.log();
+    
   }, []);
 
   const handleInputs = (e) => {
