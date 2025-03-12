@@ -22,14 +22,14 @@ const ViewBooks = () => {
           className={`tab ${activeTab === "studentBooks" ? "active" : ""}`}
           onClick={() => handleTabClick("studentBooks")}
         >
-          Student Books
+          STUDENT BOOKS
         </div>
         {userType == "staff" ? (
           <div
             className={`tab ${activeTab === "staffBooks" ? "active" : ""}`}
             onClick={() => handleTabClick("staffBooks")}
           >
-            Staff Books
+            STAFF BOOKS
           </div>
         ) : (
           ""
@@ -41,18 +41,7 @@ const ViewBooks = () => {
         {activeTab === "studentBooks" ? <StudentBooks /> : <StaffBooks />}
       </div>
       <>
-  {data.map((el, index) => {
-    console.log(el);
-    return (
-      <img 
-        key={index}
-        src={el.bookImage} 
-        className="border border-5 p-5"
-        alt="Book"
-        onError={(e) => console.error("Image Load Error:", e.target.src)}
-      />
-    );
-  })}
+ 
 </>
 
 
