@@ -1,42 +1,141 @@
-.view-book-btn {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+
+.studentBooksSection h2 {
+  text-align: center;
+  color: rgb(124, 6, 6);
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: 300;
+  font-family: "Righteous", serif;
+
+}
+
+.studentBooksList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.studentBookCard {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.studentBookCard img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.studentBookCard h3 {
+  color: rgb(124, 6, 6);
+  font-family: "Righteous", serif;
+  font-weight: lighter;
+  font-size: 17.5px;
+  margin: 10px 0;
+}
+
+.studentBookCard p {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 10px;
   
-  .view-book-btn:hover {
-    background-color: #0056b3;
-  }
-  
-  .fav-icon-btn {
-    background: none;
-    border: 2px solid pink; /* Default pink border */
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .fav-icon {
-    font-size: 24px;
-    color: pink; /* Default pink outline */
-    transition: color 0.3s ease;
-  }
-  
-  .fav-icon-btn.active {
-    background: pink; /* Full pink background when active */
-    border-color: pink;
-  }
-  
-  .fav-icon-btn.active .fav-icon {
-    color: white; /* White icon when active */
-  }
+}
+
+.studentBookLink {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.studentBookLink:hover {
+  text-decoration: underline;
+}
+
+.studentBooksSection {
+  height: 73vh;
+  overflow-y: auto;
+  padding-bottom: 20px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  padding-right: 15px;
+}
+
+.studentBooksSection::-webkit-scrollbar {
+  width: 10px;
+}
+
+.studentBooksSection::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, #f1f1f1, #e0e0e0);
+  border-radius: 10px;
+}
+
+.studentBooksSection::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg,rgb(124, 6, 6), rgb(186, 12, 12));
+  border-radius: 10px;
+  transition: background 0.3s ease-in-out;
+}
+
+.studentBooksSection::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgb(157, 25, 25), rgb(194, 65, 65));
+}
+
+.studentBooksList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding-right: 15px;
+}
+
+.studentBookName {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* View Details Button */
+.studentViewBookBtn {
+  background-color:rgb(124, 6, 6);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.studentViewBookBtn:hover {
+  background-color: rgb(153, 8, 8);
+  transform: scale(1.05);
+}
+
+.studentViewBookBtn:active {
+  transform: scale(0.95);
+}
+
+.studentFavIconBtn .studentFavIcon.active {
+  color: #ff4081;
+}
+
+.studentFavIconBtn .studentFavIcon{
+  color: #ff4081;
+  height: 30px;
+  width: 30px;
+  transition: all 300ms ease;
+}
+
+.studentFavIconBtn .studentFavIcon:hover{
+  transform: scale(1.3);
+  color: rgb(205, 205, 205);
+}

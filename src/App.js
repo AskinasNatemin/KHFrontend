@@ -18,6 +18,9 @@ import UsersData from "./Components/Users/UsersData";
 import Book from "./Components/Books/Book";
 import AdminSideBar from "./Components/Admin/AdminSideBar";
 import AdminDashboardTopbar from "./Components/Admin/AdminDashboardTopbar";
+import UserFavourite from "./Components/UserFavourite";
+import LoginFirst from "./Components/LoginFirst";
+
 
 function App() {
   return (
@@ -38,11 +41,11 @@ function App() {
           <Route path="StudentForgetPassword" element={<StudentForgetPassword />}/>
           <Route path="StaffCodepage" element={<StaffCodePage />} />
           <Route path="UsersData" element={<UsersData />} />
-
-
-          <Route path="AdminDashSidebar" element={<AdminSideBar />} />
           <Route path="AdminDashboardTopbar" element={<AdminDashboardTopbar />} />
+          <Route path="AdminDashSidebar" element={<AdminSideBar />} />
           <Route path="Book/:id" element={<Book/>}/>
+          <Route path="UserFavouriteBooks" element={<UserFavourite/>}/>
+          <Route path="AccessDenied" element={<LoginFirst/>}/>
         </Routes>
       </BrowserRouter>
     </div>

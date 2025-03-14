@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 
 .adminlogcontainer {
-  background-color: #E580A0;
+  background-color: #e580a0;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -11,22 +11,21 @@
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
-  padding-top: 50px; /* To ensure space for the home icon */
+  padding-top: 50px;
 }
 .adminImageContainer {
   position: absolute;
-  bottom: 0px;  /* Adjusts position from bottom */
-  right: 10px;   /* Aligns image to the right */
-  max-width: 350px; /* Ensures responsiveness */
+  bottom: 0px;
+  right: 10px;
+  max-width: 350px;
 }
 
 @media (max-width: 768px) {
   .adminImageContainer {
-    max-width: 150px; /* Smaller image on mobile */
+    max-width: 150px;
     right: 10px;
   }
 }
-
 
 .adminlogGoBackContainer {
   position: absolute;
@@ -45,7 +44,6 @@
   width: 100%;
   max-width: 400px;
   padding: 30px;
-  
 }
 
 .adminhead h3 {
@@ -70,6 +68,7 @@
   border-radius: 5px;
   background-color: rgb(124, 6, 6);
   border: none;
+  font-family: Arial;
 }
 
 .adminlogbutton button:hover {
@@ -80,6 +79,6 @@
     max-width: 90%;
   }
 }
-.adminLoginImage{
- object-position: 0px 39px;
+.adminLoginImage {
+  object-position: 0px 39px;
 }

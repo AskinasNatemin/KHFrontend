@@ -108,7 +108,7 @@ const AdminLogin = () => {
 
             <div className="d-grid gap-2 col-12 mx-auto adminlogbutton">
               <button className="btn btn-danger" type="submit">
-                Login
+                LOGIN
               </button>
             </div>
           </div>

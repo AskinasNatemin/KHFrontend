@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Navbar from "./Navbar";
 import "../Styles/HomePage.css";
 import "../Styles/SelectUserModel.css";
@@ -7,8 +7,7 @@ import { TbXboxX } from "react-icons/tb";
 import student from "../Assets/icon/SelectIcons/student.png";
 import staff from "../Assets/icon/SelectIcons/staff.png";
 import admin from "../Assets/icon/SelectIcons/admin.png";
-import { useLocation, useNavigate } from "react-router-dom";
-import Profile from "./Profile";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   const [openUserSelectionModel, setOpenUserSelectionModel] = useState(false);
@@ -20,7 +19,7 @@ const HomePage = () => {
   ]);
 
   const navigate = useNavigate();  
-
+  
   const handleRegistration = (type) => {
     setLogOrSignUp(type);
     setOpenUserSelectionModel(true);

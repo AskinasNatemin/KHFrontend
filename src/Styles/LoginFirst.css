@@ -1,0 +1,71 @@
+/* Center the container */
+.loginFirstContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    padding: 20px;
+  }
+  
+  /* Card Styling */
+  .loginFirstBox {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+  }
+  
+  /* Heading */
+  .loginFirstTitle {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  /* Paragraph */
+  .loginFirstMessage {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  /* Button */
+  .goToHome {
+    display: inline-block;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .goToHome:hover {
+    background: #0056b3;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .loginFirstBox {
+      padding: 20px;
+    }
+  
+    .loginFirstTitle {
+      font-size: 20px;
+    }
+  
+    .loginFirstMessage {
+      font-size: 14px;
+    }
+  
+    .goToHome {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+  }
+  

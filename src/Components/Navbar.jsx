@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../Assets/icon/logo.png";
 import { CgProfile } from "react-icons/cg";
+import { GoHeartFill } from "react-icons/go";
+import { CiBag1 } from "react-icons/ci";
 import "../Styles/Navbar.css";
 import "../Styles/Profile.css";
 import { Logged } from "./Context/AppContext";
-import Profile from "./Profile";
+import UserProfile from "./UserProfile";
 
 const Navbar = ({ handleRegistration }) => {
   const { isLogged, setIsLogged } = useContext(Logged);
@@ -64,24 +66,49 @@ const Navbar = ({ handleRegistration }) => {
             <NavLink className="nav-link" to="/">
               Home
             </NavLink>
-            <NavLink className="nav-link" to="/Books">
-              Books
-            </NavLink>
+
+            {isLogged ? (
+              <NavLink
+                className='nav-link'
+                to={'/Books'}
+              >
+                Books
+              </NavLink>
+            ) : (
+              <Link
+                className="nav-link"
+                to='/AccessDenied'
+              >
+                Books
+              </Link>
+            )}
 
             <NavLink className="nav-link" to="/Contact">
               Contact Us
             </NavLink>
           </div>
 
-          <div className="buttons me-4 gap-3 d-flex">
+          <div className="buttons me-4 gap-3 d-flex px-2 py-1">
             {isLogged ? (
-              <CgProfile
-                className="cgProfile"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setProfileShower(!profileShower);
-                }}
-              />
+              <>
+                <div className="favIconContainer">
+                  <GoHeartFill
+                    className="favIcon"
+                    onClick={() => navigate("/UserFavouriteBooks")}
+                  />
+                </div>
+                <div className="lentedBookIconContainer">
+                  <CiBag1 />
+                </div>
+
+                <CgProfile
+                  className="cgProfile"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setProfileShower(!profileShower);
+                  }}
+                />
+              </>
             ) : (
               <>
                 <button
@@ -106,7 +133,7 @@ const Navbar = ({ handleRegistration }) => {
 
       {profileShower && (
         <div className="profile-container">
-          <Profile />
+          <UserProfile />
         </div>
       )}
     </>
