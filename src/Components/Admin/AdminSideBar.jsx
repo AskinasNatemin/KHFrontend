@@ -25,33 +25,46 @@ function AdminSideBar() {
 
         <ul className="admin-sidebar-ul">
           <li className="admin-sidebar-ul-li">
-            <a className="admin-sidebar-ul-li-a" href="#">
-              <PiStudentFill className='sidebar-icon' /> VIEW STUDENTS
-            </a>
+            <div className='admin-sidebar-icon-and-content-div'>
+              <FaChalkboardTeacher className='sidebar-icon' />
+              <a className="admin-sidebar-ul-li-a" href="#">
+                VIEW STAFF
+              </a>
+            </div>
           </li>
           <li className="admin-sidebar-ul-li">
-            <a className="admin-sidebar-ul-li-a" href="#">
-              <FaChalkboardTeacher className='sidebar-icon' /> VIEW STAFF
-            </a>
+            <div className='admin-sidebar-icon-and-content-div'>
+              <PiStudentFill className='sidebar-icon' />
+              <a className="admin-sidebar-ul-li-a" href="#">
+                VIEW STUDENTS
+              </a>
+            </div>
+          </li>
+
+          <li className="admin-sidebar-ul-li">
+            <div className='admin-sidebar-icon-and-content-div'>
+              <SiBookstack className='sidebar-icon' />
+              <a className="admin-sidebar-ul-li-a" href="#">
+                VIEW BOOKS
+              </a>
+            </div>
           </li>
           <li className="admin-sidebar-ul-li">
-            <a className="admin-sidebar-ul-li-a" href="#">
-              <SiBookstack className='sidebar-icon' /> VIEW BOOKS
-            </a>
-          </li>
-          <li className="admin-sidebar-ul-li">
-            <a className="admin-sidebar-ul-li-a" href="#">
-              <ImBooks className='sidebar-icon' /> ADD BOOKS
-            </a>
+            <div className='admin-sidebar-icon-and-content-div'>
+              <ImBooks className='sidebar-icon' />
+              <a className="admin-sidebar-ul-li-a" href="#">
+                ADD BOOKS
+              </a>
+            </div>
           </li>
         </ul>
 
         <div className='admin-logout-btn-div'>
-          <button className="admin-logout-btn">
-            <div className="admin-logout-sign">
-              <svg viewBox="0 0 512 512"><path d="..."></path></svg>
-            </div>
-            <div className="logout-text">Logout</div>
+          <button class="admin-logout-btn">
+
+            <div class="admin-logout-sign"><svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg></div>
+
+            <div class="admin-logout-text">Logout</div>
           </button>
         </div>
       </div>

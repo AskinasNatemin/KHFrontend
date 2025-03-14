@@ -45,7 +45,7 @@
   width: 100%;
   max-width: 400px;
   padding: 30px;
-  border-radius: 10px;
+  
 }
 
 .adminhead h3 {
@@ -75,14 +75,11 @@
 .adminlogbutton button:hover {
   background-color: rgb(153, 8, 8);
 }
-
-/* ✅ Responsive Design */
 @media (max-width: 768px) {
   .adminborder {
     max-width: 90%;
   }
 }
-
 .adminLoginImage{
  object-position: 0px 39px;
 }
