@@ -20,7 +20,6 @@ import UserFavourite from "./Components/UserFavourite";
 import LoginFirst from "./Components/LoginFirst";
 import AdminSideBar from "./Components/Admin/AdminSideBar";
 
-
 function App() {
   return (
     <div className="App">

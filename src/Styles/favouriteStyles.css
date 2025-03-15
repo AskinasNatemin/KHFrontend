@@ -50,7 +50,6 @@
     margin-bottom: 12px;
   }
   
-  /* Individual Book Item */
   .favouriteBookItem {
     display: flex;
     align-items: center;
@@ -84,10 +83,10 @@
     padding: 8px 12px;
     border-radius: 5px;
     font-size: 14px;
+    display: flex;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease;
     font-weight: bold;
-    display: flex;
     align-items: center;
     justify-content: center;
   }
@@ -100,3 +99,15 @@
     transform: scale(0.95);
 
   }
+  .delFavouriteContainer{
+    color: red;
+  }
+ .delFavouriteIcon{
+   font-size: 30px;
+
+  }
+  .viewDeleteContainer{
+    display: flex;
+    justify-content: space-between;
+  }
+

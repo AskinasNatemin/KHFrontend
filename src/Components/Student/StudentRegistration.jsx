@@ -162,7 +162,7 @@ function StudentRegistration() {
                    type="email"
                    className="form-control "
                    placeholder="Email"
-                   name="Email"
+                   name="email"
                    value={studentRegister.email}
                    onChange={handleChange}
                    onKeyDown={handleKeyDown}
@@ -175,7 +175,7 @@ function StudentRegistration() {
                    type="number"
                    className="form-control "
                    placeholder="Contact"
-                   name="Contact"
+                   name="phoneNumber"
                    value={studentRegister.phoneNumber}
                    onChange={handleChange}
                    onKeyDown={handleKeyDown}
@@ -188,7 +188,7 @@ function StudentRegistration() {
                    type={showPassword ? "text" : "password"}
                    className="form-control "
                    placeholder="Password"
-                   name="Password"
+                   name="password"
                    value={studentRegister.password}
                    onChange={handleChange}
                    onKeyDown={handleKeyDown}
