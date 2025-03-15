@@ -8,7 +8,7 @@ const UserFavourite = () => {
   const userId = localStorage.getItem("userId");
   const userType = localStorage.getItem("user");
   const [favouriteBooks, setFavouriteBooks] = useState([]);
-  const navigate=useNavigate()
+  const navigate=useNavigate();
 
   const getAllUserFavouriteBooks = () => {
     axios
@@ -23,6 +23,11 @@ const UserFavourite = () => {
         console.log(err);
       });
   };
+
+  const removeFavouriteBook=(bookId)=>{
+    console.log(userId,bookId);
+    
+  }
 
   useEffect(() => {
     getAllUserFavouriteBooks();
@@ -50,8 +55,8 @@ const UserFavourite = () => {
                     <p className="favouriteBookAuthor">
                       Author: <b>{book.authorName}</b>
                     </p>
-                    <button className="UserFavBookBtn" type="button">ViewDetails</button>
-                    <MdDeleteForever className="delFavourite text-danger ms-auto"/>
+                    <button className="UserFavBookBtn" type="button" onClick={()=>{navigate(`/Book/${book._id}`)}}>ViewDetails</button>
+                    <MdDeleteForever className="delFavourite text-danger ms-auto" onClick={()=>{removeFavouriteBook(book)}}/>
                   </div>
                 </div>
               </div>

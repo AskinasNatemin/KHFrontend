@@ -38,9 +38,6 @@ const StudentBooks = () => {
 
       // Extract only book IDs
       const favBookIds = res.data.favouriteBooks.map((book) => book._id) || [];
-
-      console.log("Fetched Favourite Book IDs:", favBookIds);
-
       setFavouriteBooks(favBookIds); // Store only book IDs
       setLoading(false);
     } catch (err) {
@@ -69,8 +66,6 @@ const StudentBooks = () => {
           const updatedFavourites = isFavourite
             ? prev.filter((id) => id !== bookId)
             : [...prev, bookId];
-
-          console.log("Updated Favourite Books:", updatedFavourites);
           return [...updatedFavourites];
         });
       }
@@ -157,4 +152,4 @@ const StudentBooks = () => {
   );
 };
 
-export default StudentBooks;
+export default StudentBooks;
