@@ -50,7 +50,6 @@
     margin-bottom: 12px;
   }
   
-  /* Individual Book Item */
   .favouriteBookItem {
     display: flex;
     align-items: center;
@@ -71,35 +70,44 @@
     font-weight: lighter;
     font-family: "Righteous", serif;
     color: rgb(124, 6, 6);
-    
-    
-
   }
   
   .favouriteBookAuthor {
     font-size: 14px;
     color: black;
   }
-  .UserFavBookBtn{
+  .ViewFavBookBtn{
     background-color:rgb(124, 6, 6);
     color: white;
     border: none;
     padding: 8px 12px;
     border-radius: 5px;
     font-size: 14px;
+    display: flex;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease;
     font-weight: bold;
-    display: flex;
     align-items: center;
     justify-content: center;
   }
-  .UserFavBookBtn:hover{
+  .ViewFavBookBtn:hover{
     background-color: rgb(153, 8, 8);
     transform: scale(1.05);
   
   }
-  .UserFavBookBtn:hover{
+  .ViewFavBookBtn:hover{
     transform: scale(0.95);
 
   }
+  .delFavouriteContainer{
+    color: red;
+  }
+ .delFavouriteIcon{
+   font-size: 30px;
+
+  }
+  .viewDeleteContainer{
+    display: flex;
+    justify-content: space-between;
+  }
+

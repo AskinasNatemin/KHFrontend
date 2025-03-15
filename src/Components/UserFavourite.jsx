@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import "../Styles/favouriteStyles.css";
 import { MdDeleteForever } from "react-icons/md";
 
@@ -8,7 +8,7 @@ const UserFavourite = () => {
   const userId = localStorage.getItem("userId");
   const userType = localStorage.getItem("user");
   const [favouriteBooks, setFavouriteBooks] = useState([]);
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   const getAllUserFavouriteBooks = () => {
     axios
@@ -45,13 +45,19 @@ const UserFavourite = () => {
                     alt="Book Cover"
                     className="favouriteBookImage"
                   />
-                  <div className="border">
+                  <div className="">
                     <h5 className="favouriteBookName">{book.bookName}</h5>
                     <p className="favouriteBookAuthor">
                       Author: <b>{book.authorName}</b>
                     </p>
-                    <button className="UserFavBookBtn" type="button">ViewDetails</button>
-                    <MdDeleteForever className="delFavourite text-danger ms-auto"/>
+                    <div className="viewDeleteContainer ">
+                      <button className="ViewFavBookBtn" type="button">
+                        ViewDetails
+                      </button>
+                      <div className="delFavouriteContainer">
+                        <MdDeleteForever className="delFavouriteIcon" />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -59,9 +65,7 @@ const UserFavourite = () => {
           ))}
         </div>
       ) : (
-        <div
-          className="container d-flex justify-content-center align-items-center h-75"  
-        >
+        <div className="container d-flex justify-content-center align-items-center h-75">
           <div
             className="border rounded p-4 text-center bg-light shadow-lg"
             style={{ maxWidth: "400px" }}
@@ -70,8 +74,11 @@ const UserFavourite = () => {
             <p className="text-secondary">
               Start adding your favorite books to see them here.
             </p>
-            
-            <button className="btn btn-primary mt-3" onClick={()=>navigate('/Books')}>
+
+            <button
+              className="btn btn-primary mt-3"
+              onClick={() => navigate("/Books")}
+            >
               Back to Books
             </button>
           </div>
