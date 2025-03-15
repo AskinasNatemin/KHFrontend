@@ -38,9 +38,6 @@ const StudentBooks = () => {
 
       // Extract only book IDs
       const favBookIds = res.data.favouriteBooks.map((book) => book._id) || [];
-
-      console.log("Fetched Favourite Book IDs:", favBookIds);
-
       setFavouriteBooks(favBookIds); // Store only book IDs
       setLoading(false);
     } catch (err) {
@@ -69,8 +66,6 @@ const StudentBooks = () => {
           const updatedFavourites = isFavourite
             ? prev.filter((id) => id !== bookId)
             : [...prev, bookId];
-
-          console.log("Updated Favourite Books:", updatedFavourites);
           return [...updatedFavourites];
         });
       }
@@ -117,14 +112,14 @@ const StudentBooks = () => {
                   }
                 >
                   <img
-                    src={http://localhost:5001/${book.imagePath}}
+                    src={`http://localhost:5001/${book.imagePath}`}
                     alt={book.category}
                   />
                   <h3 className="studentBookName">{book.bookName}</h3>
                   <div className="studentCardBody d-flex align-items-center justify-content-between">
                     <button
                       className="studentViewBookBtn"
-                      onClick={() => navigate(/Book/${book._id})}
+                      onClick={() => navigate(`/Book/${book._id}`)}
                     >
                       View Details
                     </button>

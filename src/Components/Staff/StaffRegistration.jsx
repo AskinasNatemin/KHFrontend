@@ -64,7 +64,6 @@ function StaffRegistration() {
       {staffAccess && (
         <>
           {/* Go Back Button */}
-
           <div className="staffRegGoBackContainer">
             <FaHome
               onClick={() => navigate("/")}
