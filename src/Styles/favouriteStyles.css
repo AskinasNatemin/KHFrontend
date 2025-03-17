@@ -1,113 +1,110 @@
 @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 
 .favouriteContainer {
-    max-width: 1200px;
-    margin: auto;
-    padding: 24px;
-  }
-  
-  .favouriteTitle {
-    color: rgb(124, 6, 6);
-    font-family: "Righteous", serif;
-    margin: 10px 0;
-    font-weight:600;
-    font-size: 28px;
-    text-align: center;
-    margin-bottom: 25px;
-  }
-  
+  max-width: 1200px;
+  margin: auto;
+  padding: 24px;
+}
+
+.favouriteTitle {
+  color: rgb(124, 6, 6);
+  font-family: "Righteous", serif;
+  margin: 10px 0;
+  font-weight: 600;
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.favouriteGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
   .favouriteGrid {
-    display: grid;
-    grid-template-columns: 1fr; 
-    gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  @media (min-width: 768px) {
-    .favouriteGrid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  
-  @media (min-width: 1024px) {
-    .favouriteGrid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-  
-  .favouriteCard {
-    background-color: #fff;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 16px;
-    border-radius: 8px;
-    
-  }
-  
-  .favouriteBookDetails {
-    margin-top: 16px;
-  }
-  .favouriteBookTitle {
-    font-weight: bold;
-    margin-bottom: 12px;
-  }
-  
-  .favouriteBookItem {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    border-bottom: 2px solid rgb(124, 6, 6);;
-    padding-bottom: 8px;
-    margin-bottom: 8px;
-  }
-  
-  .favouriteBookImage {
-    width: 50%;
-    height: 150px;
-    object-fit: contain;
-    border-radius: 8px;
-  }
-  
-  .favouriteBookName {
-    font-weight: lighter;
-    font-family: "Righteous", serif;
-    color: rgb(124, 6, 6);
-  }
-  
-  .favouriteBookAuthor {
-    font-size: 14px;
-    color: black;
-  }
-  .ViewFavBookBtn{
-    background-color:rgb(124, 6, 6);
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
-    font-size: 14px;
-    display: flex;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
-    font-weight: bold;
-    align-items: center;
-    justify-content: center;
-  }
-  .ViewFavBookBtn:hover{
-    background-color: rgb(153, 8, 8);
-    transform: scale(1.05);
-  
-  }
-  .ViewFavBookBtn:hover{
-    transform: scale(0.95);
+}
 
+@media (min-width: 1024px) {
+  .favouriteGrid {
+    grid-template-columns: repeat(3, 1fr);
   }
-  .delFavouriteContainer{
-    color: red;
-  }
- .delFavouriteIcon{
-   font-size: 30px;
+}
 
-  }
-  .viewDeleteContainer{
-    display: flex;
-    justify-content: space-between;
-  }
+.favouriteCard {
+  background-color: #fff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  border-radius: 8px;
+}
 
+.favouriteBookDetails {
+  margin-top: 16px;
+}
+.favouriteBookTitle {
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.favouriteBookItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 2px solid rgb(124, 6, 6);
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+
+.favouriteBookImage {
+  width: 50%;
+  height: 150px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.favouriteBookName {
+  font-weight: lighter;
+  font-family: "Righteous", serif;
+  color: rgb(124, 6, 6);
+}
+
+.favouriteBookAuthor {
+  font-size: 14px;
+  color: black;
+}
+.ViewFavBookBtn {
+  background-color: rgb(124, 6, 6);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 14px;
+  display: flex;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+}
+.ViewFavBookBtn:hover {
+  background-color: rgb(153, 8, 8);
+  transform: scale(1.05);
+}
+.ViewFavBookBtn:hover {
+  transform: scale(0.95);
+}
+.delFavouriteContainer {
+  color: rgb(0, 0, 0);
+}
+.delFavouriteIcon {
+  font-size: 20px;
+}
+
+.delFavouriteContainer {
+  justify-content: end;
+  align-items: flex-end;
+  display: flex;
+}

@@ -51,6 +51,9 @@ const UserFavourite = () => {
         <div className="favouriteGrid">
           {favouriteBooks.map((book, index) => (
             <div className="favouriteCard" key={index}>
+              <div className="delFavouriteContainer">
+                <MdDeleteForever className="delFavouriteIcon" onClick={()=>{removeFavouriteBook(book._id)}} />
+              </div>
               <div className="favouriteBookDetails">
                 <div className="favouriteBookItem">
                   <img
@@ -67,12 +70,15 @@ const UserFavourite = () => {
                       Author: <b>{book.authorName}</b>
                     </p>
                     <div className="viewDeleteContainer ">
-                      <button className="ViewFavBookBtn" type="button" onClick={()=>{navigate(`/Book/${book._id}`)}}>
+                      <button
+                        className="ViewFavBookBtn"
+                        type="button"
+                        onClick={() => {
+                          navigate(`/Book/${book._id}`);
+                        }}
+                      >
                         ViewDetails
                       </button>
-                      <div className="delFavouriteContainer">
-                        <MdDeleteForever className="delFavouriteIcon" onClick={()=>{removeFavouriteBook(book._id)}}/>
-                      </div>
                     </div>
                   </div>
                 </div>

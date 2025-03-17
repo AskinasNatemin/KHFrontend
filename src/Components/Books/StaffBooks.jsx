@@ -78,7 +78,7 @@ const StaffBooks = () => {
 
   return (
     <div className="staffBooksSection ps-2">
-      <h2>Staff Books</h2>
+      <h2>STAFF BOOKS</h2>
       <div className="staffBooksList">
         {data.map((book) => (
           <>
