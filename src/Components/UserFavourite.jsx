@@ -16,7 +16,7 @@ const UserFavourite = () => {
         userId,
         userType,
       })
-      .then((res) => {
+      .then((res) => {        
         setFavouriteBooks(res.data.favouriteBooks || []);
       })
       .catch((err) => {
@@ -25,8 +25,19 @@ const UserFavourite = () => {
   };
 
   const removeFavouriteBook=(bookId)=>{
-    console.log(userId,bookId);
-    
+    axios.post('http://localhost:5001/removeFavouriteBook',
+      {
+        userId,
+        bookId,
+        userType,
+      }
+    )
+    .then(()=>{
+      getAllUserFavouriteBooks()      
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
   }
 
   useEffect(() => {
@@ -35,7 +46,7 @@ const UserFavourite = () => {
 
   return (
     <div className="favouriteContainer container" style={{ height: "100vh" }}>
-      <h2 className="favouriteTitle">FAVOURITE BOOKS</h2>
+      <h2 className="favouriteTitle border">FAVOURITE BOOKS</h2>
       {favouriteBooks.length ? (
         <div className="favouriteGrid">
           {favouriteBooks.map((book, index) => (
@@ -60,7 +71,7 @@ const UserFavourite = () => {
                         ViewDetails
                       </button>
                       <div className="delFavouriteContainer">
-                        <MdDeleteForever className="delFavouriteIcon" />
+                        <MdDeleteForever className="delFavouriteIcon" onClick={()=>{removeFavouriteBook(book._id)}}/>
                       </div>
                     </div>
                   </div>
