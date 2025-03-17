@@ -32,7 +32,7 @@ const AdminLogin = () => {
       });
 
       alert(response.data.message);
-      navigate("/AdminDashBackground");
+      navigate("/AdminDashSidebar");
     } catch (error) {
       if (error.response && error.response.data) {
         alert(error.response.data.message);

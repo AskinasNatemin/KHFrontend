@@ -121,13 +121,18 @@
 .staffViewBookBtn:active {
   transform: scale(0.95);
 }
-.staffFavIconBtn .staffFavIcon {
+
+.staffFavIconBtn .staffFavIcon.active {
+  color: red;
+}
+
+.staffFavIconBtn .staffFavIcon{
   color: rgb(114, 114, 114);
   height: 20px;
   width: 20px;
   transition: all 400ms ease;
 }
-.staffFavIconBtn .staffFavIcon {
-  transform: scale(1.3);
 
+.staffFavIconBtn .staffFavIcon:hover{
+  transform: scale(1.3);
 }

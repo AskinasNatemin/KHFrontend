@@ -136,7 +136,7 @@ const StudentBooks = () => {
                       )}
                       {favouriteBooks.includes(book._id) && (
                         <GoHeartFill
-                        className={` studentFavIcon ${
+                        className={`studentFavIcon ${
                           favouriteBooks.includes(book._id) ? "active" : ""
                         }`}
                       />
