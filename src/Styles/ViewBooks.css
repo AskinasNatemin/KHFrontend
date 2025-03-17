@@ -31,7 +31,6 @@
   border-bottom: 5px solid rgb(124, 6, 6);
   color:rgb(124, 6, 6);
   font-family: "Righteous", serif;
-
   font-weight: bold;
 }
 
@@ -57,4 +56,9 @@
   .tabs-container {
     font-size: 1.2rem;
   }
+}
+.tab{
+  background-color: #cacaca;
+  font-family: "Righteous", serif;
+  color: black;
 }

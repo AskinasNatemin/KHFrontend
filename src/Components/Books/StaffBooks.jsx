@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { MdFavorite } from "react-icons/md";
-import '../../Styles/Books/StaffBook.css';
+import "../../Styles/Books/StaffBook.css";
 import { useNavigate } from "react-router-dom";
 
 const StaffBooks = () => {
@@ -32,11 +32,10 @@ const StaffBooks = () => {
   };
 
   console.log(favoriteBooks);
-  
 
   return (
     <div className="staffBooksSection ps-2">
-      <h2>Staff Books</h2>
+      <h2>STAFF BOOKS</h2>
       <div className="staffBooksList">
         {data.map((book) => (
           <>
@@ -58,7 +57,12 @@ const StaffBooks = () => {
                 />
                 <h3 className="staffBookName">{book.bookName}</h3>
                 <div className="staffCardBody d-flex align-items-center justify-content-between">
-                  <button className="staffViewBookBtn" onClick={() => navigate(`/Book/${book._id}`)}>View Details</button>
+                  <button
+                    className="staffViewBookBtn"
+                    onClick={() => navigate(`/Book/${book._id}`)}
+                  >
+                    View Details
+                  </button>
                   <span
                     className={`staffFavIconBtn ${
                       favoriteBooks[book._id] ? "active" : ""

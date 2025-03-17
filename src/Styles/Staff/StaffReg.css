@@ -85,10 +85,9 @@
   justify-content: center;
   font-family: Arial;
 }
-
 .staffRegButton button:hover {
   background-color: rgb(153, 8, 8);
-  transform: scale(1.04);
+  transform: scale(1.01);
 }
 .staffRegButton button:active {
   transform: scale(0.95);
@@ -98,12 +97,10 @@
     font-size: 1.5rem;
   }
 }
-
 @media (max-width: 512px) {
   .staffRegBorder {
     padding: 20px;
   }
-
   .staffRegHead {
     font-size: 1.3rem;
   }

@@ -24,10 +24,9 @@ const UserFavourite = () => {
       });
   };
 
-  const removeFavouriteBook=(bookId)=>{
-    console.log(userId,bookId);
-    
-  }
+  const removeFavouriteBook = (bookId) => {
+    console.log(userId, bookId);
+  };
 
   useEffect(() => {
     getAllUserFavouriteBooks();
@@ -40,6 +39,9 @@ const UserFavourite = () => {
         <div className="favouriteGrid">
           {favouriteBooks.map((book, index) => (
             <div className="favouriteCard" key={index}>
+              <div className="delFavouriteContainer">
+                <MdDeleteForever className="delFavouriteIcon" />
+              </div>
               <div className="favouriteBookDetails">
                 <div className="favouriteBookItem">
                   <img
@@ -56,12 +58,15 @@ const UserFavourite = () => {
                       Author: <b>{book.authorName}</b>
                     </p>
                     <div className="viewDeleteContainer ">
-                      <button className="ViewFavBookBtn" type="button" onClick={()=>{navigate(`/Book/${book._id}`)}}>
+                      <button
+                        className="ViewFavBookBtn"
+                        type="button"
+                        onClick={() => {
+                          navigate(`/Book/${book._id}`);
+                        }}
+                      >
                         ViewDetails
                       </button>
-                      <div className="delFavouriteContainer">
-                        <MdDeleteForever className="delFavouriteIcon" />
-                      </div>
                     </div>
                   </div>
                 </div>

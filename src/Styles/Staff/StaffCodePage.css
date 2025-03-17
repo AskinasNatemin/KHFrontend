@@ -71,7 +71,7 @@
   }
   .staffcodebutton button:hover {
     background-color: rgb(153, 8, 8);
-    transform: scale(1.04);
+  transform: scale(1.01);
     }
   .staffcodecustom-btn:active {
     transform: scale(0.95)!important;
