@@ -46,7 +46,7 @@ const UserFavourite = () => {
 
   return (
     <div className="favouriteContainer container" style={{ height: "100vh" }}>
-      <h2 className="favouriteTitle border">FAVOURITE BOOKS</h2>
+      <h2 className="favouriteTitle ">FAVOURITE BOOKS</h2>
       {favouriteBooks.length ? (
         <div className="favouriteGrid">
           {favouriteBooks.map((book, index) => (
