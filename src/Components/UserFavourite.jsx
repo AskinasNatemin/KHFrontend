@@ -24,6 +24,11 @@ const UserFavourite = () => {
       });
   };
 
+  const removeFavouriteBook=(bookId)=>{
+    console.log(userId,bookId);
+    
+  }
+
   useEffect(() => {
     getAllUserFavouriteBooks();
   }, []);
@@ -51,7 +56,7 @@ const UserFavourite = () => {
                       Author: <b>{book.authorName}</b>
                     </p>
                     <div className="viewDeleteContainer ">
-                      <button className="ViewFavBookBtn" type="button">
+                      <button className="ViewFavBookBtn" type="button" onClick={()=>{navigate(`/Book/${book._id}`)}}>
                         ViewDetails
                       </button>
                       <div className="delFavouriteContainer">
