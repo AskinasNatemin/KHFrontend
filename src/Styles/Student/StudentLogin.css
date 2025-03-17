@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 
-.studentLogContainer{
-  background-color: #E580A0;
-  height:100vh;
+.studentLogContainer {
+  background-color: #e580a0;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,14 +11,13 @@
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
-
 }
-.studentLogGoBackContainer{
+.studentLogGoBackContainer {
   position: absolute;
   top: 5px;
   right: 5px;
 }
-.studentLogGoBackIcon{
+.studentLogGoBackIcon {
   cursor: pointer;
   color: rgb(124, 6, 6);
   font-size: 1.9rem;
@@ -28,22 +27,21 @@
 }
 .studentLogImageContainer {
   position: absolute;
-  bottom: 4px;  
-  right: 10px;   
-  max-width: 350px; 
-  
+  bottom: 4px;
+  right: 10px;
+  max-width: 350px;
 }
 
 @media (max-width: 768px) {
   .studentLogImageContainer {
-    max-width:100px;
+    max-width: 100px;
     right: 1px;
   }
 }
-.studentLogImage{
+.studentLogImage {
   object-position: 0px 39px;
- }
- .studentLogBorder {
+}
+.studentLogBorder {
   width: 100%;
   max-width: 350px;
 }
@@ -52,24 +50,23 @@
     padding: 20px;
   }
 }
-.studentLoginput input{
+.studentLoginput input {
   margin-bottom: 15px;
   border-radius: 8px;
   padding-left: 38px;
   font-family: Arial;
-
 }
 .form-control:focus {
   border-color: rgb(138, 138, 138);
   box-shadow: 1px 1px 10px 1px rgb(214, 214, 214);
 }
-.studentLogHead h3{
+.studentLogHead h3 {
   text-align: center;
   font-family: "Righteous", serif;
   color: rgb(124, 6, 6);
   margin-bottom: 20px;
 }
-.studentLogerrorContainer{
+.studentLogerrorContainer {
   height: 50px;
   width: 260px;
   margin: auto;
@@ -83,7 +80,7 @@
 }
 @media (max-width: 480px) {
   .studentLogerrorContainer {
-    font-size: 14px; 
+    font-size: 14px;
     padding: 8px 12px;
   }
 }
@@ -92,7 +89,7 @@
     font-size: 16px;
   }
 }
-.studenterroricon{
+.studenterroricon {
   margin-bottom: 3px;
   padding-right: 7px;
 }
@@ -119,37 +116,46 @@
   transform: translateY(-50%);
   font-size: 1.2rem;
 }
-.studentLogLink{
+.studentLogLink {
   text-align: center;
   margin-top: 5px;
-  font-family:Arial;
-color:rgb(11, 11, 11);
- }
-.studentLogLink a{
-  color:#a00000;
-   text-decoration: underline;
+  font-family: Arial;
+  color: rgb(11, 11, 11);
+}
+.studentLogLink a {
+  color: #a00000;
+  text-decoration: underline;
   font-family: Arial;
 }
 .studentLogButton button {
-  margin-top: 10px;
-  border-radius: 5px;
   background-color: rgb(124, 6, 6);
+  color: white;
   border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: Arial;
 }
 
 .studentLogButton button:hover {
   background-color: rgb(153, 8, 8);
+  transform: scale(1.04);
+}
+.studentLogButton button:active {
+  transform: scale(0.95);
 }
 
-.studentLogForgetLink a{
-  color:#a00000;
+.studentLogForgetLink a {
+  color: #8a0000;
   text-decoration: underline;
   font-family: Arial;
 }
-.studentLogForgetLink{
-  text-align:right;
+.studentLogForgetLink {
+  text-align: right;
   margin-top: 5px;
-  font-family:Arial;
-
+  font-family: Arial;
 }

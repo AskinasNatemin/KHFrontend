@@ -75,15 +75,26 @@
 }
 
 .studentRegButton button {
-  border-radius: 5px;
-  background-color: rgb(124, 6, 6);
+  background-color:rgb(124, 6, 6);
+  color: white;
   border: none;
-}
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial;}
 
 .studentRegButton button:hover {
   background-color: rgb(153, 8, 8);
+  transform: scale(1.04);
 }
+.studentReg Button button:active{
+  transform: scale(0.95);
 
+}
 
 @media (max-width: 768px) {
   .studentRegHead {

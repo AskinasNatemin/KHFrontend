@@ -57,15 +57,24 @@
     margin-top: 10px;
   }
   .staffcodebutton button {
+    background-color:rgb(124, 6, 6);
+    color: white;
+    border: none;
     border-radius: 5px;
-    background-color: rgb(124, 6, 6);
-    border: rgb(124, 6, 6);
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial;
   }
   .staffcodebutton button:hover {
     background-color: rgb(153, 8, 8);
-  }
+    transform: scale(1.04);
+    }
   .staffcodecustom-btn:active {
-    background-color: rgb(151, 50, 50) !important; /* Green color */
+    transform: scale(0.95)!important;
   }
   .staffCodeerrorContainer {
     min-width: 100px; 

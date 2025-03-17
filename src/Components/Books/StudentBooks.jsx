@@ -117,14 +117,14 @@ const StudentBooks = () => {
                   }
                 >
                   <img
-                    src={http://localhost:5001/${book.imagePath}}
+                    src={`http://localhost:5001/${book.imagePath}`}
                     alt={book.category}
                   />
                   <h3 className="studentBookName">{book.bookName}</h3>
                   <div className="studentCardBody d-flex align-items-center justify-content-between">
                     <button
                       className="studentViewBookBtn"
-                      onClick={() => navigate(/Book/${book._id})}
+                      onClick={() => navigate(`/Book/${book._id}`)}
                     >
                       View Details
                     </button>
@@ -157,4 +157,4 @@ const StudentBooks = () => {
   );
 };
 
-export default StudentBooks;
+export default StudentBooks;
