@@ -38,10 +38,11 @@ const Book = () => {
             alt={book.bookName}
             className="singleBookImage"
           />
-
+           
           <div className="singleBookDetails">
             <h2>{book.bookName}</h2>
-            <p className="singleBookDescription">{book.description}</p>
+            <h6><b>Author : </b>{book.authorName}</h6>
+            <p className="singleBookDescription"><b>Description : </b>{book.description}</p>
 
             <div className="singleBookRatings">
               {[...Array(5)].map((_, i) => (
