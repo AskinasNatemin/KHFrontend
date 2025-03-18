@@ -149,8 +149,8 @@ function StudentRegistration() {
                    type="text"
                    className="form-control "
                    placeholder="Username"
-                   name="Name"
-                   value={studentRegister.Name}
+                   name="userName"
+                   value={studentRegister.userName}
                    onChange={handleChange}
                    onKeyDown={handleKeyDown}
                  />

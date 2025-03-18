@@ -85,107 +85,118 @@ const AdminAddingBooks = () => {
     }
   };
   return (
-    <div className="adminAddPageContainer border mt-5">
-      {success && <div className="alert alert-success">{success}</div>}
-      {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
 
-      <div className="d-flex w-100 flex-column flex-md-row">
-        <div className="adminAddPageImageWrapper my-md-auto">
-          {bookImage ? (
-            <img src={bookImage} alt="Book" className="adminAddPageBookImage" />
-          ) : (
-            <label className="adminAddPageImageUploadLabel">
-              <input
-                type="file"
-                className="adminAddPageImageInput"
-                accept="image/*"
-                onChange={handleFilesChange}
-                ref={imageInputRef}
-              />
-              <span className="adminAddPagePlusIcon">+</span>
-            </label>
-          )}
-        </div>
+    <>
 
-        <div className="d-flex flex-column md-ps-5 flex-fill ps-sm-0 ps-md-5 my-md-auto">
-          <input
-            type="text"
-            className="adminAddPageInputBox mb-3"
-            value={bookName}
-            placeholder="Book Name"
-            onChange={(e) => {
-              setBookName(e.target.value);
-              setErrorMessage("");
-              setSuccess("");
-            }}
-          />
-          <input
-            type="text"
-            className="adminAddPageInputBox"
-            value={authorName}
-            placeholder="Author Name"
-            onChange={(e) => {
-              setAuthorName(e.target.value);
-              setErrorMessage("");
-              setSuccess("");
-            }}
-          />
+      <div className="admin-dashboard-container" style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '10px' }}>
+        <div className="admin-dashboard-topbar">
+          <h4 className="admin-dashboard-topbar-h4">ADD BOOKS</h4>
         </div>
       </div>
+      <div className="adminAddPageContainer border mt-5">
+        {success && <div className="alert alert-success">{success}</div>}
+        {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
 
-      <div className="adminAddPageFormFields">
-        <div className="adminAddPageInputField mt-2">
-          <label className="adminAddPageLabel">Description</label>
-          <textarea
-            className="adminAddPageInputBox adminAddPageDescriptionBox"
-            value={description}
-            onChange={(e) => {
-              setDescription(e.target.value);
-              setErrorMessage("");
-              setSuccess("");
-            }}
-          />
+        <div className="d-flex w-100 flex-column flex-md-row">
+          <div className="adminAddPageImageWrapper my-md-auto">
+            {bookImage ? (
+              <img src={bookImage} alt="Book" className="adminAddPageBookImage" />
+            ) : (
+              <label className="adminAddPageImageUploadLabel">
+                <input
+                  type="file"
+                  className="adminAddPageImageInput"
+                  accept="image/*"
+                  onChange={handleFilesChange}
+                  ref={imageInputRef}
+                />
+                <span className="adminAddPagePlusIcon">+</span>
+              </label>
+            )}
+          </div>
+
+          <div className="d-flex flex-column md-ps-5 flex-fill ps-sm-0 ps-md-5 my-md-auto">
+            <input
+              type="text"
+              className="adminAddPageInputBox mb-3"
+              value={bookName}
+              placeholder="Book Name"
+              onChange={(e) => {
+                setBookName(e.target.value);
+                setErrorMessage("");
+                setSuccess("");
+              }}
+            />
+            <input
+              type="text"
+              className="adminAddPageInputBox"
+              value={authorName}
+              placeholder="Author Name"
+              onChange={(e) => {
+                setAuthorName(e.target.value);
+                setErrorMessage("");
+                setSuccess("");
+              }}
+            />
+          </div>
         </div>
 
-        <div className="adminAddPageInputField">
-          <label className="adminAddPageLabel">Upload Book File</label>
-          <input
-            type="file"
-            className="adminAddPageFileInput"
-            accept=".pdf"
-            onChange={handleFilesChange}
-            ref={fileInputRef}
-          />
-          {bookFileData && (
-            <span className="adminAddPageFileName">{bookFileData.name}</span>
-          )}
+        <div className="adminAddPageFormFields">
+          <div className="adminAddPageInputField mt-2">
+            <label className="adminAddPageLabel">Description</label>
+            <textarea
+              className="adminAddPageInputBox adminAddPageDescriptionBox"
+              value={description}
+              onChange={(e) => {
+                setDescription(e.target.value);
+                setErrorMessage("");
+                setSuccess("");
+              }}
+            />
+          </div>
+
+          <div className="adminAddPageInputField">
+            <label className="adminAddPageLabel">Upload Book File</label>
+            <input
+              type="file"
+              className="adminAddPageFileInput"
+              accept=".pdf"
+              onChange={handleFilesChange}
+              ref={fileInputRef}
+            />
+            {bookFileData && (
+              <span className="adminAddPageFileName">{bookFileData.name}</span>
+            )}
+          </div>
+
+          <div className="adminPageCategory d-flex my-3">
+            <select
+              name="category"
+              id="category"
+              className="w-50 ms-auto p-1"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              required
+            >
+              <option value="Student">Student</option>
+              <option value="Staff">Staff</option>
+            </select>
+          </div>
+
+          <div className="bookButtons d-flex flex-column flex-md-row gap-3">
+            <button className="adminAddPageSubmitButton" onClick={submit}>
+              Add Book
+            </button>
+            <button onClick={handleReset} className="adminAddPageResetButton">
+              Reset
+            </button>
+          </div>
         </div>
 
-        <div className="adminPageCategory d-flex my-3">
-          <select
-            name="category"
-            id="category"
-            className="w-50 ms-auto p-1"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            required
-          >
-            <option value="Student">Student</option>
-            <option value="Staff">Staff</option>
-          </select>
-        </div>
-
-        <div className="bookButtons d-flex flex-column flex-md-row gap-3">
-          <button className="adminAddPageSubmitButton" onClick={submit}>
-            Add Book
-          </button>
-          <button onClick={handleReset} className="adminAddPageResetButton">
-            Reset
-          </button>
-        </div>
       </div>
+    </>
 
-    </div>
+
   );
 };
 
