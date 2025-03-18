@@ -63,7 +63,7 @@ const HomePage = () => {
       </div>
 
       {openUserSelectionModel && (
-        <div className="selectUserContainer">
+        <div className="selectUserContainer ">
           <div className="selectUser">
             <div className="d-flex">
               <span

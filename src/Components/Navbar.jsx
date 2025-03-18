@@ -68,17 +68,11 @@ const Navbar = ({ handleRegistration }) => {
             </NavLink>
 
             {isLogged ? (
-              <NavLink
-                className='nav-link'
-                to={'/Books'}
-              >
+              <NavLink className="nav-link" to={"/Books"}>
                 Books
               </NavLink>
             ) : (
-              <Link
-                className="nav-link"
-                to='/AccessDenied'
-              >
+              <Link className="nav-link" to="/AccessDenied">
                 Books
               </Link>
             )}
@@ -111,20 +105,34 @@ const Navbar = ({ handleRegistration }) => {
               </>
             ) : (
               <>
-                <button
-                  type="button"
-                  className="btn btn-outline-primary"
-                  onClick={() => handleRegistration("login")}
-                >
-                  Login
+                <button class="animated-button" onClick={()=>handleRegistration('login')}>
+                  <svg
+                    viewBox="0 0 24 24"
+                    class="arr-2"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                  </svg>
+                  <span class="text" > LOGIN </span>
+                  <span class="circle"></span>
+                  <svg
+                    viewBox="0 0 24 24"
+                    class="arr-1"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                  </svg>
                 </button>
-                <button
+                <br />
+                <br />
+
+                {/* <button
                   type="button"
                   className="btn btn-outline-secondary"
                   onClick={() => handleRegistration("signUp")}
                 >
                   SignUp
-                </button>
+                </button> */}
               </>
             )}
           </div>
