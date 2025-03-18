@@ -103,7 +103,7 @@
 }
 
 .adminAddPageResetButton:hover {
-  background-color: #e53935;
+  background-color: rgb(153, 8, 8);
 }
 
 .adminAddPageImageInput {

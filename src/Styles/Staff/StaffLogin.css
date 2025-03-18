@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 
-.staffLogContainer{
-  background-color: #E580A0;
-  height:100vh;
+.staffLogContainer {
+  background-color: #e580a0;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,14 +11,13 @@
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
-
 }
-.staffLogGoBackContainer{
+.staffLogGoBackContainer {
   position: absolute;
   top: 5px;
   right: 5px;
 }
-.staffLogGoBackIcon{
+.staffLogGoBackIcon {
   cursor: pointer;
   color: rgb(124, 6, 6);
   font-size: 1.9rem;
@@ -28,22 +27,21 @@
 }
 .staffLogImageContainer {
   position: absolute;
-  bottom: 4px;  
-  right: 10px;   
-  max-width: 350px; 
-  
+  bottom: 4px;
+  right: 10px;
+  max-width: 350px;
 }
 
 @media (max-width: 768px) {
   .staffLogImageContainer {
-    max-width:100px;
+    max-width: 100px;
     right: 1px;
   }
 }
-.staffLogImage{
+.staffLogImage {
   object-position: 0px 39px;
- }
- .staffLogBorder {
+}
+.staffLogBorder {
   width: 100%;
   max-width: 350px;
 }
@@ -52,18 +50,18 @@
     padding: 20px;
   }
 }
-.staffLoginput input{
+.staffLoginput input {
   margin-bottom: 15px;
   border-radius: 8px;
   padding-left: 38px;
 }
-.staffLogHead h3{
+.staffLogHead h3 {
   text-align: center;
   font-family: "Righteous", serif;
   color: rgb(124, 6, 6);
   margin-bottom: 20px;
 }
-.staffLogerrorContainer{
+.staffLogerrorContainer {
   height: 50px;
   width: 260px;
   margin: auto;
@@ -77,7 +75,7 @@
 }
 @media (max-width: 480px) {
   .staffLogerrorContainer {
-    font-size: 14px; 
+    font-size: 14px;
     padding: 8px 12px;
   }
 }
@@ -86,7 +84,7 @@
     font-size: 16px;
   }
 }
-.stafferroricon{
+.stafferroricon {
   margin-bottom: 3px;
   padding-right: 7px;
 }
@@ -113,16 +111,16 @@
   transform: translateY(-50%);
   font-size: 1.2rem;
 }
-.staffLogLink{
+.staffLogLink {
   text-align: center;
   margin-top: 5px;
-  font-family:Arial;
-color:rgb(11, 11, 11);
+  font-family: Arial;
+  color: rgb(11, 11, 11);
 }
-.staffLogLink a{
-  color:#a00000;
+.staffLogLink a {
+  color: #a00000;
   text-decoration: underline;
- font-family: Arial;
+  font-family: Arial;
 }
 .staffLogButton button {
   margin-top: 10px;
@@ -133,16 +131,15 @@ color:rgb(11, 11, 11);
 }
 
 .staffLogButton button:hover {
-  background-color: rgb(111, 6, 6);
+  background-color: rgb(153, 8, 8);
 }
-.staffLogForgetLink{
-  text-align:right;
+.staffLogForgetLink {
+  text-align: right;
   margin-top: 5px;
-  font-family:Arial;
-
+  font-family: Arial;
 }
-.staffLogForgetLink a{
-  color:#a00000;
+.staffLogForgetLink a {
+  color: #a00000;
   text-decoration: underline;
- font-family: Arial;
+  font-family: Arial;
 }

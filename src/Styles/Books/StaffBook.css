@@ -1,42 +1,118 @@
-.view-book-btn {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  .view-book-btn:hover {
-    background-color: #0056b3;
-  }
-  
-  .fav-icon-btn {
-    background: none;
-    border: 2px solid pink; /* Default pink border */
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .fav-icon {
-    font-size: 24px;
-    color: pink; /* Default pink outline */
-    transition: color 0.3s ease;
-  }
-  
-  .fav-icon-btn.active {
-    background: pink; /* Full pink background when active */
-    border-color: pink;
-  }
-  
-  .fav-icon-btn.active .fav-icon {
-    color: white; /* White icon when active */
-  }
+.staffBooksSection h2 {
+  text-align: center;
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.staffBooksList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.staffBookCard {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.staffBookCard img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.staffBookCard h3 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.staffBookCard p {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.staffBookLink {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.staffBookLink:hover {
+  text-decoration: underline;
+}
+
+.staffBooksSection {
+  height: 73vh;
+  overflow-y: auto;
+  padding-bottom: 20px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  padding-right: 15px;
+}
+
+.staffBooksSection::-webkit-scrollbar {
+  width: 10px;
+}
+
+.staffBooksSection::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, #f1f1f1, #e0e0e0);
+  border-radius: 10px;
+}
+
+.staffBooksSection::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #007bff, #0056b3);
+  border-radius: 10px;
+  transition: background 0.3s ease-in-out;
+}
+
+.staffBooksSection::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #0056b3, #00408a);
+}
+
+.staffBooksList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding-right: 15px;
+}
+
+.staffBookName {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* View Details Button */
+.staffViewBookBtn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.staffViewBookBtn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.staffViewBookBtn:active {
+  transform: scale(0.95);
+}
+
+
