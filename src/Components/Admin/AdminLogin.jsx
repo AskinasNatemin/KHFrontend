@@ -9,48 +9,41 @@ import { FaLock } from "react-icons/fa";
 import adminLoginImage from "../../Assets/images/AdminImage/adminLoginImg.png";
 
 const AdminLogin = () => {
-  const [showPassword, setShowPassword] = useState(false);
-  const [state, setState] = useState({
-    email: "",
-    password: "",
+
+  const navigate=useNavigate();
+
+  let email="admin@gmail.com";
+  let password="123456";
+  
+  const [login, setLogin] = useState({
+    adminEmail: "",
+    adminPassword: "",
   });
-
-  const navigate = useNavigate();
-
-  const change = (e) => {
-    setState({ ...state, [e.target.name]: e.target.value });
-    console.log(state);
-  };
-
-  const handleLogin = async (e) => {
+  
+  const change=(data)=>{
+    // console.log(login);
+    
+    setLogin({...login,[data.target.name]:data.target.value});
+  }
+  
+  const submit=(e)=>{
     e.preventDefault();
-    try {
-      const response = await axios.post("http://localhost:5001/AdminLogin", {
-        email: state.email,
-        password: state.password,
-        
-      });
 
-      alert(response.data.message);
-      navigate("/AdminDashSidebar");
-    } catch (error) {
-      if (error.response && error.response.data) {
-        alert(error.response.data.message);
-      } else {
-        alert("An error occurred. Please try again.");
-      }
+    if(login.adminEmail !== email){
+      alert("Email Not Found")
     }
-  };
-
-  const handleGoBack = () => {
-    navigate("/");
-  };
+    else if(login.adminPassword !== password){
+      alert("Incorrect Password")
+    }
+    else{
+      alert("Login Successful")
+      navigate("/AdminMainDash")
+    }
+  }
 
   return (
     <div className="adminlogcontainer">
       <div className="adminlogGoBackContainer">
-        <FaHome onClick={handleGoBack}
-         className="adminlogGoBackIcon" />
       </div>
       <div className="adminImageContainer">
         <img
@@ -61,7 +54,7 @@ const AdminLogin = () => {
       </div>
 
       <form
-        onSubmit={handleLogin}
+        onSubmit={submit}
         className="w-100 d-flex justify-content-center"
       >
         <div className="adminborder">
@@ -77,10 +70,10 @@ const AdminLogin = () => {
                 onChange={change}
                 type="email"
                 className="form-control"
-                placeholder="email"
-                name="email"
+                placeholder="Email"
+                name="adminEmail"
                 required
-                value={state.email}
+                value={login.adminEmail}
               />
             </div>
 
@@ -88,22 +81,13 @@ const AdminLogin = () => {
               <FaLock className="position-absolute top-50 start-0 translate-middle-y ms-2" />
               <input
                 onChange={change}
-                type={showPassword ? "text" : "password"}
+                type="passowrd"
                 className="form-control"
                 placeholder="Password"
-                name="password"
+                name="adminPassword"
                 required
-                value={state.password}
+                value={login.adminPassword}
               />
-              {state.password && (
-                <span
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="position-absolute top-50 end-0 translate-middle-y pe-3"
-                  style={{ cursor: "pointer", color: "#6c757d" }}
-                >
-                  {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
-                </span>
-              )}
             </div>
 
             <div className="d-grid gap-2 col-12 mx-auto adminlogbutton">

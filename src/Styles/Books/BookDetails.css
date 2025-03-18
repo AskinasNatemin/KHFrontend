@@ -64,17 +64,23 @@
 }
 
 .singleViewBookBtn {
-  display: inline-block;
-  padding: 8px 15px;
-  background: #007bff;
+  background-color: rgb(124, 6, 6);
   color: white;
-  text-decoration: none;
+  border: none;
+  padding: 8px 12px;
   border-radius: 5px;
-  margin-top: 10px;
+  font-size: 14px;
+  display: flex;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
 }
 
 .singleViewBookBtn:hover {
-  background: #0056b3;
+  background-color: rgb(153, 8, 8);
+  transform: scale(1.05);
 }
 
 @media (max-width: 768px) {

@@ -7,15 +7,30 @@
   
 }
 
-.favouriteTitle {
-  color: rgb(124, 6, 6);
+.favouriteHeader {
   font-family: "Righteous", serif;
-  margin: 20px 0;
-  font-weight: 600;
-  font-size: 28px;
-  text-align: center;
-  margin-bottom: 25px;
+  color: rgb(124, 6, 6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border: 1px solid #ccc; /* Adjust border as needed */
 }
+
+.favouriteTitle {
+  flex-grow: 1;
+  text-align: center;
+  margin: 0;
+}
+
+.favouritbackicon {
+  font-size: 24px; /* Adjust size as needed */
+  cursor: pointer;
+  color: rgb(124, 6, 6);
+  width: 30px;
+  height: 30px;
+}
+
 
 .favouriteGrid {
   display: grid;

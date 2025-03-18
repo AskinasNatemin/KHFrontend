@@ -53,7 +53,7 @@ const UserProfile = () => {
         <p>{userData?.email}</p>
       </div>
       <button onClick={handleLogout} type="button" className="logoutBtn">
-        Log Out
+        LOG OUT
       </button>
     </div>
   );
