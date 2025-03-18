@@ -77,7 +77,7 @@ const AdminLogin = () => {
                 onChange={change}
                 type="email"
                 className="form-control"
-                placeholder="Email"
+                placeholder="email"
                 name="email"
                 required
                 value={state.email}
