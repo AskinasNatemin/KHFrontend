@@ -8,6 +8,7 @@ import "../Styles/Navbar.css";
 import "../Styles/Profile.css";
 import { Logged } from "./Context/AppContext";
 import UserProfile from "./UserProfile";
+import backPackIcon from '../Assets/icon/backpack.png'
 
 const Navbar = ({ handleRegistration }) => {
   const { isLogged, setIsLogged } = useContext(Logged);
@@ -88,7 +89,7 @@ const Navbar = ({ handleRegistration }) => {
             </NavLink>
           </div>
 
-          <div className="buttons me-4 gap-3 d-flex px-2 py-1">
+          <div className="buttons me-4 gap-3 d-flex px-2 py-1 px-4 d-flex align-items-center">
             {isLogged ? (
               <>
                 <div className="favIconContainer">
@@ -97,8 +98,8 @@ const Navbar = ({ handleRegistration }) => {
                     onClick={() => navigate("/UserFavouriteBooks")}
                   />
                 </div>
-                <div className="lentedBookIconContainer">
-                  <CiBag1 />
+                <div className="lentedBookIconContainer border rounded rounded-circle p-2">
+                  <img src={backPackIcon} alt="bagIcon" className="backPackIcon"/>
                 </div>
 
                 <CgProfile
