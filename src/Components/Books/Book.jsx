@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "../../Styles/Books/BookDetails.css";
 import { AiFillStar, AiOutlineClose } from "react-icons/ai";
@@ -22,6 +23,10 @@ const Book = () => {
   const handleOnClose = () => {
     navigate("/Books", { replace: true });
   };
+
+  const lentBook=()=>{
+    alert('Are you sure you need to lent book')
+  }
 
   if (!book) return <p>Loading...</p>;
 
@@ -53,14 +58,15 @@ const Book = () => {
               ))}
             </div>
 
-            <a
+            <Link
               href={book.link}
               target="_blank"
               rel="noopener noreferrer"
               className="singleViewBookBtn"
+              onClick={lentBook}
             >
               Lent Book
-            </a>
+            </Link >
           </div>
         </div>
       </div>

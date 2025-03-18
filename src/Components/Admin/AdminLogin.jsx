@@ -20,9 +20,7 @@ const AdminLogin = () => {
     adminPassword: "",
   });
   
-  const change=(data)=>{
-    // console.log(login);
-    
+  const change=(data)=>{    
     setLogin({...login,[data.target.name]:data.target.value});
   }
   
