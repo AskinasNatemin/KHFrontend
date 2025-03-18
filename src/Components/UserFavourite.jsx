@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../Styles/favouriteStyles.css";
-import { MdDeleteForever } from "react-icons/md";
+import { LuTrash2 } from "react-icons/lu";
 
 const UserFavourite = () => {
   const userId = localStorage.getItem("userId");
@@ -47,6 +47,7 @@ const UserFavourite = () => {
     <div style={{ height: "100vh" }}>
       <div className="favouriteHeader border container">
         <h2 className="favouriteTitle">FAVOURITE BOOKS</h2>
+        
       </div>
       <div className="favouriteContainer container" style={{height:'85%'}}>
         {favouriteBooks.length ? (
@@ -54,7 +55,7 @@ const UserFavourite = () => {
             {favouriteBooks.map((book, index) => (
               <div className="favouriteCard" key={index}>
                 <div className="delFavouriteContainer">
-                  <MdDeleteForever
+                  <LuTrash2
                     className="delFavouriteIcon"
                     onClick={() => {
                       removeFavouriteBook(book._id);

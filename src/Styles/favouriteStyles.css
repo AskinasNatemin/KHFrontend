@@ -4,12 +4,13 @@
   overflow-y: scroll;
   overflow-x: hidden;
   padding-block: 15px;
+  
 }
 
 .favouriteTitle {
   color: rgb(124, 6, 6);
   font-family: "Righteous", serif;
-  margin: 10px 0;
+  margin: 20px 0;
   font-weight: 600;
   font-size: 28px;
   text-align: center;
@@ -110,14 +111,29 @@
   transform: scale(0.95);
 }
 .delFavouriteContainer {
-  color: rgb(0, 0, 0);
+  color: red;
 }
 .delFavouriteIcon {
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .delFavouriteContainer {
   justify-content: end;
   align-items: flex-end;
   display: flex;
+}
+.favouriteContainer::-webkit-scrollbar {
+  width: 10px;
+}
+.favouriteContainer::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, #f1f1f1, #e0e0e0);
+  border-radius: 10px;
+}
+.favouriteContainer::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg,rgb(124, 6, 6), rgb(186, 12, 12));
+  border-radius: 10px;
+  transition: background 0.3s ease-in-out;
+}
+.favouriteContainer::-webkit-scrollbar-thumb:hover {
+background: linear-gradient(180deg, rgb(157, 25, 25), rgb(194, 65, 65));
 }
