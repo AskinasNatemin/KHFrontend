@@ -48,7 +48,7 @@ const UserFavourite = () => {
     <div style={{ height: "100vh" }}>
       <div className="favouriteHeader border container">
         <div className=" flex-fill">
-        <h2 className="favouriteTitle">FAVOURITE BOOKS</h2>
+          <h2 className="favouriteTitle">FAVOURITE BOOKS</h2>
         </div>
         <div className="favouriteGoBackContainer">
           <IoArrowBackCircle

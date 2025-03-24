@@ -33,5 +33,7 @@
   
   .profilePopupHeader{
     padding-right:50px;
-
+  }
+  .profileUserName{
+    color: rgb(35, 102, 124);
   }
