@@ -92,7 +92,7 @@ const Navbar = ({ handleRegistration }) => {
                     onClick={() => navigate("/UserFavouriteBooks")}
                   />
                 </div>
-                <div className="lentedBookIconContainer border rounded rounded-circle p-2">
+                <div className="lentedBookIconContainer border rounded rounded-circle p-2" onClick={()=>navigate('/LentedBook')}>
                   <img src={backPackIcon} alt="bagIcon" className="backPackIcon"/>
                 </div>
 
