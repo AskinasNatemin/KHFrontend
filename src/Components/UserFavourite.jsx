@@ -47,9 +47,8 @@ const UserFavourite = () => {
     <div style={{ height: "100vh" }}>
       <div className="favouriteHeader border container">
         <h2 className="favouriteTitle">FAVOURITE BOOKS</h2>
-        
       </div>
-      <div className="favouriteContainer container" style={{height:'85%'}}>
+      <div className="favouriteContainer container" style={{ height: "85%" }}>
         {favouriteBooks.length ? (
           <div className="favouriteGrid">
             {favouriteBooks.map((book, index) => (
