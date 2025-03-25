@@ -15,12 +15,8 @@ function AdminSideBar() {
 
   return (
     <>
-      {/* Mobile Menu Button */}
-      <button className="mobile-menu-btn" onClick={() => setIsOpen(!isOpen)}>
-        {isOpen ? <IoClose /> : <FiMenu />}
-      </button>
 
-      <div className={`admin-sidebar-background col-2  ${isOpen ? "open" : ""}`}>
+      <div className={`admin-sidebar-background col-2`}>
         <img className='image-fluid admin-sidebar-logo' src={img1} alt="Admin Sidebar Logo" />
         <h3 className='admin-sidebar-h3'>Admin</h3>
 
