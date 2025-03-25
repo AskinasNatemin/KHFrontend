@@ -112,64 +112,10 @@
 .admin-logout-sign svg path {
   fill: white;
 }
- /* 
-.admin-logout-text{
-  position: absolute;
-  right: 0%;
-  width: 0%;
-  opacity: 0;
-  color: white;
-  font-size: 1.2em;
-  font-weight: 600;
-  transition-duration: .3s;
-}
-.admin-logout-btn:hover {
-  width: 125px;
-  border-radius: 40px;
-  transition-duration: .3s;
-}
-
-.admin-logout-btn:hover .admin-logout-sign {
-  
-  width: 30%;
-  transition-duration: .3s;
-  padding-left: 20px;
-}
-
-.admin-logout-btn:hover .admin-logout-text{
-  opacity: 1;
-  width: 70%;
-  transition-duration: .3s;
-  padding-right: 10px;
-}
-
-.admin-logout-btn:active {
-  transform: translate(2px ,2px);
-} */
 
 
 @media (max-width: 768px) {
-    .admin-sidebar-background {
-      transform: translateX(-100%);
-    }
-  
-    .admin-sidebar-background.open {
-      transform: translateX(0);
-    }
-  
-    .mobile-menu-btn {
-      position: fixed;
-      top: 5px;
-      left: 5px;
-      background: #fb1313;
-      color: white;
-      border: none;
-      font-size: 1rem;
-      padding: 3px;
-      border-radius: 5px;
-      cursor: pointer;
-      z-index: 1000;
-    }
+
   
     .admin-sidebar-logo, 
     .admin-sidebar-h3 {
@@ -218,23 +164,11 @@
     height: 50px;
   }
 
-  .admin-sidebar-background.open {
+  /* .admin-sidebar-background.open {
     transform: translateX(0);
-  }
+  } */
 
-  .mobile-menu-btn {
-    position: fixed;
-    top: 5px;
-    left: 5px;
-    background: #fb1313;
-    color: white;
-    border: none;
-    font-size: 1rem;
-    padding: 2px;
-    border-radius: 10px;
-    cursor: pointer;
-    z-index: 1000;
-  }
+ 
 
   .sidebar-icon {
 
@@ -298,24 +232,4 @@
   }
 }
 
-/* .admin-sidebar-background{
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #2c3e50;
-}
 
-.admin-sidebar-logo {
-  
-  width: 80%;
-  max-width: 150px;
-  border-radius: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.mobile-menu-btn{
-  display: none;
-} */
