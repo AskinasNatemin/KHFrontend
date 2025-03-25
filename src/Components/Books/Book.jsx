@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "../../Styles/Books/BookDetails.css";
@@ -9,6 +9,9 @@ const Book = () => {
   const { id } = useParams();
   const [book, setBook] = useState(null);
   const navigate = useNavigate();
+  const bookLocation=useLocation();
+  console.log(bookLocation.state);
+  
 
   useEffect(() => {
     axios
@@ -21,6 +24,12 @@ const Book = () => {
   }, [id]);
 
   const handleOnClose = () => {
+    if(bookLocation.state== "admin book"){
+      return navigate("/ViewBooks")
+    }
+    // if(bookLocation.state == "book"){
+
+    // }
     navigate("/Books", { replace: true });
   };
 

@@ -52,8 +52,12 @@ function App() {
           <Route path="LentedBook" element={<LentedBook/>}/>
           <Route path="AccessDenied" element={<LoginFirst/>}/>
         </Routes>
+
       </BrowserRouter>
+
     </div>
+
+    
   );
 }
 
