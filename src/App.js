@@ -29,7 +29,6 @@ function App() {
         <Routes>
           <Route path="*" element={<NoPageFound />} />
           <Route path="/Navbar" element={<Navbar />} />
-
           <Route path="AdminDashboardTopbar" element={<AdminDashboardTopbar />} />
           <Route path="/AdminMainDash" element={<AdminMaindash/>} />
           <Route path="/ViewStaffs" element={<AdminMaindash data={"ViewStaffs"}/>} />

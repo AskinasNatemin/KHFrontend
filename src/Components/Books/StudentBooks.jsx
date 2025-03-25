@@ -119,7 +119,7 @@ const StudentBooks = () => {
                   <div className="studentCardBody d-flex align-items-center justify-content-between">
                     <button
                       className="studentViewBookBtn"
-                      onClick={() => navigate(`/Book/${book._id}`)}
+                      onClick={() => {navigate(`/Book/${book._id}`,{state:'book'})}}
                     >
                       View Details
                     </button>
