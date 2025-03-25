@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../Styles/favouriteStyles.css";
 import { LuTrash2 } from "react-icons/lu";
+import { IoArrowBackCircle } from "react-icons/io5";
 
 const UserFavourite = () => {
   const userId = localStorage.getItem("userId");
@@ -46,7 +47,15 @@ const UserFavourite = () => {
   return (
     <div style={{ height: "100vh" }}>
       <div className="favouriteHeader border container">
-        <h2 className="favouriteTitle">FAVOURITE BOOKS</h2>
+        <div className=" flex-fill">
+          <h2 className="favouriteTitle">FAVOURITE BOOKS</h2>
+        </div>
+        <div className="favouriteGoBackContainer">
+          <IoArrowBackCircle
+            onClick={() => navigate("/Books")}
+            className="favouritbackicon"
+          />
+        </div>
       </div>
       <div className="favouriteContainer container" style={{ height: "85%" }}>
         {favouriteBooks.length ? (

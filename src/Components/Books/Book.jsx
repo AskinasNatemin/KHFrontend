@@ -9,9 +9,8 @@ const Book = () => {
   const { id } = useParams();
   const [book, setBook] = useState(null);
   const navigate = useNavigate();
-  const location=useLocation()
-  console.log(location);
-  
+
+  const bookLocation=useLocation();
 
   useEffect(() => {
     axios
@@ -24,7 +23,10 @@ const Book = () => {
   }, [id]);
 
   const handleOnClose = () => {
-    navigate("/Books",{ replace: true });
+    if(bookLocation.state== "admin book"){
+      return navigate("/ViewBooks")
+    }
+    navigate("/Books", { replace: true });
   };
 
   const lentBook=()=>{

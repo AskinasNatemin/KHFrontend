@@ -41,8 +41,8 @@ const UserProfile = () => {
   return (
     <div className="profilePopupContainer p-4 ">
       <div className="profilePopupHeader">
-        <p>{user}</p>
-        <p>
+        <p>{user.toUpperCase()}</p>
+        <p> <span className="profileUserName">UserName :</span>
           {user === "staff"
             ? userData?.staffname
             : user === "student"
@@ -52,7 +52,7 @@ const UserProfile = () => {
         <p>{userData?.email}</p>
       </div>
       <button onClick={handleLogout} type="button" className="logoutBtn">
-        Log Out
+        LOG OUT
       </button>
     </div>
   );

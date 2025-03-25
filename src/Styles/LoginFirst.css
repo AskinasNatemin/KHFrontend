@@ -36,17 +36,24 @@
   /* Button */
   .goToHome {
     display: inline-block;
-    background: #007bff;
+    background-color: rgb(124, 6, 6);
     color: white;
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 8px 12px;
     border-radius: 5px;
-    font-size: 16px;
-    transition: 0.3s ease-in-out;
+    font-size: 14px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    cursor: pointer;
   }
   
   .goToHome:hover {
-    background: #0056b3;
+    background-color: rgb(153, 8, 8);
+    transform: scale(1.05);
+  
   }
   
   /* Responsive Design */
