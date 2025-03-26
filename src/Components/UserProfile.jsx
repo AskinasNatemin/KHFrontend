@@ -13,7 +13,7 @@ const UserProfile = () => {
     localStorage.removeItem("userId");
     localStorage.removeItem("user");
     navigate("/",{replace:true});
-  };
+};
 
   useEffect(() => {
     if (user === "student") {
@@ -36,7 +36,7 @@ const UserProfile = () => {
           console.log(err);
         });
     }
-  }, []);
+  },[]);
 
   return (
     <div className="profilePopupContainer p-4 ">

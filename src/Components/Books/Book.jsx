@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "../../Styles/Books/BookDetails.css";
 import { AiFillStar, AiOutlineClose } from "react-icons/ai";
+import { LentedBook } from "../Context/AppContext";
 
 const Book = () => {
   const { id } = useParams();
   const [book, setBook] = useState(null);
   const navigate = useNavigate();
-
-  const bookLocation=useLocation();
-
+  const bookLocation = useLocation();
+  const { lentedBook, setLentedBook } = useContext(LentedBook);
   useEffect(() => {
     axios
       .post(`http://localhost:5001/getBook/${id}`)
@@ -23,15 +23,15 @@ const Book = () => {
   }, [id]);
 
   const handleOnClose = () => {
-    if(bookLocation.state== "admin book"){
-      return navigate("/ViewBooks")
+    if (bookLocation.state == "admin book") {
+      return navigate("/ViewBooks");
     }
     navigate("/Books", { replace: true });
   };
 
-  const lentBook=()=>{
-    alert('Are you sure you need to lent book')
-  }
+  const lentBook = (id) => {
+    console.log(id);
+  };
 
   if (!book) return <p>Loading...</p>;
 
@@ -48,11 +48,17 @@ const Book = () => {
             alt={book.bookName}
             className="singleBookImage"
           />
-           
+
           <div className="singleBookDetails">
             <h2>{book.bookName}</h2>
-            <h6><b>Author : </b>{book.authorName}</h6>
-            <p className="singleBookDescription"><b>Description : </b>{book.description}</p>
+            <h6>
+              <b>Author : </b>
+              {book.authorName}
+            </h6>
+            <p className="singleBookDescription">
+              <b>Description : </b>
+              {book.description}
+            </p>
 
             <div className="singleBookRatings">
               {[...Array(5)].map((_, i) => (
@@ -64,14 +70,12 @@ const Book = () => {
             </div>
 
             <Link
-              href={book.link}
-              target="_blank"
               rel="noopener noreferrer"
               className="singleViewBookBtn"
-              onClick={lentBook}
+              onClick={() => lentBook(book._id)}
             >
               Lent Book
-            </Link >
+            </Link>
           </div>
         </div>
       </div>
