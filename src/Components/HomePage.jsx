@@ -11,23 +11,15 @@ import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   const [openUserSelectionModel, setOpenUserSelectionModel] = useState(false);
-  const [logOrSignUp, setLogOrSignUp] = useState();
-  const [selectionData, setSelectionData] = useState([
-    { userType: "Student", type: "", image: student },
-    { userType: "Staff", type: "", image: staff },
-    { userType: "Admin", type: "", image: admin },
+  const [selectionData] = useState([
+    { userType: "Student", image: student },
+    { userType: "Staff", image: staff },
+    { userType: "Admin",image: admin },
   ]);
 
   const navigate = useNavigate();  
-  
   const handleRegistration = (type) => {
-    setLogOrSignUp(type);
     setOpenUserSelectionModel(true);
-    setSelectionData((prev) => {
-      return prev.map((el, i) => {
-        return { ...el, type: type };
-      });
-    });
   };
 
   return (
@@ -70,7 +62,6 @@ const HomePage = () => {
                 className="ms-auto goBackIcon"
                 onClick={() => {
                   setOpenUserSelectionModel(false);
-                  setLogOrSignUp("");
                 }}
               >
                 <TbXboxX className="goBackIcon" />
@@ -78,44 +69,7 @@ const HomePage = () => {
             </div>
 
             <div className="row  d-flex justify-content-center m-5">
-              {logOrSignUp == "signUp"
-                ? selectionData
-                    .filter((user, i) => {
-                      return user.userType !== "Admin";
-                    })
-                    .map((user, i) => {
-                      return (
-                        <div className="col-md-6 col-sm-12 col-lg-4 d-flex justify-content-center">
-                          <div className="card userCard m-2" key={i}>
-                            <img
-                              src={user.image}
-                              className="card-img-top rounded-circle"
-                              alt={user.userType}
-                            />
-                            <div className="card-body d-flex justify-content-center">
-                              <button
-                                type="button"
-                                className="btn btn-outline-success"
-                                onClick={
-                                  user.userType == "Staff"
-                                    ? () => {
-                                        navigate("StaffRegistration");
-                                      }
-                                    : user.userType == "Student"
-                                    ? () => {
-                                        navigate("StudentRegistration");
-                                      }
-                                    : ""
-                                }
-                              >
-                                {user.userType} SignUp
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })
-                : selectionData.map((user, i) => {
+              {selectionData.map((user, i) => {
                     return (
                       <div className="col-md-6 col-sm-12 col-lg-4 d-flex justify-content-center">
                         <div className="card userCard m-2" key={i}>
@@ -129,22 +83,22 @@ const HomePage = () => {
                               type="button"
                               className="btn btn-outline-success"
                               onClick={
-                                user.userType == "Admin"
+                                user.userType === "Admin"
                                   ? () => {
                                       navigate("/AdminLogin");
                                     }
-                                  : user.userType == "Staff"
+                                  : user.userType === "Staff"
                                   ? () => {
                                       navigate("/StaffLogin");
                                     }
-                                  : user.userType == "Student"
+                                  : user.userType === "Student"
                                   ? () => {
                                       navigate("/StudentLogin");
                                     }
                                   : ""
                               }
                             >
-                              {user.userType} Login
+                              {user.userType}
                             </button>
                           </div>
                         </div>

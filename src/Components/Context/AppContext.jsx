@@ -29,4 +29,4 @@ const AppContext = ({ children }) => {
 };
 
 export default AppContext;
-export { loggData, signedData, Logged,favouriteBooksList };
+export { loggData, signedData, Logged,favouriteBooksList,LentedBook };
