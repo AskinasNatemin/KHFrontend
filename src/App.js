@@ -13,9 +13,7 @@ import StudentRegistration from "./Components/Student/StudentRegistration";
 import StaffForgetPassword from "./Components/Staff/StaffForgetPassword";
 import StudentForgetPassword from "./Components/Student/StudentForgetPassword";
 import StaffCodePage from "./Components/Staff/StaffCodePage";
-import UsersData from "./Components/Users/UsersData";
 import Book from "./Components/Books/Book";
-// import AdminSideBar from "./Components/Admin/AdminSideBar";
 import AdminDashboardTopbar from "./Components/Admin/AdminDashboardTopbar";
 import AdminMaindash from "./Components/Admin/AdminMaindash";
 import UserFavourite from "./Components/UserFavourite";
@@ -46,7 +44,6 @@ function App() {
           <Route path="StaffForgetPassword" element={<StaffForgetPassword />} />
           <Route path="StudentForgetPassword" element={<StudentForgetPassword />}/>
           <Route path="StaffCodepage" element={<StaffCodePage />} />
-          <Route path="UsersData" element={<UsersData />} />        
           <Route path="Book/:id" element={<Book/>}/>
           <Route path="UserFavouriteBooks" element={<UserFavourite/>}/>
           <Route path="LentedBook" element={<LentedBook/>}/>

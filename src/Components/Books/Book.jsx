@@ -59,10 +59,10 @@ const Book = () => {
             </div>
 
             <Link
-              href={book.link}
+              to={book.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="singleViewBookBtn"
+              className="singleViewBookBtn text-decoration-none"
               onClick={lentBook}
             >
               Lent Book
