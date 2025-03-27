@@ -1,16 +1,223 @@
+
 .admin-view-book-h4-search-div {
   display: flex;
   align-items: center;
-  justify-content: center; /* Centers h4 */
+  justify-content: center;
   position: relative;
   width: 100%;
 }
 
 .admin-view-book-form {
   position: absolute;
-  right: 3rem; /* Moves search bar to the right */
+  right: 3rem;
 }
+
 .viewBooks-card-row{
+  overflow-x: hidden ;
+  overflow: scroll ;
+  height:700px;
+}
+.admin-viewbooks-card-box {
+  width: 80%;
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: .5rem;
+  height: fit-content;
+  padding: 10px;
+  flex-wrap: wrap;
+  display: flex;
+  border-radius: 10px;
+  background: linear-gradient(315deg, #f0f0f0, #cacaca);
+  box-shadow: 6px 6px 12px #c5c5c5,
+    -6px -6px 12px #fbfbfb;
+}
+
+.admin-viewbook-img {
+  width: 100%;
+  max-width: 7rem;
+  height: auto;
+  margin-left: 1rem;
+  border-radius: 20px;
+  box-shadow: -5px -5px 10px #a4a4a4,
+    5px 5px 10px #ffffff;
+}
+
+.admin-viewbook-img:hover {
+  box-shadow: 5px 5px 10px #a4a4a4,
+    -5px -5px 10px #ffffff;
+}
+
+.column-1 {
+  display: flex;
+  text-align: center;
+}
+
+.admin-viewbook-strong {
+  color: rgb(119, 26, 26);
+}
+
+.admin-viewbook-author-book-div {
+  text-align: center;
+  margin-left: 2rem;
+}
+
+.column-2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.admin-viewbook-edit-delete-div {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  margin-top: 1rem;
+}
+
+.admin-viewbook-button {
+  border: none;
+  width: 7rem;
+  height: 3rem;
+  border-radius: 10px;
+  background-color: #060270;
+  color: #fff;
+  font-weight: 500;
+  margin-top: 3rem;
+}
+
+.admin-viewbook-button:hover {
+  background-color: #4039E5;
+}
+
+.admin-viewbook-edit-btn {
+  width: 7rem;
+  height: 3rem;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 10px;
+  background-color: #0ABD48;
+  color: #fff;
+  font-weight: 500;
+}
+
+.admin-viewbook-edit-btn:hover {
+  background-color: #016724;
+}
+
+.admin-viewbook-delete-btn {
+  width: 7rem;
+  height: 3rem;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 10px;
+  background-color: #020101;
+  color: #fff;
+  font-weight: 500;
+}
+
+.admin-viewbook-delete-btn:hover {
+  background-color: #1D2921;
+  color: red;
+}
+
+@media screen and (max-width: 992px) {
+  .admin-viewbooks-card-box {
+    flex-direction: column;
+  }
+
+  .admin-viewbook-button {
+    margin-top: 0;
+  }
+
+  .column-1,
+  .column-2 {
+    width: 100%;
+  }
+
+  .column-2 {
+    margin-top: 1rem;
+  }
+
+  .admin-viewbook-edit-delete-div {
+    order: 2;
+    margin-top: 1rem;
+  }
+
+  .admin-viewbook-p3-div {
+    order: 1;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .admin-view-book-h4-search-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+  }
+
+  .admin-view-book-form {
+    position: absolute;
+    right: 0;
+  }
+
+  .admin-view-book-topbar-h4 {
+    position: absolute;
+    left: 5px;
+    font-size: 1em;
+    align-items: center;
+    margin-top: .6em;
+  }
+
+  .admin-view-book-search {
+    width: 100px;
+    height: 2rem;
+  }
+
+  .admin-viewbooks-card-box {
+    flex-direction: column;
+  }
+
+  .column-1,
+  .column-2 {
+    width: 100%;
+  }
+
+  .column-2 {
+    margin-top: 1rem;
+  }
+
+  .column-1 {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .admin-viewbook-author-book-div {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+
+  .admin-viewbook-edit-delete-div {
+    order: 2;
+    margin-top: 1rem;
+  }
+
+  .admin-viewbook-p3-div {
+    order: 1;
+  }
+}
+
+/* .viewBooks-card-row{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,7 +263,6 @@
   margin-top: .5rem;
 }
 .book-info {
-  /* display: flex; */
   justify-content: space-between;
   align-items: center;
   flex-wrap: nowrap;
@@ -110,7 +316,6 @@
 color: black;
 }
 
-/* ------edit button------- */
 .editBtn {
   width: 55px;
   height: 55px;
@@ -176,7 +381,6 @@ color: black;
 }
 
 
-/* ------delete button -------*/
 .bin-button {
   display: flex;
   flex-direction: column;
@@ -234,33 +438,9 @@ color: black;
     transform: translate(0%, 0%);
     opacity: 1;
   }
-}
+} */
 
-@media (max-width:480px) {
-  .admin-view-book-h4-search-div {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Centers h4 */
-    position: relative;
-    width: 100%;
-  }
-  
-  .admin-view-book-form {
-    position: absolute;
-    right: 0; /* Moves search bar to the right */
-  }
-  .admin-view-book-topbar-h4{
-    position: absolute;
-    left: 5px;
-    font-size: 1em;
-    align-items:center ;
-    margin-top: .6em;
-  }
-  .admin-view-book-search{
-    width: 100px;
-   height: 2rem;
-  }
-  .admin-view-book-img{
+/* .admin-view-book-img{
     margin-right: 2rem;
   }
   .bin-button {
@@ -321,6 +501,4 @@ color: black;
       opacity: 1;
     }
   }
-}
-
-
+} */
