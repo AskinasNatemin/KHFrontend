@@ -12,6 +12,7 @@ const Book = () => {
   const navigate = useNavigate();
   const bookLocation = useLocation();
   const { lentedBook, setLentedBook } = useContext(LentedBook);
+
   useEffect(() => {
     axios
       .post(`http://localhost:5001/getBook/${id}`)
@@ -29,9 +30,18 @@ const Book = () => {
     navigate("/Books", { replace: true });
   };
 
-  const lentBook = (id) => {
-    console.log(id);
-  };
+
+  const lentBook = (bookId) => {
+    const userType=localStorage.getItem('user')
+    const userId=localStorage.getItem('userId')
+    axios.post('http://localhost:5001/lentedBook',{bookId,userId,userType})
+    .then((res)=>{
+      console.log(res);
+      
+    })
+    .catch((err)=>{
+      console.log(err);   
+    })
 
   if (!book) return <p>Loading...</p>;
 

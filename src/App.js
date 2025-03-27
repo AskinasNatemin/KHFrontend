@@ -18,7 +18,7 @@ import AdminDashboardTopbar from "./Components/Admin/AdminDashboardTopbar";
 import AdminMaindash from "./Components/Admin/AdminMaindash";
 import UserFavourite from "./Components/UserFavourite";
 import LoginFirst from "./Components/LoginFirst"
-import LentedBook from "./Components/LentedBook";
+import LentedBook from "../src/Components/Books/LentedBook";
 
 function App() {
   return (
