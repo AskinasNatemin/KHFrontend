@@ -20,7 +20,6 @@ const UserProfile = () => {
       axios
         .post("http://localhost:5001/student",{ _id: id })
         .then((response) => {
-          console.log(response.data.data);
           setUserData(response.data.data);
         })
         .catch((err) => {

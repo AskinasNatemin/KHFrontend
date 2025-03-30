@@ -4,23 +4,20 @@ const loggData = createContext();
 const signedData = createContext();
 const Logged = createContext();
 const favouriteBooksList = createContext();
-const LentedBook=createContext();
 
 const AppContext = ({ children }) => {
+  
   const [loggedData, setLoggedData] = useState();
   const [signUpData, setSignUpData] = useState("");
   const [isLogged, setIsLogged] = useState(false);
   const [favouriteBooks, setFavouriteBooks] = useState([]);
-  const [lentedBook,setLentedBook]=useState()
 
   return (
     <loggData.Provider value={{ loggedData, setLoggedData }}>
       <signedData.Provider value={{ signUpData, setSignUpData }}>
         <Logged.Provider value={{ isLogged, setIsLogged }}>
           <favouriteBooksList.Provider value={{favouriteBooks,setFavouriteBooks}}>
-            <LentedBook.Provider value={{lentedBook,setLentedBook}}>
               {children}
-            </LentedBook.Provider>
           </favouriteBooksList.Provider>
         </Logged.Provider>
       </signedData.Provider>
@@ -29,4 +26,4 @@ const AppContext = ({ children }) => {
 };
 
 export default AppContext;
-export { loggData, signedData, Logged,favouriteBooksList,LentedBook };
+export { loggData, signedData, Logged,favouriteBooksList };

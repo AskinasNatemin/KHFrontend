@@ -1,0 +1,48 @@
+/* ✅ Center the fallback message */
+.NoBookContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    background-color: #ffffff;
+  }
+  
+  /* ✅ Fallback Message Box */
+  .NoBookMessageBox {
+    background-color: #f8f9fc;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+  }
+  
+  /* ✅ Main Message */
+  .NoBookMessage {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    color: #ff4757;
+    font-weight: 700;
+  }
+  
+  /* ✅ Sub Message */
+  .NoBookSubMessage {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: #555;
+    margin-top: 0.5rem;
+  }
+  
+  /* ✅ Responsive Adjustments */
+  @media (max-width: 600px) {
+    .NoBookMessageBox {
+      padding: 1.5rem;
+    }
+    
+    .NoBookMessage {
+      font-size: clamp(1.3rem, 4vw, 1.8rem);
+    }
+  
+    .NoBookSubMessage {
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    }
+  }
+  
