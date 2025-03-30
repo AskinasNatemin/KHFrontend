@@ -27,6 +27,7 @@ const Book = () => {
     navigate("/Books", { replace: true });
   };
 
+
   const lentBook = (bookId) => {
     const userType = localStorage.getItem("user");
     const userId = localStorage.getItem("userId");
