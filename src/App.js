@@ -18,7 +18,7 @@ import AdminDashboardTopbar from "./Components/Admin/AdminDashboardTopbar";
 import AdminMaindash from "./Components/Admin/AdminMaindash";
 import UserFavourite from "./Components/UserFavourite";
 import LoginFirst from "./Components/LoginFirst"
-import LentedBook from "./Components/LentedBook";
+import LentedBook from "../src/Components/Books/LentedBook";
 
 function App() {
   return (
@@ -26,8 +26,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="*" element={<NoPageFound />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/Navbar" element={<Navbar />} />
-
           <Route path="AdminDashboardTopbar" element={<AdminDashboardTopbar />} />
           <Route path="/AdminMainDash" element={<AdminMaindash/>} />
           <Route path="/ViewStaffs" element={<AdminMaindash data={"ViewStaffs"}/>} />
@@ -35,7 +35,6 @@ function App() {
           <Route path="/ViewBooks" element={<AdminMaindash data={"ViewBooks"}/>} />
           <Route path="/AddingBooks" element={<AdminMaindash data={"AddingBooks"}/>} />
           <Route path="AdminLogin" element={<AdminLogin />} />
-          <Route path="/" element={<HomePage />} />
           <Route path="StaffRegistration" element={<StaffRegistration />} />
           <Route path="StudentRegistration" element={<StudentRegistration />} />
           <Route path="StaffLogin" element={<StaffLogin />} />
@@ -50,7 +49,10 @@ function App() {
           <Route path="AccessDenied" element={<LoginFirst/>}/>
         </Routes>
       </BrowserRouter>
+
     </div>
+
+    
   );
 }
 

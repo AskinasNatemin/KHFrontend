@@ -10,12 +10,12 @@ import AdminDashboardTopbar from './AdminDashboardTopbar'
 function AdminMaindash({data}) {
   return (
     <div className="container-fluid">
-      <div className="row">
-        <div className="col-lg-2 col-md-3 col-sm-4 col-2 p-3 bg-light" style={{ minHeight: "100vh" }}>
+      <div className="row ">
+        <div className=" col-2 p-3 bg-light" style={{ minHeight: "100vh" }}>
           <AdminSideBar />
         </div>
 
-        <div className="col-lg-10 col-md-9 col-sm-8 col-10 container-fluid">
+        <div className="col-10 ">
           {/* <AdminDashboardTopbar/> */}
           {data === "ViewStaffs" ? <ViewStaffs /> :
            data === "ViewStudents" ? <ViewStudents /> :

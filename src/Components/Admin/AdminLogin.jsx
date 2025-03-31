@@ -3,8 +3,8 @@ import "../../Styles/Admin/AdminLogin.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
-import { FaHome } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import { FaHome } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import adminLoginImage from "../../Assets/images/AdminImage/adminLoginImg.png";
 
@@ -35,13 +35,14 @@ const AdminLogin = () => {
     }
     else{
       alert("Login Successful")
-      navigate("/AdminMainDash")
+      navigate("/AdminMainDash",{replace:true})
     }
   }
 
   return (
     <div className="adminlogcontainer">
       <div className="adminlogGoBackContainer">
+        <FaHome onClick={() => navigate("/")} className="adminLogGoBackIcon" />
       </div>
       <div className="adminImageContainer">
         <img

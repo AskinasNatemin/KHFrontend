@@ -12,16 +12,15 @@ const UserProfile = () => {
   const handleLogout = () => {
     localStorage.removeItem("userId");
     localStorage.removeItem("user");
-    navigate("/");
-  };
+    navigate("/",{replace:true});
+};
 
   useEffect(() => {
     if (user === "student") {
       axios
-        .post("http://localhost:5001/student", { _id: id })
+        .post("http://localhost:5001/student",{ _id: id })
         .then((response) => {
           console.log(response.data.data);
-          
           setUserData(response.data.data);
         })
         .catch((err) => {
@@ -37,7 +36,7 @@ const UserProfile = () => {
           console.log(err);
         });
     }
-  }, []);
+  },[]);
 
   return (
     <div className="profilePopupContainer p-4 ">

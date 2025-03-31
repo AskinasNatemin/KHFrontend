@@ -3,7 +3,6 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../Assets/icon/logo.png";
 import { CgProfile } from "react-icons/cg";
 import { GoHeartFill } from "react-icons/go";
-import { CiBag1 } from "react-icons/ci";
 import "../Styles/Navbar.css";
 import "../Styles/Profile.css";
 import { Logged } from "./Context/AppContext";
@@ -69,7 +68,7 @@ const Navbar = ({ handleRegistration }) => {
             </NavLink>
 
             {isLogged ? (
-              <NavLink className="nav-link" to={"/Books"}>
+              <NavLink className="nav-link" to="/Books">
                 Books
               </NavLink>
             ) : (
@@ -106,7 +105,7 @@ const Navbar = ({ handleRegistration }) => {
               </>
             ) : (
               <>
-                <button class="animated-button" onClick={()=>handleRegistration('login')}>
+                <button class="animated-button" onClick={()=>handleRegistration()}>
                   <svg
                     viewBox="0 0 24 24"
                     class="arr-2"
@@ -126,14 +125,6 @@ const Navbar = ({ handleRegistration }) => {
                 </button>
                 <br />
                 <br />
-
-                {/* <button
-                  type="button"
-                  className="btn btn-outline-secondary"
-                  onClick={() => handleRegistration("signUp")}
-                >
-                  SignUp
-                </button> */}
               </>
             )}
           </div>
