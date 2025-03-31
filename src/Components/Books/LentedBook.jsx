@@ -3,17 +3,18 @@ import "../../Styles/LentedBook/LentedBook.css";
 import axios from "axios";
 import FlipBook from "./FlipBook";
 import NoBookFallBack from "./NoBookFallBack";
+import { useNavigate } from "react-router-dom";
 
 const LentedBook = () => {
   const [lentedBook, setLentedBook] = useState();
   const [isFlipMode, setIsFlipMode] = useState(false);
+  const navigate = useNavigate();
 
   const getLentedBook = (id) => {
     axios
       .post(`http://localhost:5001/getBook/${id}`)
       .then((res) => {
         setLentedBook(res.data.data);
-        console.log(res.data.data);
       })
       .catch((err) => {
         console.log(err);
@@ -36,9 +37,18 @@ const LentedBook = () => {
     setIsFlipMode(!isFlipMode);
   };
 
-  const returnBook=()=>{
-    
-  }
+  const returnBook = (bookId) => {
+    axios
+      .post("http://localhost:5001/returnBook", { userId, bookId })
+      .then((res) => {
+        console.log(res);
+        alert(res.data.message);
+        navigate("/Books");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <>
@@ -63,19 +73,28 @@ const LentedBook = () => {
               </button>
 
               <button
-                className="px-3 py-2 rounded rounded-3 ms-5" /* onClick={()=>{returnBook()}} */
+                className="px-3 py-2 rounded rounded-3 ms-5"
+                onClick={() => {
+                  returnBook(lentedBook?._id);
+                }}
               >
                 Return
               </button>
             </div>
           </div>
-
-          {isFlipMode && <FlipBook handleFlipMode={handleFlipMode} pdfUrl="/path-to-your-book.pdf" />}
         </div>
       )}
-      {!lentedBook && <>
-      <NoBookFallBack/>
-      </>}
+      {isFlipMode && (
+        <FlipBook
+          handleFlipMode={handleFlipMode}
+          pdfUrl={`http://localhost:5001/${lentedBook?.filePath}`}
+        />
+      )}
+      {!lentedBook && (
+        <>
+          <NoBookFallBack />
+        </>
+      )}
     </>
   );
 };
