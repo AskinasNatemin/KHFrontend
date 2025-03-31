@@ -1,46 +1,114 @@
+/* FlipBook Container */
+.LentedBookFlipBookContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+/* FlipBook - Adjusts size dynamically */
 .LentedBookFlipBook {
-    margin-top: 2rem;
-    background-color: #fff;
-    padding: 1rem;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
+  width: 90vw;
+  max-width: 700px;
+  height: auto;
+  min-height: 600px;
+  display: block;
+  position: relative;
+}
+
+/* FlipBook Pages */
+.LentedFlipBookPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 700px;
+  font-size: 1.4rem;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Ensures images fit properly */
+.LentedFlipBookImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ensures full visibility of the page */
+}
+
+/* Button */
+.LentedBookReadMoreButton {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.LentedBookReadMoreButton:hover {
+  background-color: #0056b3;
+}
+
+/* Large Screens (Desktop) */
+@media (min-width: 1024px) {
+  .LentedBookFlipBook {
+    max-width: 900px;
+    height: 80vh;
   }
-  
-  .LentedBookPage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
+  .LentedFlipBookPage {
+    min-height: 600px;
+    font-size: 1.5rem;
+  }
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .LentedBookFlipBook {
+    max-width: 650px;
+  }
+  .LentedFlipBookPage {
+    min-height: 550px;
+    font-size: 1.3rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .LentedBookFlipBook {
+    max-width: 90vw;
+    min-height: 400px;
+  }
+  .LentedFlipBookPage {
+    min-height: 400px;
     font-size: 1.2rem;
-    color: #333;
-    background-color: #f0f0f0;
-    border: 2px solid #ddd;
-    border-radius: 10px;
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
   }
-  
-  .LentedBookPage:first-child {
-    background-color: #fff3cd;
-    color: #856404;
-    font-weight: bold;
+  .LentedBookReadMoreButton {
+    font-size: 0.9rem;
+    padding: 10px 20px;
   }
-  
-  .LentedBookPage:last-child {
-    background-color: #f8d7da;
-    color: #721c24;
-    font-weight: bold;
+}
+
+/* Extra Small Screens */
+@media (max-width: 400px) {
+  .LentedBookFlipBook {
+    max-width: 95vw;
+    min-height: 350px;
   }
-  
-  @media (max-width: 768px) {
-    .LentedBookFlipBook {
-      width: 100%;
-      height: auto;
-    }
-  
-    .LentedBookContainer {
-      padding: 1rem;
-      gap: 1rem;
-    }
+  .LentedFlipBookPage {
+    min-height: 350px;
+    font-size: 1rem;
   }
+}
