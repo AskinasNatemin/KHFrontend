@@ -83,10 +83,6 @@ const StudentBooks = () => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    console.log("Updated favouriteBooks state:", favouriteBooks);
-  }, [favouriteBooks]);
-
   return (
     <div className="studentBooksSection ps-2">
       <h2>STUDENT BOOKS</h2>

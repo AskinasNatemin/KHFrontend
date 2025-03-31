@@ -1,17 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "../../Styles/Books/BookDetails.css";
 import { AiFillStar, AiOutlineClose } from "react-icons/ai";
-import { LentedBook } from "../Context/AppContext";
 
 const Book = () => {
   const { id } = useParams();
   const [book, setBook] = useState(null);
   const navigate = useNavigate();
   const bookLocation = useLocation();
-  const { lentedBook, setLentedBook } = useContext(LentedBook);
 
   useEffect(() => {
     axios
@@ -30,15 +28,17 @@ const Book = () => {
   };
 
   const lentBook = (bookId) => {
-    const userType=localStorage.getItem('user')
-    const userId=localStorage.getItem('userId')
-    axios.post('http://localhost:5001/lentedBook',{bookId,userId,userType})
-    .then((res)=>{
-      console.log(res);
-    })
-    .catch((err)=>{
-      console.log(err);   
-    })
+    const userType = localStorage.getItem("user");
+    const userId = localStorage.getItem("userId");
+    axios
+      .post("http://localhost:5001/lentedBook", { bookId, userId, userType })
+      .then((res) => {
+        alert(res.data.message);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert(err.response.data.message);
+      });
   };
 
   if (!book) return <p>Loading...</p>;
@@ -77,14 +77,17 @@ const Book = () => {
               ))}
             </div>
 
-            <Link
-              rel="noopener noreferrer"
-              
-              className="singleViewBookBtn text-decoration-none"
-              onClick={() => lentBook(book._id)}
-            >
-              Lent Book
-            </Link>
+            {book.borrowed == "true" ? (
+              <button> unavailable </button>
+            ) : (
+              <Link
+                rel="noopener noreferrer"
+                className="singleViewBookBtn"
+                onClick={() => lentBook(book._id)}
+              >
+                Lent Book
+              </Link>
+            )}
           </div>
         </div>
       </div>
