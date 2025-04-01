@@ -22,7 +22,6 @@ import LentedBook from "../src/Components/Books/LentedBook";
 import { ToastContainer } from "react-toastify";
 import Ratings from "./Components/Ratings";
 import AdminEditBook from "./Components/Admin/AdminEditBook";
-import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
