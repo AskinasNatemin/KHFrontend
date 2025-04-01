@@ -99,7 +99,7 @@ const Book = () => {
             ) : (
               <Link
                 rel="noopener noreferrer"
-                className="singleViewBookBtn"
+                className="singleViewBookBtn text-decoration-none"
                 onClick={() => lentBook(book._id)}
               >
                 Lent Book

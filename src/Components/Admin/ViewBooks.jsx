@@ -44,10 +44,6 @@ function ViewBooks() {
     booksview();
   }, [books]);
 
-  useEffect(() => {
-    console.log("Selected Book Updated:", selectedBook);
-  }, [selectedBook]);
-
   const handleEdit = (book) => {
     setSelectedBook(book);
   };
