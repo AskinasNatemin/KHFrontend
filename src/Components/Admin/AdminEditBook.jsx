@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import "../../Styles/Admin/AdminEditBook.css"
-import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-const AdminEditBook = ({ book, onClose, onUpdate }) => {
-
-  const bookId = useParams();
-  const categories = ["STUDENT","STAFF"];
-  
+const AdminEditBook = ({ book, onClose, onUpdate }) => {  
+  const categories = ["Student","Staff"];
   const [formData, setFormData] = useState({
-    name: book.authorName || '',
+    authorName: book.authorName || '',
     bookName: book.bookName || '',
     description: book.description || '',
     category: book.category || 'Student',
@@ -37,20 +33,16 @@ const AdminEditBook = ({ book, onClose, onUpdate }) => {
     e.preventDefault();
     onUpdate(formData);
   };
+
   const editBook = () => {
-    axios.post(`http://localhost:5001/editBook/${bookId}`)
+    axios.post(`http://localhost:5001/editBook/${book._id}`,formData)
       .then((res) => {
         console.log(res.data);
-
       })
       .catch((err) => {
         console.log(err);
-
       })
   }
-  useEffect(() => {
-    editBook();
-  })
 
   return (
     <div>
@@ -68,7 +60,7 @@ const AdminEditBook = ({ book, onClose, onUpdate }) => {
               {/* Name Field */}
               <label className='admin-editbook-label'>
                 {/* Your Name: */}
-                <input className='admin-editbook-input' type="text" name="name" placeholder='AUTHOR NAME' value={formData.name} onChange={handleChange} required />
+                <input className='admin-editbook-input' type="text" name="authorName" placeholder='AUTHOR NAME' value={formData.authorName} onChange={handleChange} required />
               </label>
 
               {/* Book Name Field */}
@@ -116,7 +108,7 @@ const AdminEditBook = ({ book, onClose, onUpdate }) => {
               </label>
 
               {/* Submit Button */}
-              <button className='admin-editbook-button' type="submit">UPADTE</button>
+              <button className='admin-editbook-button' onClick={editBook}>UPADTE</button>
             </form>
           </div>
         </div>
