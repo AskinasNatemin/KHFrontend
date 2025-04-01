@@ -7,6 +7,7 @@ import { AiFillStar, AiOutlineClose } from "react-icons/ai";
 import { toast } from "react-toastify";
 
 const Book = () => {
+
   const { id } = useParams();
   const [book, setBook] = useState(null);
   const navigate = useNavigate();
@@ -57,7 +58,6 @@ const Book = () => {
                 });
       });
   };
-
   if (!book) return <p>Loading...</p>;
 
   return (
@@ -112,4 +112,4 @@ const Book = () => {
   );
 };
 
-export default Book;
+export default Book
