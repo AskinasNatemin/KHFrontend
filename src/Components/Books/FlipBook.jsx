@@ -13,13 +13,13 @@ const FlipBook = ({ handleFlipMode, pdfUrl }) => {
   useEffect(() => {
     const loadPDF = async () => {
       try {
-        setPages([]); // Reset before loading new PDF
+        setPages([]); 
         const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
         const pageImages = [];
 
         for (let i = 1; i <= pdf.numPages; i++) {
           const page = await pdf.getPage(i);
-          const scale = 4; // Keeps high quality but not oversized
+          const scale = 4; 
           const viewport = page.getViewport({ scale });
 
           const canvas = document.createElement("canvas");
@@ -27,11 +27,11 @@ const FlipBook = ({ handleFlipMode, pdfUrl }) => {
 
           canvas.width = viewport.width;
           canvas.height = viewport.height;
-          context.scale(1.2, 1.2); // Improves clarity
+          context.scale(1.2, 1.2); 
 
           await page.render({ canvasContext: context, viewport }).promise;
 
-          pageImages.push(canvas.toDataURL("image/png")); // Convert to high-quality image
+          pageImages.push(canvas.toDataURL("image/png"));
         }
 
         setPages(pageImages);
@@ -48,8 +48,8 @@ const FlipBook = ({ handleFlipMode, pdfUrl }) => {
       {pages.length > 0 && (
         <HTMLFlipBook
           key={pages.length}
-          width={window.innerWidth < 600 ? 350 : 750} // Adjust width dynamically
-          height={window.innerWidth < 600 ? 500 : 1000} // Ensures it fits in 100vh
+          width={window.innerWidth < 600 ? 350 : 750} 
+          height={window.innerWidth < 600 ? 500 : 1000} 
           size="stretch"
           minWidth={300}
           minHeight={400}
@@ -57,7 +57,7 @@ const FlipBook = ({ handleFlipMode, pdfUrl }) => {
           maxHeight={1000}
           drawShadow={true}
           showCover={true}
-          mobileScrollSupport={false} // Prevents scrolling
+          mobileScrollSupport={false}
           useMouseEvents={true}
           flippingTime={600}
           className="LentedBookFlipBook"

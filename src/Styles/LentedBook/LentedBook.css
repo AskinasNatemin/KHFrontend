@@ -1,16 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 .LentedBookContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #f4f4f9;
   border-radius: 20px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 20px rgba(1, 1, 1, 0.3);
   transition: transform 0.3s ease-in-out;
   padding: clamp(10px, 2vw, 20px);
-  max-width: 90%;
+  max-width: 50%;
   margin: auto;
   height: auto;
   min-height: 80vh;
+  margin-top:50px;
 }
 
 /* Image Styling */
@@ -45,23 +47,25 @@
 }
 
 .LentedBookTitle {
-  font-size: clamp(1.8rem, 4vw, 2.5rem); 
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
   font-weight: 700;
-  color: #333;
+  color: rgb(124, 6, 6);
   margin-bottom: 0.5rem;
+  font-family: "Righteous", serif;
 }
 
 .LentedBookAuthor {
-  font-size: clamp(1rem, 2.5vw, 1.4rem); 
-  color: #555;
+  font-family: "Righteous", serif;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  color: rgb(119, 19, 19);
 }
 
 .LentedBookDescription {
   font-size: clamp(0.9rem, 2vw, 1.2rem);
-  color: #666;
+  color: #000000;
   line-height: 1.6;
+  font-weight: 600;
 }
-
 
 h2 {
   font-size: clamp(1.8rem, 4.5vw, 2.5rem);
@@ -69,22 +73,47 @@ h2 {
   color: #333;
 }
 
-.LentedBookReadMoreButton {
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
-  margin-top: 1rem;
-  padding: 0.7rem 1.4rem;
-  background-color: #007bff;
+.LentedButtonContainer .LentedBookReadMoreButton {
+  background-color: rgb(124, 6, 6);
   color: white;
   border: none;
-  border-radius: 10px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border:none;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, transform 0.2s ease;
+  font-weight: bold;
 }
 
-.LentedBookReadMoreButton:hover {
-  background-color: #0056b3;
-  transform: translateY(-3px);
+.LentedButtonContainer .LentedBookReadMoreButton:hover {
+  background-color: rgb(153, 8, 8);
+  transform: scale(1.01);
+}
+.LentedButtonContainer .LentedBookReadMoreButton:active {
+  transform: scale(0.95);
+}
+.LentedButtonContainer .LentedBookReturnButton {
+  background-color: rgb(124, 6, 6);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  font-weight: bold;
+}
+
+.LentedButtonContainer .LentedBookReturnButton:hover {
+  background-color: rgb(153, 8, 8);
+  transform: scale(1.01);
+}
+
+.LentedButtonContainer .LentedBookReturnButton:active {
+  transform: scale(0.95);
 }
 
 @media (max-width: 740px), (max-height: 480px) {
@@ -94,11 +123,12 @@ h2 {
     gap: 1rem;
     padding: 10px;
     min-height: auto;
+    min-width: 90%;
   }
 
   .LentedBookImage {
     width: 90%;
-    max-height: 350px; 
+    max-height: 350px;
   }
 
   .LentedBookDetails {
