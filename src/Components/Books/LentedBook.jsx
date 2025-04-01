@@ -57,14 +57,14 @@ const LentedBook = () => {
           <img
             src={`http://localhost:5001/${lentedBook?.imagePath}`}
             alt={lentedBook?.bookName}
-            className="LentedBookImage"
+            className="LentedBookImage "
           />
           <div className="LentedBookDetails">
             <h2 className="LentedBookTitle">{lentedBook?.bookName}</h2>
             <p className="LentedBookAuthor">Author: {lentedBook?.authorName}</p>
             <p className="LentedBookDescription">{lentedBook?.description}</p>
 
-            <div className="LentedButtonContainer border">
+            <div className="LentedButtonContainer ">
               <button
                 className="LentedBookReadMoreButton"
                 onClick={handleFlipMode}
@@ -73,7 +73,7 @@ const LentedBook = () => {
               </button>
 
               <button
-                className="px-3 py-2 rounded rounded-3 ms-5"
+                className=" LentedBookReturnButton px-3 py-2 rounded rounded-3 ms-5"
                 onClick={() => {
                   returnBook(lentedBook?._id);
                 }}

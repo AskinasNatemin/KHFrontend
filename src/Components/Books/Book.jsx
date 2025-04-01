@@ -27,7 +27,6 @@ const Book = () => {
     navigate("/Books", { replace: true });
   };
 
-
   const lentBook = (bookId) => {
     const userType = localStorage.getItem("user");
     const userId = localStorage.getItem("userId");
@@ -96,4 +95,4 @@ const Book = () => {
   );
 };
 
-export default Book;
+export default Book;
