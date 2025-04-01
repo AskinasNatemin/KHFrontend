@@ -12,23 +12,56 @@
 }
 
 
-.selectUserContainer .goBackIcon{
-  width: 25px;
-  height: 30px;
+.selectUserContainer .selectUsergoBackIcon{
+  width: 30px;
+  height: 20px;
   cursor: pointer;
+  border:px solid black;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-top: 10px;
+}
+
+.selectUsergoBackIcon:hover{
+  background-color: rgb(193, 18, 18);
+  color:white;
 }
 
 .userCard{
-  width: clamp(230px,35vw,290px);
-  border-radius: 10px; 
+  background-color: #fff;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.userCard:hover{
+  transform: translateY(-5px);
+  box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.25);
 
 }
 
 .userCard .card-body button{
+  background-color: rgb(124, 6, 6);
+  color:white;
   width: clamp(90px,25vw,255px);
   font-size: clamp(2px, 1.5vw, 14px); /* Minimum 12px, adjusts to a maximum of 18px */
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial;
 }
-
+.userCard .card-body button:hover{
+  background-color: rgb(153, 8, 8);
+  transform: scale(1.01);
+}
+.userCard .card-body button:active{
+  transform: scale(0.98);
+  color: white;
+}
 
 .selectUser {
   background-color: white;
@@ -37,7 +70,7 @@
   width: clamp(300px, 50vw, 850px);
   border-radius: 10px; 
   box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2), 0px 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px; 
+  padding: 10px; 
   transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
 

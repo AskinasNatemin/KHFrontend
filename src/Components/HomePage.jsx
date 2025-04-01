@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import "../Styles/HomePage.css";
 import "../Styles/SelectUserModel.css";
 import readingMan from "../Assets/images/homePageImages/readingMan.png";
-import { TbXboxX } from "react-icons/tb";
+import { RiCloseLine } from "react-icons/ri";
 import student from "../Assets/icon/SelectIcons/student.png";
 import staff from "../Assets/icon/SelectIcons/staff.png";
 import admin from "../Assets/icon/SelectIcons/admin.png";
@@ -12,12 +12,12 @@ import { useNavigate } from "react-router-dom";
 const HomePage = () => {
   const [openUserSelectionModel, setOpenUserSelectionModel] = useState(false);
   const [selectionData] = useState([
-    { userType: "Student", image: student },
-    { userType: "Staff", image: staff },
-    { userType: "Admin",image: admin },
+    { userType: "STUDENT", image: student },
+    { userType: "STAFF", image: staff },
+    { userType: "ADMIN", image: admin },
   ]);
 
-  const navigate = useNavigate();  
+  const navigate = useNavigate();
   const handleRegistration = (type) => {
     setOpenUserSelectionModel(true);
   };
@@ -57,54 +57,54 @@ const HomePage = () => {
       {openUserSelectionModel && (
         <div className="selectUserContainer ">
           <div className="selectUser">
-            <div className="d-flex">
+            <div className="d-flex ">
               <span
-                className="ms-auto goBackIcon"
+                className="ms-auto selectUsergoBackIcon "
                 onClick={() => {
                   setOpenUserSelectionModel(false);
                 }}
               >
-                <TbXboxX className="goBackIcon" />
+                <RiCloseLine className="goBackIcon" />
               </span>
             </div>
 
             <div className="row  d-flex justify-content-center m-5">
               {selectionData.map((user, i) => {
-                    return (
-                      <div className="col-md-6 col-sm-12 col-lg-4 d-flex justify-content-center">
-                        <div className="card userCard m-2" key={i}>
-                          <img
-                            src={user.image}
-                            className="card-img-top rounded-circle"
-                            alt={user.userType}
-                          />
-                          <div className="card-body d-flex justify-content-center">
-                            <button
-                              type="button"
-                              className="btn btn-outline-success"
-                              onClick={
-                                user.userType === "Admin"
-                                  ? () => {
-                                      navigate("/AdminLogin");
-                                    }
-                                  : user.userType === "Staff"
-                                  ? () => {
-                                      navigate("/StaffLogin");
-                                    }
-                                  : user.userType === "Student"
-                                  ? () => {
-                                      navigate("/StudentLogin");
-                                    }
-                                  : ""
-                              }
-                            >
-                              {user.userType}
-                            </button>
-                          </div>
-                        </div>
+                return (
+                  <div className="col-md-6 col-sm-12 col-lg-4 d-flex justify-content-center">
+                    <div className="card userCard m-2" key={i}>
+                      <img
+                        src={user.image}
+                        className="card-img-top "
+                        alt={user.userType}
+                      />
+                      <div className="card-body d-flex justify-content-center">
+                        <button
+                          type="button"
+                          className="btn "
+                          onClick={
+                            user.userType === "ADMIN"
+                              ? () => {
+                                  navigate("/AdminLogin");
+                                }
+                              : user.userType === "STAFF"
+                              ? () => {
+                                  navigate("/StaffLogin");
+                                }
+                              : user.userType === "STUDENT"
+                              ? () => {
+                                  navigate("/StudentLogin");
+                                }
+                              : ""
+                          }
+                        >
+                          {user.userType}
+                        </button>
                       </div>
-                    );
-                  })}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
