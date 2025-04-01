@@ -29,7 +29,11 @@
   .logoutBtn:hover {
     background-color: rgb(153, 8, 8);
     transform: scale(1.05);
-      }
+   }
+   .logoutBtn:active {
+    transform: scale(0.95);
+   }
+
   
   .profilePopupHeader{
     padding-right:50px;

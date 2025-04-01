@@ -38,7 +38,15 @@
   width: 30px;
   height: 30px;
 }
+.favouritbackicon:hover{
+  color: rgb(153, 8, 8);
+  transform: scale(1.01);
+}
 
+.favouritbackicon:active {
+  transform: scale(0.95);
+
+}
 .favouriteGrid {
   display: grid;
   grid-template-columns: 1fr;
@@ -157,6 +165,11 @@
 
 .delFavouriteIcon:hover {
   color: darkred;
+  transform: scale(0.95);
+}
+.delFavouriteIcon:active {
+  transform: scale(0.95);
+
 }
 
 .favouriteContainer::-webkit-scrollbar {
