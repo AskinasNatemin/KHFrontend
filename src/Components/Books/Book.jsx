@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "../../Styles/Books/BookDetails.css";
 import { AiFillStar, AiOutlineClose } from "react-icons/ai";
+import { toast } from "react-toastify";
 
 const Book = () => {
   const { id } = useParams();
@@ -27,18 +28,33 @@ const Book = () => {
     navigate("/Books", { replace: true });
   };
 
-
   const lentBook = (bookId) => {
     const userType = localStorage.getItem("user");
     const userId = localStorage.getItem("userId");
     axios
       .post("http://localhost:5001/lentedBook", { bookId, userId, userType })
       .then((res) => {
-        alert(res.data.message);
+        toast.success(res.data.message, {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "colored",
+        });
       })
       .catch((err) => {
         console.log(err);
-        alert(err.response.data.message);
+        toast.error(err.response.data.message, {
+                  position: "top-right",
+                  autoClose: 3000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  theme: "colored",
+                });
       });
   };
 

@@ -4,6 +4,8 @@ import axios from "axios";
 import FlipBook from "./FlipBook";
 import NoBookFallBack from "./NoBookFallBack";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const LentedBook = () => {
   const [lentedBook, setLentedBook] = useState();
@@ -41,12 +43,29 @@ const LentedBook = () => {
     axios
       .post("http://localhost:5001/returnBook", { userId, bookId })
       .then((res) => {
-        console.log(res);
-        alert(res.data.message);
+        toast.warn(res.data.message, {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "colored",
+        });
+
         navigate("/Books");
       })
       .catch((err) => {
         console.log(err);
+        toast.error("Failed to return book. Please try again.", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "colored",
+        });
       });
   };
 
