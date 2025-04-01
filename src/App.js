@@ -19,9 +19,10 @@ import AdminMaindash from "./Components/Admin/AdminMaindash";
 import UserFavourite from "./Components/UserFavourite";
 import LoginFirst from "./Components/LoginFirst"
 import LentedBook from "../src/Components/Books/LentedBook";
+import { ToastContainer } from "react-toastify";
+import Ratings from "./Components/Ratings";
 import AdminEditBook from "./Components/Admin/AdminEditBook";
 import { ToastContainer } from "react-toastify";
-
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
           <Route path="UserFavouriteBooks" element={<UserFavourite/>}/>
           <Route path="LentedBook" element={<LentedBook/>}/>
           <Route path="AccessDenied" element={<LoginFirst/>}/>
+          <Route path="Rating" element={<Ratings/>}/>
         </Routes>
       </BrowserRouter>
 

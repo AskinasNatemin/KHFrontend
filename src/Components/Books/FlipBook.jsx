@@ -13,7 +13,7 @@ const FlipBook = ({ handleFlipMode, pdfUrl }) => {
   useEffect(() => {
     const loadPDF = async () => {
       try {
-        setPages([]); // Reset before loading new PDF
+        setPages([]); 
         const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
         const pageImages = [];
 
@@ -48,6 +48,7 @@ const FlipBook = ({ handleFlipMode, pdfUrl }) => {
       {pages.length > 0 && (
         <HTMLFlipBook
           key={pages.length}
+
           width={window.innerWidth < 600 ? 350 : 750} // Adjust width dynamically
           height={window.innerWidth < 600 ? 500 : 1000} // Ensures it fits in 100vh
           size="stretch"
