@@ -35,7 +35,7 @@ const AdminLogin = () => {
     }
     else{
       alert("Login Successful")
-      navigate("/AdminMainDash")
+      navigate("/AdminMainDash",{replace:true})
     }
   }
 

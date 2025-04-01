@@ -13,14 +13,13 @@ import StudentRegistration from "./Components/Student/StudentRegistration";
 import StaffForgetPassword from "./Components/Staff/StaffForgetPassword";
 import StudentForgetPassword from "./Components/Student/StudentForgetPassword";
 import StaffCodePage from "./Components/Staff/StaffCodePage";
-import UsersData from "./Components/Users/UsersData";
 import Book from "./Components/Books/Book";
-// import AdminSideBar from "./Components/Admin/AdminSideBar";
 import AdminDashboardTopbar from "./Components/Admin/AdminDashboardTopbar";
 import AdminMaindash from "./Components/Admin/AdminMaindash";
 import UserFavourite from "./Components/UserFavourite";
 import LoginFirst from "./Components/LoginFirst"
-import LentedBook from "./Components/LentedBook";
+import LentedBook from "../src/Components/Books/LentedBook";
+import AdminEditBook from "./Components/Admin/AdminEditBook";
 
 function App() {
   return (
@@ -28,6 +27,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="*" element={<NoPageFound />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/Navbar" element={<Navbar />} />
           <Route path="AdminDashboardTopbar" element={<AdminDashboardTopbar />} />
           <Route path="/AdminMainDash" element={<AdminMaindash/>} />
@@ -35,8 +35,9 @@ function App() {
           <Route path="/ViewStudents" element={<AdminMaindash data={"ViewStudents"}/>} />
           <Route path="/ViewBooks" element={<AdminMaindash data={"ViewBooks"}/>} />
           <Route path="/AddingBooks" element={<AdminMaindash data={"AddingBooks"}/>} />
+          <Route path="/AdminEditBook" element={<AdminEditBook/>}/>
+
           <Route path="AdminLogin" element={<AdminLogin />} />
-          <Route path="/" element={<HomePage />} />
           <Route path="StaffRegistration" element={<StaffRegistration />} />
           <Route path="StudentRegistration" element={<StudentRegistration />} />
           <Route path="StaffLogin" element={<StaffLogin />} />
@@ -45,13 +46,11 @@ function App() {
           <Route path="StaffForgetPassword" element={<StaffForgetPassword />} />
           <Route path="StudentForgetPassword" element={<StudentForgetPassword />}/>
           <Route path="StaffCodepage" element={<StaffCodePage />} />
-          <Route path="UsersData" element={<UsersData />} />        
           <Route path="Book/:id" element={<Book/>}/>
           <Route path="UserFavouriteBooks" element={<UserFavourite/>}/>
           <Route path="LentedBook" element={<LentedBook/>}/>
           <Route path="AccessDenied" element={<LoginFirst/>}/>
         </Routes>
-
       </BrowserRouter>
 
     </div>

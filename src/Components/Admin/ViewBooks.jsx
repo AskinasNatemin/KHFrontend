@@ -4,7 +4,7 @@ import "../../Styles/Admin/ViewBooks.css"
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteForever } from "react-icons/md";
 import { useNavigate } from 'react-router-dom'
-
+import AdminEditBook from './AdminEditBook';
 
 
 function ViewBooks() {
@@ -12,6 +12,7 @@ function ViewBooks() {
   const navigate = useNavigate();
 
   const [books, setBooks] = useState([])
+  const [selectedBook, setSelectedBook] = useState(null);
 
   const booksview = () => {
     axios.get("http://localhost:5001/getAllBooks")
@@ -40,7 +41,19 @@ function ViewBooks() {
   useEffect(() => {
     booksview();
   }, [])
+  useEffect(() => {
+    console.log("Selected Book Updated:", selectedBook);
+  }, [selectedBook]);
 
+  const handleEdit = (book) => {
+    setSelectedBook(book);
+  };
+
+  const handleUpdate = (updatedBook) => {
+    console.log('Updating book:', updatedBook);
+    booksview(); // Refresh book list after update
+    setSelectedBook(null); // Close modal after update
+  };
 
   return (
     <>
@@ -79,7 +92,7 @@ function ViewBooks() {
               <p> <strong className='admin-viewbook-strong'>DESCRIPTION :</strong> {book.description}</p> 
             </div>
             <div className='admin-viewbook-edit-delete-div'>
-              <button className='admin-viewbook-edit-btn'><CiEdit /></button>
+              <button className='admin-viewbook-edit-btn' onClick={() => handleEdit(book)}><CiEdit /></button>
               <button className='admin-viewbook-delete-btn' onClick={()=>{deleteBook(book._id)}}><MdDeleteForever /></button>
               </div>
           </div>
@@ -90,6 +103,8 @@ function ViewBooks() {
 
         </div>
       </div>
+      
+      {selectedBook && <AdminEditBook book={selectedBook} onClose={() => setSelectedBook(null)} onUpdate={handleUpdate} />}
     </>
 
 
@@ -97,4 +112,4 @@ function ViewBooks() {
   )
 }
 
-export default ViewBooks
+export default ViewBooks;

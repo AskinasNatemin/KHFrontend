@@ -1,17 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "../../Styles/Admin/ViewStaffs.css"
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 
 function ViewStaffs() {
-  return (
-    <div>
-      <div className="admin-dashboard-container" >
-        <div className="admin-dashboard-topbar">
-          <h4 className="admin-dashboard-topbar-h4">ALL STAFF LISTS</h4>
-        </div>
-      </div>
 
-    </div>
+  return (
+   <></>
   )
 }
 

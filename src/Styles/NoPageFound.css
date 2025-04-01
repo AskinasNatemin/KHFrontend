@@ -1,0 +1,73 @@
+.noPageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f9;
+    padding: 20px;
+    text-align: center;
+}
+
+.contentWrapper {
+    background: white;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    max-width: 500px;
+    width: 100%;
+}
+
+.errorCode {
+    font-size: 6rem;
+    color: #ff6b6b;
+    margin: 0;
+}
+
+.errorMessage {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.errorDescription {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.goBackButton {
+    background-color: #ff6b6b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.goBackButton:hover {
+    background-color: #e55656;
+}
+
+@media (max-width: 480px) {
+    .contentWrapper {
+        padding: 20px;
+    }
+
+    .errorCode {
+        font-size: 4rem;
+    }
+
+    .errorMessage {
+        font-size: 1.5rem;
+    }
+
+    .errorDescription {
+        font-size: 0.9rem;
+    }
+
+    .goBackButton {
+        padding: 8px 16px;
+    }
+}

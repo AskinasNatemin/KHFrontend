@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import HTMLFlipBook from "react-pageflip";
-import "../Styles/LentedBook.css";
+import "../../Styles/LentedBook.css";
 
 const LentedBook = () => {
   const [isFlipMode, setIsFlipMode] = useState(false);
@@ -52,9 +52,10 @@ const LentedBook = () => {
             useMouseEvents={true}
             flippingTime={700}
             autoSize={true}
+            className="border border-5"
           >
             {/* Front Cover - Single Page */}
-            <div className="LentedBookPage">Front Cover</div>
+            <div className="LentedBookPage ">Front Cover</div>
 
             {/* Open Book - Left and Right Pages */}
             <div className="LentedBookPage">Left Page 1</div>
