@@ -1,0 +1,83 @@
+/* FlipBook Container */
+.LentedBookFlipBookContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh; /* Prevents scrolling */
+  overflow: hidden;
+  background-color: #f8f9fa;
+  border-radius: 15px;
+}
+
+/* FlipBook */
+.LentedBookFlipBook {
+  width: 95vw;
+  max-width: 750px;
+  height: 90vh; /* Ensures it fits within 100vh */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Ensures Pages Fit Properly */
+.LentedFlipBookPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  max-height: 90vh; /* Prevents extra space */
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Ensures Images Fit Properly */
+.LentedFlipBookImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Prevents content from cutting off */
+}
+
+/* Button */
+.LentedBookReadMoreButton {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  z-index: 2;
+}
+
+.LentedBookReadMoreButton:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .LentedBookFlipBook {
+    max-width: 650px;
+  }
+}
+
+@media (max-width: 700px) {
+  .LentedBookFlipBook {
+    max-width: 90vw;
+    height: 80vh;
+  }
+}
+
+@media (max-width: 400px) {
+  .LentedBookFlipBook {
+    max-width: 95vw;
+    height: 80vh;
+  }
+}

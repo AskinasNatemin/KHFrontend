@@ -85,15 +85,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: Arial;}
+  font-family: Arial;
+}
 
 .studentRegButton button:hover {
   background-color: rgb(153, 8, 8);
   transform: scale(1.01);
 }
-.studentReg Button button:active{
-  transform: scale(0.95);
-
+.studentRegButton button:active{
+  transform: scale(0.95)!important;
 }
 
 @media (max-width: 768px) {

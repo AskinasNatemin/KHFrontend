@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { favouriteBooksList } from "../Context/AppContext";
 import { GoHeartFill } from "react-icons/go";
 import { CiHeart } from "react-icons/ci";
+import { toast } from "react-toastify";
+import { FaStar } from "react-icons/fa";
 
 const StaffBooks = () => {
   const [data, setData] = useState([]);
@@ -55,6 +57,27 @@ const StaffBooks = () => {
       );
 
       if (res.status === 200) {
+        if (res.data.message === "Book added to your Favourites") {
+          toast.success(res.data.message, {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "colored",
+          });
+        } else if (res.data.message === "Book removed from your Favourite") {
+          toast.warn(res.data.message, {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "colored",
+          });
+        }
         setFavouriteBooks((prev) => {
           const updatedFavourites = isFavourite
             ? prev.filter((id) => id !== bookId)
@@ -98,6 +121,9 @@ const StaffBooks = () => {
                   src={`http://localhost:5001/${book.imagePath}`}
                   alt={book.category}
                 />
+                <span className="staffRatingContainer">
+                  <FaStar className="starIcon" /> {book.ratings}
+                </span>{" "}
                 <h3 className="staffBookName">{book.bookName}</h3>
                 <div className="staffCardBody d-flex align-items-center justify-content-between">
                   <button
