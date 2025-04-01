@@ -21,6 +21,9 @@
   height: 30px;
   width: 30px;
 }
+.cgProfile:active{
+  transform: scale(0.95);
+}
 
 .profilePopupContainer{
   position: absolute;
@@ -40,6 +43,9 @@
 }
 .favIcon:hover{
 transform: scale(1.3);
+}
+.favIcon:active{
+  transform: scale(0.95);
 }
 .animated-button {
   position: relative;
@@ -164,4 +170,8 @@ transform: scale(1.3);
 .lentedBookIconContainer:hover .backPackIcon {
   transform: scale(1.05);
   filter: invert(100%); 
+}
+
+.lentedBookIconContainer:active .backPackIcon {
+  transform: scale(0.96);
 }

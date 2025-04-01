@@ -18,12 +18,14 @@
   text-align: center;
   background-color: #e2e2e2;
   font-size: 18px;
-  color: #333;
+  color: #000000;
   transition: background-color 0.3s ease;
 }
 
 .tab:hover {
   background-color: #d1d1d1;
+  transform: scale(1.05);
+
 }
 
 .tab.active {
@@ -32,6 +34,8 @@
   color:rgb(124, 6, 6);
   font-family: "Righteous", serif;
   font-weight: bold;
+  transform: scale(0.95);
+
 }
 
 .tab-content {
