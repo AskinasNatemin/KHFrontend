@@ -5,6 +5,8 @@ import { CiHeart } from "react-icons/ci";
 import "../../Styles/Books/StudentBook.css";
 import { useNavigate } from "react-router-dom";
 import { favouriteBooksList } from "../Context/AppContext";
+import { toast } from "react-toastify";
+import { FaStar } from "react-icons/fa";
 
 const StudentBooks = () => {
   const [bookData, setBookData] = useState([]);
@@ -62,6 +64,27 @@ const StudentBooks = () => {
       );
 
       if (res.status === 200) {
+        if (res.data.message === "Book added to your Favourites") {
+          toast.success(res.data.message, {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "colored",
+          });
+        } else if (res.data.message === "Book removed from your Favourite") {
+          toast.warn(res.data.message, {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "colored",
+          });
+        }
         setFavouriteBooks((prev) => {
           const updatedFavourites = isFavourite
             ? prev.filter((id) => id !== bookId)
@@ -82,10 +105,6 @@ const StudentBooks = () => {
 
     fetchData();
   }, []);
-
-  useEffect(() => {
-    console.log("Updated favouriteBooks state:", favouriteBooks);
-  }, [favouriteBooks]);
 
   return (
     <div className="studentBooksSection ps-2">
@@ -115,11 +134,16 @@ const StudentBooks = () => {
                     src={`http://localhost:5001/${book.imagePath}`}
                     alt={book.category}
                   />
+                  <span className="studentRatingContainer">
+                    <FaStar className="starIcon" /> {book.ratings}
+                  </span>{" "}
                   <h3 className="studentBookName">{book.bookName}</h3>
                   <div className="studentCardBody d-flex align-items-center justify-content-between">
                     <button
                       className="studentViewBookBtn"
-                      onClick={() => {navigate(`/Book/${book._id}`,{state:'book'})}}
+                      onClick={() => {
+                        navigate(`/Book/${book._id}`, { state: "book" });
+                      }}
                     >
                       View Details
                     </button>
@@ -136,10 +160,10 @@ const StudentBooks = () => {
                       )}
                       {favouriteBooks.includes(book._id) && (
                         <GoHeartFill
-                        className={`studentFavIcon ${
-                          favouriteBooks.includes(book._id) ? "active" : ""
-                        }`}
-                      />
+                          className={`studentFavIcon ${
+                            favouriteBooks.includes(book._id) ? "active" : ""
+                          }`}
+                        />
                       )}
                     </span>
                   </div>

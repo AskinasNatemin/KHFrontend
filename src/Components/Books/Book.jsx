@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "../../Styles/Books/BookDetails.css";
 import { AiFillStar, AiOutlineClose } from "react-icons/ai";
-import { LentedBook } from "../Context/AppContext";
+import { toast } from "react-toastify";
 
 const Book = () => {
 
@@ -12,13 +12,11 @@ const Book = () => {
   const [book, setBook] = useState(null);
   const navigate = useNavigate();
   const bookLocation = useLocation();
-  const { lentedBook, setLentedBook } = useContext(LentedBook);
 
   useEffect(() => {
     axios
       .post(`http://localhost:5001/getBook/${id}`)
       .then((res) => {
-        console.log(res.data.data);
         setBook(res.data.data);
       })
       .catch((err) => console.log(err));
@@ -31,19 +29,36 @@ const Book = () => {
     navigate("/Books", { replace: true });
   };
 
-
   const lentBook = (bookId) => {
-    const userType=localStorage.getItem('user')
-    const userId=localStorage.getItem('userId')
-    axios.post('http://localhost:5001/lentedBook',{bookId,userId,userType})
-    .then((res)=>{
-      console.log(res);
-      
-    })
-    .catch((err)=>{
-      console.log(err);   
-    })
+    const userType = localStorage.getItem("user");
+    const userId = localStorage.getItem("userId");
+    axios
+      .post("http://localhost:5001/lentedBook", { bookId, userId, userType })
+      .then((res) => {
+        toast.success(res.data.message, {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "colored",
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error(err.response.data.message, {
+                  position: "top-right",
+                  autoClose: 3000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  theme: "colored",
+                });
+      });
   };
+
   if (!book) return <p>Loading...</p>;
 
   return (
@@ -80,13 +95,17 @@ const Book = () => {
               ))}
             </div>
 
-            <Link
-              rel="noopener noreferrer"
-              className="singleViewBookBtn"
-              onClick={() => lentBook(book._id)}
-            >
-              Lent Book
-            </Link>
+            {book.borrowed == "true" ? (
+              <button> unavailable </button>
+            ) : (
+              <Link
+                rel="noopener noreferrer"
+                className="singleViewBookBtn"
+                onClick={() => lentBook(book._id)}
+              >
+                Lent Book
+              </Link>
+            )}
           </div>
         </div>
       </div>
@@ -94,4 +113,4 @@ const Book = () => {
   );
 };
 
-export default Book
+export default Book;

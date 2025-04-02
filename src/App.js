@@ -20,10 +20,12 @@ import UserFavourite from "./Components/UserFavourite";
 import LoginFirst from "./Components/LoginFirst"
 import LentedBook from "../src/Components/Books/LentedBook";
 import AdminEditBook from "./Components/Admin/AdminEditBook";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <div className="App">
+      <ToastContainer/>
       <BrowserRouter>
         <Routes>
           <Route path="*" element={<NoPageFound />} />

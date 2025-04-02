@@ -64,6 +64,7 @@
 }
 
 .singleViewBookBtn {
+  width:200px;
   background-color: rgb(124, 6, 6);
   color: white;
   border: none;
@@ -83,6 +84,10 @@
   transform: scale(1.05);
 }
 
+.singleViewBookBtn:active{
+  transform: scale(0.95);
+
+}
 @media (max-width: 768px) {
   .singleModalContainer {
     width: 90%;

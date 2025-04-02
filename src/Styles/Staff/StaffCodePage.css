@@ -73,7 +73,7 @@
     background-color: rgb(153, 8, 8);
   transform: scale(1.01);
     }
-  .staffcodecustom-btn:active {
+  .staffcodebutton Button:active {
     transform: scale(0.95)!important;
   }
   .staffCodeerrorContainer {

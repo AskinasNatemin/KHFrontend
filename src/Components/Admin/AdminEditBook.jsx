@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import "../../Styles/Admin/AdminEditBook.css"
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const AdminEditBook = ({ book, onClose, onUpdate }) => {
 
-  const bookId = useParams();
+  const { id: bookId } = useParams();
   const categories = ["STUDENT","STAFF"];
   
   const [formData, setFormData] = useState({
-    name: book.authorName || '',
-    bookName: book.bookName || '',
-    description: book.description || '',
-    category: book.category || 'Student',
+    name: book.authorName || "",
+    bookName: book.bookName || "",
+    description: book.description || "",
+    category: book.category || "STUDENT",
     image: null,
     pdf: null,
-    imagePreview: book.imagePath ? `http://localhost:5001/${book.imagePath}` : '',
+    imagePreview: book.imagePath ? `http://localhost:5001/${book.imagePath}` : "",
   });
 
   const handleChange = (e) => {
@@ -33,24 +33,42 @@ const AdminEditBook = ({ book, onClose, onUpdate }) => {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onUpdate(formData);
-  };
-  const editBook = () => {
-    axios.post(`http://localhost:5001/editBook/${bookId}`)
-      .then((res) => {
-        console.log(res.data);
-
-      })
-      .catch((err) => {
-        console.log(err);
-
-      })
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  
+  if (!book || !book._id) {
+    console.error("Error: Book ID is missing");
+    return;
   }
-  useEffect(() => {
-    editBook();
-  })
+
+  const formDataToSend = new FormData();
+  formDataToSend.append("name", formData.name);
+  formDataToSend.append("bookName", formData.bookName);
+  formDataToSend.append("description", formData.description);
+  formDataToSend.append("category", formData.category);
+
+  if (formData.image) {
+    formDataToSend.append("imageFile", formData.image); // Ensure key matches backend
+  }
+  if (formData.pdf) {
+    formDataToSend.append("bookFile", formData.pdf); // Ensure key matches backend
+  }
+
+  try {
+    const response = await axios.put(
+      `http://localhost:5001/editBook/${book._id}`,
+      formDataToSend,
+      {
+        headers: { "Content-Type": "multipart/form-data" }, // Important header
+      }
+    );
+
+    console.log("Book updated successfully:", response.data);
+    onUpdate(response.data);
+  } catch (error) {
+    console.error("Error updating book:", error);
+  }
+};
 
   return (
     <div>

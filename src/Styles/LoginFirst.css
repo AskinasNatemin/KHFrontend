@@ -53,7 +53,9 @@
   .goToHome:hover {
     background-color: rgb(153, 8, 8);
     transform: scale(1.05);
-  
+  }
+  .goToHome:active{
+    transform: scale(0.95);
   }
   
   /* Responsive Design */
