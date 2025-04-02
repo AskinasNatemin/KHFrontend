@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import "../../Styles/Admin/AdminEditBook.css"
 import axios from 'axios';
 
@@ -11,7 +11,7 @@ const AdminEditBook = ({ book, onClose, onUpdate }) => {
     category: book.category || 'Student',
     image: null,
     pdf: null,
-    imagePreview: book.imagePath ? `http://localhost:5001/${book.imagePath}` : '',
+    imagePreview: book.imagePath ? `http://localhost:5001/${book.imagePath}` : "",
   });
 
   const handleChange = (e) => {
