@@ -85,7 +85,7 @@ const UserFavourite = () => {
                       <p className="favouriteBookAuthor">
                         Author: <b>{book.authorName}</b>
                       </p>
-                      <div className="viewDeleteContainer">
+                      <div className="viewFavouriteDetails">
                         <button
                           className="ViewFavBookBtn"
                           type="button"

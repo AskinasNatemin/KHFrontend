@@ -1,17 +1,17 @@
 .ratings-container {
-    display: flex;
-    gap: 8px;
-    cursor: pointer;
-  }
-  
-  .star {
-    width: 32px;
-    height: 32px;
-    transition: color 0.3s ease;
-    color: gray;
-  }
-  
-  .star.filled {
-    color: gold;
-  }
-  
+  display: flex;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.star {
+  width: 32px;
+  height: 32px;
+  transition: color 0.3s ease;
+  color: gray;
+}
+
+.star.filled {
+  fill: gold; 
+  stroke: gold;
+}

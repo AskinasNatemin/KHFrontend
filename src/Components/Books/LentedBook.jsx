@@ -40,6 +40,8 @@ const LentedBook = () => {
   };
 
   const returnBook = (bookId) => {
+    const ratings = '';
+    if (ratings) return; 
     axios
       .post("http://localhost:5001/returnBook", { userId, bookId })
       .then((res) => {

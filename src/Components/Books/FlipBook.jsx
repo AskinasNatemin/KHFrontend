@@ -7,7 +7,7 @@ import "../../Styles/LentedBook/FlipBookPage.css";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
 
-const FlipBook = ({ handleFlipMode, pdfUrl }) => {
+const FlipBook = ({ handleFlipMode , pdfUrl }) => {
   const [pages, setPages] = useState([]);
   const [bookSize, setBookSize] = useState({ width: 750, height: 1000 });
   
