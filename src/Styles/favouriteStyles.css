@@ -150,6 +150,10 @@
   transform: scale(0.95);
 }
 
+.viewFavouriteDetails .ViewFavBookBtn:active{
+  transform: scale(0.95)!important;
+
+}
 .delFavouriteContainer {
   justify-content: end;
   align-items: flex-end;
