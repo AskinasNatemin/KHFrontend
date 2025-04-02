@@ -24,7 +24,6 @@ const AdminLogin = () => {
 
   const submit = (e) => {
     e.preventDefault();
-
     if (login.adminEmail !== email) {
       alert("Email Not Found");
     } else if (login.adminPassword !== password) {
@@ -47,6 +46,7 @@ const AdminLogin = () => {
 
       <form onSubmit={submit} className="w-100 d-flex justify-content-center">
         <div className="adminborder">
+          
           <div className="admininput">
             <div className="adminhead">
               <h3>ADMIN LOGIN</h3>

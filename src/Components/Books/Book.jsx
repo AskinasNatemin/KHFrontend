@@ -100,7 +100,7 @@ const Book = () => {
             ) : (
               <Link
                 rel="noopener noreferrer"
-                className="singleViewBookBtn"
+                className="singleViewBookBtn text-decoration-none"
                 onClick={() => lentBook(book._id)}
               >
                 Lent Book
@@ -113,4 +113,4 @@ const Book = () => {
   );
 };
 
-export default Book;
+export default Book

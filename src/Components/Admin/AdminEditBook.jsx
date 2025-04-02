@@ -1,18 +1,14 @@
 import React, { useState } from 'react'
 import "../../Styles/Admin/AdminEditBook.css"
-import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-const AdminEditBook = ({ book, onClose, onUpdate }) => {
-
-  const { id: bookId } = useParams();
-  const categories = ["STUDENT","STAFF"];
-  
+const AdminEditBook = ({ book, onClose, onUpdate }) => {  
+  const categories = ["Student","Staff"];
   const [formData, setFormData] = useState({
-    name: book.authorName || "",
-    bookName: book.bookName || "",
-    description: book.description || "",
-    category: book.category || "STUDENT",
+    authorName: book.authorName || '',
+    bookName: book.bookName || '',
+    description: book.description || '',
+    category: book.category || 'Student',
     image: null,
     pdf: null,
     imagePreview: book.imagePath ? `http://localhost:5001/${book.imagePath}` : "",
@@ -33,42 +29,20 @@ const AdminEditBook = ({ book, onClose, onUpdate }) => {
     }
   };
 
-  const handleSubmit = async (e) => {
-  e.preventDefault();
-  
-  if (!book || !book._id) {
-    console.error("Error: Book ID is missing");
-    return;
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onUpdate(formData);
+  };
 
-  const formDataToSend = new FormData();
-  formDataToSend.append("name", formData.name);
-  formDataToSend.append("bookName", formData.bookName);
-  formDataToSend.append("description", formData.description);
-  formDataToSend.append("category", formData.category);
-
-  if (formData.image) {
-    formDataToSend.append("imageFile", formData.image); // Ensure key matches backend
+  const editBook = () => {
+    axios.post(`http://localhost:5001/editBook/${book._id}`,formData)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   }
-  if (formData.pdf) {
-    formDataToSend.append("bookFile", formData.pdf); // Ensure key matches backend
-  }
-
-  try {
-    const response = await axios.put(
-      `http://localhost:5001/editBook/${book._id}`,
-      formDataToSend,
-      {
-        headers: { "Content-Type": "multipart/form-data" }, // Important header
-      }
-    );
-
-    console.log("Book updated successfully:", response.data);
-    onUpdate(response.data);
-  } catch (error) {
-    console.error("Error updating book:", error);
-  }
-};
 
   return (
     <div>
@@ -86,7 +60,7 @@ const AdminEditBook = ({ book, onClose, onUpdate }) => {
               {/* Name Field */}
               <label className='admin-editbook-label'>
                 {/* Your Name: */}
-                <input className='admin-editbook-input' type="text" name="name" placeholder='AUTHOR NAME' value={formData.name} onChange={handleChange} required />
+                <input className='admin-editbook-input' type="text" name="authorName" placeholder='AUTHOR NAME' value={formData.authorName} onChange={handleChange} required />
               </label>
 
               {/* Book Name Field */}
@@ -134,7 +108,7 @@ const AdminEditBook = ({ book, onClose, onUpdate }) => {
               </label>
 
               {/* Submit Button */}
-              <button className='admin-editbook-button' type="submit">UPADTE</button>
+              <button className='admin-editbook-button' onClick={editBook}>UPADTE</button>
             </form>
           </div>
         </div>

@@ -4,34 +4,59 @@ import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf";
 import pdfWorker from "pdfjs-dist/legacy/build/pdf.worker.entry";
 
 import "../../Styles/LentedBook/FlipBookPage.css";
+import { useLocation } from "react-router-dom";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
 
 const FlipBook = ({ handleFlipMode, pdfUrl }) => {
   const [pages, setPages] = useState([]);
+  const [bookSize, setBookSize] = useState({ width: 750, height: 1000 });
+  const location =useLocation()
+  // const pdfUrl1=location?.state.pdfUrl
+  // console.log(pdfUrl1);  
+  
+  
+  useEffect(() => {
+    const updateSize = () => {
+      if (window.innerWidth < 600) {
+        setBookSize({ width: 350, height: 500 });
+      } else {
+        setBookSize({ width: 750, height: 1000 });
+      }
+    };
+
+    updateSize();
+    window.addEventListener("resize", updateSize);
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
 
   useEffect(() => {
     const loadPDF = async () => {
       try {
-        setPages([]); // Reset before loading new PDF
-        const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
+        setPages([]);
+        const pdf = await pdfjsLib.getDocument( pdfUrl).promise;
+        console.log(pdf);
+        
         const pageImages = [];
 
         for (let i = 1; i <= pdf.numPages; i++) {
           const page = await pdf.getPage(i);
-          const scale = 4; // Keeps high quality but not oversized
+          const scale = 4; // Further increased scale for sharper text
           const viewport = page.getViewport({ scale });
 
           const canvas = document.createElement("canvas");
-          const context = canvas.getContext("2d");
+          const context = canvas.getContext("2d", { alpha: false });
 
           canvas.width = viewport.width;
           canvas.height = viewport.height;
-          context.scale(1.2, 1.2); // Improves clarity
 
-          await page.render({ canvasContext: context, viewport }).promise;
-
-          pageImages.push(canvas.toDataURL("image/png")); // Convert to high-quality image
+          const renderContext = {
+            canvasContext: context,
+            viewport: viewport,
+            intent: "print", // Helps in rendering high-quality text
+          };
+          await page.render(renderContext).promise;
+          pageImages.push(canvas.toDataURL("image/png"));
         }
 
         setPages(pageImages);
@@ -40,16 +65,15 @@ const FlipBook = ({ handleFlipMode, pdfUrl }) => {
       }
     };
 
-    if (pdfUrl) loadPDF();
+    if (pdfUrl ) loadPDF();
   }, [pdfUrl]);
 
   return (
     <div className="LentedBookFlipBookContainer">
       {pages.length > 0 && (
         <HTMLFlipBook
-          key={pages.length}
-          width={window.innerWidth < 600 ? 350 : 750} // Adjust width dynamically
-          height={window.innerWidth < 600 ? 500 : 1000} // Ensures it fits in 100vh
+          width={bookSize.width}
+          height={bookSize.height}
           size="stretch"
           minWidth={300}
           minHeight={400}
@@ -57,7 +81,7 @@ const FlipBook = ({ handleFlipMode, pdfUrl }) => {
           maxHeight={1000}
           drawShadow={true}
           showCover={true}
-          mobileScrollSupport={false} // Prevents scrolling
+          mobileScrollSupport={false}
           useMouseEvents={true}
           flippingTime={600}
           className="LentedBookFlipBook"
@@ -66,11 +90,7 @@ const FlipBook = ({ handleFlipMode, pdfUrl }) => {
 
           {pages.map((image, index) => (
             <div key={index} className="LentedFlipBookPage">
-              <img
-                src={image}
-                alt={`Page ${index + 1}`}
-                className="LentedFlipBookImage"
-              />
+              <img src={image} alt={`Page ${index + 1}`} className="LentedFlipBookImage" />
             </div>
           ))}
 
@@ -78,7 +98,7 @@ const FlipBook = ({ handleFlipMode, pdfUrl }) => {
         </HTMLFlipBook>
       )}
 
-      <button className="LentedBookReadMoreButton" onClick={() => handleFlipMode()}>
+      <button className="LentedBookReadMoreButton" onClick={handleFlipMode}>
         Close FlipBook
       </button>
     </div>
