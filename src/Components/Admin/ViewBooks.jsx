@@ -24,7 +24,7 @@ function ViewBooks() {
   };
 
   const deleteBook = (id) => {
-    const confirm =window.confirm("Are you sure that you need to delete this book");
+    const confirm = window.confirm("Are you sure that you need to delete this book");
     console.log(confirm);
     
     if (confirm) {
@@ -50,8 +50,8 @@ function ViewBooks() {
 
   const handleUpdate = (updatedBook) => {
     console.log("Updating book:", updatedBook);
-    booksview(); // Refresh book list after update
-    setSelectedBook(null); // Close modal after update
+    booksview(); 
+    setSelectedBook(null);
   };
 
   return (
