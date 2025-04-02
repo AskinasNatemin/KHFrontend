@@ -58,6 +58,7 @@ const Book = () => {
                 });
       });
   };
+
   if (!book) return <p>Loading...</p>;
 
   return (

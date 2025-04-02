@@ -10,13 +10,18 @@ function ViewBooks() {
   const navigate = useNavigate();
 
   const [books, setBooks] = useState([]);
+  const [searchQuery, setSearchQuery] = useState(""); 
   const [selectedBook, setSelectedBook] = useState(null);
 
   const booksview = () => {
     axios
       .get("http://localhost:5001/getAllBooks")
       .then((res) => {
-        setBooks(res.data.data);
+        if (Array.isArray(res.data.data)) {
+          setBooks(res.data.data);
+        } else {
+          console.error("Fetched data is not an array:", res.data);
+        }
       })
       .catch((err) => {
         console.log("error updating books ", err);
@@ -42,7 +47,7 @@ function ViewBooks() {
 
   useEffect(() => {
     booksview();
-  }, [books]);
+  }, []);
 
   const handleEdit = (book) => {
     setSelectedBook(book);
@@ -51,8 +56,15 @@ function ViewBooks() {
   const handleUpdate = (updatedBook) => {
     console.log("Updating book:", updatedBook);
     booksview(); 
-    setSelectedBook(null);
+    setSelectedBook(null); 
+
   };
+
+  const filteredBooks = books.filter((book) =>
+    book.bookName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    book.authorName.toLowerCase().includes(searchQuery.toLowerCase()) 
+  );
+  
 
   return (
     <>
@@ -66,42 +78,37 @@ function ViewBooks() {
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
+                onChange={(e) => setSearchQuery(e.target.value)}
+                
               />
             </form>
           </div>
         </div>
 
         <div className="row viewBooks-card-row">
-          {books.map((book) => {
-            return (
-              <div className="admin-viewbooks-card-box">
+
+        {filteredBooks.length > 0 ? (
+            filteredBooks.map((book) => (
+              <div className="admin-viewbooks-card-box" key={book._id}>
                 <div className="column-1 col-12 col-sm-12 col-lg-4 col-md-4">
-                  <div>
-                    <img
-                      className="image-fluid admin-viewbook-img"
-                      src={`http://localhost:5001/${book.imagePath}`}
-                      alt="#"
-                    />
-                  </div>
+                  <img
+                    className="image-fluid admin-viewbook-img"
+                    src={`http://localhost:5001/${book.imagePath}`}
+                    alt="Book Cover"
+                  />
                   <div className="admin-viewbook-author-book-div">
                     <p>
-                      <strong className="admin-viewbook-strong">
-                        AUTHOR :
-                      </strong>{" "}
+                      <strong className="admin-viewbook-strong">AUTHOR :</strong>{" "}
                       {book.authorName}
                     </p>
                     <p>
-                      {" "}
-                      <strong className="admin-viewbook-strong">
-                        {" "}
-                        BOOK :
-                      </strong>{" "}
-                      {book.bookName}{" "}
+                      <strong className="admin-viewbook-strong"> BOOK :</strong>{" "}
+                      {book.bookName}
                     </p>
                     <button
                       className="admin-viewbook-button"
                       onClick={() =>
-                        navigate(`/Book/${book._id}`, { state: "admin book" })
+                        navigate(`/FlipBook`, { state: {"from":"adminBook","pdfUrl":book.filePath } })
                       }
                     >
                       READ BOOK
@@ -111,7 +118,6 @@ function ViewBooks() {
                 <div className="column-2 col-12 col-sm-12 col-lg-8 col-md-8">
                   <div className="admin-viewbook-p3-div">
                     <p>
-                      {" "}
                       <strong className="admin-viewbook-strong">
                         DESCRIPTION :
                       </strong>{" "}
@@ -127,20 +133,19 @@ function ViewBooks() {
                     </button>
                     <button
                       className="admin-viewbook-delete-btn"
-                      onClick={() => {
-                        deleteBook(book._id);
-                      }}
+                      onClick={() => deleteBook(book._id)}
                     >
                       <MdDeleteForever />
                     </button>
                   </div>
                 </div>
               </div>
-            );
-          })}
+            ))
+          ) : (
+            <p className="no-books-found">No books found.</p>
+          )}
         </div>
       </div>
-
       {selectedBook && (
         <AdminEditBook
           book={selectedBook}
