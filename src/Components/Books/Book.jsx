@@ -3,8 +3,11 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "../../Styles/Books/BookDetails.css";
-import { AiFillStar, AiOutlineClose } from "react-icons/ai";
+import { AiFillStar } from "react-icons/ai";
+import { IoClose } from "react-icons/io5";
 import { toast } from "react-toastify";
+import { CgDanger } from "react-icons/cg";
+
 
 const Book = () => {
 
@@ -64,9 +67,10 @@ const Book = () => {
   return (
     <div className="singleModalOverlay">
       <div className="singleModalContainer">
-        <button className="singleCloseBtn p-2" onClick={handleOnClose}>
-          <AiOutlineClose />
-        </button>
+        <div className="singleModalGoBack">
+        <button className="singleCloseBtn " onClick={handleOnClose}>
+          <IoClose />
+        </button></div>
 
         <div className="singleModalContent">
           <img
@@ -79,7 +83,7 @@ const Book = () => {
             <h2>{book.bookName}</h2>
             <h6>
               <b>Author : </b>
-              {book.authorName}
+             <span className="singleBookAuthorName"> {book.authorName}</span>
             </h6>
             <p className="singleBookDescription">
               <b>Description : </b>
@@ -96,7 +100,8 @@ const Book = () => {
             </div>
 
             {book.borrowed == "true" ? (
-              <button> unavailable </button>
+              
+              <button className="singleModalUnavailable"><CgDanger /> The book is already lented </button>
             ) : (
               <Link
                 rel="noopener noreferrer"

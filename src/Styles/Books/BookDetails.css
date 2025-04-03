@@ -1,10 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+
 .singleModalOverlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgb(241, 241, 241);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,21 +18,47 @@
   max-width: 700px;
   background: #fff;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 20px;
   position: relative;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 10px rgba(1, 1, 1, 0.5);
+  transition: background 0.3s ease, transform 0.2s ease;
+
 }
 
-.singleCloseBtn {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  background: none;
-  border: none;
+.singleModalContainer:hover{
+  transform: scale(1.01);
+}
+
+
+.singleModalContainer .singleModalGoBack button {
+  background-color: #fff;
+  border:none;
   font-size: 20px;
   cursor: pointer;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border-radius: 50%;
+  color: #000000;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
+.singleModalContainer .singleModalGoBack button:hover{
+  background-color: rgb(249, 8, 8);
+  color:white;
+  transform: scale(1.01);
+}
+.singleModalContainer .singleModalGoBack button:active{
+  transform: scale(0.95);
 
+}
+.singleModalGoBack{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
 .singleModalContent {
   display: flex;
   flex-direction: row;
@@ -56,14 +84,34 @@
 .singleBookRatings {
   display: flex;
   gap: 5px;
-  margin: 10px 0;
+  margin: 20px 0;
 }
 
 .singleBookRatings .singleActive {
   color: gold;
 }
 
+.singleBookDetails h2{
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: rgb(124, 6, 6);
+  margin-bottom: 0.5rem;
+  font-family: "Righteous", serif;
+}
+.singleBookDetails h6{
+  font-family: "Righteous", serif;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  color: rgb(119, 19, 19);
+}
+.singleBookDescription{
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  color: #000000;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
 .singleViewBookBtn {
+  margin-top: 20px;
   width:200px;
   background-color: rgb(124, 6, 6);
   color: white;
@@ -99,4 +147,26 @@
   .singleBookImage {
     width: 80%;
   }
+}
+.singleModalUnavailable{
+  border:none;
+  background-color: white;
+  font-weight:bold;
+  color:red;
+}
+.singleModalUnavailable svg {
+  color: red;
+  font-size: 20px;
+  margin-right: 1px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.singleBookAuthorName{
+font-size: 20px;
+color: rgb(66, 66, 66);
+}
+.singleBookDescription b{
+  color: rgb(124, 6, 6);
+  font-family: "Righteous", serif;
+
 }
