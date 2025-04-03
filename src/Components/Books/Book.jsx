@@ -26,7 +26,7 @@ const Book = () => {
     if (bookLocation.state == "admin book") {
       return navigate("/ViewBooks");
     }
-    navigate("/Books", { replace: true });
+    navigate(-1, { replace: true });
   };
 
   const lentBook = (bookId) => {

@@ -29,7 +29,7 @@ function ViewBooks() {
   };
 
   const deleteBook = (id) => {
-    const confirm =window.confirm("Are you sure that you need to delete this book");
+    const confirm = window.confirm("Are you sure that you need to delete this book");
     console.log(confirm);
     
     if (confirm) {
