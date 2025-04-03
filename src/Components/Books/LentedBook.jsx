@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Ratings from "../Ratings";
+import { IoClose } from "react-icons/io5";
 
 const LentedBook = () => {
   const [lentedBook, setLentedBook] = useState();
@@ -84,6 +85,14 @@ const LentedBook = () => {
     <>
       {lentedBook && !isFlipMode && (
         <div className="LentedBookContainer">
+          <div className="LentedBookGoBack">
+            <button
+              className="LentedBookCloseBtn "
+              onClick={() => navigate(-1)}
+            >
+              <IoClose />
+            </button>
+          </div>
           <img
             src={`http://localhost:5001/${lentedBook?.imagePath}`}
             alt={lentedBook?.bookName}
@@ -91,7 +100,9 @@ const LentedBook = () => {
           />
           <div className="LentedBookDetails">
             <h2 className="LentedBookTitle">{lentedBook?.bookName}</h2>
-            <p className="LentedBookAuthor">Author: {lentedBook?.authorName}</p>
+            <p className="LentedBookAuthor">
+              <b>Author</b>: {lentedBook?.authorName}
+            </p>
             <p className="LentedBookDescription">{lentedBook?.description}</p>
 
             <div className="LentedButtonContainer">
