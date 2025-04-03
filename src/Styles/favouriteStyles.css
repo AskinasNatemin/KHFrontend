@@ -152,7 +152,6 @@
 
 .viewFavouriteDetails .ViewFavBookBtn:active{
   transform: scale(0.95);
-
 }
 .delFavouriteContainer {
   justify-content: end;

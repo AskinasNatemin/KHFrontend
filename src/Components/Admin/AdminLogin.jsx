@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import { MdEmail } from "react-icons/md";
 import { FaHome, FaLock } from "react-icons/fa";
-import adminLoginImage from "../../Assets/images/AdminImage/adminLoginImg.png";
+import adminLoginImage from "../../Assets/images/AdminImage/AdminLoginImg.png";
 
 const AdminLogin = () => {
   const navigate = useNavigate();
