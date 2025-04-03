@@ -147,12 +147,11 @@
 
 .ViewFavBookBtn:hover {
   background-color: rgb(153, 8, 8);
-  transform: scale(0.95);
+  transform: scale(1.02);
 }
 
 .viewFavouriteDetails .ViewFavBookBtn:active{
-  transform: scale(0.95)!important;
-
+  transform: scale(0.95);
 }
 .delFavouriteContainer {
   justify-content: end;

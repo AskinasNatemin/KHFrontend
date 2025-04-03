@@ -15,7 +15,7 @@ function AdminMaindash({data}) {
           <AdminSideBar />
         </div>
 
-        <div className="col-10 " style={{"height":"100vh"}}>
+        <div className="col-10 border border-5" style={{"height":"100vh"}}>
           {/* <AdminDashboardTopbar/> */}
           {data === "ViewStaffs" ? <ViewStaffs /> :
            data === "ViewStudents" ? <ViewStudents /> :
