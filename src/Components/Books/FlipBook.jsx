@@ -4,12 +4,17 @@ import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf";
 import pdfWorker from "pdfjs-dist/legacy/build/pdf.worker.entry";
 
 import "../../Styles/LentedBook/FlipBookPage.css";
+import { useLocation } from "react-router-dom";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
 
 const FlipBook = ({ handleFlipMode , pdfUrl }) => {
   const [pages, setPages] = useState([]);
   const [bookSize, setBookSize] = useState({ width: 750, height: 1000 });
+  const location =useLocation()
+  // const pdfUrl1=location?.state.pdfUrl
+  // console.log(pdfUrl1);  
+  
   
   useEffect(() => {
     const updateSize = () => {
@@ -29,7 +34,9 @@ const FlipBook = ({ handleFlipMode , pdfUrl }) => {
     const loadPDF = async () => {
       try {
         setPages([]);
-        const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
+        const pdf = await pdfjsLib.getDocument( pdfUrl).promise;
+        console.log(pdf);
+        
         const pageImages = [];
 
         for (let i = 1; i <= pdf.numPages; i++) {
@@ -48,7 +55,6 @@ const FlipBook = ({ handleFlipMode , pdfUrl }) => {
             viewport: viewport,
             intent: "print", // Helps in rendering high-quality text
           };
-
           await page.render(renderContext).promise;
           pageImages.push(canvas.toDataURL("image/png"));
         }
@@ -59,7 +65,7 @@ const FlipBook = ({ handleFlipMode , pdfUrl }) => {
       }
     };
 
-    if (pdfUrl) loadPDF();
+    if (pdfUrl ) loadPDF();
   }, [pdfUrl]);
 
   return (

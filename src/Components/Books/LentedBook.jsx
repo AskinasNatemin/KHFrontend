@@ -6,11 +6,26 @@ import NoBookFallBack from "./NoBookFallBack";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Ratings from "../Ratings";
 
 const LentedBook = () => {
   const [lentedBook, setLentedBook] = useState();
   const [isFlipMode, setIsFlipMode] = useState(false);
+  const [showRating, setShowRating] = useState(false); 
   const navigate = useNavigate();
+
+  const userId = localStorage.getItem("userId");
+
+  useEffect(() => {
+    axios
+      .post(`http://localhost:5001/lentedBook/${userId}`)
+      .then((res) => {
+        getLentedBook(res.data.book[0].bookId);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);
 
   const getLentedBook = (id) => {
     axios
@@ -23,27 +38,21 @@ const LentedBook = () => {
       });
   };
 
-  const userId = localStorage.getItem("userId");
-  useEffect(() => {
-    axios
-      .post(`http://localhost:5001/lentedBook/${userId}`)
-      .then((res) => {
-        getLentedBook(res.data.book[0].bookId);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }, []);
-
   const handleFlipMode = () => {
     setIsFlipMode(!isFlipMode);
   };
 
-  const returnBook = (bookId) => {
-    const ratings = '';
-    if (ratings) return; 
+  const handleReturnClick = () => {
+    setShowRating(true);
+  };
+
+  const handleRate = (rating) => {
+    setShowRating(false); // Close rating modal
+    console.log(rating);
+    
+    // Call return book API after rating
     axios
-      .post("http://localhost:5001/returnBook", { userId, bookId })
+      .post("http://localhost:5001/returnBook", { userId, bookId: lentedBook?._id, rating })
       .then((res) => {
         toast.warn(res.data.message, {
           position: "top-right",
@@ -55,7 +64,7 @@ const LentedBook = () => {
           theme: "colored",
         });
 
-        navigate("/Books");
+        // navigate("/Books");
       })
       .catch((err) => {
         console.log(err);
@@ -78,26 +87,21 @@ const LentedBook = () => {
           <img
             src={`http://localhost:5001/${lentedBook?.imagePath}`}
             alt={lentedBook?.bookName}
-            className="LentedBookImage "
+            className="LentedBookImage"
           />
           <div className="LentedBookDetails">
             <h2 className="LentedBookTitle">{lentedBook?.bookName}</h2>
             <p className="LentedBookAuthor">Author: {lentedBook?.authorName}</p>
             <p className="LentedBookDescription">{lentedBook?.description}</p>
 
-            <div className="LentedButtonContainer ">
-              <button
-                className="LentedBookReadMoreButton"
-                onClick={handleFlipMode}
-              >
+            <div className="LentedButtonContainer">
+              <button className="LentedBookReadMoreButton" onClick={handleFlipMode}>
                 Read Book
               </button>
 
               <button
-                className=" LentedBookReturnButton px-3 py-2 rounded rounded-3 ms-5"
-                onClick={() => {
-                  returnBook(lentedBook?._id);
-                }}
+                className="LentedBookReturnButton px-3 py-2 rounded rounded-3 ms-5"
+                onClick={handleReturnClick} // Show Ratings first
               >
                 Return
               </button>
@@ -105,16 +109,22 @@ const LentedBook = () => {
           </div>
         </div>
       )}
+
       {isFlipMode && (
         <FlipBook
           handleFlipMode={handleFlipMode}
           pdfUrl={`http://localhost:5001/${lentedBook?.filePath}`}
         />
       )}
-      {!lentedBook && (
-        <>
-          <NoBookFallBack />
-        </>
+
+      {!lentedBook && <NoBookFallBack />}
+
+      {showRating && (
+        <Ratings
+          initialRating={0}
+          onRate={handleRate} // Call returnBook API after rating
+          onClose={() => setShowRating(false)}
+        />
       )}
     </>
   );
