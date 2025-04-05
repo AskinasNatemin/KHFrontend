@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Styles/ContactUs.css";
 import Navbar from "./Navbar";
 
 const ContactUs = () => {
+  const [message,setMessage]=useState()
+
+  const handleChange=(e)=>{
+    setMessage((prev)=>{
+     return {...prev,[e.target.name]:e.target.value}
+    })
+    console.log(message);
+    
+  }
   return (
     <>
       <Navbar />
@@ -12,7 +21,7 @@ const ContactUs = () => {
             <form className="glass-form">
               <div className="input-group">
                 <i className="bi bi-person-fill input-icon-left"></i>
-                <input type="text" id="name" placeholder="Your Name" required />
+                <input type="text" id="name" placeholder="Your Name" required name="userName" onChange={handleChange}/>
               </div>
               <div className="input-group">
                 <i className="bi bi-envelope-fill input-icon-left"></i>
@@ -21,11 +30,13 @@ const ContactUs = () => {
                   id="email"
                   placeholder="Email Address"
                   required
+                  name="userEmail"
+                  onChange={handleChange}
                 />
               </div>
               <div className="input-group">
                 <i className="bi bi-chat-dots-fill input-icon-left"></i>
-                <input type="text" id="subject" placeholder="Subject" />
+                <input type="text" id="subject" placeholder="Subject" name="userSubject" onChange={handleChange}/>
               </div>
               <div className="input-group">
                 <i className="bi bi-pencil-fill input-icon-left"></i>
@@ -34,6 +45,8 @@ const ContactUs = () => {
                   rows="4"
                   placeholder="Your Message"
                   required
+                  name="userMessage"
+                  onChange={handleChange}
                 ></textarea>
               </div>
               <button type="submit" className="btn-glass">
