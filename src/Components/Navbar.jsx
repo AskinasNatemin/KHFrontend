@@ -77,7 +77,7 @@ const Navbar = ({ handleRegistration }) => {
               </Link>
             )}
 
-            <NavLink className="nav-link" to="/Contact">
+            <NavLink className="nav-link" to="/ContactUs">
               Contact Us
             </NavLink>
           </div>

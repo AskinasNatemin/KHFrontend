@@ -8,7 +8,6 @@ import { IoClose } from "react-icons/io5";
 import { toast } from "react-toastify";
 import { CgDanger } from "react-icons/cg";
 
-
 const Book = () => {
 
   const { id } = useParams();
