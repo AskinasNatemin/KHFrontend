@@ -1,17 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+
 .contact-container {
-    width: 100%;
-    max-width: 1000px;
-    margin: 40px auto 0 auto; /* <-- Adds 80px top space */
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-    box-shadow: 0 4px 15px rgba(1, 1, 1, 0.3);
-    overflow: hidden;
-    padding: 30px;
-  }
-  
+  width: 100%;
+  max-width: 1000px;
+  margin: 40px auto 0 auto;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(1, 1, 1, 0.3);
+  overflow: hidden;
+  padding: 30px;
+}
+
+.contact-right h2 {
+  font-family: "Righteous", serif;
+  color: aliceblue;
+}
+
+.contact-right p {
+  color: rgb(181, 181, 181);
+  margin-top: 20px;
+  font-family: Arial;
+}
 
 .contact-grid {
   display: flex;
@@ -23,7 +35,7 @@
 .contact-right {
   flex: 1;
   min-width: 380px;
-  background: linear-gradient(135deg, #4a90e2, #6b73ff);
+  background-color: rgb(124, 6, 6);
   color: white;
   padding: 40px;
   border-top-right-radius: 18px;
@@ -32,6 +44,7 @@
 }
 
 .contact-right ul {
+  margin-top: 30px;
   list-style: none;
   padding: 0;
 }
@@ -44,7 +57,6 @@
 }
 
 .contact-right i {
-  /* margin-right: 10px; */
   font-size: 1.2rem;
 }
 
@@ -53,53 +65,83 @@
   min-width: 280px;
 }
 
-.glass-form .input-group {
+.input-group {
   position: relative;
   margin-bottom: 20px;
 }
 
-.input-icon-right {
+.input-icon-left {
   position: absolute;
-
   top: 50%;
   left: 15px;
   transform: translateY(-50%);
-  color: #6c757d;
+  color: #000000;
   font-size: 1.2rem;
   pointer-events: none;
 }
 
-.glass-form input,
-.glass-form textarea {
+.input-group .input-areaicon-left {
+  position: absolute;
+  left: 15px;
+  top: 11px;
+  font-size: 1.2rem;
+  color: #020202;
+  pointer-events: none;
+}
+
+/* UNDERLINE INPUT & TEXTAREA STYLING */
+.input-group input,
+.input-group textarea {
   width: 100%;
   padding: 12px 15px 12px 45px;
   border: none;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.8);
+  border-bottom: 2px solid #000;
+  background: transparent;
   font-size: 1rem;
   outline: none;
-  resize: none;
+  color: #000;
+  border-radius: 0;
 }
 
-.glass-form input:focus,
-.glass-form textarea:focus {
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+/* Focus effect */
+.input-group input:focus,
+.input-group textarea:focus {
+  border-bottom: 2px solid rgb(106, 106, 106);
+  border-color: rgb(12, 12, 12);
+  box-shadow: 0px 0px 10px 0px rgb(192, 190, 190);
+
+
+  background: transparent;
 }
 
 .btn-glass {
   width: 100%;
   padding: 12px;
-  background-color: #4a90e2;
+  background-color: rgb(124, 6, 6);
   color: white;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial;
+  font-weight:bold ;
   border: none;
-  border-radius: 12px;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
 }
 
 .btn-glass:hover {
-  background-color: #3c7dd9;
+  background-color: rgb(143, 8, 8);
+  transform: scale(1.01);
+}
+
+.btn-glass:active {
+  transform: scale(0.95);
+}
+
+.ContactUsIcon {
+  margin-right: 3px;
 }
 
 /* Responsive layout */
