@@ -48,10 +48,7 @@ const LentedBook = () => {
   };
 
   const handleRate = (rating) => {
-    setShowRating(false); // Close rating modal
-    console.log(rating);
-    
-    // Call return book API after rating
+    setShowRating(false); 
     axios
       .post("http://localhost:5001/returnBook", { userId, bookId: lentedBook?._id, rating })
       .then((res) => {
@@ -64,9 +61,12 @@ const LentedBook = () => {
           draggable: true,
           theme: "colored",
         });
-
-        // navigate("/Books");
+        return axios.post("http://localhost:5001/bookRating", {
+          bookId: lentedBook?._id,
+          rating,
+        });
       })
+      .then(()=>navigate('/Books',{replace:true}))
       .catch((err) => {
         console.log(err);
         toast.error("Failed to return book. Please try again.", {

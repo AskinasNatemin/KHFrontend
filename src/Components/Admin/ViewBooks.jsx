@@ -10,7 +10,7 @@ function ViewBooks() {
   const navigate = useNavigate();
 
   const [books, setBooks] = useState([]);
-  const [searchQuery, setSearchQuery] = useState(""); 
+  const [searchQuery, setSearchQuery] = useState("");
   const [selectedBook, setSelectedBook] = useState(null);
 
   const booksview = () => {
@@ -29,9 +29,11 @@ function ViewBooks() {
   };
 
   const deleteBook = (id) => {
-    const confirm = window.confirm("Are you sure that you need to delete this book");
+    const confirm = window.confirm(
+      "Are you sure that you need to delete this book"
+    );
     console.log(confirm);
-    
+
     if (confirm) {
       axios
         .delete(`http://localhost:5001/deleteBook/${id}`)
@@ -55,16 +57,15 @@ function ViewBooks() {
 
   const handleUpdate = (updatedBook) => {
     console.log("Updating book:", updatedBook);
-    booksview(); 
-    setSelectedBook(null); 
-
+    booksview();
+    setSelectedBook(null);
   };
 
-  const filteredBooks = books.filter((book) =>
-    book.bookName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    book.authorName.toLowerCase().includes(searchQuery.toLowerCase()) 
+  const filteredBooks = books.filter(
+    (book) =>
+      book.bookName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      book.authorName.toLowerCase().includes(searchQuery.toLowerCase())
   );
-  
 
   return (
     <>
@@ -79,15 +80,13 @@ function ViewBooks() {
                 placeholder="Search"
                 aria-label="Search"
                 onChange={(e) => setSearchQuery(e.target.value)}
-                
               />
             </form>
           </div>
         </div>
 
-        <div className="row viewBooks-card-row">
-
-        {filteredBooks.length > 0 ? (
+        <div className="row viewBooks-card-row w-100">
+          {filteredBooks.length > 0 ? (
             filteredBooks.map((book) => (
               <div className="admin-viewbooks-card-box" key={book._id}>
                 <div className="column-1 col-12 col-sm-12 col-lg-4 col-md-4">
@@ -98,7 +97,9 @@ function ViewBooks() {
                   />
                   <div className="admin-viewbook-author-book-div">
                     <p>
-                      <strong className="admin-viewbook-strong">AUTHOR :</strong>{" "}
+                      <strong className="admin-viewbook-strong">
+                        AUTHOR :
+                      </strong>{" "}
                       {book.authorName}
                     </p>
                     <p>
@@ -108,7 +109,9 @@ function ViewBooks() {
                     <button
                       className="admin-viewbook-button"
                       onClick={() =>
-                        navigate(`/FlipBook`, { state: {"from":"adminBook","pdfUrl":book.filePath } })
+                        navigate(`/FlipBook`, {
+                          state: { pdfUrl: book.filePath },
+                        })
                       }
                     >
                       READ BOOK

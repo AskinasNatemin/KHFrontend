@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useLocation, useNavigate, useParams, Link } from "react-router-dom";
 import axios from "axios";
 import "../../Styles/Books/BookDetails.css";
 import { AiFillStar } from "react-icons/ai";
@@ -9,23 +8,33 @@ import { toast } from "react-toastify";
 import { CgDanger } from "react-icons/cg";
 
 const Book = () => {
-
   const { id } = useParams();
   const [book, setBook] = useState(null);
+  const [ratedUsers, setRatedUsers] = useState();
   const navigate = useNavigate();
   const bookLocation = useLocation();
 
   useEffect(() => {
-    axios
-      .post(`http://localhost:5001/getBook/${id}`)
-      .then((res) => {
-        setBook(res.data.data);
-      })
-      .catch((err) => console.log(err));
+    const fetchData = async () => {
+      try {
+        const bookRes = await axios.post(`http://localhost:5001/getBook/${id}`);
+        setBook(bookRes.data.data);
+        console.log("bbb", id);
+
+        const ratedRes = await axios.post(
+          `http://localhost:5001/ratedUsers/${id}`
+        );
+        setRatedUsers([ratedRes.data.data[0].totalUsers] || "");
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    fetchData();
   }, [id]);
 
   const handleOnClose = () => {
-    if (bookLocation.state == "admin book") {
+    if (bookLocation.state === "admin book") {
       return navigate("/ViewBooks");
     }
     navigate(-1, { replace: true });
@@ -40,24 +49,16 @@ const Book = () => {
         toast.success(res.data.message, {
           position: "top-right",
           autoClose: 1000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
           theme: "colored",
         });
       })
       .catch((err) => {
         console.log(err);
-        toast.error(err.response.data.message, {
-                  position: "top-right",
-                  autoClose: 3000,
-                  hideProgressBar: false,
-                  closeOnClick: true,
-                  pauseOnHover: true,
-                  draggable: true,
-                  theme: "colored",
-                });
+        toast.error(err.response?.data?.message || "Error lending book", {
+          position: "top-right",
+          autoClose: 3000,
+          theme: "colored",
+        });
       });
   };
 
@@ -67,9 +68,10 @@ const Book = () => {
     <div className="singleModalOverlay">
       <div className="singleModalContainer">
         <div className="singleModalGoBack">
-        <button className="singleCloseBtn " onClick={handleOnClose}>
-          <IoClose />
-        </button></div>
+          <button className="singleCloseBtn" onClick={handleOnClose}>
+            <IoClose />
+          </button>
+        </div>
 
         <div className="singleModalContent">
           <img
@@ -81,8 +83,8 @@ const Book = () => {
           <div className="singleBookDetails">
             <h2>{book.bookName}</h2>
             <h6>
-              <b>Author : </b>
-             <span className="singleBookAuthorName"> {book.authorName}</span>
+              <b>Author :</b>
+              <span className="singleBookAuthorName"> {book.authorName}</span>
             </h6>
             <p className="singleBookDescription">
               <b>Description : </b>
@@ -93,14 +95,19 @@ const Book = () => {
               {[...Array(5)].map((_, i) => (
                 <AiFillStar
                   key={i}
-                  className={i < book.rating ? "singleActive" : ""}
+                  style={{
+                    color: i < Number(book.ratings) ? "gold" : "#ccc",
+                    fontSize: "1.6rem",
+                    marginRight: "4px",
+                  }}
                 />
               ))}
             </div>
 
-            {book.borrowed == "true" ? (
-              
-              <button className="singleModalUnavailable"><CgDanger /> The book is already lented </button>
+            {book.borrowed === "true" || book.borrowed === true ? (
+              <button className="singleModalUnavailable">
+                <CgDanger /> The book is already lented
+              </button>
             ) : (
               <Link
                 rel="noopener noreferrer"
@@ -110,6 +117,11 @@ const Book = () => {
                 Lent Book
               </Link>
             )}
+
+            {/* Display number of ratings */}
+            {ratedUsers && (
+              <p className="text-muted mt-2">Rated by {ratedUsers} user(s)</p>
+            )}
           </div>
         </div>
       </div>
@@ -117,4 +129,4 @@ const Book = () => {
   );
 };
 
-export default Book
+export default Book;
