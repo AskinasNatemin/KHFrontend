@@ -20,10 +20,11 @@ const Ratings = ({ initialRating = 0, onRate, onClose }) => {
               onMouseLeave={() => setHover(0)}
               onClick={() => {
                 setRating(star);
-                if (onRate) onRate(star);
+                
               }}
             />
           ))}
+          <button onClick={()=>{if (onRate) onRate(rating)}}>submit</button>
         </div>
         <span className="ratingsValue">{rating} / 5</span>
       </div>
