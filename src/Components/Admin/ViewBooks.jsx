@@ -110,7 +110,7 @@ function ViewBooks() {
                       className="admin-viewbook-button"
                       onClick={() =>
                         navigate(`/FlipBook`, {
-                          state: { from: "adminBook", pdfUrl: book.filePath },
+                          state: { pdfUrl: book.filePath },
                         })
                       }
                     >

@@ -2,20 +2,24 @@ import React, { useState, useEffect } from "react";
 import HTMLFlipBook from "react-pageflip";
 import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf";
 import pdfWorker from "pdfjs-dist/legacy/build/pdf.worker.entry";
-
+import { useLocation, useNavigate } from "react-router-dom";
 import "../../Styles/LentedBook/FlipBookPage.css";
-import { useLocation } from "react-router-dom";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
 
-const FlipBook = ({ handleFlipMode , pdfUrl }) => {
+const FlipBook = ({ handleFlipMode, pdfUrl: propPdfUrl }) => {
   const [pages, setPages] = useState([]);
   const [bookSize, setBookSize] = useState({ width: 750, height: 1000 });
-  const location =useLocation()
-  // const pdfUrl1=location?.state.pdfUrl
-  // console.log(pdfUrl1);  
-  
-  
+  const navigate = useNavigate('')
+
+  const location = useLocation();
+  const locationPdfPath = location.state?.pdfUrl;
+
+  // Build full URL from location path if present
+  const pdfUrl =
+    propPdfUrl ||
+    (locationPdfPath ? `http://localhost:5001/${locationPdfPath}` : null);
+
   useEffect(() => {
     const updateSize = () => {
       if (window.innerWidth < 600) {
@@ -32,16 +36,16 @@ const FlipBook = ({ handleFlipMode , pdfUrl }) => {
 
   useEffect(() => {
     const loadPDF = async () => {
+      if (!pdfUrl) return;
+
       try {
         setPages([]);
-        const pdf = await pdfjsLib.getDocument( pdfUrl).promise;
-        console.log(pdf);
-        
-        const pageImages = [];
+        const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
 
+        const pageImages = [];
         for (let i = 1; i <= pdf.numPages; i++) {
           const page = await pdf.getPage(i);
-          const scale = 4; // Further increased scale for sharper text
+          const scale = 4;
           const viewport = page.getViewport({ scale });
 
           const canvas = document.createElement("canvas");
@@ -53,8 +57,9 @@ const FlipBook = ({ handleFlipMode , pdfUrl }) => {
           const renderContext = {
             canvasContext: context,
             viewport: viewport,
-            intent: "print", // Helps in rendering high-quality text
+            intent: "print",
           };
+
           await page.render(renderContext).promise;
           pageImages.push(canvas.toDataURL("image/png"));
         }
@@ -65,7 +70,7 @@ const FlipBook = ({ handleFlipMode , pdfUrl }) => {
       }
     };
 
-    if (pdfUrl ) loadPDF();
+    loadPDF();
   }, [pdfUrl]);
 
   return (
@@ -90,7 +95,11 @@ const FlipBook = ({ handleFlipMode , pdfUrl }) => {
 
           {pages.map((image, index) => (
             <div key={index} className="LentedFlipBookPage">
-              <img src={image} alt={`Page ${index + 1}`} className="LentedFlipBookImage" />
+              <img
+                src={image}
+                alt={`Page ${index + 1}`}
+                className="LentedFlipBookImage"
+              />
             </div>
           ))}
 
@@ -98,7 +107,15 @@ const FlipBook = ({ handleFlipMode , pdfUrl }) => {
         </HTMLFlipBook>
       )}
 
-      <button className="LentedBookReadMoreButton" onClick={handleFlipMode}>
+      <button
+        className="LentedBookReadMoreButton"
+        onClick={() => {
+          if(locationPdfPath){
+            return navigate('/ViewBooks')
+          }
+          handleFlipMode();
+        }}
+      >
         Close FlipBook
       </button>
     </div>
