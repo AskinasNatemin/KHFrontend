@@ -1,0 +1,115 @@
+.contact-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 40px auto 0 auto; /* <-- Adds 80px top space */
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(1, 1, 1, 0.3);
+    overflow: hidden;
+    padding: 30px;
+  }
+  
+
+.contact-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.contact-right {
+  flex: 1;
+  min-width: 380px;
+  background: linear-gradient(135deg, #4a90e2, #6b73ff);
+  color: white;
+  padding: 40px;
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
+  justify-content: left;
+}
+
+.contact-right ul {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-right li {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.contact-right i {
+  /* margin-right: 10px; */
+  font-size: 1.2rem;
+}
+
+.contact-left {
+  flex: 1;
+  min-width: 280px;
+}
+
+.glass-form .input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-icon-right {
+  position: absolute;
+
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  color: #6c757d;
+  font-size: 1.2rem;
+  pointer-events: none;
+}
+
+.glass-form input,
+.glass-form textarea {
+  width: 100%;
+  padding: 12px 15px 12px 45px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  outline: none;
+  resize: none;
+}
+
+.glass-form input:focus,
+.glass-form textarea:focus {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.btn-glass {
+  width: 100%;
+  padding: 12px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-glass:hover {
+  background-color: #3c7dd9;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .contact-grid {
+    flex-direction: column;
+  }
+
+  .contact-left,
+  .contact-right {
+    border-radius: 15px;
+  }
+}

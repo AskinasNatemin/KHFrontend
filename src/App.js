@@ -23,6 +23,7 @@ import { ToastContainer } from "react-toastify";
 import Ratings from "./Components/Ratings";
 import AdminEditBook from "./Components/Admin/AdminEditBook";
 import FlipBook from "./Components/Books/FlipBook";
+import ContactUs from "./Components/ContactUs";
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
           <Route path="AccessDenied" element={<LoginFirst/>}/>
           <Route path="Rating" element={<Ratings/>}/>
           <Route path="FlipBook" element={<FlipBook/>}/>
+          <Route path="ContactUs" element={<ContactUs/>}/>
           
         </Routes>
       </BrowserRouter>
