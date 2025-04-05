@@ -102,7 +102,6 @@ const Book = () => {
                   }}
                 />
               ))}
-              {ratedUsers && ` /  ${ ratedUsers}`}
             </div>
 
             {book.borrowed === "true" || book.borrowed === true ? (
