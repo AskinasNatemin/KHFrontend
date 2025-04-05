@@ -6,33 +6,55 @@ import { FaPhoneVolume } from "react-icons/fa6";
 import { IoLocationSharp, IoPerson } from "react-icons/io5";
 import { MdOutlineSubject } from "react-icons/md";
 import { RiMessage2Fill } from "react-icons/ri";
+import axios from "axios";
 
 const ContactUs = () => {
-  const [message,setMessage]=useState()
+  const userId=localStorage.getItem('userId')
+  const [message, setMessage] = useState({userId});
+  
 
-  const handleChange=(e)=>{
-    setMessage((prev)=>{
-     return {...prev,[e.target.name]:e.target.value}
-    })
-    console.log(message);
-    
-  }
+  const handleChange = (e) => {
+    setMessage((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+  };
+
+  const handleSendMessage = (e) => {
+    e.preventDefault(); 
+  
+    axios
+      .post("http://localhost:5001/sendMessage", message)
+      .then((res) => {
+        setMessage({}); 
+      })
+      .catch((err) => {
+        console.error("Error sending message:", err.message);
+      });
+  };
+  
   return (
     <div
-    className="container-fluid flex-column homeContainer"
-    style={{ minHeight: "100vh" }}>
+      className="container-fluid flex-column homeContainer"
+      style={{ minHeight: "100vh" }}
+    >
       <Navbar />
       <div className="contact-container">
         <div className="contact-grid">
           <div className="contact-left">
             <form className="glass-form">
               <div className="input-group">
-
-                <i className="bi bi-person-fill input-icon-left"></i>
-                <input type="text" id="name" placeholder="Your Name" required name="userName" onChange={handleChange}/>
                 <span className="input-icon-left">
                   <IoPerson />
                 </span>
+                <input
+                  type="text"
+                  id="name"
+                  value={message.userName}
+                  placeholder="Your Name"
+                  required
+                  name="userName"
+                  onChange={handleChange}
+                />
               </div>
 
               <div className="input-group">
@@ -40,6 +62,7 @@ const ContactUs = () => {
                   <MdEmail />
                 </span>
                 <input
+                  value={message.userEmail}
                   type="email"
                   id="email"
                   placeholder="Email Address"
@@ -50,11 +73,17 @@ const ContactUs = () => {
               </div>
 
               <div className="input-group">
-                <i className="bi bi-chat-dots-fill input-icon-left"></i>
-                <input type="text" id="subject" placeholder="Subject" name="userSubject" onChange={handleChange}/>
                 <span className="input-icon-left">
                   <MdOutlineSubject />
                 </span>
+                <input
+                value={message.userSubject}
+                  type="text"
+                  id="subject"
+                  placeholder="Subject"
+                  name="userSubject"
+                  onChange={handleChange}
+                />
               </div>
 
               <div className="input-group">
@@ -68,9 +97,10 @@ const ContactUs = () => {
                   required
                   name="userMessage"
                   onChange={handleChange}
+                  value={message.userMessage}
                 ></textarea>
               </div>
-              <button type="submit" className="btn-glass">
+              <button type="submit" onClick={handleSendMessage} className="btn-glass">
                 SEND MESSAGE
               </button>
             </form>
