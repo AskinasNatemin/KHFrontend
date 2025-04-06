@@ -22,7 +22,7 @@ const HomePage = () => {
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     if (userId == 12345) {
-      navigate("/AdminMainDash");
+      navigate("/AdminMainDash", { replace: true });
     }
   }, []);
   const handleRegistration = () => {
