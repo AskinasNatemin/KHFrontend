@@ -15,7 +15,7 @@ function AdminMaindash({ data }) {
     if (userId) {
       setIsLogged(true);
     }
-  }, [userId, setIsLogged]);
+  }, [userId]);
 
   const renderContent = () => {
     switch (data) {
