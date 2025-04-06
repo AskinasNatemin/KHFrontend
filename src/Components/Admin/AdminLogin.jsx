@@ -5,10 +5,14 @@ import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import { MdEmail } from "react-icons/md";
 import { FaHome, FaLock } from "react-icons/fa";
 import adminLoginImage from "../../Assets/images/AdminImage/adminLoginImg.png";
+import { FiAlertTriangle } from "react-icons/fi";
+import { TiTick } from "react-icons/ti";
 
 const AdminLogin = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+  const [successMsg, setSuccessMsg] = useState("");
 
   const email = "admin@gmail.com";
   const password = "123456";
@@ -25,12 +29,17 @@ const AdminLogin = () => {
   const submit = (e) => {
     e.preventDefault();
     if (login.adminEmail !== email) {
-      alert("Email Not Found");
+      setSuccessMsg("");
+      setErrorMsg("Email Not Found");
     } else if (login.adminPassword !== password) {
-      alert("Incorrect Password");
+      setErrorMsg("Incorrect Password");
+      setSuccessMsg("");
     } else {
-      alert("Login Successful");
-      navigate("/AdminMainDash", { replace: true });
+      setErrorMsg("");
+      setSuccessMsg("Login Successful");
+      setTimeout(() => {
+        navigate("/AdminMainDash", { replace: true });
+      }, 1000);
     }
   };
 
@@ -41,16 +50,36 @@ const AdminLogin = () => {
       </div>
 
       <div className="adminImageContainer">
-        <img src={adminLoginImage} alt="welcome" className="img-fluid adminLoginImage" />
+        <img
+          src={adminLoginImage}
+          alt="welcome"
+          className="img-fluid adminLoginImage"
+        />
       </div>
 
       <form onSubmit={submit} className="w-100 d-flex justify-content-center">
         <div className="adminborder">
-          
           <div className="admininput">
             <div className="adminhead">
               <h3>ADMIN LOGIN</h3>
             </div>
+
+            {errorMsg && (
+              <div className="adminLogerrorContainer alert">
+                <div className="adminLogerroricon">
+                  <FiAlertTriangle className="me-2" />
+                </div>
+                {errorMsg}
+              </div>
+            )}
+            {successMsg && (
+              <div className="adminLogsuccessContainer alert">
+                <div className="adminLogsuccessicon">
+                  <TiTick className="me-2" />
+                </div>
+                {successMsg}
+              </div>
+            )}
 
             <div className="position-relative mb-3">
               <MdEmail className="position-absolute top-50 start-0 translate-middle-y ms-2" />

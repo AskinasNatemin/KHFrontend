@@ -7,7 +7,7 @@ import "../Styles/Navbar.css";
 import "../Styles/Profile.css";
 import { Logged } from "./Context/AppContext";
 import UserProfile from "./UserProfile";
-import backPackIcon from '../Assets/icon/backpack.png'
+import backPackIcon from "../Assets/icon/backpack.png";
 
 const Navbar = ({ handleRegistration }) => {
   const { isLogged, setIsLogged } = useContext(Logged);
@@ -77,9 +77,16 @@ const Navbar = ({ handleRegistration }) => {
               </Link>
             )}
 
-            <NavLink className="nav-link" to="/ContactUs">
-              Contact Us
-            </NavLink>
+            {isLogged ? (
+              <NavLink className="nav-link" to="/ContactUs">
+                Contact Us
+              </NavLink>
+            ) : (
+              <Link className="nav-link" to="/AccessDenied">
+                Contact Us
+              </Link>
+            )}
+
           </div>
 
           <div className="buttons me-4 gap-3 d-flex px-2 py-1 px-4 d-flex align-items-center">
@@ -91,8 +98,15 @@ const Navbar = ({ handleRegistration }) => {
                     onClick={() => navigate("/UserFavouriteBooks")}
                   />
                 </div>
-                <div className="lentedBookIconContainer border rounded rounded-circle p-2" onClick={()=>navigate('/LentedBook')}>
-                  <img src={backPackIcon} alt="bagIcon" className="backPackIcon"/>
+                <div
+                  className="lentedBookIconContainer border rounded rounded-circle p-2"
+                  onClick={() => navigate("/LentedBook")}
+                >
+                  <img
+                    src={backPackIcon}
+                    alt="bagIcon"
+                    className="backPackIcon"
+                  />
                 </div>
 
                 <CgProfile
@@ -105,7 +119,10 @@ const Navbar = ({ handleRegistration }) => {
               </>
             ) : (
               <>
-                <button class="animated-button" onClick={()=>handleRegistration()}>
+                <button
+                  class="animated-button"
+                  onClick={() => handleRegistration()}
+                >
                   <svg
                     viewBox="0 0 24 24"
                     class="arr-2"
@@ -113,7 +130,7 @@ const Navbar = ({ handleRegistration }) => {
                   >
                     <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
                   </svg>
-                  <span class="text" > LOGIN </span>
+                  <span class="text"> LOGIN </span>
                   <span class="circle"></span>
                   <svg
                     viewBox="0 0 24 24"
