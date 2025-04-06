@@ -53,7 +53,6 @@ const StaffLogin = () => {
       })
       .catch((err) => {
         console.log(err);
-
         setErrorMsg(err.response?.data?.message);
       });
   };
@@ -64,9 +63,7 @@ const StaffLogin = () => {
     }
   };
 
-  const handleGoBack = () => {
-    navigate("/");
-  };
+ 
   return (
     <div className="staffLogContainer">
       <div className="staffLogGoBackContainer">

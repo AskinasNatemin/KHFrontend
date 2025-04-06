@@ -56,7 +56,6 @@ const ContactUs = () => {
                   onChange={handleChange}
                 />
               </div>
-
               <div className="input-group">
                 <span className="input-icon-left">
                   <MdEmail />
