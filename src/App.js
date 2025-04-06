@@ -17,54 +17,147 @@ import Book from "./Components/Books/Book";
 import AdminDashboardTopbar from "./Components/Admin/AdminDashboardTopbar";
 import AdminMaindash from "./Components/Admin/AdminMaindash";
 import UserFavourite from "./Components/UserFavourite";
-import LoginFirst from "./Components/LoginFirst"
+import LoginFirst from "./Components/LoginFirst";
 import LentedBook from "../src/Components/Books/LentedBook";
 import { ToastContainer } from "react-toastify";
 import Ratings from "./Components/Ratings";
 import AdminEditBook from "./Components/Admin/AdminEditBook";
 import FlipBook from "./Components/Books/FlipBook";
 import ContactUs from "./Components/ContactUs";
+import ProtectedRoute from "./Components/ProtectedRoute.jsx";
 
 function App() {
   return (
     <div className="App">
-      <ToastContainer/>
+      <ToastContainer />
       <BrowserRouter>
         <Routes>
           <Route path="*" element={<NoPageFound />} />
           <Route path="/" element={<HomePage />} />
-          <Route path="/Navbar" element={<Navbar />} />
-          <Route path="AdminDashboardTopbar" element={<AdminDashboardTopbar />} />
-          <Route path="/AdminMainDash" element={<AdminMaindash/>} />
-          <Route path="/ViewStaffs" element={<AdminMaindash data={"ViewStaffs"}/>} />
-          <Route path="/ViewStudents" element={<AdminMaindash data={"ViewStudents"}/>} />
-          <Route path="/ViewBooks" element={<AdminMaindash data={"ViewBooks"}/>} />
-          <Route path="/AddingBooks" element={<AdminMaindash data={"AddingBooks"}/>} />
-          <Route path="/AdminEditBook" element={<AdminEditBook/>}/>
 
+          {/* 🔓 Public routes */}
+          <Route path="Navbar" element={<Navbar />} />
           <Route path="AdminLogin" element={<AdminLogin />} />
           <Route path="StaffRegistration" element={<StaffRegistration />} />
           <Route path="StudentRegistration" element={<StudentRegistration />} />
           <Route path="StaffLogin" element={<StaffLogin />} />
           <Route path="StudentLogin" element={<StudentLogin />} />
-          <Route path="Books" element={<ViewBooks />}/>
           <Route path="StaffForgetPassword" element={<StaffForgetPassword />} />
-          <Route path="StudentForgetPassword" element={<StudentForgetPassword />}/>
+          <Route
+            path="StudentForgetPassword"
+            element={<StudentForgetPassword />}
+          />
           <Route path="StaffCodepage" element={<StaffCodePage />} />
-          <Route path="Book/:id" element={<Book/>}/>
-          <Route path="UserFavouriteBooks" element={<UserFavourite/>}/>
-          <Route path="LentedBook" element={<LentedBook/>}/>
-          <Route path="AccessDenied" element={<LoginFirst/>}/>
-          <Route path="Rating" element={<Ratings/>}/>
-          <Route path="FlipBook" element={<FlipBook/>}/>
-          <Route path="ContactUs" element={<ContactUs/>}/>
-          
+          <Route path="AccessDenied" element={<LoginFirst />} />
+
+          {/* 🔒 Protected routes */}
+          <Route
+            path="ContactUs"
+            element={
+              <ProtectedRoute>
+                <ContactUs />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="AdminMainDash"
+            element={
+              <ProtectedRoute>
+                <AdminMaindash />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="ViewStaffs"
+            element={
+              <ProtectedRoute>
+                <AdminMaindash data={"ViewStaffs"} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="ViewStudents"
+            element={
+              <ProtectedRoute>
+                <AdminMaindash data={"ViewStudents"} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="ViewBooks"
+            element={
+              <ProtectedRoute>
+                <AdminMaindash data={"ViewBooks"} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="AddingBooks"
+            element={
+              <ProtectedRoute>
+                <AdminMaindash data={"AddingBooks"} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="AdminEditBook"
+            element={
+              <ProtectedRoute>
+                <AdminEditBook />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="Books"
+            element={
+              <ProtectedRoute>
+                <ViewBooks />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="Book/:id"
+            element={
+              <ProtectedRoute>
+                <Book />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="UserFavouriteBooks"
+            element={
+              <ProtectedRoute>
+                <UserFavourite />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="LentedBook"
+            element={
+              <ProtectedRoute>
+                <LentedBook />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="Rating"
+            element={
+              <ProtectedRoute>
+                <Ratings />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="FlipBook"
+            element={
+              <ProtectedRoute>
+                <FlipBook />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </BrowserRouter>
-
     </div>
-
-    
   );
 }
 

@@ -48,7 +48,6 @@ const AdminLogin = () => {
       <div className="adminlogGoBackContainer">
         <FaHome onClick={() => navigate("/")} className="adminLogGoBackIcon" />
       </div>
-
       <div className="adminImageContainer">
         <img
           src={adminLoginImage}
@@ -56,7 +55,6 @@ const AdminLogin = () => {
           className="img-fluid adminLoginImage"
         />
       </div>
-
       <form onSubmit={submit} className="w-100 d-flex justify-content-center">
         <div className="adminborder">
           <div className="admininput">
