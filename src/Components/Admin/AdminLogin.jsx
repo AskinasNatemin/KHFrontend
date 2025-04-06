@@ -19,7 +19,7 @@ const AdminLogin = () => {
 
   const email = "admin@gmail.com";
   const password = "123456";
-  const adminId = 1234554321;
+  const adminId = 12345;
 
   const [login, setLogin] = useState({
     adminEmail: "",
@@ -41,7 +41,7 @@ const AdminLogin = () => {
     } else {
       setErrorMsg("");
       setSuccessMsg("Login Successful");
-      localStorage.setItem("adminId",adminId)
+      localStorage.setItem("userId",adminId)
       setIsLogged(true)
       setTimeout(() => {
         navigate("/AdminMainDash");
