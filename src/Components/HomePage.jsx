@@ -18,7 +18,7 @@ const HomePage = () => {
   ]);
 
   const navigate = useNavigate();
-  const handleRegistration = (type) => {
+  const handleRegistration = () => {
     setOpenUserSelectionModel(true);
   };
 
