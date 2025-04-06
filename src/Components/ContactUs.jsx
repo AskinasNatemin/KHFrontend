@@ -6,12 +6,17 @@ import { FaPhoneVolume } from "react-icons/fa6";
 import { IoLocationSharp, IoPerson } from "react-icons/io5";
 import { MdOutlineSubject } from "react-icons/md";
 import { RiMessage2Fill } from "react-icons/ri";
+import { toast } from "react-toastify";
 import axios from "axios";
 
 const ContactUs = () => {
-  const userId=localStorage.getItem('userId')
-  const [message, setMessage] = useState({userId});
-  
+  const [message, setMessage] = useState({
+    userId: localStorage.getItem("userId") || "",
+    userName: "",
+    userEmail: "",
+    userSubject: "",
+    userMessage: "",
+  });
 
   const handleChange = (e) => {
     setMessage((prev) => {
@@ -20,18 +25,33 @@ const ContactUs = () => {
   };
 
   const handleSendMessage = (e) => {
-    e.preventDefault(); 
-  
+    e.preventDefault();
+
     axios
       .post("http://localhost:5001/sendMessage", message)
       .then((res) => {
-        setMessage({}); 
+        toast.success(res.data.message, {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "colored",
+        });
+        setMessage({
+          userId: localStorage.getItem("userId") || "",
+          userName: "",
+          userEmail: "",
+          userSubject: "",
+          userMessage: "",
+        });
       })
       .catch((err) => {
         console.error("Error sending message:", err.message);
       });
   };
-  
+
   return (
     <div
       className="container-fluid flex-column homeContainer"
@@ -76,7 +96,7 @@ const ContactUs = () => {
                   <MdOutlineSubject />
                 </span>
                 <input
-                value={message.userSubject}
+                  value={message.userSubject}
                   type="text"
                   id="subject"
                   placeholder="Subject"
@@ -99,7 +119,11 @@ const ContactUs = () => {
                   value={message.userMessage}
                 ></textarea>
               </div>
-              <button type="submit" onClick={handleSendMessage} className="btn-glass">
+              <button
+                type="submit"
+                onClick={handleSendMessage}
+                className="btn-glass"
+              >
                 SEND MESSAGE
               </button>
             </form>
