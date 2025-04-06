@@ -12,13 +12,13 @@ const UserProfile = () => {
   const handleLogout = () => {
     localStorage.removeItem("userId");
     localStorage.removeItem("user");
-    navigate("/",{replace:true});
-};
+    navigate("/", { replace: true });
+  };
 
   useEffect(() => {
     if (user === "student") {
       axios
-        .post("http://localhost:5001/student",{ _id: id })
+        .post("http://localhost:5001/student", { _id: id })
         .then((response) => {
           setUserData(response.data.data);
         })
@@ -35,13 +35,15 @@ const UserProfile = () => {
           console.log(err);
         });
     }
-  },[]);
+  }, []);
 
   return (
     <div className="profilePopupContainer p-4 ">
       <div className="profilePopupHeader">
-        <p>{user.toUpperCase()}</p>
-        <p> <span className="profileUserName">UserName :</span>
+        <p>{user?.toUpperCase()}</p>
+        <p>
+          {" "}
+          <span className="profileUserName">UserName :</span>
           {user === "staff"
             ? userData?.staffname
             : user === "student"

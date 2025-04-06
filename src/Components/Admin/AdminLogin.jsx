@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "../../Styles/Admin/AdminLogin.css";
 import { useNavigate } from "react-router-dom";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
@@ -7,15 +7,19 @@ import { FaHome, FaLock } from "react-icons/fa";
 import adminLoginImage from "../../Assets/images/AdminImage/adminLoginImg.png";
 import { FiAlertTriangle } from "react-icons/fi";
 import { TiTick } from "react-icons/ti";
+import { Logged } from "../Context/AppContext";
 
 const AdminLogin = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
+  const { setIsLogged } = useContext(Logged);
+
 
   const email = "admin@gmail.com";
   const password = "123456";
+  const adminId = 1234554321;
 
   const [login, setLogin] = useState({
     adminEmail: "",
@@ -37,8 +41,10 @@ const AdminLogin = () => {
     } else {
       setErrorMsg("");
       setSuccessMsg("Login Successful");
+      localStorage.setItem("adminId",adminId)
+      setIsLogged(true)
       setTimeout(() => {
-        navigate("/AdminMainDash", { replace: true });
+        navigate("/AdminMainDash");
       }, 1000);
     }
   };
