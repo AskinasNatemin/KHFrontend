@@ -44,7 +44,7 @@ const AdminLogin = () => {
       localStorage.setItem("userId",adminId)
       setIsLogged(true)
       setTimeout(() => {
-        navigate("/AdminMainDash");
+        navigate("/AdminMainDash",{replace:true});
       }, 1000);
     }
   };

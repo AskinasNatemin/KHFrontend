@@ -61,7 +61,7 @@ const ContactUs = () => {
       <div className="contact-container">
         <div className="contact-grid">
           <div className="contact-left">
-            <form className="glass-form">
+            <form className="glass-form" onSubmit={handleSendMessage}>
               <div className="input-group">
                 <span className="input-icon-left">
                   <IoPerson />
@@ -119,11 +119,7 @@ const ContactUs = () => {
                   value={message.userMessage}
                 ></textarea>
               </div>
-              <button
-                type="submit"
-                onClick={handleSendMessage}
-                className="btn-glass"
-              >
+              <button type="submit" className="btn-glass">
                 SEND MESSAGE
               </button>
             </form>
