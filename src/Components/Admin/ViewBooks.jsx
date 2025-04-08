@@ -57,6 +57,7 @@ function ViewBooks() {
     console.log("Updating book:", updatedBook);
     booksview(); 
     setSelectedBook(null); 
+
   };
 
   const filteredBooks = books.filter((book) =>

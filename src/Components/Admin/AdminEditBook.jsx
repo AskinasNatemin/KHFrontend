@@ -18,31 +18,81 @@ const AdminEditBook = ({ book, onClose, onUpdate }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // const handleFileChange = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onloadend = () => {
+  //       setFormData({ ...formData, [e.target.name]: file, imagePreview: reader.result });
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
+
   const handleFileChange = (e) => {
     const file = e.target.files[0];
+    const name = e.target.name;
+
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setFormData({ ...formData, [e.target.name]: file, imagePreview: reader.result });
-      };
-      reader.readAsDataURL(file);
+      const updatedData = { ...formData, [name]: file };
+
+      // Show preview if it's an image
+      if (name === 'image') {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          updatedData.imagePreview = reader.result;
+          setFormData(updatedData);
+        };
+        reader.readAsDataURL(file);
+      } else {
+        setFormData(updatedData);
+      }
     }
   };
+  
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   onUpdate(formData);
+  // };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onUpdate(formData);
-  };
-
+  // const editBook = () => {
+  //   axios.post(`http://localhost:5001/editBook/${book._id}`,formData)
+  //     .then((res) => {
+  //       console.log(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     })
+  // }
   const editBook = () => {
-    axios.post(`http://localhost:5001/editBook/${book._id}`,formData)
+    const data = new FormData();
+    data.append("authorName", formData.authorName);
+    data.append("bookName", formData.bookName);
+    data.append("description", formData.description);
+    data.append("category", formData.category);
+
+    if (formData.image) {
+      data.append('image', formData.image); // ✅ match multer
+    }
+
+    if (formData.pdf) {
+      data.append('file', formData.pdf); // ✅ match multer
+    }
+  
+    axios
+      .put(`http://localhost:5001/editBook/${book._id}`, data, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
       .then((res) => {
-        console.log(res.data);
+        console.log("Book updated:", res.data);
+        onUpdate(res.data.updatedBook);
+        onClose();
       })
       .catch((err) => {
-        console.log(err);
-      })
-  }
+        console.error("Update error:", err);
+      });
+  };
+
 
   return (
     <div>
@@ -56,7 +106,7 @@ const AdminEditBook = ({ book, onClose, onUpdate }) => {
           <button className="close-button" onClick={onClose}>✖</button>
           <div className="form-container">
             <h2 className='admin-editbook-h2'>UPDATING BOOKS</h2>
-            <form onSubmit={handleSubmit} className="book-form">
+            <form  onSubmit={(e) => e.preventDefault()}className="book-form">
               {/* Name Field */}
               <label className='admin-editbook-label'>
                 {/* Your Name: */}
