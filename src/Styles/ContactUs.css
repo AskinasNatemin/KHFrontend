@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 
-.contact-container {
+.contactcontainer {
   width: 100%;
   max-width: 1000px;
   margin: 40px auto 0 auto;
@@ -14,25 +14,25 @@
   padding: 30px;
 }
 
-.contact-right h2 {
+.contactright h2 {
   font-family: "Righteous", serif;
   color: aliceblue;
 }
 
-.contact-right p {
+.contactright p {
   color: rgb(181, 181, 181);
   margin-top: 20px;
   font-family: Arial;
 }
 
-.contact-grid {
+.contactgrid {
   display: flex;
   flex-direction: row;
   gap: 30px;
   flex-wrap: wrap;
 }
 
-.contact-right {
+.contactright {
   flex: 1;
   min-width: 380px;
   background-color: rgb(124, 6, 6);
@@ -43,34 +43,34 @@
   justify-content: left;
 }
 
-.contact-right ul {
+.contactright ul {
   margin-top: 30px;
   list-style: none;
   padding: 0;
 }
 
-.contact-right li {
+.contactright li {
   margin-bottom: 15px;
   display: flex;
   align-items: center;
   font-size: 1rem;
 }
 
-.contact-right i {
+.contactright i {
   font-size: 1.2rem;
 }
 
-.contact-left {
+.contactleft {
   flex: 1;
   min-width: 280px;
 }
 
-.input-group {
+.inputgroup {
   position: relative;
   margin-bottom: 20px;
 }
 
-.input-icon-left {
+.inputiconleft {
   position: absolute;
   top: 50%;
   left: 15px;
@@ -80,7 +80,7 @@
   pointer-events: none;
 }
 
-.input-group .input-areaicon-left {
+.inputgroup .inputareaiconleft {
   position: absolute;
   left: 15px;
   top: 11px;
@@ -90,8 +90,8 @@
 }
 
 /* UNDERLINE INPUT & TEXTAREA STYLING */
-.input-group input,
-.input-group textarea {
+.inputgroup input,
+.inputgroup textarea {
   width: 100%;
   padding: 12px 15px 12px 45px;
   border: none;
@@ -104,8 +104,8 @@
 }
 
 /* Focus effect */
-.input-group input:focus,
-.input-group textarea:focus {
+.inputgroup input:focus,
+.inputgroup textarea:focus {
   border-bottom: 2px solid rgb(106, 106, 106);
   border-color: rgb(12, 12, 12);
   box-shadow: 0px 0px 10px 0px rgb(192, 190, 190);
@@ -114,7 +114,7 @@
   background: transparent;
 }
 
-.btn-glass {
+.btnglass {
   width: 100%;
   padding: 12px;
   background-color: rgb(124, 6, 6);
@@ -131,12 +131,12 @@
   border: none;
 }
 
-.btn-glass:hover {
+.btnglass:hover {
   background-color: rgb(143, 8, 8);
   transform: scale(1.01);
 }
 
-.btn-glass:active {
+.btnglass:active {
   transform: scale(0.95);
 }
 
@@ -146,12 +146,12 @@
 
 /* Responsive layout */
 @media (max-width: 768px) {
-  .contact-grid {
+  .contactgrid {
     flex-direction: column;
   }
 
-  .contact-left,
-  .contact-right {
+  .contactleft,
+  .contactright {
     border-radius: 15px;
   }
 }

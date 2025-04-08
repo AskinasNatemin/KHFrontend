@@ -16,14 +16,13 @@ import { loggData } from "../Context/AppContext";
 const StaffLogin = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const [password, setPassword] = useState("");
   const [data, setData] = useState({
     Email: "",
     Password: "",
   });
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
-  const { loggedData, setLoggedData } = useContext(loggData);
+  const { setLoggedData } = useContext(loggData);
 
   const handleInputs = (e) => {
     setErrorMsg("");
@@ -53,7 +52,6 @@ const StaffLogin = () => {
       })
       .catch((err) => {
         console.log(err);
-
         setErrorMsg(err.response?.data?.message);
       });
   };
@@ -64,9 +62,7 @@ const StaffLogin = () => {
     }
   };
 
-  const handleGoBack = () => {
-    navigate("/");
-  };
+ 
   return (
     <div className="staffLogContainer">
       <div className="staffLogGoBackContainer">

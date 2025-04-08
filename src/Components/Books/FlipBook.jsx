@@ -108,7 +108,7 @@ const FlipBook = ({ handleFlipMode, pdfUrl: propPdfUrl }) => {
       )}
 
       <button
-        className="LentedBookReadMoreButton"
+        className="LentedBookCloseButton"
         onClick={() => {
           if(locationPdfPath){
             return navigate('/ViewBooks')

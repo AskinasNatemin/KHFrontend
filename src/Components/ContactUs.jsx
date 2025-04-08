@@ -6,12 +6,17 @@ import { FaPhoneVolume } from "react-icons/fa6";
 import { IoLocationSharp, IoPerson } from "react-icons/io5";
 import { MdOutlineSubject } from "react-icons/md";
 import { RiMessage2Fill } from "react-icons/ri";
+import { toast } from "react-toastify";
 import axios from "axios";
 
 const ContactUs = () => {
-  const userId=localStorage.getItem('userId')
-  const [message, setMessage] = useState({userId});
-  
+  const [message, setMessage] = useState({
+    userId: localStorage.getItem("userId") || "",
+    userName: "",
+    userEmail: "",
+    userSubject: "",
+    userMessage: "",
+  });
 
   const handleChange = (e) => {
     setMessage((prev) => {
@@ -20,30 +25,45 @@ const ContactUs = () => {
   };
 
   const handleSendMessage = (e) => {
-    e.preventDefault(); 
-  
+    e.preventDefault();
+
     axios
       .post("http://localhost:5001/sendMessage", message)
       .then((res) => {
-        setMessage({}); 
+        toast.success(res.data.message, {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "colored",
+        });
+        setMessage({
+          userId: localStorage.getItem("userId") || "",
+          userName: "",
+          userEmail: "",
+          userSubject: "",
+          userMessage: "",
+        });
       })
       .catch((err) => {
         console.error("Error sending message:", err.message);
       });
   };
-  
+
   return (
     <div
-      className="container-fluid flex-column homeContainer"
+      className="containerfluid flex-column homeContainer"
       style={{ minHeight: "100vh" }}
     >
       <Navbar />
-      <div className="contact-container">
-        <div className="contact-grid">
-          <div className="contact-left">
-            <form className="glass-form">
-              <div className="input-group">
-                <span className="input-icon-left">
+      <div className="contactcontainer">
+        <div className="contactgrid">
+          <div className="contactleft">
+            <form className="glass-form" onSubmit={handleSendMessage}>
+              <div className="inputgroup">
+                <span className="inputiconleft">
                   <IoPerson />
                 </span>
                 <input
@@ -56,9 +76,8 @@ const ContactUs = () => {
                   onChange={handleChange}
                 />
               </div>
-
-              <div className="input-group">
-                <span className="input-icon-left">
+              <div className="inputgroup">
+                <span className="inputiconleft">
                   <MdEmail />
                 </span>
                 <input
@@ -72,12 +91,12 @@ const ContactUs = () => {
                 />
               </div>
 
-              <div className="input-group">
-                <span className="input-icon-left">
+              <div className="inputgroup">
+                <span className="inputiconleft">
                   <MdOutlineSubject />
                 </span>
                 <input
-                value={message.userSubject}
+                  value={message.userSubject}
                   type="text"
                   id="subject"
                   placeholder="Subject"
@@ -86,8 +105,8 @@ const ContactUs = () => {
                 />
               </div>
 
-              <div className="input-group">
-                <span className="input-areaicon-left">
+              <div className="inputgroup">
+                <span className="inputareaiconleft">
                   <RiMessage2Fill />
                 </span>
                 <textarea
@@ -100,13 +119,13 @@ const ContactUs = () => {
                   value={message.userMessage}
                 ></textarea>
               </div>
-              <button type="submit" onClick={handleSendMessage} className="btn-glass">
+              <button type="submit" className="btnglass">
                 SEND MESSAGE
               </button>
             </form>
           </div>
 
-          <div className="contact-right">
+          <div className="contactright">
             <h2>GET IN TOUCH</h2>
             <p>
               <i>
