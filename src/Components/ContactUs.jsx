@@ -54,16 +54,16 @@ const ContactUs = () => {
 
   return (
     <div
-      className="container-fluid flex-column homeContainer"
+      className="containerfluid flex-column homeContainer"
       style={{ minHeight: "100vh" }}
     >
       <Navbar />
-      <div className="contact-container">
-        <div className="contact-grid">
-          <div className="contact-left">
+      <div className="contactcontainer">
+        <div className="contactgrid">
+          <div className="contactleft">
             <form className="glass-form" onSubmit={handleSendMessage}>
-              <div className="input-group">
-                <span className="input-icon-left">
+              <div className="inputgroup">
+                <span className="inputiconleft">
                   <IoPerson />
                 </span>
                 <input
@@ -76,8 +76,8 @@ const ContactUs = () => {
                   onChange={handleChange}
                 />
               </div>
-              <div className="input-group">
-                <span className="input-icon-left">
+              <div className="inputgroup">
+                <span className="inputiconleft">
                   <MdEmail />
                 </span>
                 <input
@@ -91,8 +91,8 @@ const ContactUs = () => {
                 />
               </div>
 
-              <div className="input-group">
-                <span className="input-icon-left">
+              <div className="inputgroup">
+                <span className="inputiconleft">
                   <MdOutlineSubject />
                 </span>
                 <input
@@ -105,8 +105,8 @@ const ContactUs = () => {
                 />
               </div>
 
-              <div className="input-group">
-                <span className="input-areaicon-left">
+              <div className="inputgroup">
+                <span className="inputareaiconleft">
                   <RiMessage2Fill />
                 </span>
                 <textarea
@@ -119,13 +119,13 @@ const ContactUs = () => {
                   value={message.userMessage}
                 ></textarea>
               </div>
-              <button type="submit" className="btn-glass">
+              <button type="submit" className="btnglass">
                 SEND MESSAGE
               </button>
             </form>
           </div>
 
-          <div className="contact-right">
+          <div className="contactright">
             <h2>GET IN TOUCH</h2>
             <p>
               <i>

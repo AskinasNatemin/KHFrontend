@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(26, 26, 26, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,12 +13,14 @@
 
 .ratingsContainer {
   background: white;
-  padding: 20px;
+  padding: 10px;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 15px rgba(2, 2, 2, 2.2);
   text-align: center;
   position: relative;
   width: 320px;
+  height: 200px;
+
 }
 
 .ratingsCloseButton {
@@ -29,20 +31,37 @@
   border: none;
   background: none;
   cursor: pointer;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
+.ratingsCloseButton:hover{
+  background-color: rgb(200, 0, 0);
+  color: #f4f4f9;
+  transform: scale(1.05);
+}
+
+.ratingsCloseButton:active{
+  transform: scale(0.95);
+
+}
 .ratingsStars {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 10px;
+  margin-top: 25px;
 }
 
 .ratingsStar {
   width: 40px;
   height: 40px;
   transition: transform 0.2s ease, fill 0.3s ease;
-  color: gray;
+  color: rgb(59, 59, 59);
   cursor: pointer;
 }
 
@@ -58,4 +77,28 @@
   font-weight: bold;
   color: #333;
   margin-top: 10px;
+}
+.RatingsButtonContainer .RatingsButton{
+  margin-top: 5px;
+  background-color: rgb(124, 6, 6);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  font-weight: bold;
+}
+
+.RatingsButtonContainer .RatingsButton:hover{
+  background-color: rgb(153, 8, 8);
+  transform: scale(1.01);
+}
+
+.RatingsButtonContainer .RatingsButton:active{
+  transform: scale(0.95);
+
 }
