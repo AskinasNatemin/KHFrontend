@@ -72,15 +72,16 @@ const AdminEditBook = ({ book, onClose, onUpdate }) => {
     data.append("category", formData.category);
 
     if (formData.image) {
-      data.append('image', formData.image); // ✅ match multer
+      data.append('imageFile', formData.image); 
     }
-
+    
     if (formData.pdf) {
-      data.append('file', formData.pdf); // ✅ match multer
+      data.append('bookFile', formData.pdf); 
     }
+    
   
     axios
-      .put(`http://localhost:5001/editBook/${book._id}`, data, {
+      .post(`http://localhost:5001/editBook/${book._id}`, data, {
         headers: { "Content-Type": "multipart/form-data" },
       })
       .then((res) => {
