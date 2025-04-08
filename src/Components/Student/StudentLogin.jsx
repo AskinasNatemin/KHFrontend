@@ -9,14 +9,16 @@ import { FaLock, FaHome } from "react-icons/fa";
 import { FiAlertTriangle } from "react-icons/fi";
 import { TiTick } from "react-icons/ti";
 import studentLoginImage from "../../Assets/images/LoginImage/studentLoginIMG.png";
+import { Logged } from "../Context/AppContext"; // ✅ Add this
 
 function StudentLogin() {
   const [data, setData] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
-  const { setLoggedData } = useContext(loggData);
   const navigate = useNavigate();
+  const { setLoggedData } = useContext(loggData);
+  const { setIsLogged } = useContext(Logged);
 
   useEffect(() => {
     setErrorMsg("");
@@ -28,15 +30,18 @@ function StudentLogin() {
     setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  // ✅ Add this
+
   const handleLogin = () => {
     axios
       .post("http://localhost:5001/studentLogin", data)
       .then((res) => {
         localStorage.setItem("userId", res.data.data._id);
         localStorage.setItem("user", res.data.data.user);
-        setErrorMsg("");
-        setSuccessMsg(res.data.message);
+        localStorage.setItem("isLogged", "true"); // ✅ Add this
+        setIsLogged(true); // ✅ Add this
         setLoggedData(res.data.data);
+        setSuccessMsg(res.data.message);
         setTimeout(() => navigate("/", { replace: true }), 500);
       })
       .catch((err) => {
@@ -53,8 +58,9 @@ function StudentLogin() {
   return (
     <div className="studentLogContainer">
       <div className="studentLogGoBackContainer ">
-        <FaHome onClick={() => navigate("/")}
-         className="studentLogGoBackIcon"
+        <FaHome
+          onClick={() => navigate("/")}
+          className="studentLogGoBackIcon"
         />
       </div>
       <div className="studentLogImageContainer">

@@ -1,17 +1,61 @@
-.ratings-container {
-    display: flex;
-    gap: 8px;
-    cursor: pointer;
-  }
-  
-  .star {
-    width: 32px;
-    height: 32px;
-    transition: color 0.3s ease;
-    color: gray;
-  }
-  
-  .star.filled {
-    color: gold;
-  }
-  
+.ratingsOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.ratingsContainer {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: relative;
+  width: 320px;
+}
+
+.ratingsCloseButton {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 22px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.ratingsStars {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.ratingsStar {
+  width: 40px;
+  height: 40px;
+  transition: transform 0.2s ease, fill 0.3s ease;
+  color: gray;
+  cursor: pointer;
+}
+
+.ratingsStar:hover,
+.ratingsFilled {
+  fill: gold;
+  stroke: gold;
+  transform: scale(1.1);
+}
+
+.ratingsValue {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 10px;
+}
