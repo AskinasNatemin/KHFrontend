@@ -14,8 +14,8 @@
 
 .viewBooks-card-row{
   overflow-x: hidden ;
-  overflow: scroll ;
-  height:700px;
+  overflow: auto ;
+  height:85vh;
 }
 .admin-viewbooks-card-box {
   width: 80%;

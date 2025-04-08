@@ -72,11 +72,11 @@ const AdminEditBook = ({ book, onClose, onUpdate }) => {
     data.append("category", formData.category);
 
     if (formData.image) {
-      data.append('image', formData.image); // ✅ match multer
+      data.append('imageFile', formData.image); // ✅ match multer
     }
 
     if (formData.pdf) {
-      data.append('file', formData.pdf); // ✅ match multer
+      data.append('bookFile', formData.pdf); // ✅ match multer
     }
   
     axios

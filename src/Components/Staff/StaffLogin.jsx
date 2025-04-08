@@ -11,19 +11,19 @@ import { FiAlertTriangle } from "react-icons/fi";
 import { TiTick } from "react-icons/ti";
 import staffLoginImage from "../../Assets/images/LoginImage/studentLoginIMG.png";
 import axios from "axios";
-import { loggData } from "../Context/AppContext";
+import { loggData, Logged } from "../Context/AppContext";
 
 const StaffLogin = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const [password, setPassword] = useState("");
   const [data, setData] = useState({
     Email: "",
     Password: "",
   });
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
-  const { loggedData, setLoggedData } = useContext(loggData);
+  const { setLoggedData } = useContext(loggData);
+  const { setIsLogged } = useContext(Logged); 
 
   const handleInputs = (e) => {
     setErrorMsg("");
@@ -39,22 +39,16 @@ const StaffLogin = () => {
       .then((res) => {
         localStorage.setItem("userId", res.data.data._id);
         localStorage.setItem("user", res.data.data.user);
-        setErrorMsg("");
-        setSuccessMsg(res.data.message);
+        localStorage.setItem("isLogged", "true"); 
         setLoggedData(res.data.data);
-        return res;
-      })
-      .then((res) => {
-        if (res) {
-          setTimeout(() => {
-            navigate("/", { replace: true });
-          }, 500);
-        }
+        setIsLogged(true); 
+        setSuccessMsg(res.data.message);
+        setErrorMsg("");
+
+        setTimeout(() => navigate("/", { replace: true }), 500);
       })
       .catch((err) => {
-        console.log(err);
-
-        setErrorMsg(err.response?.data?.message);
+        setErrorMsg(err.response?.data?.message || "Login failed");
       });
   };
 
@@ -64,9 +58,6 @@ const StaffLogin = () => {
     }
   };
 
-  const handleGoBack = () => {
-    navigate("/");
-  };
   return (
     <div className="staffLogContainer">
       <div className="staffLogGoBackContainer">

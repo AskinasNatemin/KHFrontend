@@ -1,0 +1,157 @@
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+
+.contact-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 40px auto 0 auto;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(1, 1, 1, 0.3);
+  overflow: hidden;
+  padding: 30px;
+}
+
+.contact-right h2 {
+  font-family: "Righteous", serif;
+  color: aliceblue;
+}
+
+.contact-right p {
+  color: rgb(181, 181, 181);
+  margin-top: 20px;
+  font-family: Arial;
+}
+
+.contact-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.contact-right {
+  flex: 1;
+  min-width: 380px;
+  background-color: rgb(124, 6, 6);
+  color: white;
+  padding: 40px;
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
+  justify-content: left;
+}
+
+.contact-right ul {
+  margin-top: 30px;
+  list-style: none;
+  padding: 0;
+}
+
+.contact-right li {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.contact-right i {
+  font-size: 1.2rem;
+}
+
+.contact-left {
+  flex: 1;
+  min-width: 280px;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-icon-left {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  color: #000000;
+  font-size: 1.2rem;
+  pointer-events: none;
+}
+
+.input-group .input-areaicon-left {
+  position: absolute;
+  left: 15px;
+  top: 11px;
+  font-size: 1.2rem;
+  color: #020202;
+  pointer-events: none;
+}
+
+/* UNDERLINE INPUT & TEXTAREA STYLING */
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 12px 15px 12px 45px;
+  border: none;
+  border-bottom: 2px solid #000;
+  background: transparent;
+  font-size: 1rem;
+  outline: none;
+  color: #000;
+  border-radius: 0;
+}
+
+/* Focus effect */
+.input-group input:focus,
+.input-group textarea:focus {
+  border-bottom: 2px solid rgb(106, 106, 106);
+  border-color: rgb(12, 12, 12);
+  box-shadow: 0px 0px 10px 0px rgb(192, 190, 190);
+
+
+  background: transparent;
+}
+
+.btn-glass {
+  width: 100%;
+  padding: 12px;
+  background-color: rgb(124, 6, 6);
+  color: white;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial;
+  font-weight:bold ;
+  border: none;
+}
+
+.btn-glass:hover {
+  background-color: rgb(143, 8, 8);
+  transform: scale(1.01);
+}
+
+.btn-glass:active {
+  transform: scale(0.95);
+}
+
+.ContactUsIcon {
+  margin-right: 3px;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .contact-grid {
+    flex-direction: column;
+  }
+
+  .contact-left,
+  .contact-right {
+    border-radius: 15px;
+  }
+}

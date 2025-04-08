@@ -44,12 +44,20 @@ function ViewStaffs() {
           <tbody className='admin-viewstaff-tbody'>
             {staffs.map((staff, i) => (
               <tr className='admin-viewstaff-tr' key={staff._id}>
-                <th scope="row">{i+1}</th>
+                <th scope="row">{i + 1}</th>
                 <td className='admin-viewstaff-td'>{staff.staffname}</td>
                 <td>{staff.email}</td>
                 <td>{staff.contact}</td>
                 <td>
-                  <button className="admin-viewstaff-details-btn">DETAILS</button>
+                  <div className='admin-viewstaff-category-and-btn-div'>
+                    <select id="infoType" name="infoType" className="mr-2  admin-viewstaff-select" required>
+                    <option value="" disabled selected>Select Field</option>                      <option value="favorites">Favorites</option>
+                      <option value="lend-details">Lend Details</option>
+                      <option value="message">Message</option>
+                    </select>
+                    <button className="admin-viewstaff-details-btn">DETAILS</button>
+                  </div>
+
                 </td>
               </tr>
             ))}

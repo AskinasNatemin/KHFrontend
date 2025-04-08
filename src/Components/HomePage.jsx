@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import "../Styles/HomePage.css";
 import "../Styles/SelectUserModel.css";
@@ -18,7 +18,14 @@ const HomePage = () => {
   ]);
 
   const navigate = useNavigate();
-  const handleRegistration = (type) => {
+
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    if (userId == 12345) {
+      navigate("/AdminMainDash", { replace: true });
+    }
+  }, []);
+  const handleRegistration = () => {
     setOpenUserSelectionModel(true);
   };
 
