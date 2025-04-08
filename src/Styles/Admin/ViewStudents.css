@@ -1,0 +1,16 @@
+
+.admin-viewStudents-table-div{
+    background-color: rgb(246, 246, 246);
+    /* height: 100%;
+    width: 100%; */
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow:  5px 5px 5px #8f8f8f,
+             -5px -5px 5px #ffffff;
+}
+.admin-viewStudents-table{
+    border: 1px solid rgba(0, 0, 0, 0.218);
+}
+.admin-viewStudents-td:hover{
+    background-color: rgb(235, 233, 233);
+}
