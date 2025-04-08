@@ -49,22 +49,30 @@
 }
 
 /* Button */
-.LentedBookReadMoreButton {
-  margin-top: 10px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  background-color: #007bff;
+.LentedBookCloseButton {
+  background-color: rgb(124, 6, 6);
   color: white;
   border: none;
-  border-radius: 5px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  font-size: 14px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
+  font-weight: bold;
   z-index: 2;
 }
 
-.LentedBookReadMoreButton:hover {
-  background-color: #0056b3;
+.LentedBookCloseButton:hover {
+  background-color: rgb(153, 8, 8);
+  transform: scale(1.01);
 }
+.LentedBookCloseButton:active {
+  transform: scale(0.95);
+
+}
+
 
 /* Responsive Adjustments */
 @media (max-width: 1024px) {

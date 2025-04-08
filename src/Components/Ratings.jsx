@@ -27,15 +27,19 @@ const Ratings = ({ initialRating = 0, onRate, onClose }) => {
               }}
             />
           ))}
-          <button
+        
+        </div>
+        <span className="ratingsValue">{rating} / 5</span>
+       
+        <div className="RatingsButtonContainer">
+        <button className="RatingsButton"
             onClick={() => {
               if (onRate) onRate(rating);
             }}
           >
             submit
           </button>
-        </div>
-        <span className="ratingsValue">{rating} / 5</span>
+          </div>
       </div>
     </div>
   );

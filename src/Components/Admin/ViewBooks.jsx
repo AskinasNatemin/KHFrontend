@@ -57,9 +57,8 @@ function ViewBooks() {
 
   const handleUpdate = (updatedBook) => {
     console.log("Updating book:", updatedBook);
-    booksview(); 
-    setSelectedBook(null); 
-
+    booksview();
+    setSelectedBook(null);
   };
 
   const filteredBooks = books.filter(
