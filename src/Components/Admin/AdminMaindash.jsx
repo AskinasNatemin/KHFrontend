@@ -41,7 +41,7 @@ function AdminMaindash({ data }) {
         </div>
 
         {/* Main Content */}
-        <div className="col-10 border border-5" style={{ height: "100vh", overflowY: "auto" }}>
+        <div className="col-10" style={{ height: "100vh", overflowY: "auto" }}>
           {/* <AdminDashboardTopbar /> */}
           {renderContent()}
         </div>

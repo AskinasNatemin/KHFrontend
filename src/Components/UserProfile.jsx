@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../Styles/Profile.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Logged } from "./Context/AppContext";
 
 const UserProfile = () => {
   const [userData, setUserData] = useState();
@@ -9,11 +10,16 @@ const UserProfile = () => {
   const [user, setUser] = useState(localStorage.getItem("user"));
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    localStorage.removeItem("userId");
-    localStorage.removeItem("user");
-    navigate("/", { replace: true });
-  };
+const { setIsLogged } = useContext(Logged); // ✅ Add this
+
+const handleLogout = () => {
+  localStorage.removeItem("userId");
+  localStorage.removeItem("user");
+  localStorage.removeItem("isLogged"); // ✅ Add this
+  setIsLogged(false); // ✅ Add this
+  navigate("/", { replace: true });
+};
+
 
   useEffect(() => {
     if (user === "student") {
