@@ -64,6 +64,7 @@ const AdminEditBook = ({ book, onClose, onUpdate }) => {
   //       console.log(err);
   //     })
   // }
+  
   const editBook = () => {
     const data = new FormData();
     data.append("authorName", formData.authorName);
