@@ -27,7 +27,7 @@ function ViewBooks() {
         console.log("error updating books ", err);
       });
   };
-
+  
   const deleteBook = (id) => {
     const confirm = window.confirm(
       "Are you sure that you need to delete this book"
