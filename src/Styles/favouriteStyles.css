@@ -168,7 +168,7 @@
 
 .delFavouriteIcon:hover {
   color: darkred;
-  transform: scale(0.95);
+  transform: scale(1.02);
 }
 .delFavouriteIcon:active {
   transform: scale(0.95);
@@ -187,4 +187,57 @@
 
 .favouriteContainer::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, rgb(157, 25, 25), rgb(194, 65, 65));
+}
+
+.backToBooksContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+}
+
+.backToBooksButton{
+  background-color: rgb(124, 6, 6);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  font-weight: bold;
+}
+
+.backToBooksButton:hover{
+  background-color: rgb(153, 8, 8);
+  transform: scale(1.02);
+}
+.backToBooksButton:active{
+  transform: scale(0.95);
+}
+.backToBooksTitle{
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #ff3535;
+}
+.backToBooksMessage{
+  font-size: 16px;
+  color: #000000;
+  margin-bottom: 20px;
+}
+.backToBooksBox{
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(1, 1, 1, 0.5);
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+
+}
+.backToBooksBox:hover{
+  transform: scale(1.02);
+
 }
