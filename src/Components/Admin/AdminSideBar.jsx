@@ -6,7 +6,7 @@ import { PiStudentFill } from "react-icons/pi";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { SiBookstack } from "react-icons/si";
 import { ImBooks } from "react-icons/im";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 function AdminSideBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,45 +29,45 @@ function AdminSideBar() {
       <ul className="admin-sidebar-ul">
         <li className="admin-sidebar-ul-li">
           <div className="admin-sidebar-icon-and-content-div">
-            <Link to="/ViewStaffs">
+            <NavLink to="/ViewStaffs">
               <FaChalkboardTeacher className="sidebar-icon" />
-            </Link>
-            <Link className="admin-sidebar-ul-li-a" to="/ViewStaffs">
+            </NavLink>
+            <NavLink className="admin-sidebar-ul-li-a" to="/ViewStaffs">
               VIEW STAFF
-            </Link>
+            </NavLink>
           </div>
         </li>
 
         <li className="admin-sidebar-ul-li">
           <div className="admin-sidebar-icon-and-content-div">
-            <Link to="/ViewStudents">
+            <NavLink to="/ViewStudents">
               <PiStudentFill className="sidebar-icon" />
-            </Link>
-            <Link className="admin-sidebar-ul-li-a" to="/ViewStudents">
+            </NavLink>
+            <NavLink className="admin-sidebar-ul-li-a" to="/ViewStudents">
               VIEW STUDENTS
-            </Link>
+            </NavLink>
           </div>
         </li>
 
         <li className="admin-sidebar-ul-li">
           <div className="admin-sidebar-icon-and-content-div">
-            <Link to="/ViewBooks">
+            <NavLink to="/ViewBooks">
               <SiBookstack className="sidebar-icon" />
-            </Link>
-            <Link className="admin-sidebar-ul-li-a" to="/ViewBooks">
+            </NavLink>
+            <NavLink className="admin-sidebar-ul-li-a" to="/ViewBooks">
               VIEW BOOKS
-            </Link>
+            </NavLink>
           </div>
         </li>
 
         <li className="admin-sidebar-ul-li">
           <div className="admin-sidebar-icon-and-content-div">
-            <Link to="/AddingBooks">
+            <NavLink to="/AddingBooks">
               <ImBooks className="sidebar-icon" />
-            </Link>
-            <Link className="admin-sidebar-ul-li-a" to="/AddingBooks">
+            </NavLink>
+            <NavLink className="admin-sidebar-ul-li-a" to="/AddingBooks">
               ADD BOOKS
-            </Link>
+            </NavLink>
           </div>
         </li>
       </ul>
