@@ -64,6 +64,14 @@
     background: rgba(255, 255, 255, 0.2);
     border-radius: 5px;
   }
+  .admin-sidebar-icon-and-content-div:active{
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+  }
+
+  .admin-sidebar-icon-and-content-div .active{
+    color: aqua;
+  }
 
   .sidebar-icon {
     font-size: 1.5rem;

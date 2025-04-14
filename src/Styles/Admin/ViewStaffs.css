@@ -25,7 +25,10 @@
     padding: 20px;
     background: rgba(255, 255, 255, 0.414);
     border-radius: 8px;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+    
+    box-shadow: 
+    -5px -5px 10px #c3c3c3,
+    10px 10px 10px rgba(0, 0, 0, 0.1);
     overflow-x: auto;
  
 }
@@ -38,7 +41,7 @@
 .admin-viewstaff-table-main  {
     width: 100%;
     border-collapse: collapse;
-    min-width: 600px;
+    min-width: 600px;   
 }
 
 .admin-viewstaff-th, .admin-viewstaff-td {
@@ -72,6 +75,9 @@
 
 .admin-viewstaff-details-btn:hover {
     background-color: #45a049;
+}
+.admin-viewstaff-select{
+    margin-right: 8px;
 }
 
 /* Responsive Design */

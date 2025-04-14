@@ -79,7 +79,6 @@ const AdminEditBook = ({ book, onClose, onUpdate }) => {
     if (formData.pdf) {
       data.append('bookFile', formData.pdf); 
     }
-    
   
     axios
       .post(`http://localhost:5001/editBook/${book._id}`, data, {

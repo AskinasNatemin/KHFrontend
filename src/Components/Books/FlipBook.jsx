@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import HTMLFlipBook from "react-pageflip";
 import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf";
 import pdfWorker from "pdfjs-dist/legacy/build/pdf.worker.entry";
@@ -10,15 +10,14 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
 const FlipBook = ({ handleFlipMode, pdfUrl: propPdfUrl }) => {
   const [pages, setPages] = useState([]);
   const [bookSize, setBookSize] = useState({ width: 750, height: 1000 });
-  const navigate = useNavigate('')
-
+  const hasLoadedPDF = useRef(false); // ✅ Prevent duplicate loads
+  const navigate = useNavigate();
   const location = useLocation();
+
   const locationPdfPath = location.state?.pdfUrl;
 
-  // Build full URL from location path if present
   const pdfUrl =
-    propPdfUrl ||
-    (locationPdfPath ? `http://localhost:5001/${locationPdfPath}` : null);
+    propPdfUrl || (locationPdfPath ? `http://localhost:5001/${locationPdfPath}` : null);
 
   useEffect(() => {
     const updateSize = () => {
@@ -36,7 +35,10 @@ const FlipBook = ({ handleFlipMode, pdfUrl: propPdfUrl }) => {
 
   useEffect(() => {
     const loadPDF = async () => {
-      if (!pdfUrl) return;
+      if (!pdfUrl || hasLoadedPDF.current) return;
+
+      hasLoadedPDF.current = true;
+      console.log("Loading PDF:", pdfUrl);
 
       try {
         setPages([]);
@@ -56,7 +58,7 @@ const FlipBook = ({ handleFlipMode, pdfUrl: propPdfUrl }) => {
 
           const renderContext = {
             canvasContext: context,
-            viewport: viewport,
+            viewport,
             intent: "print",
           };
 
@@ -94,7 +96,7 @@ const FlipBook = ({ handleFlipMode, pdfUrl: propPdfUrl }) => {
           <div className="LentedFlipBookPage">Front Cover</div>
 
           {pages.map((image, index) => (
-            <div key={index} className="LentedFlipBookPage">
+            <div key={`page-${index}`} className="LentedFlipBookPage">
               <img
                 src={image}
                 alt={`Page ${index + 1}`}
@@ -110,13 +112,13 @@ const FlipBook = ({ handleFlipMode, pdfUrl: propPdfUrl }) => {
       <button
         className="LentedBookCloseButton"
         onClick={() => {
-          if(locationPdfPath){
-            return navigate('/ViewBooks')
+          if (locationPdfPath) {
+            return navigate("/ViewBooks");
           }
           handleFlipMode();
         }}
       >
-        Close FlipBook
+        Close Book
       </button>
     </div>
   );
