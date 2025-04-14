@@ -8,18 +8,17 @@ const UserProfile = () => {
   const [userData, setUserData] = useState();
   const [id, setId] = useState(localStorage.getItem("userId"));
   const [user, setUser] = useState(localStorage.getItem("user"));
+  const [show, setShow] = useState(true);
   const navigate = useNavigate();
+  const { setIsLogged } = useContext(Logged);
 
-const { setIsLogged } = useContext(Logged); // ✅ Add this
-
-const handleLogout = () => {
-  localStorage.removeItem("userId");
-  localStorage.removeItem("user");
-  localStorage.removeItem("isLogged"); // ✅ Add this
-  setIsLogged(false); // ✅ Add this
-  navigate("/", { replace: true });
-};
-
+  const handleLogout = () => {
+    localStorage.removeItem("userId");
+    localStorage.removeItem("user");
+    localStorage.removeItem("isLogged");
+    setIsLogged(false);
+    navigate("/", { replace: true });
+  };
 
   useEffect(() => {
     if (user === "student") {
@@ -43,25 +42,57 @@ const handleLogout = () => {
     }
   }, []);
 
-  return (
-    <div className="profilePopupContainer p-4 ">
-      <div className="profilePopupHeader">
-        <p>{user?.toUpperCase()}</p>
-        <p>
-          {" "}
-          <span className="profileUserName">UserName :</span>
-          {user === "staff"
-            ? userData?.staffname
-            : user === "student"
-            ? userData?.studentName
-            : ""}
-        </p>
-        <p>{userData?.email}</p>
+  const ProfileModal = ({ show, onClose }) => {
+    if (!show) return null;
+
+    return (
+      <div className="profilePopupContainer">
+        <div className="profile-modal-card">
+          <div className="profile-header text-center">
+            <img
+              src="https://via.placeholder.com/120"
+              alt="Profile"
+              className="profile-img"
+            />
+          </div>
+          <div className="profile-body">
+            <h5>
+              {" "}
+              {user === "staff"
+                ? userData?.staffname
+                : user === "student"
+                ? userData?.studentName
+                : ""}
+            </h5>
+            <div className="info-row">
+              <span className="info-label">Contact :</span>
+              <div className="UserData"> {userData?.contact}</div>
+            </div>
+            <div className="info-row">
+              <span className="info-label">Email ID :</span>{" "}
+              <div className="UserData">{userData?.email}</div>
+            </div>
+            <div className="info-row">
+              <span className="info-label">Type :</span>{" "}
+              <div className="UserData">
+              {user?.toUpperCase()}</div>
+            </div>
+            <div className=" UserProgfileButton">
+              <button className="edit-btn"onClick={() => navigate("/UserEditProfile")}>Edit</button>
+              <button className="ProfileLogoutButton" onClick={handleLogout}>
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <button onClick={handleLogout} type="button" className="logoutBtn">
-        LOG OUT
-      </button>
-    </div>
+    );
+  };
+
+  return (
+    <>
+      <ProfileModal show={show} onClose={() => setShow(false)} />
+    </>
   );
 };
 

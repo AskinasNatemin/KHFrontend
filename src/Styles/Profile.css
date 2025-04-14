@@ -1,43 +1,146 @@
-/* Profile Popup Container */
-.profilePopupContainer {
-    background-color: #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    z-index: 9999;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  
-  /* Style for the logout button */
-  .logoutBtn {
-    background-color: rgb(124, 6, 6);
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
-    font-size: 14px;
-    display: flex;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
-    font-weight: bold;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .logoutBtn:hover {
-    background-color: rgb(153, 8, 8);
-    transform: scale(1.05);
-   }
-   .logoutBtn:active {
-    transform: scale(0.95);
-   }
 
-  
-  .profilePopupHeader{
-    padding-right:50px;
+.profilePopupContainer {
+  background-color:none;
+  z-index: 999;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.profile-modal-card {
+  box-shadow: 0 10px 25px rgba(1, 1, 1, 0.5);
+  width: 350px;
+  max-width: 400px;
+  background-color: white;
+  border-radius: 20px;
+  overflow: hidden;
+  animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: scale(0.45);
+    opacity: 0;
   }
-  .profileUserName{
-    color: rgb(35, 102, 124);
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
+}
+
+.profile-header {
+  background-color: rgb(124, 6, 6);
+  padding-top: 60px;
+  position: relative;
+}
+
+.profile-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid rgb(0, 0, 0);
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.profile-body {
+  background-color: white;
+  padding: 80px 20px 30px;
+  text-align: center;
+}
+
+.profile-body h5 {
+  color: #cf0000;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.info-row {
+  text-align: left;
+  margin: 10px 0;
+
+}
+.UserData{
+  color: #cf0000;
+  font-weight: 800;
+  padding-left: 10px;
+
+}
+.info-label {
+  padding-left: 10px;
+  font-weight:bolder;
+  color: #060606;
+
+}
+
+.edit-btn {
+  border: none;
+  background-color: #4a4a4a;
+  color: white;
+  border-radius: 10px;
+  padding: 5px 20px;
+  transition: background 0.3s ease, transform 0.2s ease;
+
+
+}
+.edit-btn:hover{
+  background-color: rgb(96, 96, 96);
+  color: #fff;
+  transform: scale(1.01);
+}
+
+.edit-btn:active{
+  background-color: #4a4a4a;
+  color: #fff;
+  transform: scale(0.95);
+
+}
+/* From Uiverse.io by Shoh2008 */
+.ProfileLogoutButton {
+  margin-left: 130px;
+  padding: 5px 25px;
+  font-size: 18px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  transition: 0.5s;
+  background: #1e1e1e;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  box-shadow: 0 0 10px #363636, inset 0 0 10px #363636;
+}
+
+.ProfileLogoutButton:hover {
+  animation: a 0.5s 1 linear;
+}
+
+@keyframes a {
+  0% {
+    transform: scale(0.7, 1.3);
+  }
+
+  25% {
+    transform: scale(1.3, 0.7);
+  }
+
+  50% {
+    transform: scale(0.7, 1.3);
+  }
+
+  75% {
+    transform: scale(1.3, 0.7);
+  }
+
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+.UserProgfileButton{
+  display: flex;
+  margin-top: 20px;
+}

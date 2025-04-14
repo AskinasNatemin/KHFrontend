@@ -25,6 +25,7 @@ import AdminEditBook from "./Components/Admin/AdminEditBook";
 import FlipBook from "./Components/Books/FlipBook";
 import ContactUs from "./Components/ContactUs";
 import ProtectedRoute from "./Components/ProtectedRoute.jsx";
+import UserEditProfile from "./Components/UserEditProfile.jsx";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
 
           {/* 🔓 Public routes */}
+          <Route path="UserEditProfile" element={<UserEditProfile/>}/>
           <Route path="Navbar" element={<Navbar />} />
           <Route path="AdminLogin" element={<AdminLogin />} />
           <Route path="StaffRegistration" element={<StaffRegistration />} />
