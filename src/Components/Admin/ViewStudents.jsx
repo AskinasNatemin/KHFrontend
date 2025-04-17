@@ -6,21 +6,23 @@ function ViewStudents() {
 
   const [students, setStudents] = useState([]);
   const [selectedStudent, setSelectedStudent] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState({});
   const [showModal, setShowModal] = useState(false);
   const [favoritesData, setFavoritesData] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [messageData, setMessageData] = useState(null);
+  const [selectedCategoryForModal, setSelectedCategoryForModal] = useState("");
 
-  const selectCategory = (category, i) => {
-    setSelectedCategory((prev) => {
-      return [...prev, { [i]: category  }]
-    })
-  }
+
+  const selectCategory = (category, studentId) => {
+    setSelectedCategories((prev) => ({
+      ...prev,
+      [studentId]: category,
+    }));
+  };
 
   const handleDetails = (i) => {
     console.log(i);
-    
+
 
   }
 
@@ -35,27 +37,58 @@ function ViewStudents() {
       })
   }, [])
 
-  useEffect(() => {
-    if (showModal && selectedCategory === "favorites" && selectedStudent) {
-      setLoading(true);
-      setError(null);
-      setFavoritesData(null);
 
-      axios.post(`http://localhost:5001/getAllUserFavouriteBooks`, {
-        userId: selectedStudent._id,
-      })
-        .then((res) => {
-          setFavoritesData(res.data);
-        })
-        .catch((err) => {
-          console.error("Error fetching favorite books:", err);
-          setError("Failed to load favorite books.");
-        })
-        .finally(() => {
-          setLoading(false);
-        });
+  const handleDetailsClick = async (student) => {
+    console.log(selectedCategories);
+
+    const category = selectedCategories[student._id];
+    if (!category) {
+      alert("Please select a category first");
+      return;
     }
-  }, [showModal, selectedCategory, selectedStudent]);
+
+    setSelectedStudent(student);
+    setSelectedCategoryForModal(category);
+    setShowModal(true);
+
+    if (category === "favorites") {
+      try {
+        const res = await axios.post("http://localhost:5001/studentFavouriteBooks", {
+          userId: student._id,
+        });
+        setFavoritesData(res.data.favouriteBooks);
+      } catch (err) {
+        console.error("Failed to fetch favorites:", err);
+      }
+    }
+
+    if (category === "message") {
+      try {
+        const res = await axios.get(`http://localhost:5001/getUserMessage/${student._id}`);
+        setMessageData(res.data); // reuse same state for message info
+        console.log("Fetched message:", res.data);
+      } catch (err) {
+        console.error("Failed to fetch message:", err);
+      }
+    }
+  };
+
+
+  const closeModal = () => {
+    setShowModal(false);
+    setSelectedCategoryForModal("");
+    setSelectedStudent(null);
+    setFavoritesData(null);
+    setMessageData(null);
+    setSelectedCategories((prev) => {
+      const updated = { ...prev };
+      if (selectedStudent?._id) {
+        delete updated[selectedStudent._id];
+      }
+      return updated;
+    });
+  };
+
 
   return (
     <div>
@@ -85,10 +118,12 @@ function ViewStudents() {
                 <td>{student.contact}</td>
                 <td>
                   <div className='admin-viewStudent-category-and-btn-div'>
-                    <select id="infoType" name="infoType" className="mr-2  admin-viewStudent-select"
-                      onChange={(e) => selectCategory(e.target.value, i)}
-                      defaultValue=""
-                      required>
+                    <select
+                      onChange={(e) => selectCategory(e.target.value, student._id)}
+                      value={selectedCategories[student._id] || ""}
+                      required
+                      className="mr-2 admin-viewStudent-select"
+                    >
                       <option value="" disabled selected>Select Field</option>
                       <option value="favorites">Favorites</option>
                       <option value="lend-details">Lend Details</option>
@@ -96,7 +131,7 @@ function ViewStudents() {
                     </select>
                     <button
                       onClick={
-                        () => handleDetails(i)
+                        () => handleDetailsClick(student)
                       }
                       className="admin-viewStudent-details-btn">DETAILS</button>
                   </div>
@@ -109,38 +144,73 @@ function ViewStudents() {
 
       </div>
       {showModal && selectedStudent && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <h3>{selectedCategory.toUpperCase()} for {selectedStudent.studentName.toUpperCase()}</h3>
-            <div className="modal-body">
-              {selectedCategory === "favorites" && (
-                <div>
-                  {loading && <p>Loading...</p>}
-                  {error && <p style={{ color: "red" }}>{error}</p>}
-                  {!loading && !error && favoritesData && favoritesData.length > 0 && (
-                    <ul>
-                      {favoritesData.map((book, index) => (
-                        <li key={index}>{book.title}</li>
-                      ))}
-                    </ul>
-                  )}
-                  {!loading && !error && favoritesData && favoritesData.length === 0 && (
+        <div className="admin-viewStudents-modal-overlay">
+          <div className="admin-viewStudents-modal-content">
+            <div className="admin-viewStudents-modal-header">
+              <h3 className='text-center'>
+                {selectedCategories[selectedStudent._id].toUpperCase()} FOR {selectedStudent?.studentName.toUpperCase()}
+              </h3>
+              <button
+                onClick={closeModal}
+                className="admin-viewStudents-modal-close-btn"
+                aria-label="Close modal"
+              >
+                &times;
+              </button>
+            </div>
+            <div className="admin-viewStudents-modal-body">
+              {selectedCategoryForModal === "favorites" && (
+                <div className="admin-viewStudents-favorites-container">
+                  {favoritesData && favoritesData.length > 0 ? (
+                    favoritesData.map((book) => (
+                      <div key={book._id} className="admin-viewStudents-favorite-book-card">
+                        <img
+                          src={`http://localhost:5001/${book.imagePath}`}
+                          alt={book.bookName}
+                          className="admin-viewStudents-book-image"
+                        />
+                        <div className="admin-viewStudents-book-info">
+                          <p className="admin-viewStudents-card-p1">
+                            <strong className="admin-viewStudents-card-strong"><span className='admin-viewStaff-span'>BOOK NAME : </span> {book.bookName}</strong>
+                          </p>
+                          <p className="admin-viewStudents-card-p2"><span className='admin-viewStaff-span'>AUTHOR NAME : </span>{book.authorName}</p>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
                     <p>No favorite books found.</p>
                   )}
                 </div>
               )}
-              {selectedCategory === "lend-details" && (
+              {selectedCategoryForModal === "lend-details" && (
                 <p>Show lend details here...</p>
               )}
-              {selectedCategory === "message" && (
-                <p>Show message info here...</p>
+              {selectedCategoryForModal === "message" && (
+                messageData && messageData.length > 0 ? (
+                  messageData.map((msg, index) => (
+                    <div key={msg._id || index} className="admin-viewStudents-message-card">
+                      <div className="admin-viewStudents-msg-card-content">
+                        <p className='admin-viewStudents-msg-p'>
+                          <strong className='admin-viewStudents-msg-strong'>Name:</strong> {msg.userName}
+                        </p>
+                        <p className='admin-viewStudents-msg-p'>
+                          <strong className='admin-viewStudents-msg-strong'>Email:</strong> {msg.userEmail}
+                        </p>
+                        <p className='admin-viewStudents-msg-p'>
+                          <strong className='admin-viewStudents-msg-strong'>Subject:</strong> {msg.userSubject}
+                        </p>
+                        <p className='admin-viewStudents-msg-p'>
+                          <strong className='admin-viewStudents-msg-strong'>Message:</strong> {msg.userMessage}
+                        </p>
+                      </div>
+                      <hr className='admin-viewStudents-msg-hr' />
+                    </div>
+                  ))
+                ) : (
+                  <p>No messages found</p>
+                )
               )}
             </div>
-
-            <button onClick={() => {
-              setShowModal(false)
-              setSelectedCategory('')
-            }} type="button" class="btn btn-danger">CLOSE</button>
           </div>
         </div>
       )}
