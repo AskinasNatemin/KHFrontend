@@ -1,7 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
 import "../../Styles/Admin/ViewStaffs.css"
-import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -14,13 +13,12 @@ function ViewStaffs() {
   const [selectedCategoryForModal, setSelectedCategoryForModal] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [favoritesData, setFavoritesData] = useState(null);
+  const [lendBookData,setLendBookData]=useState(null)
 
-  const userId = localStorage.getItem("userId")
 
   useEffect(() => {
     axios.get(`http://localhost:5001/getAllUsers`)
       .then((res) => {
-        console.log(res);
         setStaffs(res.data)
       })
       .catch((err) => {
@@ -30,7 +28,7 @@ function ViewStaffs() {
 
 
   const handleDetailsClick = async (staff) => {
-    console.log(selectedCategories);
+    let userId=staff._id
 
     const category = selectedCategories[staff._id];
     if (!category) {
@@ -52,6 +50,25 @@ function ViewStaffs() {
         console.error("Failed to fetch favorites:", err);
       }
     }
+
+    if (category === "lend-details") {
+      try {
+        const res = await axios.post(
+          `http://localhost:5001/lentedBook/${userId}`
+        );
+        let id = res?.data.book[0].bookId;
+        if (id) {
+          const bookRes = await axios.post(
+            `http://localhost:5001/getBook/${id}`
+          );
+          setLendBookData(bookRes.data.data);
+        }else{
+
+        }
+      } catch (err) {
+        console.error("Failed to fetch favorites:", err);
+      }
+    }
   };
 
   const closeModal = () => {
@@ -59,6 +76,7 @@ function ViewStaffs() {
     setSelectedCategoryForModal("");
     setSelectedStaff(null);
     setFavoritesData(null);
+    setLendBookData(null)
     setSelectedCategories((prev) => {
       const updated = { ...prev };
       if (selectedStaff?._id) {
@@ -163,9 +181,9 @@ function ViewStaffs() {
                   )}
                 </div>
               )}
-              {selectedCategories === "lend-details" && (
+              {selectedCategories === "lend-details" && lendBookData ? (
                 <p>Show lend details here...</p>
-              )}
+              ):<p>no book found</p>}
               {selectedCategories === "message" && (
                 <p>Show message info here...</p>
               )}

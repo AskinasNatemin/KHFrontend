@@ -35,7 +35,7 @@ const UserEditProfile = () => {
           </div>
 
           <div className="d-flex justify-content-between">
-            <button type="button" className="btn btn-outline-danger" onClick={() => navigate("/")} >Cancel</button>
+            <button type="button" className="btn btn-outline-danger" onClick={() => navigate("/",{replace:true})} >Cancel</button>
             <button type="submit" className="btn btn-danger">Update</button>
           </div>
         </form>

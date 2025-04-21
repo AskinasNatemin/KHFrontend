@@ -37,7 +37,6 @@ function App() {
           <Route path="/" element={<HomePage />} />
 
           {/* 🔓 Public routes */}
-          <Route path="UserEditProfile" element={<UserEditProfile/>}/>
           <Route path="Navbar" element={<Navbar />} />
           <Route path="AdminLogin" element={<AdminLogin />} />
           <Route path="StaffRegistration" element={<StaffRegistration />} />
@@ -106,6 +105,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <AdminEditBook />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="UserEditProfile"
+            element={
+              <ProtectedRoute>
+                <UserEditProfile />
               </ProtectedRoute>
             }
           />
