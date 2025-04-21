@@ -23,12 +23,13 @@
   margin-top: 2rem;
   margin-bottom: .5rem;
   height: fit-content;
-  padding: 10px;
+  padding: 15px;
   flex-wrap: wrap;
   display: flex;
   border-radius: 10px;
-  background: linear-gradient(315deg, #f0f0f0, #cacaca);
-  box-shadow: 6px 6px 12px #c5c5c5,
+  /* background: linear-gradient(315deg, #f0f0f0, #cacaca); */
+  background: #fff;
+  box-shadow: 6px 6px 5px #c5c5c5,
     -6px -6px 12px #fbfbfb;
 }
 
@@ -38,8 +39,8 @@
   height: auto;
   margin-left: 1rem;
   border-radius: 20px;
-  box-shadow: -5px -5px 10px #a4a4a4,
-    5px 5px 10px #ffffff;
+  box-shadow: -5px -5px 10px #fff,
+    5px 5px 5px #a4a4a4;
 }
 
 .admin-viewbook-img:hover {

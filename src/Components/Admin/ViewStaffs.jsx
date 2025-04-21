@@ -1,7 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
 import "../../Styles/Admin/ViewStaffs.css"
-import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -9,14 +8,17 @@ import axios from 'axios';
 function ViewStaffs() {
 
   const [staffs, setStaffs] = useState([])
-    const [selectedStaff, setSelectedStaff] = useState(null);
-    const [selectedCategory, setSelectedCategory] = useState("");
-    const [showModal, setShowModal] = useState(false);
+  const [selectedStaff, setSelectedStaff] = useState(null);
+  const [selectedCategories, setSelectedCategories] = useState({});
+  const [selectedCategoryForModal, setSelectedCategoryForModal] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const [favoritesData, setFavoritesData] = useState(null);
+  const [lendBookData,setLendBookData]=useState(null)
+
 
   useEffect(() => {
     axios.get(`http://localhost:5001/getAllUsers`)
       .then((res) => {
-        console.log(res);
         setStaffs(res.data)
       })
       .catch((err) => {
@@ -24,7 +26,65 @@ function ViewStaffs() {
       })
   }, [])
 
-  
+
+  const handleDetailsClick = async (staff) => {
+    let userId=staff._id
+
+    const category = selectedCategories[staff._id];
+    if (!category) {
+      alert("Please select a category first");
+      return;
+    }
+
+    setSelectedStaff(staff);
+    setSelectedCategoryForModal(category);
+    setShowModal(true);
+
+    if (category === "favorites") {
+      try {
+        const res = await axios.post("http://localhost:5001/staffFavouriteBooks", {
+          userId: staff._id,
+        });
+        setFavoritesData(res.data.favouriteBooks);
+      } catch (err) {
+        console.error("Failed to fetch favorites:", err);
+      }
+    }
+
+    if (category === "lend-details") {
+      try {
+        const res = await axios.post(
+          `http://localhost:5001/lentedBook/${userId}`
+        );
+        let id = res?.data.book[0].bookId;
+        if (id) {
+          const bookRes = await axios.post(
+            `http://localhost:5001/getBook/${id}`
+          );
+          setLendBookData(bookRes.data.data);
+        }else{
+
+        }
+      } catch (err) {
+        console.error("Failed to fetch favorites:", err);
+      }
+    }
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    setSelectedCategoryForModal("");
+    setSelectedStaff(null);
+    setFavoritesData(null);
+    setLendBookData(null)
+    setSelectedCategories((prev) => {
+      const updated = { ...prev };
+      if (selectedStaff?._id) {
+        delete updated[selectedStaff._id];
+      }
+      return updated;
+    });
+  };
 
   return (
     <div className="admin-dashboard-container">
@@ -54,25 +114,25 @@ function ViewStaffs() {
                 <td>{staff.contact}</td>
                 <td>
                   <div className='admin-viewstaff-category-and-btn-div'>
-                    <select id="infoType" name="infoType" className="mr-2  admin-viewstaff-select"
-                     onChange={(e) => setSelectedCategory(e.target.value)}
-                      defaultValue=""
-                    required>
-                      <option value="" disabled selected>Select Field</option>
+                    <select
+                      value={selectedCategories[staff._id] || ""}
+                      onChange={(e) =>
+                        setSelectedCategories((prev) => ({
+                          ...prev,
+                          [staff._id]: e.target.value,
+                        }))
+                      }
+                      required
+                      className="mr-2 admin-viewstaff-select"
+                    >
+                      <option value="" disabled>Select Field</option>
                       <option value="favorites">Favorites</option>
                       <option value="lend-details">Lend Details</option>
                       <option value="message">Message</option>
                     </select>
-                    <button 
-                     onClick={() => {
-                      if (selectedCategory !== "") {
-                        setSelectedStaff(staff);
-                        setShowModal(true);
-                      } else {
-                        alert("Please select a category first");
-                      }
-                    }}
-                    className="admin-viewstaff-details-btn">DETAILS</button>
+                    <button
+                      onClick={() => handleDetailsClick(staff)}
+                      className="admin-viewstaff-details-btn">DETAILS</button>
                   </div>
 
                 </td>
@@ -83,24 +143,54 @@ function ViewStaffs() {
 
       </div>
       {showModal && selectedStaff && (
-  <div className="modal-overlay">
-    <div className="modal-content">
-      <h3>{selectedCategory.toUpperCase()} for {selectedStaff.staffname}</h3>
-      <div className="modal-body">
-        {selectedCategory === "favorites" && (
-          <p>Show favorites info here...</p>
-        )}
-        {selectedCategory === "lend-details" && (
-          <p>Show lend details here...</p>
-        )}
-        {selectedCategory === "message" && (
-          <p>Show message info here...</p>
-        )}
-      </div>
-      <button onClick={() => setShowModal(false)} type="button" class="btn btn-danger">CLOSE</button>
-      </div>
-  </div>
-)}
+        <div className="admin-viewStaff-modal-overlay">
+          <div className="admin-viewStaff-modal-content">
+            <div className="admin-viewStaff-modal-header">
+              <h3 className='text-center'>
+                {selectedCategories[selectedStaff._id].toUpperCase()} FOR {selectedStaff?.staffname.toUpperCase()}
+              </h3>
+              <button
+                onClick={closeModal}
+                className="admin-viewStaff-modal-close-btn"
+                aria-label="Close modal"
+              >
+                &times;
+              </button>
+            </div>            
+            <div className="admin-viewStaff-modal-body">
+              {selectedCategoryForModal === "favorites" && (
+                <div className="admin-viewStaff-favorites-container">
+                  {favoritesData && favoritesData.length > 0 ? (
+                    favoritesData.map((book) => (
+                      <div key={book._id} className="admin-viewStaff-favorite-book-card">
+                        <img
+                          src={`http://localhost:5001/${book.imagePath}`}
+                          alt={book.bookName}
+                          className="admin-viewStaff-book-image"
+                        />
+                        <div className="admin-viewStaff-book-info">
+                          <p className="admin-viewStaff-card-p1">
+                            <strong className="admin-viewStaff-card-strong"><span className='admin-viewStaff-span'>BOOK NAME : </span> {book.bookName}</strong>
+                          </p>
+                          <p className="admin-viewStaff-card-p2"><span className='admin-viewStaff-span'>AUTHOR NAME : </span>{book.authorName}</p>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <p>No favorite books found.</p>
+                  )}
+                </div>
+              )}
+              {selectedCategories === "lend-details" && lendBookData ? (
+                <p>Show lend details here...</p>
+              ):<p>no book found</p>}
+              {selectedCategories === "message" && (
+                <p>Show message info here...</p>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
 
   )
