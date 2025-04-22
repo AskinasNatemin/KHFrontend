@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../Styles/Admin/ViewStudents.css";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 import axios from "axios";
 
 function ViewStudents() {
@@ -22,7 +22,6 @@ function ViewStudents() {
       [studentId]: category,
     }));
   };
-
 
   useEffect(() => {
     axios
@@ -64,7 +63,9 @@ function ViewStudents() {
 
     if (category === "message") {
       try {
-        const res = await axios.get(`http://localhost:5001/getStudentMessage/${student._id}`);
+        const res = await axios.get(
+          `http://localhost:5001/getStudentMessage/${student._id}`
+        );
         setMessageData(res.data); // reuse same state for message info
         console.log("Fetched message:", res.data);
       } catch (err) {
@@ -84,7 +85,7 @@ function ViewStudents() {
           );
           setLendBookData(bookRes.data.data);
         } else {
-          return
+          return;
         }
       } catch (err) {
         console.error("Failed to fetch favorites:", err);
@@ -129,7 +130,6 @@ function ViewStudents() {
     }),
   };
 
-
   return (
     <div>
       <div className="admin-dashboard-container">
@@ -149,7 +149,8 @@ function ViewStudents() {
         </div>
       </div>
 
-      <motion.div className=' admin-viewStudent-table-container mt-4'
+      <motion.div
+        className=" admin-viewStudent-table-container mt-4"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1, ease: "easeOut" }}
@@ -166,7 +167,7 @@ function ViewStudents() {
               <th scope="col">ACTIONS</th>
             </tr>
           </thead>
-          <tbody className='admin-viewStudent-tbody'>
+          <tbody className="admin-viewStudent-tbody">
             {filteredBooks.length > 0 ? (
               filteredBooks.map((student, i) => (
                 <motion.tr
@@ -178,17 +179,23 @@ function ViewStudents() {
                   custom={i}
                 >
                   <th scope="row">{i + 1}</th>
-                  <td className="admin-viewStudent-td">{student.studentName}</td>
+                  <td className="admin-viewStudent-td">
+                    {student.studentName}
+                  </td>
                   <td>{student.email}</td>
                   <td>{student.contact}</td>
                   <td>
                     <div className="admin-viewStudent-category-and-btn-div">
                       <select
-                        onChange={(e) => selectCategory(e.target.value, student._id)}
+                        onChange={(e) =>
+                          selectCategory(e.target.value, student._id)
+                        }
                         value={selectedCategories[student._id] || ""}
                         className="mr-2 admin-viewStudent-select"
                       >
-                        <option value="" disabled>Select Field</option>
+                        <option value="" disabled>
+                          Select Field
+                        </option>
                         <option value="favorites">Favorites</option>
                         <option value="lend-details">Lend Details</option>
                         <option value="message">Message</option>
@@ -205,12 +212,13 @@ function ViewStudents() {
               ))
             ) : (
               <tr>
-                <td colSpan="5" className="text-center">No students found.</td>
+                <td colSpan="5" className="text-center">
+                  No students found.
+                </td>
               </tr>
             )}
           </tbody>
         </table>
-
       </motion.div>
       {showModal && selectedStudent && (
         <div className="admin-viewStudents-modal-overlay">
@@ -233,10 +241,12 @@ function ViewStudents() {
                 <div className="admin-viewStudents-favorites-container">
                   {favoritesData && favoritesData.length > 0 ? (
                     favoritesData.map((book) => (
-                      <motion.div key={book._id} className="admin-viewStudents-favorite-book-card"
+                      <motion.div
+                        key={book._id}
+                        className="admin-viewStudents-favorite-book-card"
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: .8, ease: "easeOut" }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
                       >
                         <img
                           src={`http://localhost:5001/${book.imagePath}`}
@@ -266,12 +276,46 @@ function ViewStudents() {
                   )}
                 </div>
               )}
-              
-              {selectedCategoryForModal === "lend-details" && (
-                lendBookData ? (
-                  <p>Show lend details here...</p>
-                ) : (
-                  <p>No lend details found.</p>
+              {selectedCategoryForModal === "lend-details" && lendBookData ? (
+                <div className="container mt-4">
+                  <div className="card shadow-sm">
+                    <div className="row g-0">
+                      <div className="col-md-4">
+                        <img
+                          src={`http://localhost:5001/${lendBookData.imagePath}`}
+                          alt={lendBookData.bookName}
+                          className="img-fluid rounded-start h-100 object-fit-cover"
+                        />
+                      </div>
+                      <div className="col-md-8">
+                        <div className="card-body">
+                          <h5 className="card-title fw-bold">
+                            {lendBookData.bookName}
+                          </h5>
+                          <p className="card-text text-muted mb-1">
+                            <strong>Author:</strong> {lendBookData.authorName}
+                          </p>
+                          <p className="card-text text-muted mb-1">
+                            <strong>Category:</strong> {lendBookData.category}
+                          </p>
+                          <p className="card-text">
+                            <strong>Description:</strong>{" "}
+                            {lendBookData.description}
+                          </p>
+                          <p className="card-text text-warning">
+                            <strong>Ratings:</strong> {lendBookData.ratings} ⭐
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                selectedCategoryForModal === "lend-details" &&
+                !lendBookData && (
+                  <p className="text-center text-danger fw-semibold mt-3">
+                    No book found
+                  </p>
                 )
               )}
 
@@ -311,8 +355,10 @@ function ViewStudents() {
                       <hr className="admin-viewStudents-msg-hr" />
                     </div>
                   ))
-                ) : (
+                ) : selectedCategoryForModal === "message" && messageData ? (
                   <p>No messages found</p>
+                ) : (
+                  ""
                 ))}
             </div>
           </div>
