@@ -83,8 +83,8 @@ function ViewStudents() {
             `http://localhost:5001/getBook/${id}`
           );
           setLendBookData(bookRes.data.data);
-        }else{
-          return 
+        } else {
+          return
         }
       } catch (err) {
         console.error("Failed to fetch favorites:", err);
@@ -111,8 +111,8 @@ function ViewStudents() {
   const filteredBooks = students.filter(
     (student) =>
       student.studentName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-     String(student.contact)?.includes(searchQuery)||
-     student.email?.toLowerCase().includes(searchQuery.toLowerCase())
+      String(student.contact)?.includes(searchQuery) ||
+      student.email?.toLowerCase().includes(searchQuery.toLowerCase())
 
   );
 
@@ -134,7 +134,7 @@ function ViewStudents() {
     <div>
       <div className="admin-dashboard-container">
         <div className="admin-dashboard-topbar">
-        <div className="admin-viewStudent-h4-search-div">
+          <div className="admin-viewStudent-h4-search-div">
             <h4 className="admin-viewStudent-topbar-h4">VIEW STUDENTS</h4>
             <form class="admin-viewStudent-form">
               <input
@@ -234,9 +234,9 @@ function ViewStudents() {
                   {favoritesData && favoritesData.length > 0 ? (
                     favoritesData.map((book) => (
                       <motion.div key={book._id} className="admin-viewStudents-favorite-book-card"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: .8, ease: "easeOut" }}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: .8, ease: "easeOut" }}
                       >
                         <img
                           src={`http://localhost:5001/${book.imagePath}`}
@@ -266,9 +266,15 @@ function ViewStudents() {
                   )}
                 </div>
               )}
-              {selectedCategoryForModal === "lend-details" && lendBookData ?(
-                <p>Show lend details here...</p>
-              ):<p>no book found</p>}
+              
+              {selectedCategoryForModal === "lend-details" && (
+                lendBookData ? (
+                  <p>Show lend details here...</p>
+                ) : (
+                  <p>No lend details found.</p>
+                )
+              )}
+
               {selectedCategoryForModal === "message" &&
                 (messageData && messageData.length > 0 ? (
                   messageData.map((msg, index) => (

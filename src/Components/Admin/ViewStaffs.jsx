@@ -248,9 +248,14 @@ function ViewStaffs() {
                   )}
                 </div>
               )}
-              {selectedCategories === "lend-details" && lendBookData ? (
-                <p>Show lend details here...</p>
-              ):<p>no book found</p>}
+              {selectedCategories === "lend-details" && (
+                lendBookData ?(
+                  <p>Show lent book details</p>
+                ):(
+                  <p>no lend book found</p>
+                )
+              )}
+
               {selectedCategoryForModal === "message" && (
                 messageData && messageData.length > 0 ? (
                   messageData.map((msg, index) => (
