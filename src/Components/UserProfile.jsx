@@ -49,11 +49,22 @@ const UserProfile = () => {
       <div className="profilePopupContainer">
         <div className="profile-modal-card">
           <div className="profile-header text-center">
-            <img
-              src="https://via.placeholder.com/120"
-              alt="Profile"
-              className="profile-img"
-            />
+            <div className="profile-img">
+              <p
+                style={{
+                  fontSize: "40px",
+                  color: "#f5c518", // soft red accent
+                  fontWeight: "bold",
+                  letterSpacing: "1px",
+                }}
+              >
+                {userData?.studentName
+                  ? userData.studentName[0]
+                  : userData?.staffname
+                  ? userData.staffname[0]
+                  : ""}
+              </p>
+            </div>
           </div>
           <div className="profile-body">
             <h5>
@@ -74,11 +85,9 @@ const UserProfile = () => {
             </div>
             <div className="info-row">
               <span className="info-label">Type :</span>{" "}
-              <div className="UserData">
-              {user?.toUpperCase()}</div>
+              <div className="UserData">{user?.toUpperCase()}</div>
             </div>
             <div className=" UserProgfileButton">
-              <button className="edit-btn"onClick={() => navigate("/UserEditProfile")}>Edit</button>
               <button className="ProfileLogoutButton" onClick={handleLogout}>
                 Logout
               </button>
