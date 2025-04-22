@@ -114,6 +114,7 @@ function ViewStudents() {
       student.studentName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
       String(student.contact)?.includes(searchQuery) ||
       student.email?.toLowerCase().includes(searchQuery.toLowerCase())
+
   );
 
   const rowVariants = {
