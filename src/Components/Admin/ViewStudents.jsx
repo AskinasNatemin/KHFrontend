@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "../../Styles/Admin/ViewStudents.css";
+import { motion } from "framer-motion"
 import axios from "axios";
 
 function ViewStudents() {
   const [students, setStudents] = useState([]);
   const [selectedStudent, setSelectedStudent] = useState(null);
+
+  const [searchQuery, setSearchQuery] = useState("");
+
   const [selectedCategories, setSelectedCategories] = useState({});
   const [showModal, setShowModal] = useState(false);
   const [favoritesData, setFavoritesData] = useState(null);
@@ -18,6 +22,7 @@ function ViewStudents() {
       [studentId]: category,
     }));
   };
+
 
   useEffect(() => {
     axios
@@ -59,9 +64,7 @@ function ViewStudents() {
 
     if (category === "message") {
       try {
-        const res = await axios.get(
-          `http://localhost:5001/getUserMessage/${student._id}`
-        );
+        const res = await axios.get(`http://localhost:5001/getStudentMessage/${student._id}`);
         setMessageData(res.data); // reuse same state for message info
         console.log("Fetched message:", res.data);
       } catch (err) {
@@ -105,15 +108,52 @@ function ViewStudents() {
     });
   };
 
+  const filteredBooks = students.filter(
+    (student) =>
+      student.studentName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+     String(student.contact)?.includes(searchQuery)||
+     student.email?.toLowerCase().includes(searchQuery.toLowerCase())
+
+  );
+
+  const rowVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    }),
+  };
+
+
   return (
     <div>
       <div className="admin-dashboard-container">
         <div className="admin-dashboard-topbar">
-          <h4 className="admin-dashboard-topbar-h4">ALL STUDENTS LIST</h4>
+        <div className="admin-viewStudent-h4-search-div">
+            <h4 className="admin-viewStudent-topbar-h4">VIEW STUDENTS</h4>
+            <form class="admin-viewStudent-form">
+              <input
+                class="form-control me-2 admin-viewStudent-search"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </form>
+          </div>
         </div>
       </div>
 
-      <div className=" admin-viewStudent-table-container mt-4">
+      <motion.div className=' admin-viewStudent-table-container mt-4'
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+      >
         <table class="table table-light table-striped  admin-viewStudent-table-main">
           <thead className="admin-viewStudent-thead">
             <tr>
@@ -126,43 +166,52 @@ function ViewStudents() {
               <th scope="col">ACTIONS</th>
             </tr>
           </thead>
-          <tbody className="admin-viewStudent-tbody">
-            {students.map((student, i) => (
-              <tr className="admin-viewStudent-tr" key={student._id}>
-                <th scope="row">{i + 1}</th>
-                <td className="admin-viewStudent-td">{student.studentName}</td>
-                <td>{student.email}</td>
-                <td>{student.contact}</td>
-                <td>
-                  <div className="admin-viewStudent-category-and-btn-div">
-                    <select
-                      onChange={(e) =>
-                        selectCategory(e.target.value, student._id)
-                      }
-                      value={selectedCategories[student._id] || ""}
-                      required
-                      className="mr-2 admin-viewStudent-select"
-                    >
-                      <option value="" disabled selected>
-                        Select Field
-                      </option>
-                      <option value="favorites">Favorites</option>
-                      <option value="lend-details">Lend Details</option>
-                      <option value="message">Message</option>
-                    </select>
-                    <button
-                      onClick={() => handleDetailsClick(student)}
-                      className="admin-viewStudent-details-btn"
-                    >
-                      DETAILS
-                    </button>
-                  </div>
-                </td>
+          <tbody className='admin-viewStudent-tbody'>
+            {filteredBooks.length > 0 ? (
+              filteredBooks.map((student, i) => (
+                <motion.tr
+                  className="admin-viewStudent-tr"
+                  key={student._id}
+                  variants={rowVariants}
+                  initial="hidden"
+                  animate="visible"
+                  custom={i}
+                >
+                  <th scope="row">{i + 1}</th>
+                  <td className="admin-viewStudent-td">{student.studentName}</td>
+                  <td>{student.email}</td>
+                  <td>{student.contact}</td>
+                  <td>
+                    <div className="admin-viewStudent-category-and-btn-div">
+                      <select
+                        onChange={(e) => selectCategory(e.target.value, student._id)}
+                        value={selectedCategories[student._id] || ""}
+                        className="mr-2 admin-viewStudent-select"
+                      >
+                        <option value="" disabled>Select Field</option>
+                        <option value="favorites">Favorites</option>
+                        <option value="lend-details">Lend Details</option>
+                        <option value="message">Message</option>
+                      </select>
+                      <button
+                        onClick={() => handleDetailsClick(student)}
+                        className="admin-viewStudent-details-btn"
+                      >
+                        DETAILS
+                      </button>
+                    </div>
+                  </td>
+                </motion.tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="5" className="text-center">No students found.</td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
-      </div>
+
+      </motion.div>
       {showModal && selectedStudent && (
         <div className="admin-viewStudents-modal-overlay">
           <div className="admin-viewStudents-modal-content">
@@ -184,9 +233,10 @@ function ViewStudents() {
                 <div className="admin-viewStudents-favorites-container">
                   {favoritesData && favoritesData.length > 0 ? (
                     favoritesData.map((book) => (
-                      <div
-                        key={book._id}
-                        className="admin-viewStudents-favorite-book-card"
+                      <motion.div key={book._id} className="admin-viewStudents-favorite-book-card"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: .8, ease: "easeOut" }}
                       >
                         <img
                           src={`http://localhost:5001/${book.imagePath}`}
@@ -209,7 +259,7 @@ function ViewStudents() {
                             {book.authorName}
                           </p>
                         </div>
-                      </div>
+                      </motion.div>
                     ))
                   ) : (
                     <p>No favorite books found.</p>

@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from 'react'
 import "../../Styles/Admin/ViewStaffs.css"
+import { motion } from "framer-motion"
 import axios from 'axios';
 
 
@@ -10,8 +11,12 @@ function ViewStaffs() {
   const [staffs, setStaffs] = useState([])
   const [selectedStaff, setSelectedStaff] = useState(null);
   const [selectedCategories, setSelectedCategories] = useState({});
+
+  const [searchQuery, setSearchQuery] = useState("");
+
   const [selectedCategoryForModal, setSelectedCategoryForModal] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [messageData, setMessageData] = useState(null);
   const [favoritesData, setFavoritesData] = useState(null);
   const [lendBookData,setLendBookData]=useState(null)
 
@@ -69,6 +74,16 @@ function ViewStaffs() {
         console.error("Failed to fetch favorites:", err);
       }
     }
+
+    if (category === "message") {
+      try {
+        const res = await axios.get(`http://localhost:5001/getStaffMessage/${staff._id}`);
+        setMessageData(res.data); // reuse same state for message info
+        console.log("Fetched message:", res.data);
+      } catch (err) {
+        console.error("Failed to fetch message:", err);
+      }
+    }
   };
 
   const closeModal = () => {
@@ -77,6 +92,7 @@ function ViewStaffs() {
     setSelectedStaff(null);
     setFavoritesData(null);
     setLendBookData(null)
+    setMessageData(null);
     setSelectedCategories((prev) => {
       const updated = { ...prev };
       if (selectedStaff?._id) {
@@ -86,15 +102,49 @@ function ViewStaffs() {
     });
   };
 
+  const filteredBooks = staffs.filter(
+    (staff) =>
+      staff.staffname?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      String(staff.contact)?.includes(searchQuery) ||
+      staff.email?.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const rowVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    }),
+  };
+
+
   return (
     <div className="admin-dashboard-container">
       <div className="admin-dashboard-topbar">
-        <div className="admin-view-book-h4-search-div">
-          <h4 className="admin-view-book-topbar-h4">VIEW STAFFS</h4>
+        <div className="admin-viewstaff-h4-search-div">
+          <h4 className="admin-viewstaff-topbar-h4">VIEW STAFFS</h4>
+          <form class="admin-viewstaff-form">
+            <input
+              class="form-control me-2 admin-viewstaff-search"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </form>
         </div>
       </div>
 
-      <div className=' admin-viewstaff-table-container mt-4'>
+      <motion.div className=' admin-viewstaff-table-container mt-4'
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+      >
         <table class="table table-light table-striped  admin-viewstaff-table-main">
           <thead className='admin-viewstaff-thead'>
             <tr>
@@ -106,42 +156,55 @@ function ViewStaffs() {
             </tr>
           </thead>
           <tbody className='admin-viewstaff-tbody'>
-            {staffs.map((staff, i) => (
-              <tr className='admin-viewstaff-tr' key={staff._id}>
-                <th scope="row">{i + 1}</th>
-                <td className='admin-viewstaff-td'>{staff.staffname}</td>
-                <td>{staff.email}</td>
-                <td>{staff.contact}</td>
-                <td>
-                  <div className='admin-viewstaff-category-and-btn-div'>
-                    <select
-                      value={selectedCategories[staff._id] || ""}
-                      onChange={(e) =>
-                        setSelectedCategories((prev) => ({
-                          ...prev,
-                          [staff._id]: e.target.value,
-                        }))
-                      }
-                      required
-                      className="mr-2 admin-viewstaff-select"
-                    >
-                      <option value="" disabled>Select Field</option>
-                      <option value="favorites">Favorites</option>
-                      <option value="lend-details">Lend Details</option>
-                      <option value="message">Message</option>
-                    </select>
-                    <button
-                      onClick={() => handleDetailsClick(staff)}
-                      className="admin-viewstaff-details-btn">DETAILS</button>
-                  </div>
+            {filteredBooks.length > 0 ? (
+              filteredBooks.map((staff, i) => (
+                <motion.tr
+                  className="admin-viewStudent-tr"
+                  key={staff._id}
+                  variants={rowVariants}
+                  initial="hidden"
+                  animate="visible"
+                  custom={i}
+                >
+                  <th scope="row">{i + 1}</th>
+                  <td className='admin-viewstaff-td'>{staff.staffname}</td>
+                  <td>{staff.email}</td>
+                  <td>{staff.contact}</td>
+                  <td>
+                    <div className='admin-viewstaff-category-and-btn-div'>
+                      <select
+                        value={selectedCategories[staff._id] || ""}
+                        onChange={(e) =>
+                          setSelectedCategories((prev) => ({
+                            ...prev,
+                            [staff._id]: e.target.value,
+                          }))
+                        }
+                        required
+                        className="mr-2 admin-viewstaff-select"
+                      >
+                        <option value="" disabled>Select Field</option>
+                        <option value="favorites">Favorites</option>
+                        <option value="lend-details">Lend Details</option>
+                        <option value="message">Message</option>
+                      </select>
+                      <button
+                        onClick={() => handleDetailsClick(staff)}
+                        className="admin-viewstaff-details-btn">DETAILS</button>
+                    </div>
 
-                </td>
+                  </td>
+                </motion.tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="5" className="text-center">No students found.</td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
 
-      </div>
+      </motion.div>
       {showModal && selectedStaff && (
         <div className="admin-viewStaff-modal-overlay">
           <div className="admin-viewStaff-modal-content">
@@ -156,13 +219,17 @@ function ViewStaffs() {
               >
                 &times;
               </button>
-            </div>            
+            </div>
             <div className="admin-viewStaff-modal-body">
               {selectedCategoryForModal === "favorites" && (
                 <div className="admin-viewStaff-favorites-container">
                   {favoritesData && favoritesData.length > 0 ? (
                     favoritesData.map((book) => (
-                      <div key={book._id} className="admin-viewStaff-favorite-book-card">
+                      <motion.div key={book._id} className="admin-viewStaff-favorite-book-card"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: .8, ease: "easeOut" }}
+                      >
                         <img
                           src={`http://localhost:5001/${book.imagePath}`}
                           alt={book.bookName}
@@ -174,7 +241,7 @@ function ViewStaffs() {
                           </p>
                           <p className="admin-viewStaff-card-p2"><span className='admin-viewStaff-span'>AUTHOR NAME : </span>{book.authorName}</p>
                         </div>
-                      </div>
+                      </motion.div>
                     ))
                   ) : (
                     <p>No favorite books found.</p>
@@ -184,8 +251,30 @@ function ViewStaffs() {
               {selectedCategories === "lend-details" && lendBookData ? (
                 <p>Show lend details here...</p>
               ):<p>no book found</p>}
-              {selectedCategories === "message" && (
-                <p>Show message info here...</p>
+              {selectedCategoryForModal === "message" && (
+                messageData && messageData.length > 0 ? (
+                  messageData.map((msg, index) => (
+                    <div key={msg._id || index} className="admin-viewStudents-message-card">
+                      <div className="admin-viewStudents-msg-card-content">
+                        <p className='admin-viewStudents-msg-p'>
+                          <strong className='admin-viewStudents-msg-strong'>Name:</strong> {msg.userName}
+                        </p>
+                        <p className='admin-viewStudents-msg-p'>
+                          <strong className='admin-viewStudents-msg-strong'>Email:</strong> {msg.userEmail}
+                        </p>
+                        <p className='admin-viewStudents-msg-p'>
+                          <strong className='admin-viewStudents-msg-strong'>Subject:</strong> {msg.userSubject}
+                        </p>
+                        <p className='admin-viewStudents-msg-p'>
+                          <strong className='admin-viewStudents-msg-strong'>Message:</strong> {msg.userMessage}
+                        </p>
+                      </div>
+                      <hr className='admin-viewStudents-msg-hr' />
+                    </div>
+                  ))
+                ) : (
+                  <p>No messages found</p>
+                )
               )}
             </div>
           </div>

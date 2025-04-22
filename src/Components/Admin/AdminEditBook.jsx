@@ -102,9 +102,9 @@ const AdminEditBook = ({ book, onClose, onUpdate }) => {
           <h4 className="admin-dashboard-topbar-h4">ALL STAFF LISTS</h4>
         </div>
       </div>
-      <div className="modal-overlay">
-        <div className="modal-content">
-          <button className="close-button" onClick={onClose}>✖</button>
+      <div className="admin-edit-book-modal-overlay">
+        <div className="admin-edit-book-modal-content">
+          <button className="admin-edit-book-close-button" onClick={onClose}>✖</button>
           <div className="form-container">
             <h2 className='admin-editbook-h2'>UPDATING BOOKS</h2>
             <form  onSubmit={(e) => e.preventDefault()}className="book-form">

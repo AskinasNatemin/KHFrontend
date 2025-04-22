@@ -18,40 +18,49 @@
     font-size: 20px;
     letter-spacing: 2px;
 }
-.modal-overlay {
+
+
+.admin-edit-book-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 999;
+  padding: 20px;
+  overflow: auto;
 }
 
-.modal-content {
+.admin-edit-book-modal-content {
   background: white;
   padding: 20px;
-  width: 500px;
-  max-width: 90%;
-  min-height: 200px;  /* Minimum height */
-  max-height: 90vh;   /* Maximum height to prevent overflow */
-  overflow-y: auto;   /* Enable scrolling if content exceeds max height */
+  width: 80%;
+  max-width: 800px;
+  min-height: 200px;
+  max-height: 90vh;
+  overflow-y: auto;
   border-radius: 8px;
   position: relative;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: height 0.3s ease-in-out;
 }
 
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+.admin-edit-book-close-button{
+  position: sticky;
+  top: 0;
+  right: 0;
+  float: right;
+  z-index: 10;
   background: red;
   color: white;
   border: none;
   cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-bottom: 10px;
 }
 
 .preview-img {
@@ -162,7 +171,7 @@
   }
   
   
-  @media (max-width: 600px) {
+  /* @media (max-width: 600px) {
     .form-container {
       width: 90%;
     }
@@ -174,6 +183,21 @@
       color: white;
       border: none;
       cursor: pointer;
+    }
+  } */
+
+  @media (max-width: 768px) {
+    .modal-content {
+      width: 95%;
+      max-height: 90vh;
+    }
+  
+    .form-container {
+      padding: 10px;
+    }
+  
+    .close-button {
+      background: blue;
     }
   }
 

@@ -140,6 +140,16 @@
   transform: scale(1);
 }
 
+.hide-scrollbar {
+  overflow: auto;
+  scrollbar-width: none; 
+  -ms-overflow-style: none;  
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; 
+}
+
 @media screen and (max-width: 992px) {
   .admin-viewbooks-card-box {
     flex-direction: column;
