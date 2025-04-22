@@ -103,18 +103,18 @@ const UserFavourite = () => {
             ))}
           </div>
         ) : (
-          <div className="container d-flex justify-content-center align-items-center h-75">
+          <div className="backToBooksContainer ">
             <div
-              className="border rounded p-4 text-center bg-light shadow-lg"
+              className="backToBooksBox"
               style={{ maxWidth: "400px" }}
             >
-              <p className="text-danger fw-bold fs-5 mb-2">No Favorites Yet!</p>
-              <p className="text-secondary">
+              <h2 className="backToBooksTitle">No Favorites Yet!</h2>
+              <p className="backToBooksMessage"> 
                 Start adding your favorite books to see them here.
               </p>
 
               <button
-                className="btn btn-primary mt-3"
+                className="backToBooksButton"
                 onClick={() => navigate("/Books")}
               >
                 Back to Books

@@ -19,6 +19,20 @@
     letter-spacing: 2px;
 }
 
+.admin-viewstaff-h4-search-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+.admin-viewstaff-form {
+  position: absolute;
+  right: 3rem;
+}
+
+
 .admin-viewstaff-table-container {
     max-width: 1000px;
     margin: auto;
@@ -244,6 +258,33 @@
 
 /* Responsive */
 @media (max-width: 600px) {
+
+  .admin-viewstaff-h4-search-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+  }
+
+  .admin-viewstaff-form {
+    position: absolute;
+    right: 0;
+  }
+
+  .admin-viewstaff-topbar-h4 {
+    position: absolute;
+    left: 5px;
+    font-size: 1em;
+    align-items: center;
+    margin-top: .6em;
+  }
+
+  .admin-viewstaff-search {
+    width: 100px;
+    height: 2rem;
+  }
+
   .admin-viewStaff-favorite-book-card {
     flex-direction: column;
     align-items: center;
