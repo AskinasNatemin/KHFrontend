@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "../../Styles/Admin/ViewBooks.css";
+import { motion } from 'framer-motion';
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteForever } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
@@ -27,7 +28,7 @@ function ViewBooks() {
         console.log("error updating books ", err);
       });
   };
-  
+
   const deleteBook = (id) => {
     const confirm = window.confirm(
       "Are you sure that you need to delete this book"
@@ -67,6 +68,7 @@ function ViewBooks() {
       book.authorName.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+
   return (
     <>
       <div className="admin-dashboard-container">
@@ -85,10 +87,15 @@ function ViewBooks() {
           </div>
         </div>
 
-        <div className="row viewBooks-card-row w-100">
+        <motion.div className="row viewBooks-card-row w-100 hide-scrollbar">
           {filteredBooks.length > 0 ? (
-            filteredBooks.map((book) => (
-              <div className="admin-viewbooks-card-box" key={book._id}>
+            filteredBooks.map((book,index) => (
+              <motion.div className="admin-viewbooks-card-box"
+                key={book._id}
+                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 200 }}
+                transition={{ duration: .5, delay: index * 0.2 }} 
+              >
                 <div className="column-1 col-12 col-sm-12 col-lg-4 col-md-4">
                   <img
                     className="image-fluid admin-viewbook-img"
@@ -142,12 +149,12 @@ function ViewBooks() {
                     </button>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))
           ) : (
             <p className="no-books-found">No books found.</p>
           )}
-        </div>
+        </motion.div>
       </div>
       {selectedBook && (
         <AdminEditBook
