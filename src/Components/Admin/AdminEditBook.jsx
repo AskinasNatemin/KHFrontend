@@ -18,16 +18,6 @@ const AdminEditBook = ({ book, onClose, onUpdate }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // const handleFileChange = (e) => {
-  //   const file = e.target.files[0];
-  //   if (file) {
-  //     const reader = new FileReader();
-  //     reader.onloadend = () => {
-  //       setFormData({ ...formData, [e.target.name]: file, imagePreview: reader.result });
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
-  // };
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -36,7 +26,6 @@ const AdminEditBook = ({ book, onClose, onUpdate }) => {
     if (file) {
       const updatedData = { ...formData, [name]: file };
 
-      // Show preview if it's an image
       if (name === 'image') {
         const reader = new FileReader();
         reader.onloadend = () => {
@@ -49,21 +38,6 @@ const AdminEditBook = ({ book, onClose, onUpdate }) => {
       }
     }
   };
-  
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   onUpdate(formData);
-  // };
-
-  // const editBook = () => {
-  //   axios.post(`http://localhost:5001/editBook/${book._id}`,formData)
-  //     .then((res) => {
-  //       console.log(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     })
-  // }
   
   const editBook = () => {
     const data = new FormData();
