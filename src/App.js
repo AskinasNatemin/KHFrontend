@@ -25,7 +25,6 @@ import AdminEditBook from "./Components/Admin/AdminEditBook";
 import FlipBook from "./Components/Books/FlipBook";
 import ContactUs from "./Components/ContactUs";
 import ProtectedRoute from "./Components/ProtectedRoute.jsx";
-import UserEditProfile from "./Components/UserEditProfile.jsx";
 
 function App() {
   return (
@@ -105,14 +104,6 @@ function App() {
             element={
               <ProtectedRoute>
                 <AdminEditBook />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="UserEditProfile"
-            element={
-              <ProtectedRoute>
-                <UserEditProfile />
               </ProtectedRoute>
             }
           />
